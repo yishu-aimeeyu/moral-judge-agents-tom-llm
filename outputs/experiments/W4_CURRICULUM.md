@@ -1,22 +1,25 @@
-# W4 — prompt curriculum: is the intent representation reachable from the input?
+# W4 — prompt curriculum: how far does in-context instruction move the bias?
 
-_6 engaged open models, 5 cumulative levels plus a 3-cell non-cumulative ablation, 7-template basis, 53 scenario groups (371 template × group cells). Readings pre-registered in `W4_PRESPEC.md`; prompts verbatim in `W4_PROMPT_LEVELS.md`._
+_6 engaged open models, 5 cumulative levels plus a 3-cell non-cumulative ablation, 7-template basis, 53 scenario groups (371 template × group cells). Readings pre-registered in `W4_PRESPEC.md`; prompts verbatim in `W4_PROMPT_LEVELS.md`. Short conclusion also in `W4_SUMMARY.md`._
 
-> **Two corrections applied after run 1** (preserved under `_w4_prefix_fewshot_bug/`). The few-shot block rendered each example under the question built from the *target* item, and `human_verbatim` interpolates the agent name — so an example about Nadia was followed by "How permissible was Grace's action?", invalid on 1 of 7 templates and only at the levels containing the few-shot block. L4/L5 were rescored. Separately, the bootstrap resampled template × group cells rather than scenario groups, treating one vignette under seven templates as seven independent observations; all intervals are now over the scenario group and are correspondingly wider.
-
-> **The L4 labels are not inverted.** Checked before interpreting L4, since Young 2007 is 1–4 permissibility while most templates are 1–7 blame, and this project has had both a CPR polarity inversion and a permissibility-direction reversal. The YS2008 anchor is phrased 1 = completely permissible → 3 = completely impermissible, ascending in condemnation like every other template, so no reversal is required. The few-shot labels encode attempted > accidental on every template × scale, implied contrast +0.500 to +0.667 against an adult reference of +0.666. The table is in `W4_PROMPT_LEVELS.md` and the check is now a gate that aborts the run.
+> **Corrections after run 1** (preserved under `_w4_prefix_fewshot_bug/`): few-shot agent-name bug on `human_verbatim` (L4/L5 rescored); bootstrap unit corrected from template × group cell to scenario group. L4 label polarity verified non-inverted and gated.
 
 ## Verdict
 
-**Level-specific, and the pre-registered bar is not met where it was placed.** P3 reads the verdict at the top level: there 3/6 models qualify, short of the 4 required, so by the pre-registration this is not "prompting works". But 4/6 models DO clear +0.15 with a CI excluding zero at some earlier level, which is not nothing and is not what P2 describes either.
+**The completed 6 × 8 run does not support "unreachable by steering, reachable by prompting."** That reading overclaims both ends. The accurate summary:
 
-The honest statement is the third one the pre-registration did not anticipate: **in-context intervention can move the contrast substantially, and the fully escalated prompt is not where it moves most.** Escalation is not monotone, so "can prompting fix it" and "does more scaffolding fix it more" have different answers. The dose-response section below is the part to read, in particular the L4 column: adding labelled adult ratings can undo the gain from unlabelled worked reasoning. The labels themselves are verified non-inverted, so that reversal is not arithmetic; what it is instead — imitation of the example anchors, the added prompt length, or the question moving away from the story — this design does not separate, and the ablation below is the closest available handle. Reporting the maximum over levels as the headline would be selecting the level after seeing the data; it is reported as descriptive only.
+1. **Only 3/6 models clear the pre-registered +0.15 bar at L5** (need 4). By P3 this is not "prompting works".
+2. **Gains at the top of the stack are predominantly accidental-blame suppression**, not intent re-weighting: of 6 models whose L5 contrast improves, 5 improve only because blame for *accidental* harm falls; 1 add blame to attempted harm, and that addition is small beside the accidental drop.
+3. **Genuine intent-led movement appears in 2/6 models and only under principle-alone (L8)** — the bare statement of the intent principle, with no cue, worked example, or labelled few-shot. mistralai/Mistral-7B-Instruct-v0.3 Δattempted +0.241 vs Δaccidental -0.008; HuggingFaceH4/zephyr-7b-beta Δattempted +0.107 vs Δaccidental -0.063
+4. **Added scaffolding often degrades performance relative to the bare principle**: in 3/6 models principle-alone beats the full L5 stack by more than 0.05, and every model is sub-additive across the ablation parts.
 
-**The mechanism is not the one the intervention was aimed at.** Of the 6 models whose contrast improves at the top level, 5 improve entirely because blame for *accidental* harm falls, and 1 add blame to *attempted* harm (Qwen/Qwen2.5-14B-Instruct, +0.027, against a fall in accidental of -0.314). In 5 of them all four cell means move in the same direction, which is compression of the rating range rather than a re-weighting of either factor. So at the top of the curriculum in-context instruction moves the judgment by making the model less condemnatory about bad outcomes rather than more condemnatory about bad intentions — the adult pattern is approached from the wrong side. This is the same caveat that governs the W3 difference-of-means direction.
+**Frame:** the outcome bias is *entrenched* — resistant to residual-stream intervention at resolvable depths (W3, |Δcontrast| ≤ 0.015) and only partially and inconsistently responsive to instruction (W4). Prompting is not a reliable rescue; when it moves the number it usually does so by softening blame for accidents rather than by condemning failed attempts.
 
-**But that is a property of the stack, not of instruction as such.** With the intent principle stated *alone* (L8: no belief cue, no worked example, no labelled examples), 2 of 6 models produce a gain in which the *rise* in blame for attempted harm is the dominant term — mistralai/Mistral-7B-Instruct-v0.3 Δattempted +0.241 against Δaccidental -0.008; HuggingFaceH4/zephyr-7b-beta Δattempted +0.107 against Δaccidental -0.063 (2 further model(s) raise attempted harm by a smaller amount than they lower accidental harm, which is still outcome suppression.) That is the re-weighting the intervention was designed to produce, and it appears where the prompt is *least* elaborate. The scaffolding is what appears to convert intent re-weighting into blanket outcome-blame suppression, which fits the additivity column: every model is sub-additive, and in three the single best component beats the full stack. This is the secondary, post-hoc arm — the pre-registered verdict remains the cumulative L5 column, and two models are not a result on their own. It is the sharpest thing to test next.
+Reporting the best level over the curriculum as the headline would be selecting after seeing the data; `best level Δ` below is descriptive only. The pre-registered verdict remains the L5 column.
 
-Reference points: adults sit at +0.666 on this measure (Young 2007 digitized); the W3 outcome positive control moves the contrast 0.232+ at the same models, so a shift of +0.15 is well inside what this design resolves.
+Reference points: adults sit at +0.666 (Young 2007 digitized); the W3 outcome positive control moves the contrast 0.232–0.259 at the same models.
+
+## Contrast by level
 
 ## Contrast by level
 
@@ -129,9 +132,9 @@ The attribution differs between the stack and the principle on its own, which is
 
 ## Relation to W3 (steering)
 
-Steering and prompting are different interventions on different quantities and share no common effect-size scale, so the two are not divided into each other here. The defensible statement is qualitative: **the intent representation is inert to residual-stream intervention at the depths where intent is resolvable (W3, |Δcontrast| ≤ 0.015), while the same contrast moves substantially under in-context instruction. That places the blockage downstream of the representation and upstream of the output** — the rating computation can be re-pointed by the input but not by editing the vector the probe reads.
+Do **not** read W3+W4 as "unreachable by steering, reachable by prompting." Steering and prompting are different interventions with no common effect-size scale, and W4's own bar is not met. The joint statement is narrower: the bias is **entrenched** — inert to residual-stream intervention at resolvable depths (W3, |Δcontrast| ≤ 0.015) and only partially / inconsistently moved by in-context instruction (W4: 3/6 at L5; stack gains mostly accidental suppression; intent-led movement in 2/6 and only under principle-alone).
 
-Descriptively, the largest in-context shift observed (+0.342) sits close to the range the W3 *outcome* direction produced (0.232–0.259) as a positive control. That is a coincidence of magnitude worth flagging and nothing is built on it: the two numbers come from different manipulations, and the outcome-direction figure carries its own compression caveat. Its only use is as a reminder that shifts of this size are well inside what the design resolves.
+Descriptively, the largest in-context shift (+0.342) can land near the W3 outcome-direction control (0.232–0.259); flag that coincidence of magnitude, do not build on it.
 
 ## What this does and does not license
 

@@ -1,6 +1,6 @@
-# Figure manifest — `outputs/figures_final/` (2026-07-28)
+# Figure manifest — `outputs/figures_final/` (2026-07-30)
 
-Commit at write: `aff8aae`. No figure ships without a row here. Prior locations (`outputs/updated_figures/`, loose root PNGs) are deprecated.
+Commit at write: `5d1ab0d`. No figure ships without a row here. Prior locations (`outputs/updated_figures/`, loose root PNGs) are deprecated.
 
 | file | present | what it shows | source CSV | script | dataset / run |
 |---|---|---|---|---|---|
@@ -22,8 +22,8 @@ Commit at write: `aff8aae`. No figure ships without a row here. Prior locations 
 | `w3_manipulation_Qwen.png` | yes | W3 M1: probe-margin displacement vs Δcontrast; Qwen | `outputs/experiments/w3_manipulation_Qwen2.5-7B-Instruct.csv` | `code/experiments/48_w3_causal_steering.py` | job 19099255 |
 | `w3_prose_rating.png` | yes | Prose/rating dissociation: cell means among stories naming intent/belief | `outputs/experiments/w3_prose_items_*.csv` | `code/experiments/51_w3_prose_rating.py` | job 19099255 |
 | `tom_vs_contrast.png` | yes | BigToM false-belief vs moral contrast scatter (open; closed pending) | `outputs/tom_benchmarks/tom_vs_contrast.csv` | `code/experiments/42_tom_vs_contrast.py` | init_belief=0 |
-| `w4_curriculum.png` | **MISSING** | W4 prompt curriculum: contrast at each of 5 cumulative in-context levels | `outputs/experiments/w4_prompt_curriculum.csv` | `code/experiments/55_w4_summary.py` | job 19130876 |
-| `w7_bruneau_selectivity.png` | **MISSING** | W7 (appendix): harm decoding across 3 domains + cross-domain transfer | `outputs/experiments/w7_bruneau_probes.csv` | `code/experiments/56_w7_bruneau.py` | job 19131423, Bruneau 2011 stimuli |
+| `w4_curriculum.png` | yes | W4 prompt curriculum: in-context escalation vs baseline (3/6 clear L5 bar; stack gains mostly accidental-blame suppression — not "reachable by prompting") | `outputs/experiments/w4_prompt_curriculum.csv` | `code/experiments/55_w4_summary.py` | job 19130876 |
+| `w7_bruneau_selectivity.png` | yes | W7 (appendix): harm decoding across 3 domains + cross-domain transfer | `outputs/experiments/w7_bruneau_probes.csv` | `code/experiments/56_w7_bruneau.py` | job 19131423, Bruneau 2011 stimuli |
 | `reasoning_dose_response.png` | **MISSING** | Roadmap #7: thinking budget vs contrast (closed models) | `outputs/closed_reasoning/closed_reasoning_contrasts.csv` | `code/experiments/52_closed_reasoning_dose.py` | CLOSED_MODEL_SELECTION.md |
 
 ## Quarantined — `_pending_rescore/` (NOT talk-safe)

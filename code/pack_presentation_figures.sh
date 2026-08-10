@@ -54,9 +54,11 @@ for f in \
   w7_bruneau_selectivity.png \
   agent_contrast_forest_v3_nopro.png
 do
-  # Prefer figures_final, else root outputs, else updated_figures
+  # Prefer figures_final, else experiments (W3/W4 writers), else root, else updated
   if [[ -f "$ROOT/outputs/figures_final/$f" ]]; then
     copy "$ROOT/outputs/figures_final/$f" master_ladders
+  elif [[ -f "$ROOT/outputs/experiments/$f" ]]; then
+    copy "$ROOT/outputs/experiments/$f" master_ladders
   elif [[ -f "$ROOT/outputs/$f" ]]; then
     copy "$ROOT/outputs/$f" master_ladders
   elif [[ -f "$ROOT/outputs/updated_figures/$f" ]]; then

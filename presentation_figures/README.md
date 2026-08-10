@@ -8,6 +8,10 @@ python code/09_agent_figures.py --behavior outputs/agents/behavior_v3 \
 bash code/pack_presentation_figures.sh
 ```
 
+**Beyond-behavior findings + GitHub paths for every CSV/figure:**
+[`../outputs/BEYOND_BEHAVIOR_MASTER.md`](../outputs/BEYOND_BEHAVIOR_MASTER.md)
+([GitHub](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/BEYOND_BEHAVIOR_MASTER.md)).
+
 ## Layout
 
 | folder | contents |
@@ -16,11 +20,12 @@ bash code/pack_presentation_figures.sh
 | `agents/` | Closed/agent v3 figures + **`agent_scale_all.png`** (open+closed) |
 | `open_pipeline/` | Open-weight pipeline plots from `outputs/figures/` |
 | `master_ladders/` | Talk-safe masters from `figures_final/` (no STALE closed ladders) |
-| `mechanistic/` | Probe / RSA / dissociation extras |
+| `mechanistic/` | Probe / RSA / dissociation extras (`rsa_vs_behavior_scatter.png` = n=28 RSA↔behavior) |
 | `w3_w4_w7/` | Steering, curriculum, Bruneau appendix |
 | `extras/` | Mentor-packet uniques |
 
 **Do not use** anything under `outputs/figures_final/_pending_rescore/` (contaminated closed rows).
+**Do not use** `figures_final/rsa_convergence_scatter.png` as the RSA↔behavior result — that file is the older model-level rep scatter; use `mechanistic/rsa_vs_behavior_scatter.png`.
 
 ## Naming / colors (agents)
 
@@ -28,18 +33,3 @@ bash code/pack_presentation_figures.sh
 - Gemini-* = blue (`#4285f4`)
 - `agent_scale.png` = closed/agent roster only
 - `agent_scale_all.png` = every model with behavioral `item_means`
-
-## Adult / child human reference (say this out loud)
-
-Ladder/forest figures (Aug 6 talk refresh) draw **both** child measures:
-
-- **Solid** = digitized Naughty presented-first (primary): 4–5 +0.24, 6–7 +0.50, 8+ +0.63
-- **Dotted** = text-reported naughty+punishable (superseded): 4–5 −0.14, 6–7 +0.15, 8+ +0.46
-- **Adult** (+0.67, Young et al. 2007) is shared — a reference-shape estimate from a
-  different item set, not a per-item match (`dataset/human_reference/ADULT_ANCHOR_MATCH_AUDIT.md`).
-
-Talk-safe open ladder: `master_ladders/master_developmental_ladder_talksafe.png` (11 models).
-RSA slide: prefer `mechanistic/rsa_vs_behavior_scatter.png` (28 pairs, r=+0.098 null) —
-do **not** use `rsa_convergence_scatter.png` (different analysis).
-
-Regenerate: `python code/60_talk_figures_aug6.py`

@@ -1,8 +1,8 @@
-# Mentor packet — moral ToM in LLMs (2026-07-28)
+# Mentor packet — moral ToM in LLMs (2026-07-29)
 
 One page of results, then figures. Every number is generated from the artifacts on disk by `code/experiments/49_mentor_packet.py`; regenerate rather than edit.
 
-**One-paragraph version.** Every open-weight model that engages with the rating task passes a standard false-belief benchmark at 0.82-0.99 under its hard (`init_belief=0`) condition, and those same models weight outcome over intent in graded moral judgment, inverting the adult human pattern and falling at or below the youngest measured child band. The bias is induced by post-training: one stage of SFT is sufficient in all three families with published checkpoints, though which stage carries most of the shift is recipe-dependent. Intent is nonetheless linearly decodable from the residual stream at 0.85-0.98, and four tests — three correlational nulls plus a pre-registered steering intervention with a working positive control — say that readable representation is not what drives the judgment.
+**One-paragraph version.** Every open-weight model that engages with the rating task passes a standard false-belief benchmark at 0.82-0.99 under its hard (`init_belief=0`) condition, and those same models weight outcome over intent in graded moral judgment, inverting the adult human pattern and falling at or below the youngest measured child band. The bias is induced by post-training: one stage of SFT is sufficient in all three families with published checkpoints, though which stage carries most of the shift is recipe-dependent. Intent is linearly decodable from the residual stream at 0.85-0.98, yet residual-stream steering does not move the judgment and in-context prompting moves it only partially and inconsistently (3/6 clear the L5 bar; stack gains are mostly accidental-blame suppression). The bias is entrenched — not "unreachable by steering, reachable by prompting."
 
 ## 1. The headline: passing a false-belief benchmark does not buy intent-based moral judgment
 
@@ -74,7 +74,13 @@ Robustness, `matched` intent definition (outcome held constant): slope +0.029 [-
 
 Max |Δcontrast| over all coefficients where the model stays coherent (perplexity within 1.5x, no refusal increase, task compliance 1.00, manual read of 20 generations per level confirming the model still summarises the stories accurately). **The apparatus is not insensitive** — the outcome direction moves the same contrast by up to 0.26 in the same models at the same coefficients, which is the positive control that makes the intent null interpretable. Where the diff-of-means intent direction does move the contrast, it raises all four cells at once, and the accidental cell has least headroom, so the change is ceiling compression rather than a change in intent-weighting. Full verdict: `W3_STEERING_SUMMARY.md`.
 
-So the claim is now carried by four tests rather than three, one of them a manipulation: **intent is represented, linearly readable, and causally inert for this judgment.**
+So the claim is now carried by four tests rather than three, one of them a manipulation: **intent is represented, linearly readable, and causally inert for this judgment under residual-stream intervention.**
+
+### W4 — prompting does not cleanly rescue the bias either
+
+**Do not frame W3+W4 as "unreachable by steering, reachable by prompting."** The completed 6-model × 8-level curriculum clears the pre-registered +0.15 bar in only **3/6** models at L5; gains at the top of the stack are predominantly **accidental-blame suppression** rather than intent re-weighting; genuine intent-led movement appears in **2/6** and only under principle-alone (L8); added scaffolding often *degrades* performance relative to the bare principle (sub-additive; principle-alone beats the full stack in 3/6).
+
+**Frame:** the bias is *entrenched* — resistant to representation-level intervention and only partially and inconsistently responsive to instruction. Full numbers: `W4_SUMMARY.md`, `W4_CURRICULUM.md`.
 
 ## 5. The human anchor: both ladders, and the choice is not mine to make
 
@@ -97,7 +103,7 @@ Scope note: these counts are open-weight models only. Closed-API models have not
 1. **M1 manipulation check.** Steering the probe-weight intent direction displaces downstream probe margin by −3.18 SD (OLMo) / +7.21 SD (Qwen) while |Δcontrast| stays ≤0.016 — the pre-registered bar (≥1 SD, |Δc|≤0.05) is met, so the null stands. Is that enough for you to treat "causally inert" as a positive claim, or do you still want a per-position / multi-layer intervention before the paper commits?
 2. **M2 layer sweep (narrow form).** Intent is inert at depths where specificity is resolvable (peak and deeper); shallow layers are uninformative because the positive control sits at the random floor. Does the narrow claim survive review, or does "uninformative early" read as underpowered?
 3. **Detectable-effect size (M3).** Outcome moves contrast 0.232–0.259; intent-probe ≤0.015 (~15×). Is stating sensitivity in control units sufficient, or do you want a formal power calculation against a pre-specified minimal interesting effect?
-4. **Prose/rating dissociation.** Models name belief/intent in 46–64% of explanations and still rate by outcome inside that subset (b_outcome/b_intent 3–10×; cell order inverted). Lexicon↔hand κ≈0.73–0.76; lexicon↔Haiku κ≈0.42–0.49. Is this the most legible result in the paper, and should it lead the talk?
+4. **Prose/rating dissociation.** Models name the agent's belief or intent in 69%–82% of their own explanations (primary LLM coder; the question never mentions intent or accident) and still rate by outcome inside that subset — b_outcome/b_intent 5.7×–12.2×, cell order inverted. Lexicon↔hand κ≈0.73–0.76; lexicon↔LLM κ≈0.42–0.49. Is this the most legible result in the paper, and should it lead the talk?
 5. **Ceiling compression.** Where difference-of-means moves contrast it raises all four cells; accidental has least headroom. Keep that as a permanent caveat beside every intent_dom number, or demote intent_dom from the headline tables entirely?
 6. **What replaces the obsolete framings.** The Llama "counterexample" and degenerate-base issues were scoring artifacts (now resolved: Tülu base rating_std 0.018→0.0966; all three families engaged). With those gone, is the clean story "SFT is sufficient, locus recipe-dependent; intent represented and unused" — or do you want a different headline?
 
@@ -112,6 +118,7 @@ Scope note: these counts are open-weight models only. Closed-API models have not
 7. **The steering null bounds crude linear steering, not all causal involvement.** W3 adds a fixed vector at one layer across all token positions. A per-position, multi-layer, or `belief_last`-fitted intervention could still find an effect. Also, the intent and outcome difference-of-means directions are not orthogonal (cos ~0.32-0.39), so part of the diff-of-means intent effect may be outcome leakage — which is why the probe-weight null is the cleaner evidence.
 8. **The J2 bound is on a linear, monotone relation** between probe margin and contrast; a threshold relation (intent merely present rather than strongly present) would not show up in it.
 9. **Model ceiling 14B, roster concentration.** Half the roster is Qwen2.5; no 70B-class model has been run.
+10. **W4 does not establish prompt-reachability.** Only 3/6 meet the pre-registered L5 bar; stack-top gains are mostly accidental-blame suppression; intent-led movement is 2/6 and principle-alone only. Do not cite W4 as showing that prompting recovers what steering could not.
 
 ## Figures
 
@@ -148,6 +155,10 @@ Copied into `outputs/mentor_packet_figures/`.
 ### W3 steering, Qwen2.5-7B-Instruct: same verdict, with the probe-weight intent direction flat across the whole coherent band.
 
 ![W3 steering, Qwen2.5-7B-Instruct: same verdict, with the probe-weight intent direction flat across the whole coherent band.](mentor_packet_figures/w3_steering_dose_Qwen.png)
+
+### W4 prompt curriculum: in-context escalation vs baseline — 3/6 clear the L5 bar; stack gains are mostly accidental-blame suppression (not "reachable by prompting").
+
+![W4 prompt curriculum: in-context escalation vs baseline — 3/6 clear the L5 bar; stack gains are mostly accidental-blame suppression (not "reachable by prompting").](mentor_packet_figures/w4_curriculum.png)
 
 ### W3 M2 layer×direction grid (narrow claim: inert at peak and deeper).
 

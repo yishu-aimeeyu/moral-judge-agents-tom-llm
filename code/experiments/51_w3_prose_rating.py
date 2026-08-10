@@ -555,10 +555,11 @@ def _plot(per_model):
     except Exception as e:
         print(f"  (skip figure: {e})")
         return
-    fig, axes = plt.subplots(1, len(per_model), figsize=(4.6 * len(per_model), 4.0),
+    # Tall figure + reserved top band so suptitle / model name / stats never collide.
+    fig, axes = plt.subplots(1, len(per_model), figsize=(5.4 * len(per_model), 5.6),
                              squeeze=False)
     for ax, m in zip(axes[0], per_model):
-        tag, rows, mc = m["tag"], m["rows"], m["mc"]
+        tag, mc = m["tag"], m["mc"]
         c = mc["cells"]
         xs = np.arange(4)
         ax.bar(xs, [c[k] for k in CELLS],
@@ -567,16 +568,28 @@ def _plot(per_model):
         ax.set_xticklabels(CELLS, rotation=20, fontsize=8.5)
         ax.set_ylim(0, 1)
         ax.set_ylabel("normalised blame rating")
-        rate = float(np.mean([int(r["mentions_either"]) for r in rows]))
-        ax.set_title(f"{tag}\nnamed intent/belief in {rate:.0%} of explanations; "
-                     f"b_outcome {mc['b_outcome']:+.2f} vs b_intent "
-                     f"{mc['b_intent']:+.2f}", fontsize=9)
+        # Same primary coder as mc (LLM rater B when available; else lexicon).
+        base = m["base"]
+        rate = (float(np.mean([int(r[m["key"]]) for r in base]))
+                if base else float("nan"))
+        ax.set_title("")
+        ax.text(0.5, 1.42, tag, transform=ax.transAxes, ha="center", va="bottom",
+                fontsize=10, fontweight="bold", clip_on=False)
+        ax.text(0.5, 1.22,
+                f"named intent/belief in {rate:.0%} of explanations",
+                transform=ax.transAxes, ha="center", va="bottom", fontsize=8,
+                clip_on=False)
+        ax.text(0.5, 1.08,
+                f"b_outcome {mc['b_outcome']:+.2f} vs b_intent {mc['b_intent']:+.2f}",
+                transform=ax.transAxes, ha="center", va="bottom", fontsize=8,
+                clip_on=False)
         ax.grid(axis="y", alpha=0.25, lw=0.6)
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
     fig.suptitle("Ratings on the stories where the model itself named the agent's "
-                 "intent or belief", fontsize=10.5)
-    fig.tight_layout()
+                 "intent or belief", fontsize=11, y=0.98)
+    # Do not let tight_layout reclaim the header band.
+    fig.subplots_adjust(left=0.07, right=0.98, bottom=0.13, top=0.62, wspace=0.30)
     out = os.path.join(OUT_DIR, "w3_prose_rating.png")
     fig.savefig(out, dpi=170)
     plt.close(fig)
