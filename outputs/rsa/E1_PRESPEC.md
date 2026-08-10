@@ -111,3 +111,78 @@ is named `rsa_convergence_*`; that prefix is reserved for the superseded model-l
 Nothing under `outputs/figures_final/_pending_rescore/` is read or written. Raw activations
 and cached `.npy` RDMs stay gitignored. No figure is copied into `presentation_figures/`
 until the P1–P4 verdict is written.
+
+---
+
+## Amendment 1, 2026-08-09 — P4's surface control is collinear with scenario identity
+
+A 10-permutation smoke run (not a result run; written up here rather than discarded) showed
+that **P4 as originally written gates out every layer in every model**, which is the same
+failure mode W3's amendment 1 fixed: an instrument that excludes the entire design space is
+broken, not informative. The cause is specific and was foreseeable:
+
+`lexical` is cosine distance on TF-IDF over the story texts, and the four conditions within a
+scenario group are near-identical strings differing by a clause. So the lexical RDM is very
+nearly the **scenario-identity RDM**, and it absorbs the scenario structure that dominates
+every model RDM (lexical unique ρ² 0.04–0.47, versus 0.0000–0.0035 for intent and outcome).
+`lexical` therefore exceeds both intent and outcome everywhere, and P4's exclusion rule fires
+at every layer. The rest of the project already treats scenario as a nuisance to be partialled
+out for exactly this reason (`partial_spearman` in `24_rsa_cka.py` R4).
+
+**Disclosure.** This amendment was written after the smoke run, so the intent-vs-outcome point
+estimates at 10 permutations had been seen. No threshold is changed by it: P1's 7/8 bar, P2,
+P3's null-q95 rule, and P4's comparison rule are all unchanged, and the primary
+four-predictor verdict is still reported exactly as pre-registered, including its P4
+exclusions.
+
+**What is added** is a third predictor variant, so that P4's *surface* control tests surface
+structure rather than scenario identity:
+
+| variant | predictors | role |
+|---|---|---|
+| `primary` | intent, outcome, interaction, lexical | as pre-registered; reported first, P4 exclusions reported |
+| `plus_scenario` | + scenario identity | as pre-registered secondary |
+| `lexical_resid` | intent, outcome, interaction, scenario, **lexical residualised on scenario** | added here; P4 is evaluated against residual surface structure |
+
+**Reporting rule, fixed now.** When P4 excludes every layer in the `primary` variant, the P1
+and P2 counts in that variant are reported as **undecidable**, not as "not supported". A count
+of 0/8 arising from an empty comparison set is not evidence about the direction of the effect,
+and conflating the two would be the reverse of the error the prespec exists to prevent. The
+directional verdict is then taken from `lexical_resid`, labelled as amended rather than
+pre-registered.
+
+## Amendment 2, 2026-08-09 — P4's exclusion rule is redundant with the estimator (M1 added)
+
+The `lexical_resid` variant added in amendment 1 **also** excludes every layer: residualising
+lexical distance on scenario identity does not shrink it below intent and outcome. The reason
+is structural, and it is a property of every vignette design of this kind, not of these models:
+**the intent and outcome manipulations are realised lexically.** Within a scenario group the
+four conditions differ by the clause that makes the act intended or the harm occur. A
+continuous, fine-grained word-overlap predictor will therefore always capture more unique
+variance than the binary factor it expresses. No residualisation fixes that, because there is
+no version of these stimuli in which intent is manipulated without changing words.
+
+**The rule was therefore mis-designed, and it is important to say why rather than to relax it
+quietly.** Unique variance here is *semipartial*: intent's unique ρ² is already computed with
+`lexical` in the model, and so is outcome's. Both quantities are already adjusted for surface
+overlap. The comparison P1 and P2 actually make — intent's unique variance against outcome's —
+is thus lexical-adjusted by construction, and the size of `lexical` itself does not threaten
+it. P4's gate does not protect the comparison from a confound; it only prevents the comparison
+from being made at all.
+
+**What is added, and what is not.** Following the W3 precedent for post-hoc additions, the
+gate-free comparison is numbered **M1**, not P5, so that it never reads as pre-registered:
+
+> **M1 (lexical-adjusted ordering).** Across late layers and at the peak-intent layer, the
+> ordering `outcome unique ρ² > intent unique ρ²` is evaluated **without** the P4 exclusion,
+> with P3's permutation requirement still enforced: both predictors must clear the 95th
+> percentile of their own within-scenario null at that layer. The bar is unchanged at
+> **7 of 8 models**. The lexical unique variance is reported in the same table so a reader can
+> see what was set aside.
+
+**Disclosure.** Written after the 10-permutation smoke run, so the intent-vs-outcome point
+estimates and their ratios had been seen (outcome/intent ratios in the range ~4–18× at late
+layers). No bar was changed: 7/8 for the count, q95 for the null. What changed is that a gate
+whose logic does not hold is reported as a finding about the design rather than applied as an
+exclusion. The pre-registered gated verdict is still published above it, and both appear in
+`E1_VARIANCE_PARTITION.md`.

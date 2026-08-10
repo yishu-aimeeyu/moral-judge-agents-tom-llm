@@ -1,0 +1,11 @@
+family,stage,contrast,intent_org_ratio,layer,mode,model,partial_r_intent,partial_r_outcome
+OLMo-2-7B,base,0.0017,0.1466,24,reldepth0.75,OLMo-2-1124-7B,0.0072,0.0421
+OLMo-2-7B,base,0.0017,0.2009,15,peak,OLMo-2-1124-7B,0.0177,0.0705
+OLMo-2-7B,SFT,-0.5862,0.1506,24,reldepth0.75,OLMo-2-1124-7B-SFT,0.0101,0.0568
+OLMo-2-7B,DPO,-0.6518,0.1529,24,reldepth0.75,OLMo-2-1124-7B-DPO,0.0109,0.0604
+OLMo-2-7B,Instruct,-0.6868,0.1525,24,reldepth0.75,OLMo-2-1124-7B-Instruct,0.011,0.0614
+OLMo-2-7B,Instruct,-0.6868,0.1916,15,peak,OLMo-2-1124-7B-Instruct,0.0237,0.0999
+Tulu-3-8B,base,0.0074,0.1334,24,reldepth0.75,Meta-Llama-3.1-8B,0.0056,0.0365
+Tulu-3-8B,SFT,-0.2577,0.1312,24,reldepth0.75,Llama-3.1-Tulu-3-8B-SFT,0.0068,0.045
+Tulu-3-8B,DPO,-0.3947,0.1378,24,reldepth0.75,Llama-3.1-Tulu-3-8B-DPO,0.0075,0.0469
+Tulu-3-8B,RLVR,-0.3977,0.1379,24,reldepth0.75,Llama-3.1-Tulu-3-8B,0.0075,0.047

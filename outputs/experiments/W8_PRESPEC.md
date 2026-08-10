@@ -145,3 +145,122 @@ first --run, and never overwritten.
 W3 outputs are not modified. Nothing under `outputs/figures_final/_pending_rescore/` is read
 or written. Activations stay gitignored. No W8 figure is copied into `presentation_figures/`
 until `W8_AMNESIC.md` states the verdict against these thresholds.
+
+---
+
+## Amendment 1, 2026-08-09 — V1 is a calibration target, and erasure rank is the knob
+
+A CPU pre-check on cached `OLMo-2-1124-7B-Instruct` last-token residuals at the W3 site (L16),
+run before any GPU time was spent and before any behavioural number existed, measured the
+gates for a **rank-1** eraser:
+
+| measurement | outcome decoding | intent decoding |
+|---|---|---|
+| unerased reference | 0.9866 | 0.8456 |
+| LEACE rank-1, eraser fitted on train folds only (V1 as specified) | **0.6301** | 0.8462 |
+| LEACE rank-1, unerased probe applied to erased activations (W3-style check) | 0.4094 | 0.8456 |
+| chance | 0.5168 | 0.5000 |
+
+Two things follow, and they point in opposite directions:
+
+1. **V2 is comfortably satisfied and the erasure is selective.** Intent decoding is unchanged
+   to three decimals (0.8456 → 0.8462), i.e. 98% above-chance retention. Erasing outcome does
+   not damage intent, which is the precondition for W8 to be a test of anything.
+2. **V1 is not satisfied at rank 1.** Held-out outcome decoding lands at 0.6301, which is
+   0.113 above chance and outside V1's ±0.05 tolerance. Outcome is decodable at 0.9866 here,
+   so it is evidently carried by more than one linear direction, and removing the single
+   mean-difference direction does not exhaust it.
+
+There is also a measurement subtlety worth recording because it produced an initially
+alarming number. Fitting the eraser on **all** data and then cross-validating gives outcome
+accuracy of **0.013** — far *below* chance, i.e. near-perfect anti-prediction. That is an
+artifact, not erasure success: zeroing the global class-mean difference forces the train-fold
+and test-fold residual mean differences to have opposite signs, so a probe trained on one
+predicts the other backwards. The prespec already required the train-folds-only fit for
+exactly this reason; the artifact is noted here so that nobody later reads 0.013 as "erasure
+worked perfectly".
+
+**Change, which is a calibration procedure rather than a threshold change.** V1's ±0.05
+tolerance stays. What is added is the knob used to reach it, and the constraint on that knob:
+
+> **Rank calibration.** The erased subspace rank is swept over `r ∈ {1, 2, 4, 8}`. The
+> **smallest** rank that satisfies V1 (held-out outcome decoding within 0.05 of 0.5168) while
+> still satisfying V2 (intent retains ≥ 90% of its above-chance accuracy) is selected, and
+> that selection happens **before** any behavioural contrast is read out at that rank. If no
+> rank satisfies both, W8 reports that the outcome direction cannot be selectively erased at
+> this site and **withdraws** rather than reporting a behavioural null — the same rule W3's M1
+> applies to an intervention too weak to test the hypothesis.
+
+This mirrors W3 exactly: W3 calibrated α to satisfy the coherence gate before reading
+contrasts, and W8 calibrates rank to satisfy the manipulation-check gate before reading
+contrasts. The selected rank is recorded in `w8_amnesic_calibration_<tag>.csv` alongside the
+full sweep, and the random-direction control is matched to the **selected** rank so that P4
+remains a like-for-like comparison.
+
+Unchanged: V1's ±0.05, V2's 90%, V3's four coherence bounds, V4, P1's J4 floor of 0.0988, P2's
+three labels and its 50% cell-spread rule, P3, and the sensitivity-in-control-units reporting.
+
+**Disclosure.** Written after the CPU pre-check above and before any GPU run. No behavioural
+contrast, cell mean, or Δcontrast existed for W8 at the time of writing.
+
+## Amendment 2, 2026-08-09 — V1 conflated two different questions; it is split, not weakened
+
+The rank sweep from amendment 1 was run on CPU (same cached OLMo residuals, L16) and **no rank
+satisfies V1 as written**:
+
+| rank | held-out outcome acc | held-out intent acc | intent retention | V1 | V2 |
+|---:|---:|---:|---:|---|---|
+| 1 | 0.6301 | 0.8462 | 1.000 | fail | pass |
+| 2 | 0.6301 | 0.8462 | 1.000 | fail | pass |
+| 4 | 0.6370 | 0.8530 | 1.020 | fail | pass |
+| 8 | 0.6403 | 0.8530 | 1.020 | fail | pass |
+
+Rank does not help, and it was wrong to expect it to: LEACE equalises the class means exactly
+in one pass, so iterating it is the identity, and the extra INLP directions at ranks 4 and 8
+change held-out accuracy by less than 0.01. The residual 0.63 is a **generalisation gap** — an
+erasure map fitted on four fifths of the scenario groups does not fully transfer to the
+held-out fifth — not a leftover low-dimensional direction.
+
+A second measurement settles what the intervention actually delivers. **In-sample** linear
+separability on the items that are actually scored:
+
+| | outcome | intent |
+|---|---:|---:|
+| unerased | 1.0000 | 1.0000 |
+| after LEACE erasure of outcome (rank 1) | **0.5168** | 1.0000 |
+| after LEACE + INLP rank 4 | 0.5168 | 1.0000 |
+| chance | 0.5168 | 0.5000 |
+
+Outcome lands on **exactly** the majority-class rate: after erasure the two outcome classes are
+not linearly separable even in-sample, with 4096 dimensions and 298 items, which is a state
+that cannot be reached by chance. Intent is untouched. The erasure also displaces the residual
+by **25% of its norm** on average, so this is a large intervention, not a no-op.
+
+**The split, and what each half licenses.** V1's ±0.05 tolerance is unchanged. What changes is
+that the single criterion is separated into the two claims it was silently combining:
+
+> **V1a — guardedness on the scored items (REQUIRED before any behavioural readout).**
+> Outcome must be linearly unrecoverable from the erased residuals *that the forward pass
+> actually processes*, measured in-sample at the erasure layer, within 0.05 of the majority
+> rate 0.5168. This is the condition the behavioural arm depends on: the model rates the same
+> 298 items the eraser was fitted on, so nothing is being asked to generalise, and there is no
+> circularity — the eraser uses labels, but the *model* is not given labels, only residuals
+> from which outcome is no longer linearly readable.
+>
+> **V1b — generalisation of the erasure (REPORTED ALWAYS, bounds the claim's scope).**
+> Held-out outcome decoding with the eraser fitted on train folds only. A failure here does
+> **not** void the behavioural readout; it caps what may be claimed, and the cap must be stated
+> in `W8_AMNESIC.md`: the erasure is exact on the items scored but does not transfer to unseen
+> scenario groups, so W8 speaks to these stimuli and not to a general outcome-erasure mechanism.
+
+V2 stays on the grouped-CV measure, because in-sample intent accuracy is 1.0000 with or without
+erasure (4096 dimensions, 298 items) and so carries no information. The CV measure does: intent
+retains 100% of its above-chance accuracy.
+
+Unchanged: the ±0.05 tolerance, V2's 90% retention, V3's four coherence bounds, V4, P1's J4
+floor of 0.0988, P2's three labels and its 50% cell-spread rule, P3, P4, and the
+sensitivity-in-control-units reporting. The selected rank is **1**, since rank 1 satisfies V1a
+and higher ranks add nothing; the random control is matched to rank 1.
+
+**Disclosure.** Written after the CPU pre-checks above and before any GPU run. Still no
+behavioural contrast, cell mean, or Δcontrast existed for W8 at the time of writing.

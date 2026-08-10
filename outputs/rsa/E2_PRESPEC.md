@@ -120,3 +120,45 @@ only the CSVs, the figure, and the verdict MD are tracked. Nothing under
 `outputs/figures_final/_pending_rescore/` is read or written. No new file is named
 `rsa_convergence_*`. No figure is copied into `presentation_figures/` until the P1–P4 verdict
 is written.
+
+---
+
+## Amendment 1, 2026-08-09 — the split-half ceiling was measured at the wrong width
+
+P3 defines the ceiling as the RSA between RDMs built from two disjoint random halves of the
+hidden units. The first run returns **0.79–0.82** for OLMo base and Instruct, while the
+cross-stage RSA between those same two checkpoints is **0.899 at depth 0.75 and 0.914 at the
+peak layer** — the "ceiling" is *below* the quantity it is supposed to bound.
+
+That is an instrument error, not a finding. A half-width RDM is built from half as many units
+and is therefore noisier than the full-width RDMs used for every cross-stage comparison, so the
+raw split-half value is a **lower bound on reliability at half width**, not a ceiling at full
+width. Comparing a full-width number against it is a width mismatch.
+
+**Fix, standard and stated before re-running:** apply the Spearman–Brown correction, which is
+the textbook conversion from split-half reliability to full-length reliability:
+
+```
+ceiling_full = 2 * r_split_half / (1 + r_split_half)
+```
+
+Both the raw and the corrected value are written to
+`checkpoint_stage_reference.csv`, and the corrected value is the one P3 uses.
+
+**P3's decision rule is extended, not loosened,** to cover the case the original rule did not
+anticipate — an observed cross-stage similarity that meets or exceeds the corrected ceiling:
+
+| case | condition | reading |
+|---|---|---|
+| uninformative | floor ≥ RSA bar | RSA cannot discriminate on this stimulus set; no verdict |
+| **at ceiling** | observed cross-stage RSA ≥ corrected ceiling | the geometry difference between stages is **not distinguishable from measurement noise**. This is the strongest available form of P1 and is reported as such, not as "P1 passed by a margin" |
+| ordinary | floor < observed < corrected ceiling | report the observed value against both bounds and against the RSA bar |
+
+The RSA bar (0.90), the behavioural bar (0.15), P2's ρ ≥ +0.50, and P4's 0.10 flatness bar are
+all unchanged.
+
+**Disclosure.** Written after the first partial run (OLMo base and Instruct only; the six other
+checkpoints still need activations). The base↔Instruct RSA at the peak layer was already public
+in `base_vs_instruct_geometry.csv` (0.9141) before E2 existed, and E2 reproduces it exactly,
+which is the intended cross-check. What was new at the time of writing was the ceiling
+magnitude, which is what this amendment is about.

@@ -117,3 +117,36 @@ download is reproducible. Derived per-society summaries are committed.
 **No existing figure is modified.** `crosscultural_placement.png` is a new file. Nothing under
 `outputs/figures_final/_pending_rescore/` is read or written, and no figure is copied into
 `presentation_figures/` until `E4_CROSSCULTURAL.md` reports the verdict against P1–P4.
+
+---
+
+## Amendment 1, 2026-08-09 — P1's population was self-contradictory
+
+P1 as written asks for "at least 18 of the 18 non-degenerate open models" **and** excludes
+models below the engagement floor (`rating_std < 0.2191`). Those two clauses cannot both hold:
+the floor leaves **6** models, not 18. The 18/18 figure was carried over from the child-ladder
+convention, which counts non-degenerate models (18 of 20 in `contrast_by_model.csv`) and does
+**not** apply the engagement floor. The error is mine and it is in the pre-registration, so it
+is corrected here in the open rather than silently resolved in the code.
+
+**Resolution, no threshold invented.** Both populations are reported, each against the bar that
+belongs to it:
+
+| population | definition | n | bar |
+|---|---|---|---|
+| `engaged` | `rating_std ≥ 0.2191` (engagement floor, `floor_derivation.csv`) | 6 | 6/6 |
+| `non_degenerate` | `degenerate == False` in `contrast_by_model.csv` (child-ladder convention) | 18 | 18/18 |
+
+`non_degenerate` is the population the "18/18" language was about, so it carries the 18/18 bar.
+`engaged` carries the all-of-them bar for its own smaller n. A verdict is claimed only when
+both populations agree; if they disagree, that disagreement is the headline, because a
+placement claim that depends on which floor is applied is not a robust claim.
+
+Note also `FLOOR_DERIVATION.md`'s standing guidance that filtering on `rating_std` is
+inappropriate for *correlational* claims because it selects on a neighbour of the outcome.
+E4 is a placement claim rather than a correlation, but that is a further reason to report the
+unfiltered `non_degenerate` population alongside the filtered one.
+
+**Disclosure.** Written after the first run, which is when the contradiction surfaced. At that
+point the per-society numbers had been computed. No society-level threshold, normalisation
+rule, or P2 criterion was changed.
