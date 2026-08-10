@@ -563,10 +563,23 @@ def make_figure(fams, geo, ref, beh, store, outdir):
         ax2.tick_params(axis="y", labelcolor="#d62728")
         ax.set_title(fam, fontsize=9)
         if i == 0:
-            ax.legend(fontsize=6.5, loc="lower left", frameon=False)
+            ax.legend(fontsize=6.5, loc="center left", frameon=False)
+    # The visual reads as "flat geometry, collapsing behaviour", which is the claim P2
+    # withdrew. The coupling result goes on the figure so it cannot travel without it.
+    _xs = [(float(r["rdm_shift_reldepth0.75"]), abs(float(r["delta_contrast"])))
+           for r in geo if not r["is_endpoint_pair"]
+           and r["rdm_shift_reldepth0.75"] not in ("", None)
+           and r["delta_contrast"] not in ("", None)]
+    sub = ""
+    if len(_xs) >= 4:
+        from scipy.stats import spearmanr as _sp
+        _r = float(_sp([x for x, _ in _xs], [y for _, y in _xs]).statistic)
+        sub = (f"\nP1's magnitude bar passes, but P2 FAILS: shift and |Δcontrast| are "
+               f"rank-coupled (ρ={_r:+.2f} ≥ +0.50), so this does NOT show "
+               f"\"readout only\" — the geometry moves a little, in step with behaviour.")
     fig.suptitle("E2 — does post-training reshape the geometry (blue) while behaviour moves "
-                 "(red)?", fontsize=10)
-    fig.tight_layout(rect=(0, 0, 1, 0.94))
+                 "(red)?" + sub, fontsize=9)
+    fig.tight_layout(rect=(0, 0, 1, 0.92))
     out = os.path.join(outdir, "checkpoint_stage_rsa.png")
     fig.savefig(out, dpi=150)
     plt.close(fig)

@@ -352,6 +352,14 @@ def write_verdict(soc_rows, primary, models, lo, hi, outdir):
              "different populations and administration. This is a **reference distribution, "
              "not item-matched ground truth**, and proximity to it licenses no developmental "
              "or causal claim. Same caveat discipline as `ADULT_ANCHOR_MATCH_AUDIT.md`.\n")
+    L.append("One asymmetry in the figure is worth stating outright, because it could be "
+             "misread as false precision: the society points carry 95% CIs over subjects, "
+             "and the model points carry **no interval at all**. Model effects here are "
+             "aggregate cell means over the same 298 items under deterministic scoring, so "
+             "there is no subject-level sampling variability to display, and an interval "
+             "computed over items would not be the same quantity as the human one. The "
+             "practical consequence is that small differences *between models* on this axis "
+             "should not be read as reliable, and no such comparison is made above.\n")
 
     p = os.path.join(outdir, "E4_CROSSCULTURAL.md")
     open(p, "w").write("\n".join(L))
@@ -417,6 +425,8 @@ def make_figure(primary, models, lo, path):
             "black = societies with a detectable intent effect (95% CI over subjects)\n"
             "grey = society whose CI includes zero\n"
             "red = open-weight models (pale = below engagement floor)\n"
+            "model points have NO interval: they are aggregate cell means over the\n"
+            "  same 298 items, so their spread is not comparable to subject-level CIs\n"
             "axis is NOT the headline attempted − accidental contrast",
             transform=ax.transAxes, va="top", ha="right", fontsize=8,
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec="#cccccc", lw=0.8))

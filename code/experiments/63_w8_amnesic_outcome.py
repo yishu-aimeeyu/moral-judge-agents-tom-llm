@@ -291,7 +291,14 @@ def main():
     ap.add_argument("--limit-groups", type=int, default=None)
     ap.add_argument("--run", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--report-only", action="store_true",
+                    help="rebuild W8_AMNESIC.md from the CSVs already on disk, so verdict "
+                         "wording can be revised without repeating the GPU sweep")
     a = ap.parse_args()
+
+    if a.report_only:
+        write_verdict(load_summaries(a.models))
+        return
 
     w3 = _load_w3()
     rows = w3.load_dataset(a.limit_groups)
@@ -342,6 +349,71 @@ def main():
             traceback.print_exc()
     if all_summaries:
         write_verdict(all_summaries)
+
+
+def load_summaries(model_ids):
+    """Rebuild the write_verdict inputs from the CSVs a previous --run left on disk.
+
+    Only for re-rendering the verdict prose; it recomputes nothing and invents nothing, so a
+    field that was not written is left absent rather than defaulted to a plausible value.
+    """
+    def _num(v):
+        if v in ("", None):
+            return ""
+        try:
+            f = float(v)
+            return f
+        except (TypeError, ValueError):
+            return v
+
+    def _bool(v):
+        return str(v).strip().lower() in ("true", "1", "yes")
+
+    out = []
+    for mid in model_ids:
+        tag = mid.split("/")[-1]
+        sweep = os.path.join(OUT_DIR, f"w8_amnesic_{tag}.csv")
+        if not os.path.exists(sweep):
+            print(f"  (skip {tag}: {os.path.basename(sweep)} not on disk)")
+            continue
+        rows = []
+        for r in csv.DictReader(open(sweep)):
+            d = {k: _num(v) for k, v in r.items()}
+            for k in ("gates_pass", "v1a_guarded", "v2_intent_intact", "v3_coherent",
+                      "v4_instrument_ok", "accidental_fell", "attempted_rose"):
+                if k in r:
+                    d[k] = _bool(r[k])
+            rows.append(d)
+        cal_p = os.path.join(OUT_DIR, f"w8_amnesic_calibration_{tag}.csv")
+        cal = []
+        if os.path.exists(cal_p):
+            for r in csv.DictReader(open(cal_p)):
+                if "rank" not in r:
+                    continue
+                d = {k: _num(v) for k, v in r.items()}
+                for k in ("v1a_insample_guarded", "v1b_generalises", "v2_intent_intact",
+                          "selected"):
+                    if k in r:
+                        d[k] = _bool(r[k])
+                d["rank"] = int(float(r["rank"]))
+                cal.append(d)
+        sel = next((c for c in cal if c.get("selected")), None)
+        first = rows[0] if rows else {}
+        base_cells = {k: first.get(f"cell_{k}", float("nan"))
+                      for k in ("neutral", "accidental", "attempted", "intentional")}
+        out.append(dict(
+            model=tag, model_id=mid,
+            layer=int(first.get("layer", W3_LAYERS.get(mid) or 0)),
+            withdrawn=not rows, calibration=cal, rows=rows,
+            base_contrast=float(first.get("baseline_contrast", float("nan"))),
+            base_cells=base_cells,
+            base_cell_sd=float("nan"),
+            base_b_intent=float(first.get("b_intent_baseline", float("nan"))),
+            heldout_v1=(sel or {}).get("heldout_outcome_acc"),
+            w3_drift=abs(float(first.get("baseline_contrast", float("nan")))
+                         - (W3_BASELINE_CONTRAST.get(mid) or float("nan"))),
+            selected_rank=(sel or {}).get("rank")))
+    return out
 
 
 def run_one(model_id, rows, a, w3):
@@ -749,12 +821,42 @@ def write_verdict(summaries):
             vals = [abs(r["dcontrast"]) for r in rows if r["arm"] == arm and r["gates_pass"]]
             return max(vals) if vals else float("nan")
         mo, mi, mr = _max_abs("outcome"), _max_abs("intent"), _max_abs("random")
-        L.append(f"- **P3 (specificity)**: largest gate-passing |Δcontrast| — outcome "
-                 f"{mo:.4f}, intent {mi:.4f}. "
-                 f"{'Outcome > intent, as predicted.' if mo > mi else '**Intent ≥ outcome**, which contradicts P3.'}")
-        L.append(f"- **P4 (null control) / sensitivity in control units**: random "
-                 f"{mr:.4f}; outcome/random ratio "
-                 f"{(mo / mr) if mr and np.isfinite(mr) and mr > 0 else float('nan'):.2f}.")
+
+        def _ungated_max(arm):
+            vals = [abs(r["dcontrast"]) for r in rows if r["arm"] == arm]
+            return max(vals) if vals else float("nan")
+
+        if np.isfinite(mi):
+            L.append(f"- **P3 (specificity)**: largest gate-passing |Δcontrast| — outcome "
+                     f"{mo:.4f}, intent {mi:.4f}. "
+                     + ("Outcome > intent, as predicted."
+                        if mo > mi else "**Intent ≥ outcome**, which contradicts P3."))
+        else:
+            # An empty comparison set is not a contradiction; say which gate emptied it.
+            worst = max((r for r in rows if r["arm"] == "intent"),
+                        key=lambda r: r["gamma"], default=None)
+            miss = ("" if worst is None else
+                    f" The strongest intent dose (γ={worst['gamma']}) drives in-sample intent "
+                    f"accuracy to {worst.get('v1a_insample_erased_acc')} against a chance of "
+                    f"{INTENT_CHANCE}, i.e. it misses V1a's ±{V1_TOL} tolerance by "
+                    f"{abs(float(worst.get('v1a_insample_erased_acc', np.nan)) - INTENT_CHANCE) - V1_TOL:.4f}"
+                    f"; every other gate passes.")
+            L.append(f"- **P3 (specificity)**: **not evaluable for this model** — no intent dose "
+                     f"satisfies its own erasure gate, so the comparison set is empty rather "
+                     f"than adverse.{miss} For reference only, the ungated intent movement is "
+                     f"{_ungated_max('intent'):.4f} against outcome's {mo:.4f}, which is the "
+                     f"direction P3 predicts, but it is **not** counted as passing.")
+        if mr is not None and np.isfinite(mr) and mr > 0:
+            L.append(f"- **P4 (null control) / sensitivity in control units**: random "
+                     f"{mr:.4f}; outcome/random ratio {mo / mr:.2f}.")
+        else:
+            L.append(f"- **P4 (null control)**: the rank-matched random control moves the "
+                     f"contrast **{mr:.4f}** — exactly zero to four decimals, at every dose. "
+                     f"The outcome/random ratio is therefore undefined (division by zero) "
+                     f"rather than large, and is reported that way instead of as a number. "
+                     f"P4 asked only that random not reproduce the outcome effect, which it "
+                     f"does not: {mo:.4f} versus nothing at all. See O1 for why this "
+                     f"comparison is weaker than it looks.")
         L.append("")
 
         # O1: rank-matching is not magnitude-matching. Disclosed and then addressed with the
@@ -833,6 +935,34 @@ def write_verdict(summaries):
     elif all(x == "RECOVERY" for x in labels):
         L.append("Both models show RECOVERY: intent was **latent but suppressed** by the "
                  "outcome signal, and removing outcome lets intent-based judgment appear.\n")
+        # RECOVERY vs COLLAPSE turns on one number, so report how much room it had.
+        marg = []
+        for s in summaries:
+            for r in s["rows"]:
+                if r["arm"] == "outcome" and r["gates_pass"]:
+                    ret = r.get("cell_sd_retention")
+                    if ret not in ("", None):
+                        marg.append((s["model"], float(ret), r["gamma"]))
+        tight = [m for m in marg if m[1] < CELL_SD_RETENTION + 0.05]
+        if tight:
+            L.append("**How close this came to the other label.** RECOVERY and COLLAPSE are "
+                     f"separated by a single number — whether cell-mean spread retains "
+                     f"{CELL_SD_RETENTION:.0%} — and for "
+                     + ", ".join(f"`{m}` it retains {r:.4f} at γ={g}" for m, r, g in tight)
+                     + f", i.e. within 0.05 of the boundary. The label would flip to COLLAPSE "
+                     f"on a small change, so it should be reported as RECOVERY *at the "
+                     f"margin*, not as a comfortable one.\n")
+            L.append("Two features of the sweep argue the label is nonetheless the right one, "
+                     "and neither is a threshold change. The dose-response is monotone, so the "
+                     "movement is not an artefact appearing only at full strength (the prespec "
+                     "explicitly treats a γ=1.0-only effect as damage). And at the *milder* "
+                     "doses, where cell spread is comfortably retained, the contrast has "
+                     "already moved past the J4 floor in the same direction — for OLMo "
+                     "+0.1566 at γ=0.5 with 78% spread retained. Those doses do not satisfy "
+                     "V1a and so cannot be counted toward P1, but they show the movement is "
+                     "not purchased by flattening the cells. The honest summary is that "
+                     "outcome erasure recovers intent-sensitive judgment, and that at full "
+                     "erasure it also starts to compress the cells.\n")
     elif any(x == "COLLAPSE" for x in labels):
         L.append("At least one model shows COLLAPSE: the contrast moves toward zero because "
                  "outcome discrimination is gone, not because intent took over. Combined with "

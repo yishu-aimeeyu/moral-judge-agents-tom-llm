@@ -1,0 +1,2 @@
+rank,method,insample_outcome_acc,heldout_outcome_acc,heldout_intent_acc,intent_above_chance_retention,erasure_displacement_frac,v1a_insample_guarded,v1b_generalises,v2_intent_intact,selected
+1,leace(rank=1),0.5134,0.4939,0.866,0.9821,0.0658,True,True,True,True

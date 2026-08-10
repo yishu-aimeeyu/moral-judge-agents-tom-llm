@@ -591,6 +591,57 @@ def make_figure(rows, outdir):
     plt.close(fig)
     print(f"wrote {os.path.relpath(out, ROOT)}")
 
+    # The lexical predictor is an order of magnitude larger than the others, so on a shared
+    # axis it flattens intent/outcome/interaction into one indistinguishable line -- i.e. the
+    # panel above hides the comparison the experiment is about. This companion panel drops
+    # lexical and rescales. Both are kept: the first gives the surface context that motivates
+    # P4, the second shows the M1 ordering.
+    zoom = [p for p in PREDICTORS if p != "lexical"]
+    for variant, suffix in (("primary", ""), ("lexical_resid", "_residualised")):
+        if not any(r["model_variant"] == variant for r in rows):
+            continue
+        fig, axes = plt.subplots(nrow, ncol, figsize=(4.0 * ncol, 3.1 * nrow),
+                                 sharex=True, squeeze=False)
+        for i, m in enumerate(models):
+            ax = axes[i // ncol][i % ncol]
+            mr = [r for r in rows if r["model"] == m and r["model_variant"] == variant]
+            for pname in zoom:
+                pts = sorted([r for r in mr if r["predictor"] == pname],
+                             key=lambda r: r["rel_depth"])
+                if not pts:
+                    continue
+                ax.plot([p["rel_depth"] for p in pts], [p["unique_rho2"] for p in pts],
+                        marker="o", ms=3.5, lw=1.6, color=colors[pname], label=pname)
+                ax.fill_between([p["rel_depth"] for p in pts],
+                                [p["null_ci_lo"] for p in pts],
+                                [p["null_ci_hi"] for p in pts],
+                                color=colors[pname], alpha=0.12, lw=0)
+            peak = next((r["rel_depth"] for r in mr if r["is_peak"] in (True, "True")), None)
+            if peak is not None:
+                ax.axvline(peak, color="k", ls=":", lw=1.0)
+                ax.text(peak, ax.get_ylim()[1], " peak intent", fontsize=6, va="top")
+            ax.axvspan(LATE_DEPTH_MIN, 1.0, color="k", alpha=0.04, lw=0)
+            ax.axhline(0, color="gray", lw=0.6)
+            ax.set_title(m, fontsize=8)
+            ax.tick_params(labelsize=7)
+        for j in range(len(models), nrow * ncol):
+            axes[j // ncol][j % ncol].axis("off")
+        for r_ in range(nrow):
+            axes[r_][0].set_ylabel("unique ρ² (semipartial)", fontsize=8)
+        for c in range(ncol):
+            axes[nrow - 1][c].set_xlabel("relative depth", fontsize=8)
+        axes[0][0].legend(fontsize=7, frameon=False)
+        fig.suptitle("E1 — unique variance EXCLUDING the lexical predictor from the plot "
+                     f"({'residualised' if variant != 'primary' else 'primary'} variant; it is "
+                     "still in the model, so these are lexical-adjusted). Note the y-scale: "
+                     "outcome exceeds intent throughout.", fontsize=9)
+        fig.tight_layout(rect=(0, 0, 1, 0.95))
+        out = os.path.join(outdir,
+                           f"rdm_variance_partition_layerwise_zoom{suffix}.png")
+        fig.savefig(out, dpi=150)
+        plt.close(fig)
+        print(f"wrote {os.path.relpath(out, ROOT)}")
+
 
 if __name__ == "__main__":
     main()

@@ -86,3 +86,5 @@ The headline-contrast column is shown only so the two axes are not confused: it 
 ## What this cannot show
 
 Different stimuli (no shared item), different response scale and task, different populations and administration. This is a **reference distribution, not item-matched ground truth**, and proximity to it licenses no developmental or causal claim. Same caveat discipline as `ADULT_ANCHOR_MATCH_AUDIT.md`.
+
+One asymmetry in the figure is worth stating outright, because it could be misread as false precision: the society points carry 95% CIs over subjects, and the model points carry **no interval at all**. Model effects here are aggregate cell means over the same 298 items under deterministic scoring, so there is no subject-level sampling variability to display, and an interval computed over items would not be the same quantity as the human one. The practical consequence is that small differences *between models* on this axis should not be read as reliable, and no such comparison is made above.
