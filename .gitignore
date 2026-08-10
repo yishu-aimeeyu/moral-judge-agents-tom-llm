@@ -11,6 +11,9 @@ tomloc/
 # --- Derived data (regenerate with build_dataset.py) ---
 dataset/master/*.csv
 
+# Third-party human reference data (redownload from OSF; see crosscultural/README.md)
+dataset/human_reference/crosscultural/raw/
+
 # --- Experiment outputs (large / regenerable) ---
 outputs/
 *.npz
