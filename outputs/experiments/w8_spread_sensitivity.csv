@@ -1,0 +1,5 @@
+model,gamma,dcontrast,cell_sd_retention,above_j4_floor,eligible_spread_gt_0_55,eligible_spread_gt_0_60,v1a_guarded,gates_pass,note
+OLMo-2-1124-7B-Instruct,0.25,0.0767,0.8952,False,True,True,False,False,sensitivity only; sub-maximal doses do not satisfy V1a
+OLMo-2-1124-7B-Instruct,0.5,0.1566,0.7833,True,True,True,False,False,sensitivity only; sub-maximal doses do not satisfy V1a
+OLMo-2-1124-7B-Instruct,0.75,0.2355,0.6581,True,True,True,False,False,sensitivity only; sub-maximal doses do not satisfy V1a
+OLMo-2-1124-7B-Instruct,1.0,0.3182,0.5124,True,False,False,True,True,sensitivity only; sub-maximal doses do not satisfy V1a

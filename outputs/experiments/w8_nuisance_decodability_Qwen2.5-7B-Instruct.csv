@@ -1,0 +1,4 @@
+model,layer,factor,leave_group_out_cv_acc,majority_rate,outcome_cv_acc_reference,unit_displacement,target_displacement,normmatch_scale,note
+Qwen2.5-7B-Instruct,19,gender,0.5671,0.5302,0.9866,0.0379,0.0658,1.737,
+Qwen2.5-7B-Instruct,19,length,0.7785,0.547,0.9866,0.0333,0.0658,1.977,
+Qwen2.5-7B-Instruct,19,scenario,,,0.9866,0.0447,0.0658,1.473,"multi-class; leave-group-out undefined (held-out groups are unseen classes), V1a measured in-sample"

@@ -147,6 +147,38 @@ def lexical_rdm(texts):
     return 1.0 - Xn @ Xn.T
 
 
+def span_matched_lexical(lab, sids, rsa, offsets_path=None):
+    """TF-IDF distance on the SETUP span only -- E5_PRESPEC.md E5d R4/R5.
+
+    Full-document TF-IDF cannot serve as a surface control here because the intent and outcome
+    manipulations ARE lexical: within a scenario group the four conditions differ exactly by the
+    clause that makes the act intended or the harm occur, so the predictor absorbs the factors it
+    is meant to control for. The span-matched control instead uses `text[:belief_start]` from
+    clause_offsets.csv -- the setup text that precedes either manipulation, following
+    44_span_matched_gaps.py's definition of the non-factor span.
+
+    Returns (rdm_upper, coverage) or (None, 0.0) when offsets are unavailable.
+    """
+    offsets_path = offsets_path or os.path.join(ROOT, "dataset", "master", "clause_offsets.csv")
+    if not os.path.exists(offsets_path):
+        return None, 0.0
+    off = {r["story_id"]: r for r in csv.DictReader(open(offsets_path))}
+    texts, n_ok = [], 0
+    for s in sids:
+        full = lab[s]["text"]
+        b = off.get(s, {}).get("belief_start", "")
+        try:
+            cut = int(b)
+        except (TypeError, ValueError):
+            cut = -1
+        if 0 < cut <= len(full):
+            texts.append(full[:cut])
+            n_ok += 1
+        else:
+            texts.append(full)      # no offset: fall back, and the coverage figure discloses it
+    return rsa.upper(lexical_rdm(texts)), n_ok / max(len(sids), 1)
+
+
 def probe_acc_by_layer(tag, probe_dir, suffix):
     p = os.path.join(probe_dir, f"{tag}_probe{suffix}.csv")
     if not os.path.exists(p):
@@ -229,6 +261,10 @@ def main():
         layers = sorted({int(round(r * (nL - 1))) for r in rsa.REL_DEPTHS} |
                         ({pk} if pk is not None else set()))
         preds, nuis_scen, scen = build_predictors(lab, sids, rsa)
+        span_lex, span_cov = span_matched_lexical(lab, sids, rsa)
+        if span_lex is not None:
+            print(f"  span-matched lexical control: setup-span offsets for "
+                  f"{span_cov:.1%} of items", flush=True)
         accs = probe_acc_by_layer(tag, a.probe, suffix)
 
         variants = {
@@ -239,6 +275,10 @@ def main():
                                         "scenario": nuis_scen,
                                         "lexical": residualise(preds["lexical"], nuis_scen)}),
         }
+        if span_lex is not None:
+            # E5d R4/R5: surface control built on the span that realises NEITHER factor
+            variants["span_matched"] = Partition(
+                {**{k: v for k, v in preds.items() if k != "lexical"}, "lexical": span_lex})
 
         print(f"\n=== {tag} (layers={nL}, peak={pk}) ===", flush=True)
         for L in layers:
@@ -435,6 +475,85 @@ def _amended_section(rows, models, n_models):
                                  *p_late, n_models))
         out.append(_verdict_line("M1 at the peak-intent layer", *p_peak, n_models))
         out.append("")
+    out.append(_span_matched_section(rows, models, n_models))
+    return "\n".join(out)
+
+
+def _span_matched_section(rows, models, n_models):
+    """E5d R4/R5 -- the span-matched retry, and the methods note if it also excludes."""
+    have = [r for r in rows if r["model_variant"] == "span_matched"]
+    if not have:
+        return ""
+    _, late, peak, lex_flags = _verdict_counts(rows, variant="span_matched")
+    a_pass, a_fail, a_und = _tally(models, late)
+    b_pass, b_fail, b_und = _tally(models, peak)
+    # P4 only gates the layers the predictions are read at (late depths plus each model's peak),
+    # so the denominator is that gated set, not every partitioned layer. lex_flags can list the
+    # same cell twice when a peak layer is also a late layer, hence the set().
+    excluded = {(m, L) for m, L in lex_flags}
+    by_layer = {}
+    for r in have:
+        by_layer.setdefault((r["model"], r["layer"]), {})[r["predictor"]] = r
+    gated = {k for k, d in by_layer.items()
+             if float(d["intent"]["rel_depth"]) >= LATE_DEPTH_MIN
+             or d["intent"]["is_peak"] in (True, "True")}
+    cells = len(gated)
+    out = ["## E5d — span-matched surface control (final attempt at P4's gate)\n",
+           "Pre-registered in [`E5_PRESPEC.md`](../experiments/E5_PRESPEC.md) (R4/R5). The "
+           "surface predictor is rebuilt from the **setup span only** — `text[:belief_start]` "
+           "from `clause_offsets.csv`, the portion preceding either manipulation, following "
+           "`44_span_matched_gaps.py`'s definition of the non-factor span. If full-document "
+           "TF-IDF failed because it absorbed the lexically-realised factors, restricting it to "
+           "text that realises neither factor is the fix.\n",
+           _verdict_line(f"P1 at relative depth ≥ {LATE_DEPTH_MIN}",
+                         a_pass, a_fail, a_und, n_models),
+           _verdict_line("P2 at the peak-intent layer", b_pass, b_fail, b_und, n_models),
+           ""]
+
+    med = {}
+    for p in ("intent", "outcome", "lexical"):
+        v = [float(r["unique_rho2"]) for r in have
+             if r["predictor"] == p and float(r["rel_depth"]) >= LATE_DEPTH_MIN]
+        med[p] = float(np.median(v)) if v else float("nan")
+
+    if len(a_und) == n_models:
+        out += [f"**It did not fix it, and this is the final answer.** All "
+                f"{len(excluded)}/{cells} gated (model, layer) cells — every late-depth layer "
+                f"and every peak-intent layer — are still P4-excluded. At late "
+                f"layers the span-matched surface predictor's median unique ρ² is "
+                f"**{med['lexical']:.5f}**, against {med['outcome']:.5f} for outcome and "
+                f"{med['intent']:.5f} for intent — roughly "
+                f"{med['lexical'] / med['outcome']:.0f}× the former and "
+                f"{med['lexical'] / med['intent']:.0f}× the latter.\n",
+                "The reason is the one recorded in the prespec **before** this ran, and it is "
+                "the same reason full-document TF-IDF failed. The setup span is nearly "
+                "identical across the four cells of a scenario and differs sharply between "
+                "scenarios, so its word-overlap distance is close to the scenario-identity "
+                "matrix — which E1 already showed dominates the RDM. Removing the factor "
+                "clauses does not remove scenario identity; it concentrates it.\n",
+                "### E1 as a methods note\n",
+                "**Surface-control gating is undefined when the experimental factors are "
+                "lexically realised.** In a within-scenario 2×2 whose conditions are written as "
+                "clause substitutions, any word-level surface predictor sits *between* the "
+                "factors and the representation: it is not a nuisance variable that can be held "
+                "constant, because holding it constant would hold the manipulation constant "
+                "too. P4 was a reasonable gate to pre-register and it is unsatisfiable in this "
+                "design, at both the document and the span level. E1's registered P1/P2 are "
+                "therefore **undecidable, not refuted** — a design finding rather than a "
+                "result about models, and the honest thing to report.\n",
+                "The 3–18× outcome-over-intent dominance remains labelled **post-hoc (M1)** "
+                "everywhere it appears, including in every downstream document. It is not "
+                "promoted by this section: M1 drops the gate that E1 could not satisfy, which "
+                "is exactly why it cannot inherit P1's pre-registered status.\n"]
+    else:
+        out += [f"**The span-matched control makes the pre-registered comparison evaluable.** "
+                f"{cells - len(excluded)} of {cells} gated (model, layer) cells now survive P4, "
+                f"so "
+                f"per R5 the original P1/P2 are reported above against their unchanged "
+                f"{SIGN_TEST_BAR}/{n_models} bar, with `span_matched` named as the variant that "
+                f"made them evaluable. Late-layer median unique ρ²: lexical "
+                f"{med['lexical']:.5f}, outcome {med['outcome']:.5f}, intent "
+                f"{med['intent']:.5f}.\n"]
     return "\n".join(out)
 
 

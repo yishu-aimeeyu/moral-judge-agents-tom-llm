@@ -1,0 +1,4 @@
+model,layer,factor,leave_group_out_cv_acc,majority_rate,outcome_cv_acc_reference,unit_displacement,target_displacement,normmatch_scale,note
+Llama-3.1-Tulu-3-8B,17,gender,0.6275,0.5302,0.9966,0.0452,0.1133,2.509,
+Llama-3.1-Tulu-3-8B,17,length,0.698,0.547,0.9966,0.0527,0.1133,2.153,
+Llama-3.1-Tulu-3-8B,17,scenario,,,0.9966,0.0502,0.1133,2.256,"multi-class; leave-group-out undefined (held-out groups are unseen classes), V1a measured in-sample"

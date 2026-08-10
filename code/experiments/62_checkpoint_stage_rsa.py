@@ -101,6 +101,57 @@ def layer_for(nL, depth):
     return int(round(depth * (nL - 1)))
 
 
+def coupling_stat(geo, n_boot=10000, seed=0):
+    """P2's statistic with n and a bootstrap CI (E5d R1).
+
+    Reported in one place so the headline, the P2 section and the figure cannot drift apart or
+    quote the point estimate without its interval. Resampling is over transitions, which is the
+    unit the statistic is computed on; with 6 of them the interval is wide, and that width is
+    the finding R2 asks to be stated rather than something to hide.
+    """
+    from scipy.stats import spearmanr
+    xs = [(float(r["rdm_shift_reldepth0.75"]), abs(float(r["delta_contrast"])))
+          for r in geo if not r["is_endpoint_pair"]
+          and r["rdm_shift_reldepth0.75"] not in ("", None)
+          and r["delta_contrast"] not in ("", None)]
+    n = len(xs)
+    if n < 4:
+        return None
+    x = np.array([a for a, _ in xs])
+    y = np.array([b for _, b in xs])
+    rho = float(spearmanr(x, y).statistic)
+    rng = np.random.default_rng(seed)
+    boot = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, n)
+        if len(np.unique(x[idx])) < 2 or len(np.unique(y[idx])) < 2:
+            continue
+        boot.append(float(spearmanr(x[idx], y[idx]).statistic))
+    lo, hi = (float(np.nanpercentile(boot, 2.5)), float(np.nanpercentile(boot, 97.5))) \
+        if boot else (float("nan"), float("nan"))
+    return dict(rho=rho, n=n, lo=lo, hi=hi, n_boot=len(boot))
+
+
+def coupling_str(c, short=False):
+    """The only permitted rendering of the coupling statistic (E5d R1)."""
+    if not c:
+        return "not computable"
+    if short:
+        return f"ρ={c['rho']:+.2f} (n={c['n']}, 95% CI [{c['lo']:+.2f}, {c['hi']:+.2f}])"
+    return (f"Spearman ρ = **{c['rho']:+.3f}** (n = {c['n']} transitions, bootstrap 95% CI "
+            f"[{c['lo']:+.3f}, {c['hi']:+.3f}])")
+
+
+UNDERPOWERED = (
+    "**Six points cannot settle this in either direction.** The bootstrap interval above is "
+    "wide enough to include values far below the +0.50 bar as well as values near +1, so this "
+    "analysis can neither establish coupling nor establish its absence. P1 is withdrawn because "
+    "the prespec's rule says a point estimate at or above +0.50 withdraws it, and that rule is "
+    "honoured as written. Withdrawing P1 is **not** evidence for its converse: nothing here "
+    "shows that geometric reshaping *drives* the behavioural change, and that claim must not be "
+    "made from this statistic.")
+
+
 def split_half_ceiling(X, rng, rsa):
     """Reliability ceiling for an RDM from this checkpoint (P3).
 
@@ -335,30 +386,25 @@ def write_verdict(fams, store, geo, ref, hyp, missing, outdir, pooling):
          "this ran.\n"]
 
     # Headline first, so the failed prediction cannot be missed by reading only the top.
-    _xs = [(float(r["rdm_shift_reldepth0.75"]), abs(float(r["delta_contrast"])))
-           for r in consec
-           if r["rdm_shift_reldepth0.75"] not in ("", None)
-           and r["delta_contrast"] not in ("", None)]
-    if len(_xs) >= 4:
-        from scipy.stats import spearmanr as _sp
-        _rho = float(_sp([x for x, _ in _xs], [y for _, y in _xs]).statistic)
+    cstat = coupling_stat(geo)
+    if cstat:
         L.append("## Headline\n")
-        if _rho >= 0.5:
+        if cstat["rho"] >= 0.5:
             L.append(f"**The pre-registered claim did not survive.** Every consecutive-stage RSA "
                      f"clears the 0.90 bar ({len(ok_consec)}/{len(consec)}), so P1's magnitude "
                      f"criterion passes. But P2 — the criterion that carries the \"readout, not "
                      f"representation\" interpretation — **fails**: RDM shift and |Δcontrast| are "
-                     f"rank-coupled at ρ = {_rho:+.3f}, above the +0.50 bar that the prespec "
-                     f"designated as the point at which P1 is withdrawn. E2 therefore does "
-                     f"**not** license \"post-training changes only the readout\". What it "
-                     f"licenses is narrower: post-training moves the geometry by a small amount "
-                     f"that tracks the ordering of behavioural change. See O1 under P2 for the "
-                     f"magnitude-versus-ordering distinction, which is post-hoc and does not "
-                     f"rescue the registered claim.\n")
+                     f"rank-coupled at {coupling_str(cstat)}, whose point estimate is above the "
+                     f"+0.50 bar the prespec designated as the point at which P1 is withdrawn. "
+                     f"E2 therefore does **not** license \"post-training changes only the "
+                     f"readout\". What it licenses is narrower: post-training moves the geometry "
+                     f"by a small amount that tracks the ordering of behavioural change.\n")
+            L.append(UNDERPOWERED + "\n")
         else:
             L.append(f"P1's magnitude criterion passes ({len(ok_consec)}/{len(consec)} "
                      f"consecutive transitions at RSA ≥ 0.90) and P2's decoupling criterion "
-                     f"also holds (ρ = {_rho:+.3f} < +0.50).\n")
+                     f"also holds ({coupling_str(cstat)}, point estimate below +0.50).\n")
+            L.append(UNDERPOWERED + "\n")
 
     if missing:
         L.append("## Coverage — incomplete\n")
@@ -455,18 +501,17 @@ def write_verdict(fams, store, geo, ref, hyp, missing, outdir, pooling):
           if r["rdm_shift_reldepth0.75"] not in ("", None)
           and r["delta_contrast"] not in ("", None)]
     if len(xs) >= 4:
-        from scipy.stats import spearmanr
-        rho = float(spearmanr([x for x, _ in xs], [y for _, y in xs]).statistic)
+        rho = cstat["rho"]
         L.append(f"P2 predicted that RDM shift and |Δcontrast| would **not** be positively "
-                 f"rank-coupled at ρ ≥ +0.50. Observed over {len(xs)} consecutive transitions: "
-                 f"Spearman ρ = **{rho:+.3f}**.\n")
+                 f"rank-coupled at ρ ≥ +0.50. Observed: {coupling_str(cstat)}.\n")
+        L.append(UNDERPOWERED + "\n")
         if rho >= 0.5:
-            L.append("**P2 FAILS.** The coupling is present and above the bar, so by the "
-                     "prespec's own rule *P1 is withdrawn in favour of the coupling reading*: "
-                     "the stages where geometry moves most are also the stages where behaviour "
-                     "moves most. The pre-registered \"readout, not representation\" claim is "
-                     "**not supported in the form it was registered**, and that is the headline "
-                     "of E2.\n")
+            L.append("**P2 FAILS on its point estimate.** The coupling is above the bar, so by "
+                     "the prespec's own rule *P1 is withdrawn in favour of the coupling "
+                     "reading*: the stages where geometry moves most are also the stages where "
+                     "behaviour moves most. The pre-registered \"readout, not representation\" "
+                     "claim is **not supported in the form it was registered**, and that is the "
+                     "headline of E2.\n")
             L.append("A magnitude observation is recorded here because it is the obvious next "
                      "question, and it is marked **post-hoc (O1)** so it cannot read as "
                      "pre-registered — it does **not** overturn the verdict above. Spearman ρ "
@@ -566,20 +611,18 @@ def make_figure(fams, geo, ref, beh, store, outdir):
             ax.legend(fontsize=6.5, loc="center left", frameon=False)
     # The visual reads as "flat geometry, collapsing behaviour", which is the claim P2
     # withdrew. The coupling result goes on the figure so it cannot travel without it.
-    _xs = [(float(r["rdm_shift_reldepth0.75"]), abs(float(r["delta_contrast"])))
-           for r in geo if not r["is_endpoint_pair"]
-           and r["rdm_shift_reldepth0.75"] not in ("", None)
-           and r["delta_contrast"] not in ("", None)]
+    c = coupling_stat(geo)
     sub = ""
-    if len(_xs) >= 4:
-        from scipy.stats import spearmanr as _sp
-        _r = float(_sp([x for x, _ in _xs], [y for _, y in _xs]).statistic)
-        sub = (f"\nP1's magnitude bar passes, but P2 FAILS: shift and |Δcontrast| are "
-               f"rank-coupled (ρ={_r:+.2f} ≥ +0.50), so this does NOT show "
-               f"\"readout only\" — the geometry moves a little, in step with behaviour.")
+    if c:
+        # Kept to short lines: a single long subtitle is clipped at both figure edges, which
+        # silently truncates the caveat that the panel exists to carry.
+        sub = (f"\nP1's magnitude bar passes, but P2 FAILS on its point estimate: shift and "
+               f"|Δcontrast| are rank-coupled, {coupling_str(c, short=True)}."
+               f"\nThis does NOT show \"readout only\" — and n={c['n']} can establish neither "
+               f"coupling nor its absence.")
     fig.suptitle("E2 — does post-training reshape the geometry (blue) while behaviour moves "
-                 "(red)?" + sub, fontsize=9)
-    fig.tight_layout(rect=(0, 0, 1, 0.92))
+                 "(red)?" + sub, fontsize=8.5)
+    fig.tight_layout(rect=(0, 0, 1, 0.88))
     out = os.path.join(outdir, "checkpoint_stage_rsa.png")
     fig.savefig(out, dpi=150)
     plt.close(fig)

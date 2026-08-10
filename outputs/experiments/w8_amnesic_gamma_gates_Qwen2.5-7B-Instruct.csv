@@ -2,3 +2,9 @@ arm,method,selected_rank,gate_passing_gammas
 outcome,leace(rank=1),1,1.0
 intent,leace(rank=1),1,1.0
 random,random_subspace(rank=1),1,0.25;0.5;0.75;1.0
+gender_exact,"rank1_dir(gender, s=1.000)",1,1.0
+gender_normmatched,"rank1_dir(gender, s=1.737)",1,0.25;0.5;0.75;1.0
+length_exact,"rank1_dir(length, s=1.000)",1,1.0
+length_normmatched,"rank1_dir(length, s=1.977)",1,0.25;0.5
+scenario_exact,"rank1_dir(scenario, s=1.000)",1,
+scenario_normmatched,"rank1_dir(scenario, s=1.473)",1,0.25;0.5;0.75

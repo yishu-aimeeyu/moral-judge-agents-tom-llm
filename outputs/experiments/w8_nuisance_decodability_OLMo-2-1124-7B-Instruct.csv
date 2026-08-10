@@ -1,0 +1,4 @@
+model,layer,factor,leave_group_out_cv_acc,majority_rate,outcome_cv_acc_reference,unit_displacement,target_displacement,normmatch_scale,note
+OLMo-2-1124-7B-Instruct,16,gender,0.557,0.5302,0.9933,0.0372,0.0918,2.469,
+OLMo-2-1124-7B-Instruct,16,length,0.6544,0.547,0.9933,0.0598,0.0918,1.534,
+OLMo-2-1124-7B-Instruct,16,scenario,,,0.9933,0.0714,0.0918,1.284,"multi-class; leave-group-out undefined (held-out groups are unseen classes), V1a measured in-sample"
