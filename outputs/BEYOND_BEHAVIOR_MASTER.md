@@ -231,7 +231,92 @@ Intent is **linearly decodable** from residual streams (peak intent ~0.67–0.88
 
 ---
 
-## 14. Incomplete / local-only (do not treat as finished)
+## 14. E1 layerwise hypothesis-RDM variance partitioning (methods note — undecidable as specified)
+
+**Finding.** **No verdict is available, and that is the result.** The pre-registered gate P4 required a layer's lexical unique variance to be below the hypothesis RDMs' before its intent/outcome partition could be read; lexical distance dominates instead, so P4 excluded **36/36** gated (model, layer) cells under full-document TF-IDF *and* still **36/36** under the E5d span-matched control built on `44_span_matched_gaps.py` machinery. The correct write-up is a methods note: **surface-control gating is undefined when the experimental factors are lexically realised**, because intent and outcome are *stated in words* in these vignettes, so a lexical RDM is not a nuisance regressor but a partial re-encoding of the design. The 3–18× lexical dominance is labelled **post-hoc / M1** throughout and carries no confirmatory weight.
+
+| Role | Path | GitHub |
+|---|---|---|
+| Script | `code/experiments/61_rdm_variance_partition.py` | [61](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/61_rdm_variance_partition.py) |
+| Verdict MD | `outputs/rsa/E1_VARIANCE_PARTITION.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/rsa/E1_VARIANCE_PARTITION.md) |
+| Prespec | `outputs/rsa/E1_PRESPEC.md` (amendment 1: `lexical_resid`; E5d: span-matched retry) | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/rsa/E1_PRESPEC.md) |
+| CSVs | `outputs/rsa/e1_variance_partition*.csv` | [rsa/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/rsa) |
+| Figures | `outputs/rsa/e1_variance_partition*.png` | [rsa/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/rsa) |
+
+---
+
+## 15. E2 checkpoint-stage RSA (underpowered; P1 withdrawn)
+
+**Finding.** RDMs at base/SFT/DPO for OLMo and Tulu. The pre-registered coupling between cross-stage RDM shift and |Δcontrast| is **ρ = +0.870, n = 6, 95% bootstrap CI [+0.200, +1.000]** — a point estimate that looks strong on six observations, which is why the CI is quoted with it everywhere the number appears. Per prespec, **P1 is withdrawn** rather than claimed: the analysis is **underpowered in both directions**, and withdrawing P1 is not evidence for its converse. The split-half ceiling required the **Spearman-Brown** correction before cross-stage RSA could be compared against it.
+
+| Role | Path | GitHub |
+|---|---|---|
+| Script | `code/experiments/62_checkpoint_stage_rsa.py` | [62](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/62_checkpoint_stage_rsa.py) |
+| Verdict MD | `outputs/rsa/E2_CHECKPOINT_STAGE_RSA.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/rsa/E2_CHECKPOINT_STAGE_RSA.md) |
+| Prespec | `outputs/rsa/E2_PRESPEC.md` (amendment: Spearman-Brown ceiling) | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/rsa/E2_PRESPEC.md) |
+| CSVs | `outputs/rsa/e2_checkpoint_stage_*.csv` | [rsa/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/rsa) |
+| Figure | `outputs/rsa/checkpoint_stage_rsa.png` | [PNG](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/rsa/checkpoint_stage_rsa.png) |
+
+---
+
+## 16. W8A (E3) amnesic outcome ablation — the manipulation result
+
+**Finding.** Erasing the outcome direction with LEACE/INLP at the W3 peak layer **lets intent-sensitive judgment surface**: Δcontrast **+0.3182** (OLMo, L16), **+0.2312** (Qwen, L19), **+0.3480** (Tulu, L17), against a J4 floor of 0.0988 — the complement of W3, where *adding* intent signal moved nothing (≤0.015). The headline is **RECOVERY in 2 of 3 models**; Tulu meets the effect bar but fails the cell-spread rule (§18). Read **P2 before any Δcontrast**: the contrast is a diagonal, so erasing outcome moves it toward zero mechanically and only the pre-registered RECOVERY signature licenses the intent reading. **Renamed `W8` → `W8A`** so it cannot collide with "W8 — Paper assembly" (§`outputs/paper/`).
+
+| Role | Path | GitHub |
+|---|---|---|
+| Script | `code/experiments/63_w8a_amnesic_outcome.py` | [63](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/63_w8a_amnesic_outcome.py) |
+| Verdict MD | `outputs/experiments/W8A_AMNESIC.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/W8A_AMNESIC.md) |
+| Prespec | `outputs/experiments/W8A_PRESPEC.md` (rank calibration; V1a/V2 per-arm gating) | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/W8A_PRESPEC.md) |
+| CSVs | `w8a_amnesic_*.csv`, `w8a_amnesic_verification_*.csv`, `w8a_amnesic_calibration_*.csv`, `w8a_amnesic_layer_selection_*.csv` under `outputs/experiments/` | [experiments/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/experiments) |
+| Figures | `outputs/experiments/w8a_amnesic_{OLMo-2-1124-7B-Instruct,Qwen2.5-7B-Instruct,Llama-3.1-Tulu-3-8B}.png` | [experiments/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/experiments) |
+
+---
+
+## 17. E4 cross-cultural placement (Curtin et al. 2020, 10 societies)
+
+**Finding.** Both pre-registered predictions **failed**, and the restatement is the usable result. P1: **4/6** engaged models (and 12/18 non-degenerate) fall below the lowest society, against a bar of all. P2: **9/10** societies show a positive intent effect with CI excluding zero, not 10/10 — **Yasawa is +0.0000, CI [−0.0265, +0.0227]**. So the claim may **not** be phrased "models sit outside the human range"; the defensible form is a distribution-overlap claim: *model intent effects fall below all 9 societies with a detectable intent effect (lowest +0.1016)*. Axis caveat: this is intent-at-constant-harm (`intentional − accidental`), **not** the project's `attempted − accidental` headline, which has no counterpart in that dataset.
+
+| Role | Path | GitHub |
+|---|---|---|
+| Script | `code/experiments/64_crosscultural_placement.py` | [64](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/64_crosscultural_placement.py) |
+| Verdict MD | `outputs/crosscultural/E4_CROSSCULTURAL.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/crosscultural/E4_CROSSCULTURAL.md) |
+| Prespec | `dataset/human_reference/crosscultural/E4_PRESPEC.md` (amendment 1: population correction) | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/dataset/human_reference/crosscultural/E4_PRESPEC.md) |
+| CSVs | `outputs/crosscultural/society_intent_effects.csv`, `model_placement.csv` | [crosscultural/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/crosscultural) |
+| Method / caveats | `dataset/human_reference/crosscultural/README.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/dataset/human_reference/crosscultural/README.md) |
+
+---
+
+## 18. E5 controls on W8A — where the headline is bounded
+
+**Finding, in the order that matters.** (a) **E5a's specificity control FAILED** in Qwen: a matched-norm perturbation along scenario identity moved the contrast **+0.1345**, past the 0.0988 floor, and the separation ratio fell to **1.72×** against a 2× bar (OLMo 10.26×, Tulu 4.31×). The honest consequence is that the outcome direction is the **most effective** direction found, not the **only** one. (b) **E5b's third model bounds the headline to 2 of 3**: Tulu moves **+0.3480**, the largest of the three, but retains only **38%** of its cell spread and is **COLLAPSE** under the pre-registered 50% rule — a substantive finding, not merely a failed gate (§19). (c) **E5c: OLMo's effect survives** cell-spread floors of 0.55 and 0.60 (largest surviving Δ **+0.2355**, n=3 doses each), so it is not an artefact of compression. (d) **E5d** fixed E2's reporting (n + bootstrap CI inline) and ran E1's span-matched retry.
+
+| Role | Path | GitHub |
+|---|---|---|
+| Scripts | `code/experiments/65_e5_controls.py` (reporting), `63_w8a_amnesic_outcome.py --nuisance` (compute) | [65](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/65_e5_controls.py) · [63](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/63_w8a_amnesic_outcome.py) |
+| Verdict MD | `outputs/experiments/E5_CONTROLS.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/E5_CONTROLS.md) |
+| Prespec | `outputs/experiments/E5_PRESPEC.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/E5_PRESPEC.md) |
+| CSVs | `w8a_nuisance_*.csv`, `w8a_nuisance_decodability_*.csv`, `w8a_spread_sensitivity.csv` under `outputs/experiments/` | [experiments/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/experiments) |
+| Figure | `outputs/experiments/w8a_nuisance_specificity.png` | [PNG](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/w8a_nuisance_specificity.png) |
+| Content audit | `outputs/experiments/E5_CONTENT_AUDIT.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/E5_CONTENT_AUDIT.md) |
+
+---
+
+## 19. E6 orthogonalized specificity — a new control, not a re-run of E5a
+
+**Finding.** **E5a's P1 verdict stands as a failure**; E6 is a differently-specified test reported beside it, and nothing here overturns it. E6 fixed two defects: E5a's norm-matched arms used `s > 1` (reflecting past the class mean, so the "erased" factor stayed decodable at 1.000 — perturbations, not erasures), and the nuisance directions were never orthogonalized against outcome. **E6b:** with Gram-Schmidt orthogonalization and `s ≤ 1` asserted, every nuisance arm is **inert in 3/3 models** — largest |Δcontrast| **0.0160** at any coherent dose — and separation rises to **9.9× / 22.3× / 24.6×** (OLMo/Qwen/Tulu) against E5a's 10.26× / 1.72× / 4.31×; **Qwen moves from 1.72× to 22.3×**. **E6a:** the geometric explanation was tested and **not supported** — Qwen's scenario–outcome overlap exceeds the others by only **+0.0389** against a pre-registered **0.10** bar (and the ordering reverses under the other estimator), exactly the "highest but by 0.04" outcome the margin was written to block. What that rules out is a *Qwen-specific* elevation in overlap, which is what a Qwen-specific failure would require; overlap is substantial in **all three** models in the chat-templated geometry the hook acts in (ρ = 0.44–0.66), and is small in all three in the raw-text rendering — a gap that is itself reported, since it means raw-text overlap statistics should not be used to predict what a chat-templated intervention will do. E5a's failure is therefore attributed to **over-projection (`s = 1.28`)** rather than to that model being geometrically unusual. E6b's own drive-to-chance **assertion aborted the first job** and exposed an error in E6's prespec (LEACE's projection is oblique, so the top singular vector of `I − P` does not erase the factor); amendment 1 records it, and E6a is reported under both estimators so the fix could not buy a verdict.
+
+| Role | Path | GitHub |
+|---|---|---|
+| Scripts | `code/experiments/66_e6_controls.py` (reporting, E6a, and `--verify`). **The E6b GPU script (`67_e6b_orthogonalized.py`) was lost before it was ever committed** — see E6_CONTROLS.md §Provenance. E6b cannot currently be re-run from source; the CSVs plus `e6_directions_*.npz` are the record, and `--verify` re-derives the orthogonalization from the dumped vectors and reproduces every surviving fraction (all consistent). | [66](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/code/experiments/66_e6_controls.py) |
+| Verdict MD | `outputs/experiments/E6_CONTROLS.md` | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/E6_CONTROLS.md) |
+| Prespec | `outputs/experiments/E6_PRESPEC.md` (amendment 1: direction estimator; amendment 2: E6a-live) | [MD](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/blob/main/outputs/experiments/E6_PRESPEC.md) |
+| CSVs | `e6_direction_overlap.csv`, `e6_orthogonalized_*.csv` under `outputs/experiments/` | [experiments/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/experiments) |
+| Figures | `outputs/experiments/e6_direction_overlap.png`, `e6_orthogonalized_specificity.png` | [experiments/](https://github.com/MisssAimeee/moral-judge-agents-tom-llm/tree/main/outputs/experiments) |
+
+---
+
+## 20. Incomplete / local-only (do not treat as finished)
 
 | Item | Status | Notes |
 |---|---|---|

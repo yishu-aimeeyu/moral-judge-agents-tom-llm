@@ -1,8 +1,18 @@
-# W8 (E3) — amnesic outcome ablation: pre-specified predictions
+# W8A (E3) — amnesic outcome ablation: pre-specified predictions
 
 Written before any erasure run. Recorded verbatim by
-`code/experiments/63_w8_amnesic_outcome.py` to `outputs/experiments/W8_PRESPEC.md` on the
+`code/experiments/63_w8a_amnesic_outcome.py` to `outputs/experiments/W8A_PRESPEC.md` on the
 first `--run`, and never overwritten, so results cannot be retrofitted to the hypothesis.
+
+> **Renamed `W8` → `W8A`, 2026-08-10 (E6d.1), and the rename is disclosed because this is a
+> pre-registered document.** It was originally written to `W8_PRESPEC.md` and referred to
+> `63_w8_amnesic_outcome.py` and `w8_*` outputs. "W8" already meant **paper assembly** in this
+> repository (`57_w8_paper_assembly.py`, `outputs/paper/`, "W8 — Paper assembly" in
+> `RUN_STATUS.md`), so a reader arriving here could not tell which work package a number
+> belonged to. Only names changed: every path reference in the body was mechanically rewritten
+> `w8_` → `w8a_`, and **no threshold, prediction, gate, tolerance or amendment was touched**.
+> The pre-rename text is recoverable at commit `fea5f51` (`outputs/experiments/W8_PRESPEC.md`),
+> which is the authoritative record of what was registered and when.
 
 **Why this exists, and why it is not W3 again.** W3 *added* intent signal and the judgment
 did not move (probe-weight intent direction: |Δcontrast| ≤ 0.015 against an outcome control
@@ -43,7 +53,7 @@ quantity.
 
 ```
 =========================
-Written before any erasure run. Recorded verbatim to outputs/experiments/W8_PRESPEC.md on
+Written before any erasure run. Recorded verbatim to outputs/experiments/W8A_PRESPEC.md on
 first --run, and never overwritten.
 
   V-GATES (must all pass before ANY behavioural number is interpreted).
@@ -135,16 +145,16 @@ first --run, and never overwritten.
 
 | path | contents |
 |---|---|
-| `outputs/experiments/w8_amnesic_<tag>.csv` | arm × gamma: contrast, Δcontrast, four cell means, cell-mean SD, b_intent, b_outcome, coherence fields, gate flags, `p2_label` |
-| `outputs/experiments/w8_amnesic_verification_<tag>.csv` | V1/V2 per layer/target: acc unerased → erased, above-chance retention, margin shift in SD; V4 upstream rows |
-| `outputs/experiments/w8_amnesic_calibration_<tag>.csv` | gate-passing gamma band, written before behavioural readout |
-| `outputs/experiments/w8_amnesic_<tag>.png` | dose-response with gate-passing band shaded, four cell means panel |
+| `outputs/experiments/w8a_amnesic_<tag>.csv` | arm × gamma: contrast, Δcontrast, four cell means, cell-mean SD, b_intent, b_outcome, coherence fields, gate flags, `p2_label` |
+| `outputs/experiments/w8a_amnesic_verification_<tag>.csv` | V1/V2 per layer/target: acc unerased → erased, above-chance retention, margin shift in SD; V4 upstream rows |
+| `outputs/experiments/w8a_amnesic_calibration_<tag>.csv` | gate-passing gamma band, written before behavioural readout |
+| `outputs/experiments/w8a_amnesic_<tag>.png` | dose-response with gate-passing band shaded, four cell means panel |
 | `outputs/experiments/w8_generations_<tag>.txt` | ~20 generations per dose for the manual read required by V3 |
-| `outputs/experiments/W8_AMNESIC.md` | cross-model verdict against V1–V4 and P1–P4, with the P2 label stated in the headline |
+| `outputs/experiments/W8A_AMNESIC.md` | cross-model verdict against V1–V4 and P1–P4, with the P2 label stated in the headline |
 
 W3 outputs are not modified. Nothing under `outputs/figures_final/_pending_rescore/` is read
 or written. Activations stay gitignored. No W8 figure is copied into `presentation_figures/`
-until `W8_AMNESIC.md` states the verdict against these thresholds.
+until `W8A_AMNESIC.md` states the verdict against these thresholds.
 
 ---
 
@@ -193,7 +203,7 @@ tolerance stays. What is added is the knob used to reach it, and the constraint 
 
 This mirrors W3 exactly: W3 calibrated α to satisfy the coherence gate before reading
 contrasts, and W8 calibrates rank to satisfy the manipulation-check gate before reading
-contrasts. The selected rank is recorded in `w8_amnesic_calibration_<tag>.csv` alongside the
+contrasts. The selected rank is recorded in `w8a_amnesic_calibration_<tag>.csv` alongside the
 full sweep, and the random-direction control is matched to the **selected** rank so that P4
 remains a like-for-like comparison.
 
@@ -250,7 +260,7 @@ that the single criterion is separated into the two claims it was silently combi
 > **V1b — generalisation of the erasure (REPORTED ALWAYS, bounds the claim's scope).**
 > Held-out outcome decoding with the eraser fitted on train folds only. A failure here does
 > **not** void the behavioural readout; it caps what may be claimed, and the cap must be stated
-> in `W8_AMNESIC.md`: the erasure is exact on the items scored but does not transfer to unseen
+> in `W8A_AMNESIC.md`: the erasure is exact on the items scored but does not transfer to unseen
 > scenario groups, so W8 speaks to these stimuli and not to a general outcome-erasure mechanism.
 
 V2 stays on the grouped-CV measure, because in-sample intent accuracy is 1.0000 with or without

@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""W8 (E3) -- amnesic outcome ablation: the mirror of W3. [GPU-L]
+"""W8A (E3) -- amnesic outcome ablation: the mirror of W3. [GPU-L]
 
 W3 ADDED intent signal and the judgment did not move. That rules in "the readable intent
 direction is not causally wired", but it cannot rule out "intent is wired and actively
 overridden by a dominant outcome signal" -- adding to a suppressed channel need not show up
-while the suppressor is still running. W8 REMOVES the outcome signal and asks whether
+while the suppressor is still running. W8A REMOVES the outcome signal and asks whether
 intent-based judgment appears. It is the one manipulation that separates
 latent-but-suppressed from never-wired.
 
 Pre-specified gates V1-V4 and predictions P1-P4, with the collapse-vs-recovery discriminator
 that keeps a mechanical contrast movement from being reported as recovery:
-outputs/experiments/W8_PRESPEC.md, written before the first run and never overwritten.
+outputs/experiments/W8A_PRESPEC.md, written before the first run and never overwritten.
 
 Structure is deliberately parallel to 48_w3_causal_steering.py, and its helpers
 (fold_probes / probe_eval / fit_probe_direction / load_dataset) are IMPORTED rather than
-reimplemented, so a W8 number and a W3 number are the same quantity measured the same way.
+reimplemented, so a W8A number and a W3 number are the same quantity measured the same way.
 
 Erasure: LEACE (concept_erasure) when importable, otherwise iterative mean-projection to the
 same acceptance gates. Which one ran is recorded in every output row.
@@ -24,12 +24,12 @@ Modes
   --run               : load the model, fit erasers, calibrate, sweep, write outputs
 
 Outputs (with --run) -> outputs/experiments/
-  w8_amnesic_<tag>.csv               arm x gamma: contrast, cells, cell SD, b_intent, gates
-  w8_amnesic_verification_<tag>.csv  V1/V2/V4 probe readouts
-  w8_amnesic_calibration_<tag>.csv   gate-passing gamma band, written BEFORE the readout
-  w8_amnesic_<tag>.png               dose-response + four cell means
+  w8a_amnesic_<tag>.csv               arm x gamma: contrast, cells, cell SD, b_intent, gates
+  w8a_amnesic_verification_<tag>.csv  V1/V2/V4 probe readouts
+  w8a_amnesic_calibration_<tag>.csv   gate-passing gamma band, written BEFORE the readout
+  w8a_amnesic_<tag>.png               dose-response + four cell means
   w8_generations_<tag>.txt           manual-read dump for V3
-  W8_AMNESIC.md                      cross-model verdict
+  W8A_AMNESIC.md                      cross-model verdict
 """
 import argparse
 import csv
@@ -45,9 +45,9 @@ import numpy as np  # noqa: E402
 import tom_common as tc  # noqa: E402
 
 OUT_DIR = os.path.join(tc.ROOT, "outputs", "experiments")
-PRESPEC = os.path.join(OUT_DIR, "W8_PRESPEC.md")
+PRESPEC = os.path.join(OUT_DIR, "W8A_PRESPEC.md")
 
-# ---- pre-specified constants (W8_PRESPEC.md). Not CLI flags, so they cannot drift. ----
+# ---- pre-specified constants (W8A_PRESPEC.md). Not CLI flags, so they cannot drift. ----
 J4_EFFECT_FLOOR = 0.0988      # q95 of the within-scenario permutation null, floor_derivation.csv
 INTENT_CHANCE = 0.50          # 149 guilty / 149 innocent
 OUTCOME_CHANCE = 0.5168       # 154 harm / 144 no_harm
@@ -61,14 +61,14 @@ CELL_SD_RETENTION = 0.50      # P2: recovery requires >= 50% of the pre-erasure 
 GAMMAS = [0.25, 0.50, 0.75, 1.00]
 ARMS = ["outcome", "intent", "random"]
 
-# W3-identified peak layers; inherited, not re-selected, so W8 cannot gain an effect by
-# choosing a friendlier depth (W8_PRESPEC.md, "Scope").
+# W3-identified peak layers; inherited, not re-selected, so W8A cannot gain an effect by
+# choosing a friendlier depth (W8A_PRESPEC.md, "Scope").
 W3_LAYERS = {
     "allenai/OLMo-2-1124-7B-Instruct": 16,
     "Qwen/Qwen2.5-7B-Instruct": 19,
     # E5b's third model has no W3 site. Its layer was chosen in-run by W3's own rule (the layer
     # maximising leave-group-out intent probe accuracy) BEFORE any behavioural readout, and is
-    # recorded in w8_amnesic_layer_selection_Llama-3.1-Tulu-3-8B.csv. It is pinned here so
+    # recorded in w8a_amnesic_layer_selection_Llama-3.1-Tulu-3-8B.csv. It is pinned here so
     # re-reporting cannot silently re-select it.
     "allenai/Llama-3.1-Tulu-3-8B": 17,
 }
@@ -98,7 +98,7 @@ def fit_eraser(X, y, rank=1):
     and erase again. Each pass is still an affine map, so the composition is affine and the
     gamma interpolation in the caller means the same thing at every rank. Falls back to
     iterative mean-projection when concept_erasure is unavailable, which the prespec permits.
-    See W8_PRESPEC.md amendment 1 for the rank-calibration procedure.
+    See W8A_PRESPEC.md amendment 1 for the rank-calibration procedure.
     """
     rank = max(int(rank), 1)
     try:
@@ -184,7 +184,7 @@ def train_fold_gate(X, y_erase, y_probe, folds, rank):
     Fitting on all data and then cross-validating drives accuracy far BELOW chance: zeroing
     the global class-mean difference forces train- and test-fold residual mean differences to
     have opposite signs, so the probe predicts held-out items backwards. That is an artifact,
-    not erasure success (W8_PRESPEC.md amendment 1).
+    not erasure success (W8A_PRESPEC.md amendment 1).
     """
     n = len(y_probe)
     allidx = np.arange(n)
@@ -204,7 +204,7 @@ def probe_acc_on(clf, sc, X, y, te):
 
 
 def insample_acc(X, y, seed=0):
-    """In-sample linear separability. V1a's measure (W8_PRESPEC.md amendment 2).
+    """In-sample linear separability. V1a's measure (W8A_PRESPEC.md amendment 2).
 
     With 4096 dimensions and 298 items this is 1.0 for any separable labelling, so landing on
     the majority-class rate means the classes are linearly INSEPARABLE -- a state that cannot
@@ -221,7 +221,7 @@ def calibrate_rank(X, yo, yi, folds_o, folds_i, ranks=(1, 2, 4, 8)):
     """Smallest rank satisfying V1a while satisfying V2; V1b measured and reported.
 
     Runs BEFORE any behavioural contrast is read, so the intervention strength cannot be
-    chosen to produce a contrast result. See W8_PRESPEC.md amendments 1 and 2.
+    chosen to produce a contrast result. See W8A_PRESPEC.md amendments 1 and 2.
     """
     base_i = float(np.mean([probe_acc_on(c, s, X, yi, t) for t, s, c in folds_i]))
     head0 = base_i - INTENT_CHANCE
@@ -299,7 +299,7 @@ def main():
     ap.add_argument("--run", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--report-only", action="store_true",
-                    help="rebuild W8_AMNESIC.md from the CSVs already on disk, so verdict "
+                    help="rebuild W8A_AMNESIC.md from the CSVs already on disk, so verdict "
                          "wording can be revised without repeating the GPU sweep")
     a = ap.parse_args()
 
@@ -311,7 +311,7 @@ def main():
     rows = w3.load_dataset(a.limit_groups)
 
     if not a.run or a.dry_run:
-        print("=== W8 AMNESIC OUTCOME ABLATION PLAN (dry-run) ===")
+        print("=== W8A AMNESIC OUTCOME ABLATION PLAN (dry-run) ===")
         print(f"stories={len(rows)}  "
               f"groups={len({tc.scenario_group_of(r['story_id']) for r in rows})}  "
               f"template={a.template}")
@@ -339,11 +339,11 @@ def main():
               f"(1 + {len(ARMS)}x{len(GAMMAS)}) = "
               f"{len(rows) * (1 + len(ARMS) * len(GAMMAS))}")
         print("\nLaunch:\n  JOBNAME=w8 TIME=06:00:00 MEM=96G bash engaging/submit_gpu.sh \\\n"
-              "    \"python code/experiments/63_w8_amnesic_outcome.py --run\"")
+              "    \"python code/experiments/63_w8a_amnesic_outcome.py --run\"")
         return
 
     if not os.path.exists(PRESPEC):
-        raise SystemExit(f"{PRESPEC} missing; W8 is pre-registered, refusing to run.")
+        raise SystemExit(f"{PRESPEC} missing; W8A is pre-registered, refusing to run.")
 
     os.makedirs(OUT_DIR, exist_ok=True)
     all_summaries = []
@@ -379,7 +379,7 @@ def load_summaries(model_ids):
     out = []
     for mid in model_ids:
         tag = mid.split("/")[-1]
-        sweep = os.path.join(OUT_DIR, f"w8_amnesic_{tag}.csv")
+        sweep = os.path.join(OUT_DIR, f"w8a_amnesic_{tag}.csv")
         if not os.path.exists(sweep):
             print(f"  (skip {tag}: {os.path.basename(sweep)} not on disk)")
             continue
@@ -391,7 +391,7 @@ def load_summaries(model_ids):
                 if k in r:
                     d[k] = _bool(r[k])
             rows.append(d)
-        cal_p = os.path.join(OUT_DIR, f"w8_amnesic_calibration_{tag}.csv")
+        cal_p = os.path.join(OUT_DIR, f"w8a_amnesic_calibration_{tag}.csv")
         cal = []
         if os.path.exists(cal_p):
             for r in csv.DictReader(open(cal_p)):
@@ -431,9 +431,9 @@ def run_one(model_id, rows, a, w3):
     tag = model_id.split("/")[-1]
     L = W3_LAYERS.get(model_id)
     if L is None:
-        raise SystemExit(f"{model_id} has no W3 layer recorded; W8 inherits the W3 site.")
+        raise SystemExit(f"{model_id} has no W3 layer recorded; W8A inherits the W3 site.")
 
-    print(f"\n{'=' * 70}\n W8 {tag}: erasing at L{L}\n{'=' * 70}", flush=True)
+    print(f"\n{'=' * 70}\n W8A {tag}: erasing at L{L}\n{'=' * 70}", flush=True)
     tok = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
@@ -494,9 +494,9 @@ def run_one(model_id, rows, a, w3):
     print("  calibrating erasure rank against V1/V2 (no behavioural number read yet):",
           flush=True)
     sel_rank, cal_rows = calibrate_rank(X, yo, yi, folds_o, folds_i)
-    _write(os.path.join(OUT_DIR, f"w8_amnesic_calibration_{tag}.csv"), cal_rows)
+    _write(os.path.join(OUT_DIR, f"w8a_amnesic_calibration_{tag}.csv"), cal_rows)
     if sel_rank is None:
-        print("  !! no rank satisfies V1a and V2 together. Per W8_PRESPEC amendments 1-2, W8 "
+        print("  !! no rank satisfies V1a and V2 together. Per W8A_PRESPEC amendments 1-2, W8A "
               "withdraws for this model rather than reporting a behavioural null.", flush=True)
         return dict(model=tag, model_id=model_id, layer=L, withdrawn=True,
                     calibration=cal_rows, rows=[], base_contrast=float("nan"),
@@ -706,9 +706,9 @@ def run_one(model_id, rows, a, w3):
                                 if r["arm"] == arm and r["gates_pass"])))
 
     set_erasure(None, 0.0)
-    _write(os.path.join(OUT_DIR, f"w8_amnesic_{tag}.csv"), rows_out)
-    _write(os.path.join(OUT_DIR, f"w8_amnesic_verification_{tag}.csv"), ver_out)
-    _write(os.path.join(OUT_DIR, f"w8_amnesic_gamma_gates_{tag}.csv"), cal_out)
+    _write(os.path.join(OUT_DIR, f"w8a_amnesic_{tag}.csv"), rows_out)
+    _write(os.path.join(OUT_DIR, f"w8a_amnesic_verification_{tag}.csv"), ver_out)
+    _write(os.path.join(OUT_DIR, f"w8a_amnesic_gamma_gates_{tag}.csv"), cal_out)
     make_figure(rows_out, tag, base_c, base_cells)
 
     del model
@@ -752,8 +752,60 @@ def _load_e5():
         return None
 
 
+def _e6_banner_lines():
+    """E6's bearing on the specificity bound, read from E6's committed CSVs.
+
+    E6 is a differently-specified control, not a re-run of E5a: E5a's P1 failure stands as
+    recorded and is restated as a failure two bullets above this one. What E6 adds is a second,
+    stricter arm (orthogonalized, never over-projected) whose result points the other way, and
+    both belong in the bound.
+    """
+    p = os.path.join(HERE, "66_e6_controls.py")
+    if not os.path.exists(p):
+        return []
+    try:
+        spec = importlib.util.spec_from_file_location("e6", p)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        A, _ = m.e6a()
+        B = m.e6b()
+    except Exception as e:                                  # reporting must not mask a run
+        print(f"  (E6 banner unavailable: {e})")
+        return []
+    if not B:
+        return []
+    inert = sum(1 for v in B.values() if v["inert"])
+    worst = max((v["worst"] for v in B.values() if v["worst"]),
+                key=lambda r: abs(m._f(r["dcontrast"])), default=None)
+    prim = A.get(("cached_raw_text", "meandiff"))
+    lines = [f"> - **E6 (a new control, not a re-run of E5a): orthogonalized nuisance erasure is "
+             f"inert in {inert} of {len(B)} models.** With the nuisance direction Gram-Schmidt "
+             f"orthogonalized against outcome and intent and the erasure held to `s ≤ 1`, the "
+             f"largest nuisance |Δcontrast| at any coherent dose is "
+             f"**{abs(m._f(worst['dcontrast'])):.4f}**" if worst else
+             "> - **E6: orthogonalized nuisance erasure is inert.**"]
+    lines[0] += (f", far under the 0.0988 floor, and separation is "
+                 + ", ".join(f"{B[t]['min_sep']:.1f}×" for t in m.MODELS if t in B)
+                 + " (OLMo, Qwen, Tulu) against E5a's 10.26×, 1.72×, 4.31×. **E5a's P1 verdict "
+                   "still stands as a failure** — E6 asks a different question (does a matched "
+                   "*erasure* move the contrast?) and gets a different answer than E5a's "
+                   "(does a matched *perturbation*?).")
+    if prim:
+        lines.append(f">   The geometric explanation was tested and **not supported**: Qwen's "
+                     f"scenario–outcome overlap exceeds the other models by only "
+                     f"{prim['p1_margin']:+.4f} against a pre-registered {0.10:.2f} bar, and the "
+                     f"ordering reverses under the other estimator. What is ruled out is a "
+                     f"**Qwen-specific** elevation in overlap, which is what a Qwen-specific "
+                     f"failure would need; overlap is in fact substantial in *all three* models "
+                     f"in the chat-templated geometry the hook acts in (ρ = 0.44–0.66). So E5a's "
+                     f"failure is attributed to over-projection (`s = 1.28`) rather than to that "
+                     f"model being geometrically unusual.")
+    lines[-1] += "\n"
+    return lines
+
+
 def _e5_headline_banner():
-    """E5's consequences, at the top of W8's own verdict.
+    """E5's consequences, at the top of W8A's own verdict.
 
     E5a's P1 failure and E5b's COLLAPSE label both bound this document's headline. A reader who
     stops after the first screen must not leave with the pre-E5 claim, so the bound goes above
@@ -781,16 +833,18 @@ def _e5_headline_banner():
                "and 0.60 (E5c), so it is not an artefact of compression; and at equal "
                "perturbation norm the outcome arm still exceeds every nuisance arm by 10.3× in "
                "OLMo and 4.3× in Tulu.\n")
+    out += _e6_banner_lines()
     out.append("> Full detail and thresholds: [`E5_CONTROLS.md`](E5_CONTROLS.md), "
-               "[`E5_PRESPEC.md`](E5_PRESPEC.md).\n")
+               "[`E5_PRESPEC.md`](E5_PRESPEC.md), [`E6_CONTROLS.md`](E6_CONTROLS.md), "
+               "[`E6_PRESPEC.md`](E6_PRESPEC.md).\n")
     return out
 
 
 def write_verdict(summaries):
-    L = ["# W8 (E3) — amnesic outcome ablation: verdict\n",
-         "Generated by `code/experiments/63_w8_amnesic_outcome.py`. Gates V1–V4 and "
+    L = ["# W8A (E3) — amnesic outcome ablation: verdict\n",
+         "Generated by `code/experiments/63_w8a_amnesic_outcome.py`. Gates V1–V4 and "
          "predictions P1–P4, including the collapse-vs-recovery discriminator, were fixed in "
-         "[`W8_PRESPEC.md`](W8_PRESPEC.md) before this ran.\n",
+         "[`W8A_PRESPEC.md`](W8A_PRESPEC.md) before this ran.\n",
          "> **Read P2 before reading any Δcontrast.** The headline contrast is a diagonal: "
          "`attempted` differs from `accidental` on *both* factors. Erasing outcome moves it "
          "toward zero mechanically, so a movement past the J4 floor is only evidence of "
@@ -817,7 +871,7 @@ def write_verdict(summaries):
                      "on) while still satisfying V2 (intent decoding intact). The outcome "
                      "direction cannot be selectively erased at this site, so there is no "
                      "manipulation whose behavioural effect would be interpretable. Per "
-                     "W8_PRESPEC amendments 1–2 this is a withdrawal, not a behavioural "
+                     "W8A_PRESPEC amendments 1–2 this is a withdrawal, not a behavioural "
                      "null.\n")
         _cal = s.get("calibration", [])
         if _cal:
@@ -840,9 +894,9 @@ def write_verdict(summaries):
             if any(not c["v1b_generalises"] for c in _cal if c.get("selected")):
                 L.append("> **Scope cap (V1b failed).** The eraser is exact on the items the "
                          "model is scored on, but an eraser fitted on four fifths of the "
-                         "scenario groups does not fully transfer to the held-out fifth. W8 "
+                         "scenario groups does not fully transfer to the held-out fifth. W8A "
                          "therefore speaks to *these* stimuli at *this* site, and is not a "
-                         "claim about a general outcome-erasure mechanism. Per W8_PRESPEC "
+                         "claim about a general outcome-erasure mechanism. Per W8A_PRESPEC "
                          "amendment 2 this caps the claim; it does not void the behavioural "
                          "readout, because the readout requires only that outcome be "
                          "unreadable from the residuals actually processed.\n")
@@ -987,7 +1041,7 @@ def write_verdict(summaries):
               if r["arm"] == "outcome" and r["gates_pass"]]
     L.append("## Cross-model reading\n")
     if not labels:
-        L.append("No gate-passing outcome-erasure dose in any model; W8 yields no verdict "
+        L.append("No gate-passing outcome-erasure dose in any model; W8A yields no verdict "
                  "and is reported as withdrawn, not as a null.\n")
     elif all(x == "RECOVERY" for x in labels):
         L.append(f"All {len(labels)} models show RECOVERY: intent was **latent but suppressed** "
@@ -1073,7 +1127,7 @@ def write_verdict(summaries):
                  "[`E5_CONTROLS.md`](E5_CONTROLS.md).\n")
         L += m.e5_sections()
 
-    p = os.path.join(OUT_DIR, "W8_AMNESIC.md")
+    p = os.path.join(OUT_DIR, "W8A_AMNESIC.md")
     open(p, "w").write("\n".join(L))
     print(f"\nwrote {os.path.relpath(p, tc.ROOT)}")
 
@@ -1115,7 +1169,7 @@ def make_figure(rows, tag, base_c, base_cells):
     ax2.set_title("all four cells — collapse vs differential movement", fontsize=9)
     ax2.legend(fontsize=7, frameon=False)
     fig.tight_layout()
-    out = os.path.join(OUT_DIR, f"w8_amnesic_{tag}.png")
+    out = os.path.join(OUT_DIR, f"w8a_amnesic_{tag}.png")
     fig.savefig(out, dpi=150)
     plt.close(fig)
     print(f"wrote {os.path.relpath(out, tc.ROOT)}")

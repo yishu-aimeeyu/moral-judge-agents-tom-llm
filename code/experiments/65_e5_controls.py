@@ -2,10 +2,10 @@
 """E5 -- the four controls that harden (or bound) W8's headline.
 
 WHY THIS EXISTS AND WHY IT IS A SEPARATE SCRIPT. The E5 compute lives in
-63_w8_amnesic_outcome.py (the GPU sweep: nuisance arms, the third model, the dose grid). That
+63_w8a_amnesic_outcome.py (the GPU sweep: nuisance arms, the third model, the dose grid). That
 run completed and wrote every CSV, then crashed in its verdict writer. Rather than re-spend 39
 GPU-minutes to recover prose, the REPORTING is implemented here against the CSVs on disk, and
-63 imports `e5_sections` so W8_AMNESIC.md still gains the sections E5_PRESPEC.md promised.
+63 imports `e5_sections` so W8A_AMNESIC.md still gains the sections E5_PRESPEC.md promised.
 Nothing here recomputes a model quantity; every number is read from a file.
 
 Thresholds are read from E5_PRESPEC.md's constants and are NOT re-derived:
@@ -63,11 +63,11 @@ def load_all():
     d = {}
     for tag in MODELS:
         d[tag] = {
-            "amnesic": _read(os.path.join(OUT_DIR, f"w8_amnesic_{tag}.csv")),
-            "nuisance": _read(os.path.join(OUT_DIR, f"w8_nuisance_{tag}.csv")),
-            "decod": _read(os.path.join(OUT_DIR, f"w8_nuisance_decodability_{tag}.csv")),
-            "layersel": _read(os.path.join(OUT_DIR, f"w8_amnesic_layer_selection_{tag}.csv")),
-            "calib": _read(os.path.join(OUT_DIR, f"w8_amnesic_calibration_{tag}.csv")),
+            "amnesic": _read(os.path.join(OUT_DIR, f"w8a_amnesic_{tag}.csv")),
+            "nuisance": _read(os.path.join(OUT_DIR, f"w8a_nuisance_{tag}.csv")),
+            "decod": _read(os.path.join(OUT_DIR, f"w8a_nuisance_decodability_{tag}.csv")),
+            "layersel": _read(os.path.join(OUT_DIR, f"w8a_amnesic_layer_selection_{tag}.csv")),
+            "calib": _read(os.path.join(OUT_DIR, f"w8a_amnesic_calibration_{tag}.csv")),
         }
     return d
 
@@ -180,6 +180,77 @@ def e5a(data=None):
 
 
 # ---------------------------------------------------------------- E5b
+def _tulu_finding_section(data=None):
+    """E6d.5 -- the third model's COLLAPSE, written up as a result rather than a failed gate.
+
+    A gate label records whether a pre-registered signature was met; it does not say what the
+    model did. Across the three models Delta-contrast and retained cell spread move in opposite
+    directions, and the third model sits at the end of that trade-off. Every number here is read
+    from the committed w8a_amnesic_<tag>.csv at each model's gate-passing dose.
+    """
+    data = data or load_all()
+    rows = []
+    for tag in MODELS:
+        am = data[tag]["amnesic"]
+        if not am:
+            continue
+        passing = [r for r in outcome_rows(am) if _b(r["gates_pass"])]
+        if not passing:
+            continue
+        r = max(passing, key=lambda x: _f(x["dcontrast"]))
+        rows.append((tag, _f(r["dcontrast"]), _f(r["cell_sd_retention"]), _f(r["gamma"])))
+    if len(rows) < 3:
+        return []
+    by_d = sorted(rows, key=lambda t: -t[1])
+    by_s = sorted(rows, key=lambda t: t[2])
+    biggest, tightest = by_d[0], by_s[0]
+    L = ["### The third model's COLLAPSE is a finding, not just a failed gate\n"]
+    L.append("The label answers a pre-registered yes/no question. It does not describe what the "
+             "model did, and what this model did is the most informative thing in E5b:\n")
+    L.append("| model | Δcontrast at gate-passing dose | cell spread retained | γ | label |")
+    L.append("|---|---:|---:|---:|---|")
+    for tag, dc, sd, g in by_d:
+        lab = "COLLAPSE" if sd < CELL_SD_RETENTION else "RECOVERY"
+        L.append(f"| `{tag}` | {dc:+.4f} | {sd:.4f} | {g:.2f} | "
+                 + (f"**{lab}**" if lab == "COLLAPSE" else lab) + " |")
+    L.append("")
+    same = biggest[0] == tightest[0]
+    L.append(f"**The largest contrast movement of the three and the lowest retained spread of the "
+             f"three are the same model.** `{biggest[0]}` moves the contrast {biggest[1]:+.4f} — "
+             f"more than either model that passed — while retaining {tightest[2]:.4f} of its cell "
+             f"spread, the least of the three."
+             + ("" if same else " (These are different models, so the reading below does not "
+                               "apply and this section should be revisited.)")
+             + (" Across all three models the two quantities are **perfectly inversely "
+                "ordered** — more movement, less surviving spread, with no exceptions — which is "
+                "the pattern that makes the reading below worth stating at all."
+                if [t[0] for t in by_d] == [t[0] for t in by_s] else ""))
+    L.append("")
+    L.append("**The reading.** The two quantities are not independent: a manipulation that "
+             "flattens all four cell means toward each other necessarily shrinks the "
+             "attempted−accidental diagonal's *interpretation* while still moving its value. So "
+             "the joint pattern — biggest movement, smallest surviving spread — is what you "
+             "expect when the erased direction is doing **more than one job**. In the two models "
+             "that recover, removing the outcome direction subtracts outcome sensitivity and "
+             "leaves the rest of the rating behaviour standing. In this model, removing it takes "
+             "a substantial part of the model's graded rating behaviour with it: the four cells "
+             "collapse toward one another rather than re-ordering. The natural description is "
+             "that **this model's outcome direction is more entangled with general rating "
+             "behaviour** — closer to a \"how bad is this\" magnitude axis that the whole "
+             "judgment rides on — than to a separable outcome-vs-intent feature.\n")
+    L.append("**Why this matters beyond one model, and how far it can be pushed.** It predicts "
+             "that recovery-by-erasure is not a property of the intervention but of how "
+             "*factorised* a given model's moral representation is, and that the same erasure "
+             "will read as RECOVERY or COLLAPSE depending on that. With n = 3 that is a "
+             "hypothesis, not a demonstrated dimension of variation: three models cannot "
+             "establish a trade-off curve, no independent measure of factorisation was "
+             "pre-registered here, and the ordering could reflect scale (8B vs 7B), recipe, or "
+             "the site the erasure was applied at. It is stated as the reading the data invite "
+             "and as the thing a fourth and fifth model would test, and the headline stays at "
+             "**2 of 3**.\n")
+    return L
+
+
 def e5b(data=None):
     data = data or load_all()
     tag = E5B_MODEL
@@ -236,7 +307,7 @@ def write_spread_csv(c):
             eligible_spread_gt_0_55=sd > 0.55, eligible_spread_gt_0_60=sd > 0.60,
             v1a_guarded=r.get("v1a_guarded"), gates_pass=r.get("gates_pass"),
             note="sensitivity only; sub-maximal doses do not satisfy V1a"))
-    p = os.path.join(OUT_DIR, "w8_spread_sensitivity.csv")
+    p = os.path.join(OUT_DIR, "w8a_spread_sensitivity.csv")
     with open(p, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         w.writeheader()
@@ -304,12 +375,12 @@ def e5_sections(data=None):
                  f"{'**YES**' if abs(v['dc_out']) >= J4_EFFECT_FLOOR else 'no'} |")
     L.append("")
     L.append("Only the γ=1.0 row of each arm is tabulated; the full dose grid is in "
-             "`w8_nuisance_<tag>.csv`. Decodability is leave-scenario-group-out CV accuracy at "
+             "`w8a_nuisance_<tag>.csv`. Decodability is leave-scenario-group-out CV accuracy at "
              "the erasure layer; `scenario` is multi-class and its held-out groups are unseen "
              "classes, so its V1a is measured **in-sample** and it has no leave-group-out "
              "number.\n")
     L.append("> **A correction to the sweep's own gate column, disclosed rather than silently "
-             "applied.** `w8_nuisance_<tag>.csv` records `v1a_guarded = True` for the "
+             "applied.** `w8a_nuisance_<tag>.csv` records `v1a_guarded = True` for the "
              "norm-matched arms while also recording the erased factor's in-sample accuracy as "
              "1.000. Both cannot be true, and the accuracy is the trustworthy number. The cause "
              "is the dose convention: norm-matching scales the projection by `s > 1` "
@@ -400,7 +471,7 @@ def e5_sections(data=None):
                  f"the layer maximising leave-scenario-group-out intent probe accuracy on the "
                  f"chat-templated last-token residual: **L{B['layer']}** "
                  f"(intent CV accuracy {B['layer_acc']:.4f}, swept over {B['n_layers']} "
-                 f"layers; full sweep in `w8_amnesic_layer_selection_{B['tag']}.csv`). There is "
+                 f"layers; full sweep in `w8a_amnesic_layer_selection_{B['tag']}.csv`). There is "
                  f"no W3 baseline contrast for this model, so the W8 drift cross-check is "
                  f"**n/a**, not a passing check.\n")
         if B["calib"]:
@@ -455,6 +526,7 @@ def e5_sections(data=None):
                      f"failure *at full erasure*, and whether it differs in kind from the other "
                      f"two or only in how much erasure it tolerates is not resolvable here.")
         L.append("")
+        L += _tulu_finding_section(data)
 
     # ---------------- E5c
     if C:
@@ -541,7 +613,7 @@ def headline(data=None):
 def write_verdict(data):
     L = ["# E5 — controls hardening W8: verdict\n",
          "Generated by `code/experiments/65_e5_controls.py` from the CSVs written by "
-         "`63_w8_amnesic_outcome.py --run --nuisance --select-site`. Thresholds were fixed in "
+         "`63_w8a_amnesic_outcome.py --run --nuisance --select-site`. Thresholds were fixed in "
          "[`E5_PRESPEC.md`](E5_PRESPEC.md) before that run.\n"]
     L += headline(data)
     L += e5_sections(data)
@@ -604,7 +676,7 @@ def make_figure(data):
     fig.suptitle("E5a — is the effect specific to the outcome direction? "
                  "(nuisance arms scaled to the same perturbation norm)", fontsize=10)
     fig.tight_layout(rect=(0, 0, 1, 0.93))
-    p = os.path.join(OUT_DIR, "w8_nuisance_specificity.png")
+    p = os.path.join(OUT_DIR, "w8a_nuisance_specificity.png")
     fig.savefig(p, dpi=150)
     plt.close(fig)
     print(f"wrote {os.path.relpath(p, ROOT)}")

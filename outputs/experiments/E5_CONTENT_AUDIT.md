@@ -103,6 +103,16 @@ This is the one item that can actually cause a reader to misread a number.
 title, so "E3/W8" or just "E3" for the ablation is the cheaper fix), and disambiguate the
 `RUN_STATUS.md` and `STATUS_REPORT.md` rows.
 
+> **RESOLVED 2026-08-10 (E6d.1).** The ablation is now **W8A** and paper assembly keeps **W8**.
+> Renamed with `git mv` so history follows: `W8_PRESPEC.md` → `W8A_PRESPEC.md`,
+> `W8_AMNESIC.md` → `W8A_AMNESIC.md`, `63_w8_amnesic_outcome.py` →
+> `63_w8a_amnesic_outcome.py`, and every `w8_amnesic_*` / `w8_nuisance_*` /
+> `w8_spread_sensitivity` / figure name to `w8a_*`. `57_w8_paper_assembly.py` and
+> `outputs/paper/` are untouched, since "W8 — Paper assembly" is the pre-existing meaning.
+> `RUN_STATUS.md` now carries a W8A row and the W8 row states which one it is. The rename is
+> disclosed at the top of `W8A_PRESPEC.md` because that file is pre-registered: only names
+> changed, no threshold or prediction, and the pre-rename text is at commit `fea5f51`.
+
 ---
 
 ## Summary

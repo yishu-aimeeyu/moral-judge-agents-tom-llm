@@ -19,6 +19,7 @@ Outputs
   outputs/mentor_packet_figures/    (figures referenced by the packet, copied in)
 """
 import csv
+import glob
 import json
 import os
 import shutil
@@ -57,6 +58,9 @@ FIGURES = [
     ("outputs/figures_final/w3_steering_dose_Qwen.png",
      "W3 steering, Qwen2.5-7B-Instruct: same verdict, with the probe-weight intent "
      "direction flat across the whole coherent band."),
+    ("outputs/figures_final/w4_curriculum.png",
+     "W4 prompt curriculum: in-context escalation vs baseline — 3/6 clear the L5 bar; "
+     "stack gains are mostly accidental-blame suppression (not \"reachable by prompting\")."),
     ("outputs/figures_final/w3_layersweep_OLMo.png",
      "W3 M2 layer×direction grid (narrow claim: inert at peak and deeper)."),
     ("outputs/figures_final/w3_manipulation_OLMo.png",
@@ -325,10 +329,38 @@ def w3_lines():
         "",
         "So the claim is now carried by four tests rather than three, one of them a "
         "manipulation: **intent is represented, linearly readable, and causally inert for "
-        "this judgment.**",
+        "this judgment under residual-stream intervention.**",
         "",
     ]
+    out += w4_lines()
     return out
+
+
+def w4_lines():
+    """W4: do not claim prompting rescues what steering could not."""
+    path = os.path.join(ROOT, "outputs", "experiments", "W4_SUMMARY.md")
+    if not os.path.exists(path):
+        return []
+    return [
+        "### W4 — prompting does not cleanly rescue the bias either",
+        "",
+        "**Do not frame W3+W4 as \"unreachable by steering, reachable by prompting.\"** The "
+        "completed 6-model × 8-level curriculum clears the pre-registered +0.15 bar in only "
+        "**3/6** models at L5; gains at the top of the stack are predominantly "
+        "**accidental-blame suppression** rather than intent re-weighting; genuine "
+        "intent-led movement appears in **2/6** and only under principle-alone (L8); added "
+        "scaffolding often *degrades* performance relative to the bare principle "
+        "(sub-additive; principle-alone beats the full stack in 3/6).",
+        "",
+        "**Frame:** the bias is *entrenched against additive intervention* — resistant to "
+        "steering along the intent direction and only partially and inconsistently responsive "
+        "to instruction. This is a claim about what prompting and steering can reach, not "
+        "about what the representation contains: **subtractive** intervention does move it "
+        "(W8A/E3 erases the outcome direction and the contrast recovers), so intent is "
+        "recoverable in the representation while being unreachable by these means. "
+        "Full numbers: `W4_SUMMARY.md`, `W4_CURRICULUM.md`, `W8A_AMNESIC.md`.",
+        "",
+    ]
 
 
 def anchor_section():
@@ -376,6 +408,49 @@ def anchor_section():
     return lines
 
 
+def prose_question():
+    """Question 4's numbers, recomputed from the W3 prose CSVs.
+
+    These were hardcoded as "46-64%" and "3-10x", which were the LEXICON-only figures from
+    before the LLM classifier became the primary coder. The lexicon had a recall hole, so the
+    packet was understating the mention rate by roughly 20 points -- exactly the transcription
+    drift this script exists to prevent, sitting inside the script.
+    """
+    exp = os.path.join(ROOT, "outputs", "experiments")
+    rates, ratios = [], []
+    for path in sorted(glob.glob(os.path.join(exp, "w3_prose_items_*.csv"))):
+        model = os.path.basename(path)[len("w3_prose_items_"):-len(".csv")]
+        rows = list(csv.DictReader(open(path)))
+        if not rows:
+            continue
+        lab_p = os.path.join(exp, f"w3_prose_llm_labels_{model}.csv")
+        # Primary coder is the LLM rater; fall back to the lexicon only if it is absent.
+        if os.path.exists(lab_p):
+            lab = {r["story_id"]: r["llm_either"] for r in csv.DictReader(open(lab_p))}
+            flag = [str(lab.get(r["story_id"], "")).strip() in ("1", "True", "true")
+                    for r in rows]
+        else:
+            flag = [str(r["mentions_either"]).strip() in ("1", "True", "true") for r in rows]
+        rates.append(sum(flag) / len(rows))
+        sub = [r for r, f in zip(rows, flag) if f]
+        if sub:
+            def m(pred):
+                v = [float(r["rating_norm"]) for r in sub if pred(r)]
+                return sum(v) / len(v) if v else float("nan")
+            b_int = m(lambda r: int(r["intent"]) == 1) - m(lambda r: int(r["intent"]) == 0)
+            b_out = m(lambda r: int(r["outcome"]) == 1) - m(lambda r: int(r["outcome"]) == 0)
+            if b_int and abs(b_int) > 1e-9:
+                ratios.append(b_out / b_int)
+    if not rates:
+        return ("Models name belief/intent in most explanations and still rate by outcome "
+                "inside that subset (prose CSVs absent — rerun `51_w3_prose_rating.py`).")
+    return (f"Models name the agent's belief or intent in "
+            f"{min(rates):.0%}–{max(rates):.0%} of their own explanations "
+            f"(primary LLM coder; the question never mentions intent or accident) and still "
+            f"rate by outcome inside that subset — b_outcome/b_intent "
+            f"{min(ratios):.1f}×–{max(ratios):.1f}×, cell order inverted.")
+
+
 def questions_section():
     # Fixed set — methodological questions settled for the mentor meeting. Do not
     # regenerate or swap back to the obsolete reconstructed list (Llama counterexample /
@@ -395,10 +470,9 @@ def questions_section():
         "3. **Detectable-effect size (M3).** Outcome moves contrast 0.232–0.259; intent-probe "
         "≤0.015 (~15×). Is stating sensitivity in control units sufficient, or do you want a "
         "formal power calculation against a pre-specified minimal interesting effect?",
-        "4. **Prose/rating dissociation.** Models name belief/intent in 46–64% of "
-        "explanations and still rate by outcome inside that subset (b_outcome/b_intent "
-        "3–10×; cell order inverted). Lexicon↔hand κ≈0.73–0.76; lexicon↔Haiku κ≈0.42–0.49. "
-        "Is this the most legible result in the paper, and should it lead the talk?",
+        "4. **Prose/rating dissociation.** " + prose_question() + " Lexicon↔hand "
+        "κ≈0.73–0.76; lexicon↔LLM κ≈0.42–0.49. Is this the most legible result in the paper, "
+        "and should it lead the talk?",
         "5. **Ceiling compression.** Where difference-of-means moves contrast it raises all "
         "four cells; accidental has least headroom. Keep that as a permanent caveat beside "
         "every intent_dom number, or demote intent_dom from the headline tables entirely?",
@@ -446,6 +520,10 @@ def limitations_section():
         "would not show up in it.",
         "9. **Model ceiling 14B, roster concentration.** Half the roster is Qwen2.5; no "
         "70B-class model has been run.",
+        "10. **W4 does not establish prompt-reachability.** Only 3/6 meet the "
+        "pre-registered L5 bar; stack-top gains are mostly accidental-blame suppression; "
+        "intent-led movement is 2/6 and principle-alone only. Do not cite W4 as showing "
+        "that prompting recovers what steering could not.",
         "",
     ]
 
@@ -475,10 +553,19 @@ def main():
         "human pattern and falling at or below the youngest measured child band. The bias is "
         "induced by post-training: one stage of SFT is sufficient in all three families with "
         "published checkpoints, though which stage carries most of the shift is "
-        "recipe-dependent. Intent is nonetheless linearly decodable from the residual stream "
-        "at 0.85-0.98, and four tests — three correlational nulls plus a pre-registered "
-        "steering intervention with a working positive control — say that readable "
-        "representation is not what drives the judgment.",
+        "recipe-dependent. Intent is linearly decodable from the residual stream at "
+        "0.85-0.98, yet residual-stream steering does not move the judgment and in-context "
+        "prompting moves it only partially and inconsistently (3/6 clear the L5 bar; stack "
+        "gains are mostly accidental-blame suppression). Two things must be kept apart here. "
+        "The bias is **entrenched against the interventions that leave the model intact** — "
+        "steering along the intent direction and in-context prompting both fail to move it — "
+        "but it is **not** the case that intent has been overwritten: **removing the outcome "
+        "direction lets intent surface** (W8A/E3, Δcontrast +0.23 to +0.35 in 3 of 3 models, "
+        "RECOVERY in 2 of 3 under the pre-registered cell-spread rule). So the frame is "
+        "prompt-entrenchment with preserved representational recoverability: the intent signal "
+        "is present and causally reachable, just outcompeted at readout by a dominant outcome "
+        "signal. What E5a's failed specificity control leaves open is how *specific* that "
+        "recovery is to the outcome direction.",
         "",
     ]
     lines += tom_section()
