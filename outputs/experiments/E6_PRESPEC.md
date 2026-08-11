@@ -237,3 +237,72 @@ margin (0.10 absolute, 0.05 cosine), the `k = 10` primary subspace, and the P2 b
 chosen without knowledge of any E6 result. The only inputs consulted were the shapes and keys of
 `outputs/acts/*.npz`, the column headers of `dataset/master/moral_2x2_master.csv`, and the
 already-committed E5 numbers quoted above.
+
+---
+
+## Amendment 1, 2026-08-10 — the direction this prespec specified does not erase the factor
+
+**This amendment was written between two GPU jobs, after the first aborted and before any E6b
+behavioural number existed.** It is reconstructed here from the run logs, which fix the timeline
+beyond dispute:
+
+| time | event | evidence |
+|---|---|---|
+| 18:30 | this prespec committed | commit `3dacb29` |
+| 18:42–18:43 | first E6b job **aborts on its own assertion** | `outputs/logs/gpu_20123946.log` |
+| 18:53 | second E6b job runs to completion | `outputs/logs/gpu_20124997.log` |
+
+The abort is the reason for the amendment, and it is the assertion in §E6b doing exactly the job
+it was written to do:
+
+```
+ASSERT plain_gender s=1: in-sample acc 1.0000 vs majority 0.5034 (tol 0.05)
+AssertionError: OLMo-2-1124-7B-Instruct plain_gender at s=1 did NOT drive gender to chance:
+acc=1.0000, majority=0.5034. Refusing to report a behavioural number from an erasure that did
+not erase (E6_PRESPEC E6b).
+```
+
+**What was wrong.** §E6a defined the factor direction as *"the top right-singular vector of
+`I − P`"* where `P` is the rank-1 LEACE projection. That was an error on my part. LEACE's
+projection is **oblique**, not orthogonal: it whitens, removes the direction in whitened space,
+and unwhitens. The subspace `I − P` maps onto is therefore not the subspace whose removal along a
+Euclidean projection erases the factor, and removing the top singular vector of `I − P` left
+gender **perfectly decodable** — accuracy 1.0000, not 0.5034.
+
+**The correction.** The factor direction becomes the **class-mean-difference direction**
+(`meandiff`), unit-normalised: `ŵ = (μ₊ − μ₋)/‖μ₊ − μ₋‖`, which is the direction whose rank-1
+Euclidean removal equalises the class means and hence drives linear accuracy to the majority rate.
+After the change the assertion passes exactly, in every model and both binary factors — in-sample
+accuracy lands on the majority rate to four decimals (`0.5034` gender, `0.5470` length).
+
+**Why this does not buy E6a a verdict, and how that is guaranteed rather than asserted.** Changing
+a direction estimator after seeing that the first one failed is precisely the move that can launder
+a prediction, so E6a is reported under **both** estimators, in the same table, with `meandiff` named
+as primary and `leace_sv` as originally specified. The margins are:
+
+| estimator | P1 margin (bar +0.10) | P2 margin (bar +0.05) | P1 |
+|---|---:|---:|---|
+| `meandiff` (primary after this amendment) | +0.0389 | −0.0719 | **fails** |
+| `leace_sv` (as originally specified) | −0.0355 | −0.0166 | **fails** |
+
+P1 and P2 fail under both, so the correction cannot be the reason for E6a's verdict. Under the
+original estimator Qwen is the **lowest** of the three models; under the corrected one it is the
+highest but by 0.0389 against a bar of 0.10. Both are recorded as NOT SUPPORTED.
+
+Unchanged by this amendment: every threshold (0.0988, ±0.05 V1 tolerance, 1.5× perplexity, 2×
+separation, the 0.10/0.05 E6a margins), `k = 10` as primary, the `s ≤ 1` rule and its assertion,
+the match-downward construction, and E6c's and E6d's reporting rules. The estimator is the only
+change.
+
+## Amendment 2, 2026-08-10 — E6a-live is completed from the dumped directions
+
+§"A representation mismatch" promised a confirmatory **E6a-live**: the same diagnostic recomputed
+on the chat-templated directions the erasure hook actually acts in, dumped by the E6b job to
+`e6_directions_<tag>.npz`. The E6b job wrote those dumps, but the live rows were never added to
+`e6_direction_overlap.csv`, so the confirmatory arm was left incomplete. It is completed now from
+the committed `.npz` files, which contain both the chat-templated residuals (`X`, 298 × d) and the
+`meandiff` direction vectors used by E6b.
+
+This adds rows with `source = live_chat_template`; it changes no cached row and no threshold. Per
+the original prespec, if cached and live disagree on E6a's prediction, **live is authoritative for
+interpreting E6b** and the disagreement is itself reported.
