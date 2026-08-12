@@ -1,0 +1,42 @@
+booklet,q_id,question,frame,measure,age_band,n,n_correct,accuracy,ci95_lo,ci95_hi
+booklet1,ToMB1_2AFC_12,Is Ethan being mean/naughty? (No),false_belief,naughty,child_4_5,52,33,0.6346,0.4987,0.752
+booklet1,ToMB1_2AFC_12,Is Ethan being mean/naughty? (No),false_belief,naughty,child_6_7,58,48,0.8276,0.7109,0.9036
+booklet1,ToMB1_2AFC_12,Is Ethan being mean/naughty? (No),false_belief,naughty,child_8plus,76,74,0.9737,0.909,0.9928
+booklet1,ToMB1_2AFC_13,Should Ethan get in trouble? (No),false_belief,trouble,child_4_5,50,36,0.72,0.5833,0.8253
+booklet1,ToMB1_2AFC_13,Should Ethan get in trouble? (No),false_belief,trouble,child_6_7,57,47,0.8246,0.7063,0.9018
+booklet1,ToMB1_2AFC_13,Should Ethan get in trouble? (No),false_belief,trouble,child_8plus,73,69,0.9452,0.8674,0.9785
+booklet1,ToMB2_2AFC_28,Is J being mean/naughty? (No),false_belief,naughty,child_4_5,55,34,0.6182,0.4861,0.7348
+booklet1,ToMB2_2AFC_28,Is J being mean/naughty? (No),false_belief,naughty,child_6_7,59,48,0.8136,0.6962,0.8926
+booklet1,ToMB2_2AFC_28,Is J being mean/naughty? (No),false_belief,naughty,child_8plus,73,73,1.0,0.95,1.0
+booklet1,ToMB2_2AFC_29,Should J get in trouble? (No),false_belief,trouble,child_4_5,54,36,0.6667,0.5336,0.7776
+booklet1,ToMB2_2AFC_29,Should J get in trouble? (No),false_belief,trouble,child_6_7,59,48,0.8136,0.6962,0.8926
+booklet1,ToMB2_2AFC_29,Should J get in trouble? (No),false_belief,trouble,child_8plus,74,72,0.973,0.9067,0.9926
+booklet1,ToMB2_2AFC_37,Is it fair that mother is mad with J? (No),false_belief,other,child_4_5,54,46,0.8519,0.734,0.923
+booklet1,ToMB2_2AFC_37,Is it fair that mother is mad with J? (No),false_belief,other,child_6_7,56,54,0.9643,0.8788,0.9902
+booklet1,ToMB2_2AFC_37,Is it fair that mother is mad with J? (No),false_belief,other,child_8plus,73,72,0.9863,0.9264,0.9976
+booklet1,ToMB2_2AFC_38,Is J mad at Isa? (No),false_belief,other,child_4_5,54,25,0.463,0.3369,0.5939
+booklet1,ToMB2_2AFC_38,Is J mad at Isa? (No),false_belief,other,child_6_7,58,45,0.7759,0.6534,0.8641
+booklet1,ToMB2_2AFC_38,Is J mad at Isa? (No),false_belief,other,child_8plus,73,55,0.7534,0.6436,0.838
+booklet1,ToMB2_2AFC_40,Is mother mad at Isa? (No),false_belief,other,child_4_5,54,39,0.7222,0.5911,0.8238
+booklet1,ToMB2_2AFC_40,Is mother mad at Isa? (No),false_belief,other,child_6_7,59,55,0.9322,0.8382,0.9733
+booklet1,ToMB2_2AFC_40,Is mother mad at Isa? (No),false_belief,other,child_8plus,74,72,0.973,0.9067,0.9926
+booklet2,ToMS_2AFC_16.5,Is Melanie being mean/naughty for taking Mitch's cookie? (Yes),true_belief,naughty,child_3,18,17,0.9444,0.7424,0.9901
+booklet2,ToMS_2AFC_16.5,Is Melanie being mean/naughty for taking Mitch's cookie? (Yes),true_belief,naughty,child_4_5,15,14,0.9333,0.7018,0.9881
+booklet2,ToMS_2AFC_16.5,Is Melanie being mean/naughty for taking Mitch's cookie? (Yes),true_belief,naughty,child_6_7,4,4,1.0,0.5101,1.0
+booklet2,ToMS_2AFC_16.5,Is Melanie being mean/naughty for taking Mitch's cookie? (Yes),true_belief,naughty,child_8plus,25,25,1.0,0.8668,1.0
+booklet2,ToMS_2AFC_16.7,Should Melanie get in trouble? (Yes),true_belief,trouble,child_3,18,13,0.7222,0.4913,0.875
+booklet2,ToMS_2AFC_16.7,Should Melanie get in trouble? (Yes),true_belief,trouble,child_4_5,15,11,0.7333,0.4805,0.891
+booklet2,ToMS_2AFC_16.7,Should Melanie get in trouble? (Yes),true_belief,trouble,child_6_7,4,4,1.0,0.5101,1.0
+booklet2,ToMS_2AFC_16.7,Should Melanie get in trouble? (Yes),true_belief,trouble,child_8plus,25,25,1.0,0.8668,1.0
+booklet2,ToMS_2AFC_16.9,Now Mitch has a cookie. Should Melanie still get in trouble? (Yes),true_belief,restitution,child_3,17,3,0.1765,0.0619,0.4103
+booklet2,ToMS_2AFC_16.9,Now Mitch has a cookie. Should Melanie still get in trouble? (Yes),true_belief,restitution,child_4_5,15,5,0.3333,0.1518,0.5829
+booklet2,ToMS_2AFC_16.9,Now Mitch has a cookie. Should Melanie still get in trouble? (Yes),true_belief,restitution,child_6_7,4,3,0.75,0.3006,0.9544
+booklet2,ToMS_2AFC_16.9,Now Mitch has a cookie. Should Melanie still get in trouble? (Yes),true_belief,restitution,child_8plus,25,20,0.8,0.6087,0.9114
+booklet2,ToMS_2AFC_7.4,Is Allie being mean/naughty? (No),false_belief,naughty,child_3,18,2,0.1111,0.031,0.328
+booklet2,ToMS_2AFC_7.4,Is Allie being mean/naughty? (No),false_belief,naughty,child_4_5,16,7,0.4375,0.231,0.6682
+booklet2,ToMS_2AFC_7.4,Is Allie being mean/naughty? (No),false_belief,naughty,child_6_7,4,4,1.0,0.5101,1.0
+booklet2,ToMS_2AFC_7.4,Is Allie being mean/naughty? (No),false_belief,naughty,child_8plus,24,24,1.0,0.862,1.0
+booklet2,ToMS_2AFC_7.6,Should Allie get in trouble (No),false_belief,trouble,child_3,18,4,0.2222,0.09,0.4522
+booklet2,ToMS_2AFC_7.6,Should Allie get in trouble (No),false_belief,trouble,child_4_5,16,8,0.5,0.28,0.72
+booklet2,ToMS_2AFC_7.6,Should Allie get in trouble (No),false_belief,trouble,child_6_7,4,4,1.0,0.5101,1.0
+booklet2,ToMS_2AFC_7.6,Should Allie get in trouble (No),false_belief,trouble,child_8plus,23,23,1.0,0.8569,1.0

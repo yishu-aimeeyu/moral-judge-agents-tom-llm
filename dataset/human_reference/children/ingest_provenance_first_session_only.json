@@ -1,0 +1,8 @@
+{
+ "n_sessions_with_moral_2afc": 321,
+ "n_neurotypical_sessions": 253,
+ "n_moral_2afc_observations": 2061,
+ "n_excluded_by_source_flags": 60,
+ "n_dropped_as_repeat_session": 320,
+ "first_session_only": true
+}
