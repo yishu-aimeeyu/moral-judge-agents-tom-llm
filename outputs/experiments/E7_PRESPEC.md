@@ -101,3 +101,26 @@ We expect (A). It is falsified by `outcome_perp_scenario` failing the floor whil
 `outcome_full_dirmatched` and `outcome_in_scenario` clear it in the same model at the same
 displacement. That combination is recorded as (B) and reported as such, and this sentence exists
 so that outcome cannot later be described as a surprise.
+
+---
+
+## Amendment 1 — V1a is reported, not gated (appended before any E7b compute)
+
+The threshold table above inherits W8A_PRESPEC V1a: the erased factor's in-sample accuracy must
+fall within 0.05 of majority. That gate was written for a **full** erasure, where the projection is
+fitted to annihilate the factor and failing to reach chance means the erasure did not work.
+
+Every E7b arm is instead a **rank-1 directional projection at a matched norm**, and at s < 1 it is
+deliberately a partial displacement. Such an arm cannot drive outcome decoding to chance, and is
+not intended to: the matched-norm design is what makes the test arm, the positive control, the
+complement and the random nulls comparable to each other. Gating on V1a would therefore fail all
+four arms mechanically, including the positive control, and void the experiment by construction
+rather than by evidence.
+
+So for E7b, in-sample outcome accuracy is **recorded per arm** (`insample_outcome_acc` in the
+CSVs) and is **not** used as a pass/fail gate. The gates that do decide E7b are unchanged and
+unrelaxed: the 0.0988 effect floor, the ≤ 1.5 perplexity ratio, the ≥ 0.50 cell-SD retention, and
+the equal-displacement matching in item 6. The decision table is untouched.
+
+This is written down before compute so that it cannot be mistaken for a gate dropped after seeing
+that an arm failed it. The `s ≤ 1` assertion in item 5 remains live and hard.
