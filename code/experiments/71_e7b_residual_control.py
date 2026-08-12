@@ -312,6 +312,16 @@ def _read(p):
     return list(csv.DictReader(open(p))) if os.path.exists(p) else []
 
 
+def e6a_reference():
+    """E6a-live's own k=10 overlap per model, read from its CSV rather than transcribed."""
+    out = {}
+    for r in _read(os.path.join(OUT_DIR, "e6_direction_overlap.csv")):
+        if (r.get("direction") == "outcome" and r.get("estimator") == "meandiff"
+                and r.get("source") == "live_chat_template"):
+            out[r["model"]] = float(r["rho_scenario_k10"])
+    return out
+
+
 def report():
     """Apply the pre-registered decision table. No thresholds are chosen here."""
     per = {}
@@ -339,10 +349,25 @@ def report():
         def cleared(r):
             return bool(r and r["above_j4_floor"] == "True" and r["coherence_pass"] == "True")
 
-        per[tag] = dict(
+        v = dict(
             pos=pos, test=test, comp=comp, test_vs_comp=test_vs_comp, covs=covs, isos=isos,
             dose=chosen_dose, pos_ok=cleared(pos), test_ok=cleared(test), comp_ok=cleared(comp),
             rand_violation=any(cleared(r) for r in covs))
+        # Per-model pattern, so a split is reported as the specific patterns it is made of rather
+        # than as an average. `falsifier` is the exact combination E7_PRESPEC's "What would falsify
+        # the reading we expect" section named in advance.
+        if not v["pos_ok"] or v["rand_violation"]:
+            v["pattern"] = "void"
+        elif v["test_ok"]:
+            v["pattern"] = "A"
+        elif v["comp_ok"]:
+            v["pattern"] = "falsifier"
+        else:
+            v["pattern"] = "neither"
+        # How close the test arm came to the floor, because "just under" and "nowhere near" are
+        # different findings and the floor is a threshold, not a cliff in the underlying quantity.
+        v["test_margin"] = (abs(float(test["dcontrast"])) / J4_EFFECT_FLOOR) if test else None
+        per[tag] = v
     if not per:
         raise SystemExit("no E7b CSVs found; run --run first")
 
@@ -377,8 +402,33 @@ def report():
         L.append(f"| `{tag}` | {t['outcome_var_in_scenario_subspace']} | "
                  f"{t['surviving_fraction']} | {t['matched_displacement_target']} |")
     L.append("")
-    L.append("E6a-live reported 0.44–0.66 for the variance fraction; the values above are that "
-             "same quantity recomputed in this run, so a discrepancy would show here.\n")
+    L.append("The variance fraction is the quantity E6a-live measured, recomputed here, so it is "
+             "checkable per model rather than against the 0.44–0.66 range the abstract quotes. The "
+             "reference values are read out of the committed `e6_direction_overlap.csv` rather "
+             "than transcribed.\n")
+    ref = e6a_reference()
+    L.append("| model | E6a-live (committed) | E7b (this run) | difference |")
+    L.append("|---|---:|---:|---:|")
+    deltas = {}
+    for tag, v in per.items():
+        got = float((v["test"] or v["dose"])["outcome_var_in_scenario_subspace"])
+        want = ref.get(tag)
+        deltas[tag] = None if want is None else got - want
+        L.append(f"| `{tag}` | {'—' if want is None else f'{want:.4f}'} | {got:.4f} | "
+                 f"{'—' if want is None else f'{got - want:+.4f}'} |")
+    L.append("")
+    d = [x for x in deltas.values() if x is not None]
+    if d and all(x < 0 for x in d):
+        L.append(f"**All three sit below the committed values, by {min(-x for x in d):.4f} to "
+                 f"{max(-x for x in d):.4f}.** A consistent one-directional shift is not rounding, "
+                 f"so something small differs between E6a's computation of this quantity and this "
+                 f"one. It is flagged rather than reconciled: no gate in E7b reads it, and "
+                 f"the (A)/(B) decision would be unchanged at either value. It is recorded here so "
+                 f"that whoever next touches the E6a geometry knows to look, and so that this "
+                 f"report cannot be read as a clean replication of a number it did not clean.\n")
+    elif d and max(abs(x) for x in d) > 5e-3:
+        L.append(f"Largest difference {max(abs(x) for x in d):.4f}, flagged and not reconciled; no "
+                 f"gate in E7b reads this number.\n")
     L.append("## The primary pair: the test arm against the positive control\n")
     L.append("Both members of each pair are at the same displacement, and neither is scaled above "
              "its own s = 1 (E7_PRESPEC 6, as corrected by amendment 2).\n")
@@ -445,7 +495,61 @@ def report():
                  "LIMITATIONS.md and the abstract.\n")
     else:
         L.append("The result is split across models, so no pooled claim is made. The mechanism is "
-                 "not established in the models whose test arm fails.\n")
+                 "not established in the models whose test arm fails. What the split is made of, "
+                 "model by model:\n")
+    L.append("| model | pattern | what it means |")
+    L.append("|---|---|---|")
+    MEANING = {
+        "void": "**Void, not negative.** The positive control does not clear the floor at the "
+                "matched displacement, so this model's comparison carries no information about "
+                "(A) vs (B). E7_PRESPEC wrote this row in advance so a null here could not be "
+                "read as support for (A).",
+        "A": "**(A)-shaped.** The recovery survives removing the scenario-aligned component, so "
+             "the overlap is incidental in this model.",
+        "falsifier": "**(B)-shaped — this is the combination E7_PRESPEC named in advance as "
+                     "falsifying (A).** The positive control and the complement both clear the "
+                     "floor at this displacement and the test arm does not: the scenario-aligned "
+                     "component carries the effect and the orthogonal component alone does not.",
+        "neither": "Neither. The positive control clears the floor but neither the test arm nor "
+                   "the complement does, so the effect is not attributable to either component "
+                   "separately at this displacement.",
+    }
+    for tag, v in per.items():
+        L.append(f"| `{tag}` | `{v['pattern']}` | {MEANING[v['pattern']]} |")
+    L.append("")
+    near = {t: v for t, v in per.items()
+            if v["pattern"] in ("falsifier", "neither") and v["test_margin"]
+            and v["test_margin"] >= 0.9}
+    if near:
+        L.append("### The floor is a threshold, and one model sits just under it\n")
+        for tag, v in near.items():
+            t, c = v["test"], v["comp"]
+            L.append(
+                f"`{tag}`'s test arm reaches {t['dcontrast']}, which is "
+                f"{100 * v['test_margin']:.0f}% of the {J4_EFFECT_FLOOR} floor"
+                + (f", against a complement at {c['dcontrast']} that clears it. The two components "
+                   f"are within {abs(float(c['dcontrast']) - float(t['dcontrast'])):.4f} of each "
+                   f"other and the floor falls between them." if c else ".")
+            )
+        L.append("")
+        L.append("So the honest reading of that model is not that the orthogonal component does "
+                 "nothing. It is that both components move the readout by a similar amount, "
+                 "neither one clearly on its own, and a pre-registered threshold had to be placed "
+                 "somewhere. Calling this (B) would lean on the third decimal place of a "
+                 "permutation quantile. The pre-registered table is applied as written, and the "
+                 "narrowness is reported here rather than left for a reader to notice.\n")
+    L.append("### What this closes, and what it does not authorize\n")
+    L.append("The mechanism thread closes here as promised, and it closes with a bound rather than "
+             "a mechanism: on this evidence the scenario-aligned part of the outcome direction "
+             "cannot be dismissed as incidental in all three models, so W8A's recovery should not "
+             "be described as outcome-specific without qualification.\n")
+    if row == "split":
+        L.append("**No document is edited on the strength of this.** The prespec's decision table "
+                 "routes the LIMITATIONS.md and abstract edit to row (B) specifically; the row "
+                 "selected here is `split`, which says in advance that no pooled claim is made. So "
+                 "the wording change above is left as a recommendation for a human to accept or "
+                 "reject, not applied. No existing claim is restated, no figure redrawn, and "
+                 "nothing in W8A's write-up is edited by this run.\n")
     L.append("Note on V1a. The inherited in-sample-accuracy gate is reported per arm "
              "(`insample_outcome_acc`) and is not used as a gate here: every E7b arm is a rank-1 "
              "directional perturbation at a matched norm, which is not a full erasure and cannot "

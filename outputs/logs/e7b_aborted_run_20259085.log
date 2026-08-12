@@ -1,0 +1,57 @@
+=== Job 20259085 on node3207 at Wed Aug 12 00:05:17 EDT 2026 ===
+CMD: cd /home/aimeeyu/e7b_clean && /home/aimeeyu/tom_project/.venv/bin/python code/experiments/71_e7b_residual_control.py --run
+
+Wed Aug 12 00:05:17 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    On  |   00000000:E1:00.0 Off |                    0 |
+| N/A   34C    P8             34W /  350W |       0MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+CUDA: True | NVIDIA L40S | torch 2.12.1+cu130 | tf 5.12.1
+
+9aea88f E7b: the symmetric residual control, as a script that reads its thresholds from the prespec
+2
+
+E7b: 298 items, 53 groups; k=10, floor=0.0988
+[guard] HEAD = 9aea88f; 2 dirty path(s), 0 of them in this run's dependency set
+[guard] not blocking (2 paths outside the dependency set; see _handoff/DIRTY_FILES_TRIAGE.md):
+[guard]   M  code/__pycache__/tom_common.cpython-312.pyc
+[guard]   M  code/experiments/__pycache__/48_w3_causal_steering.cpython-312.pyc
+[guard] every dependency of this run is committed.
+
+======================================================================
+=== E7b OLMo-2-1124-7B-Instruct: erase at L16 ===
+======================================================================
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:00<01:26,  4.11it/s]Loading weights:   5%|▍         | 16/355 [00:00<00:06, 55.60it/s]Loading weights:  12%|█▏        | 42/355 [00:00<00:02, 119.43it/s]Loading weights:  17%|█▋        | 59/355 [00:00<00:02, 132.89it/s]Loading weights:  23%|██▎       | 80/355 [00:00<00:01, 147.97it/s]Loading weights:  29%|██▉       | 103/355 [00:00<00:01, 169.21it/s]Loading weights:  35%|███▍      | 124/355 [00:00<00:01, 180.53it/s]Loading weights:  41%|████      | 145/355 [00:01<00:01, 186.90it/s]Loading weights:  47%|████▋     | 168/355 [00:01<00:01, 186.75it/s]Loading weights:  53%|█████▎    | 188/355 [00:01<00:00, 189.77it/s]Loading weights:  59%|█████▉    | 211/355 [00:01<00:00, 194.50it/s]Loading weights:  65%|██████▌   | 232/355 [00:01<00:00, 192.17it/s]Loading weights:  71%|███████▏  | 253/355 [00:01<00:00, 195.39it/s]Loading weights:  77%|███████▋  | 273/355 [00:01<00:00, 196.50it/s]Loading weights:  83%|████████▎ | 293/355 [00:01<00:00, 187.78it/s]Loading weights:  88%|████████▊ | 312/355 [00:01<00:00, 187.86it/s]Loading weights:  94%|█████████▍| 333/355 [00:01<00:00, 183.55it/s]Loading weights: 100%|██████████| 355/355 [00:02<00:00, 170.75it/s]
+  outcome direction: 0.4208 of its variance lies inside the k=10 scenario subspace (E6a-live reported 0.44-0.66)
+  surviving fraction after removing scenario: 0.7610
+  s=1 displacements: outcome_perp_scenario=0.0704, outcome_full_dirmatched=0.0930, outcome_in_scenario=0.0666, rand0=0.0027, rand1=0.0032, rand2=0.0029, rand3=0.0027, rand4=0.0041
+  matched displacement target = 0.0027 (the smallest, so nothing scales up)
+  baseline contrast=-0.4448 cellSD=0.2766 ppl=10.857
+    outcome_perp_scenario_s0.25  s=0.2500  |dh|=0.0176 dC=+0.0395 <floor  ppl=1.002
+    outcome_perp_scenario_s0.5   s=0.5000  |dh|=0.0352 dC=+0.0787 <floor  ppl=1.005
+    outcome_perp_scenario_s0.75  s=0.7500  |dh|=0.0528 dC=+0.1172 >=FLOOR ppl=1.009
+    outcome_perp_scenario_s1     s=1.0000  |dh|=0.0704 dC=+0.1549 >=FLOOR ppl=1.017
+    outcome_perp_scenario_matched s=0.0384  |dh|=0.0027 dC=+0.0058 <floor  ppl=1.001
+    outcome_full_dirmatched_matched s=0.0290  |dh|=0.0027 dC=+0.0067 <floor  ppl=1.000
+    outcome_in_scenario_matched  s=0.0406  |dh|=0.0027 dC=+0.0046 <floor  ppl=1.000
+    random_matched_seed0_matched s=0.9997  |dh|=0.0027 dC=-0.0035 <floor  ppl=0.993
+    random_matched_seed1_matched s=0.8329  |dh|=0.0027 dC=-0.0028 <floor  ppl=1.002
+    random_matched_seed2_matched s=0.9354  |dh|=0.0027 dC=-0.0007 <floor  ppl=1.004
+[2026-08-12T00:07:15.160] error: *** JOB 20259085 ON node3207 CANCELLED AT 2026-08-12T00:07:15 DUE to SIGNAL Terminated ***
