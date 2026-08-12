@@ -124,3 +124,85 @@ the equal-displacement matching in item 6. The decision table is untouched.
 
 This is written down before compute so that it cannot be mistaken for a gate dropped after seeing
 that an arm failed it. The `s ≤ 1` assertion in item 5 remains live and hard.
+
+---
+
+## Amendment 2 — the matching in item 6 was degenerate, and the first run was aborted because of it
+
+**This amendment is not blind.** A first E7b run (job 20259085, L40S, commit 9aea88f) was started,
+produced output for OLMo-2-7B-Instruct, and was cancelled. Its log is kept at
+`outputs/logs/e7b_aborted_run_20259085.log`. What was seen before cancelling is disclosed in full
+below. Writing this amendment after seeing those numbers is worse than writing it before, and the
+disclosure is here so the reader can discount it accordingly rather than take it on trust.
+
+### The defect
+
+Item 6 says arms are compared at equal displacement with the comparison arm "scaled DOWN to the
+smaller displacement, never up". The implementation read that as a single global target: the minimum
+`s = 1` displacement over **all** arms, random nulls included. Measured on OLMo, those displacements
+are
+
+| arm | displacement at s = 1 |
+|---|---:|
+| `outcome_full_dirmatched` | 0.0930 |
+| `outcome_perp_scenario` (the test) | 0.0704 |
+| `outcome_in_scenario` | 0.0666 |
+| `random_matched`, seeds 0–4 | 0.0027 – 0.0041 |
+
+A random unit direction in a 4096-dimensional residual stream is very nearly orthogonal to the
+directions the data actually varies along, so projecting it out barely moves anything. Taking the
+global minimum therefore pins **every** arm at 0.0027 — a 26-fold reduction for the test arm — and
+at that dose nothing moves, the positive control included. The void row would then fire in all three
+models, not because the matched displacement is uninformative about (A) versus (B), but because the
+implementation chose a displacement no arm can be informative at. That is a defect in the code, not
+a result, and reporting it as a null would be reporting an artefact.
+
+### The fix
+
+1. **Matching becomes pairwise**, which is what E6b's inherited machinery already did (E6b scaled the
+   outcome arm down to *each* nuisance arm's own `s = 1` displacement, one comparison at a time).
+   For every comparison arm `c`, both the test arm and `c` are emitted at
+   `m = min(d_test, d_c)`, so each pair is at equal displacement and neither member is ever scaled
+   above its own `s = 1`. Item 6's rule is unchanged; only the scope of "the comparison" is fixed to
+   the pair it was always about.
+2. **A covariance-matched random null is added**, because the isotropic one cannot be matched at
+   all. `r = X_centred^T g` with `g ~ N(0, I)`, renormalised: a random direction drawn along the
+   data's own covariance, so its displacement is comparable to the outcome direction's and it can be
+   scaled down to meet it. Seeds 0–4, as before.
+3. **The isotropic random arm is kept** and reported, flagged `capped`, at its own `s = 1`. It is no
+   longer treated as a matched null, because it is a strictly *weaker* perturbation than the test
+   arm and so cannot bound it. The voiding rule ("`random` exceeding 0.0988 voids that model") now
+   attaches to the covariance-matched null, which is the one that can actually reach the floor.
+
+Unchanged: the site, the estimator, k = 10, the 0.0988 floor, the ≤ 1.5 perplexity ratio, the
+≥ 0.50 cell-SD retention, the `s ≤ 1` assertion, the dose grid `{0.25, 0.50, 0.75, 1.00}`, and the
+decision table. Nothing that decides the outcome is touched.
+
+### Full disclosure of what the aborted run showed
+
+OLMo-2-7B-Instruct only; the run never reached Qwen or Tulu. Construction diagnostics: the outcome
+direction places **0.4208** of its variance inside the k = 10 scenario subspace (E6a-live's range was
+0.44–0.66, so this run sits just below it), surviving fraction **0.7610**, baseline contrast
+**−0.4448**, baseline perplexity 10.857.
+
+The dose grid on the test arm, which this amendment does not affect:
+
+| s | Δcontrast | ≥ 0.0988 | ppl ratio |
+|---:|---:|:--:|---:|
+| 0.25 | +0.0395 | no | 1.002 |
+| 0.50 | +0.0787 | no | 1.005 |
+| 0.75 | +0.1172 | **yes** | 1.009 |
+| 1.00 | +0.1549 | **yes** | 1.017 |
+
+And the degenerate matched block, all seven arms pinned at 0.0027, which is the evidence for the
+defect: test +0.0058, positive control +0.0067, complement +0.0046, isotropic randoms −0.0035,
+−0.0028, −0.0007. The positive control is inert, so by the table this was a void.
+
+**Why this is disclosable rather than fatal.** The pipeline is deterministic on fixed hardware —
+E7a established that to the bit — and the dose grid is untouched by this amendment. So the corrected
+run must reproduce the four OLMo dose numbers above exactly. If it does not, this amendment changed
+something it claims not to have, and that is visible rather than arguable. The numbers this
+amendment could bias are the pairwise matched arms, and for OLMo the direction of that bias is
+stated in advance here: having seen the test arm clear the floor at s ≥ 0.75, the expectation going
+in is now (A), and the falsification condition in "What would falsify the reading we expect" above
+still applies unaltered.
