@@ -61,7 +61,7 @@ def _load(name, path):
 
 
 def scenario_basis(X, groups, k=SCENARIO_K):
-    """Orthonormal basis of the k-dimensional scenario subspace (E6a's construction, k inherited)."""
+    """Orthonormal basis of the k-dim scenario subspace (E6a's construction, k inherited)."""
     idx = defaultdict(list)
     for i, g in enumerate(groups):
         idx[g].append(i)
@@ -135,25 +135,34 @@ def run_one(model_id, rows, a, w3, e6b):
           f"scenario subspace (E6a-live reported 0.44-0.66)", flush=True)
     print(f"  surviving fraction after removing scenario: {surv:.4f}", flush=True)
 
-    dirs = {"outcome_perp_scenario": w_perp, "outcome_full_dirmatched": w_out,
-            "outcome_in_scenario": w_inside}
+    TEST = "outcome_perp_scenario"
+    dirs = {TEST: w_perp, "outcome_full_dirmatched": w_out, "outcome_in_scenario": w_inside}
+    Xc = X - X.mean(0)
     for s in RANDOM_SEEDS:
-        r = np.random.default_rng(s).standard_normal(X.shape[1])
-        dirs[f"random_matched_seed{s}"] = r / np.linalg.norm(r)
+        g = np.random.default_rng(s)
+        # Two random nulls per seed. The isotropic one is what the prespec first named; it turns out
+        # to be unmatchable, because a random direction in 4096-d is nearly orthogonal to the
+        # directions the data varies along, so removing it barely moves h. The covariance-matched
+        # one is drawn along the data's own covariance and so displaces comparably to w_outcome,
+        # which is what lets it be scaled DOWN to the test arm. See E7_PRESPEC amendment 2.
+        r = g.standard_normal(X.shape[1])
+        dirs[f"random_isotropic_seed{s}"] = r / np.linalg.norm(r)
+        rc = Xc.T @ g.standard_normal(len(Xc))
+        dirs[f"random_covmatched_seed{s}"] = rc / np.linalg.norm(rc)
 
-    # Displacement is exactly linear in s for a rank-1 directional projection, so each arm's
-    # matched scale is closed-form. The target is the SMALLEST s=1 displacement across arms, so
-    # every arm is scaled DOWN to it and none is ever scaled up past its own s=1 (E7_PRESPEC 6).
+    # Displacement is exactly linear in s for a rank-1 directional projection, so every matched
+    # scale below is closed-form rather than searched.
     unit_disp = {}
     for name, d in dirs.items():
         fn, _ = e6b.rank1_dir_eraser(X, d, 1.0)
         unit_disp[name] = float(np.mean(np.linalg.norm(X - fn(X), axis=1)
                                         / np.linalg.norm(X, axis=1)))
-    d_target = min(unit_disp.values())
-    print(f"  s=1 displacements: "
-          + ", ".join(f"{k.replace('random_matched_seed', 'rand')}={v:.4f}"
-                      for k, v in unit_disp.items()), flush=True)
-    print(f"  matched displacement target = {d_target:.4f} (the smallest, so nothing scales up)",
+    d_test = unit_disp[TEST]
+    print("  s=1 displacements: " + ", ".join(
+        f"{k.replace('random_isotropic_seed', 'iso').replace('random_covmatched_seed', 'cov')}"
+        f"={v:.4f}" for k, v in unit_disp.items()), flush=True)
+    print(f"  test arm at s=1 displaces {d_test:.4f}; each comparison is made at "
+          f"min(d_test, d_arm) so neither member of a pair is ever scaled above its own s=1",
           flush=True)
 
     # ---------------- hook, scoring, ppl (identical machinery to W8A/E6b) ----------------
@@ -222,7 +231,7 @@ def run_one(model_id, rows, a, w3, e6b):
 
     out_rows = []
 
-    def emit(arm, kind, direction, scale, note):
+    def emit(arm, kind, direction, scale, note, pair="", target_disp=float("nan"), capped=False):
         fn, _ = e6b.rank1_dir_eraser(X, direction, scale)
         set_erasure(fn, 1.0)
         c, cells = score()
@@ -233,12 +242,16 @@ def run_one(model_id, rows, a, w3, e6b):
         # Reported, not gated: a rank-1 directional perturbation is not a full erasure and cannot
         # drive outcome to chance (E7_PRESPEC amendment 1).
         ins = w8a.insample_acc(Xg, yo)
-        row = dict(model=tag, layer=L, arm=arm, kind=kind, scale=round(scale, 6),
+        row = dict(model=tag, layer=L, arm=arm, kind=kind, pair=pair, scale=round(scale, 6),
                    contrast=round(c, 4), dcontrast=round(c - base_c, 4),
                    baseline_contrast=round(base_c, 4),
                    abs_dcontrast=round(abs(c - base_c), 4),
                    above_j4_floor=bool(abs(c - base_c) >= J4_EFFECT_FLOOR),
-                   displacement_frac=round(disp, 4),
+                   # The floor is on |Δcontrast|, as pre-registered. Sign is recorded separately
+                   # because only a positive move is a recovery toward attempted > accidental; a
+                   # large negative move clears the floor without being the effect W8A claimed.
+                   is_recovery=bool(c - base_c > 0),
+                   displacement_frac=round(disp, 4), capped=bool(capped),
                    cell_sd=round(sd, 4),
                    cell_sd_retention=round(sd / base_sd, 4) if base_sd else "",
                    cell_sd_pass=bool(base_sd and (sd / base_sd) >= CELL_SD_RETENTION),
@@ -248,7 +261,7 @@ def run_one(model_id, rows, a, w3, e6b):
                    insample_outcome_acc=round(ins, 4),
                    outcome_var_in_scenario_subspace=round(var_in, 4),
                    surviving_fraction=round(surv, 4), scenario_k=SCENARIO_K,
-                   matched_displacement_target=round(d_target, 4), note=note)
+                   matched_displacement_target=round(target_disp, 4), note=note)
         out_rows.append(row)
         print(f"    {arm:28} s={scale:<7.4f} |dh|={disp:.4f} dC={c - base_c:+.4f} "
               f"{'>=FLOOR' if row['above_j4_floor'] else '<floor '} "
@@ -256,18 +269,32 @@ def run_one(model_id, rows, a, w3, e6b):
               flush=True)
         return row
 
-    # dose grid on the primary arm
+    # dose grid on the primary arm, unaffected by amendment 2
     for s in SCALES:
         emit(f"outcome_perp_scenario_s{s:g}", "primary_dose", w_perp, s,
-             "the test: outcome with scenario identity removed")
-    # matched-displacement comparison across arm types
+             "the test: outcome with scenario identity removed", pair="dose_grid",
+             target_disp=unit_disp[TEST] * s)
+
+    def kind_of(name):
+        return ("positive_control" if name == "outcome_full_dirmatched" else
+                "complement" if name == "outcome_in_scenario" else
+                "null_isotropic" if name.startswith("random_isotropic") else "null_covmatched")
+
+    # One pair per comparison arm. Both members are emitted at min(d_test, d_arm), so the pair is at
+    # equal displacement and neither member exceeds its own s=1 (E7_PRESPEC 6 + amendment 2).
     for name, d in dirs.items():
-        s = min(d_target / unit_disp[name], 1.0)
-        kind = ("primary_matched" if name == "outcome_perp_scenario" else
-                "positive_control" if name == "outcome_full_dirmatched" else
-                "complement" if name == "outcome_in_scenario" else "null")
-        emit(f"{name}_matched", kind, d, s,
-             f"matched to displacement {d_target:.4f}")
+        if name == TEST:
+            continue
+        m = min(d_test, unit_disp[name])
+        capped = unit_disp[name] < d_test
+        note = (f"pair at displacement {m:.4f}"
+                + (f"; UNMATCHABLE: this arm's own s=1 reaches only {unit_disp[name]:.4f}, so the "
+                   f"pair sits at that weaker dose and this arm cannot bound the test"
+                   if capped else ""))
+        emit(f"{TEST}_vs_{name}", "primary_matched", w_perp, m / d_test, note,
+             pair=name, target_disp=m, capped=capped)
+        emit(f"{name}_vs_test", kind_of(name), d, m / unit_disp[name], note,
+             pair=name, target_disp=m, capped=capped)
 
     path = os.path.join(OUT_DIR, f"e7b_residual_control_{tag}.csv")
     with open(path, "w", newline="") as fh:
@@ -294,22 +321,28 @@ def report():
         if not rows:
             continue
         by = {r["arm"]: r for r in rows}
-        pos = by.get("outcome_full_dirmatched_matched")
-        test = by.get("outcome_perp_scenario_matched")
-        comp = by.get("outcome_in_scenario_matched")
-        rands = [r for k, r in by.items() if k.startswith("random_matched_seed")]
+        # The primary comparison is the pair against the positive control: the test arm and the
+        # full outcome direction, both at the same displacement.
+        pos = by.get("outcome_full_dirmatched_vs_test")
+        test = by.get("outcome_perp_scenario_vs_outcome_full_dirmatched")
+        comp = by.get("outcome_in_scenario_vs_test")
+        test_vs_comp = by.get("outcome_perp_scenario_vs_outcome_in_scenario")
+        covs = [r for r in rows if r["kind"] == "null_covmatched"]
+        isos = [r for r in rows if r["kind"] == "null_isotropic"]
         # The pre-registered coherence substitution: the largest dose in the grid that keeps the
         # perplexity ratio within 1.5.
         doses = sorted([r for r in rows if r["kind"] == "primary_dose"],
                        key=lambda r: float(r["scale"]))
         coherent = [r for r in doses if r["coherence_pass"] == "True"]
         chosen_dose = coherent[-1] if coherent else None
+
+        def cleared(r):
+            return bool(r and r["above_j4_floor"] == "True" and r["coherence_pass"] == "True")
+
         per[tag] = dict(
-            pos=pos, test=test, comp=comp, rands=rands, dose=chosen_dose,
-            pos_ok=bool(pos and pos["above_j4_floor"] == "True"),
-            test_ok=bool(test and test["above_j4_floor"] == "True"),
-            comp_ok=bool(comp and comp["above_j4_floor"] == "True"),
-            rand_violation=any(r["above_j4_floor"] == "True" for r in rands))
+            pos=pos, test=test, comp=comp, test_vs_comp=test_vs_comp, covs=covs, isos=isos,
+            dose=chosen_dose, pos_ok=cleared(pos), test_ok=cleared(test), comp_ok=cleared(comp),
+            rand_violation=any(cleared(r) for r in covs))
     if not per:
         raise SystemExit("no E7b CSVs found; run --run first")
 
@@ -346,25 +379,42 @@ def report():
     L.append("")
     L.append("E6a-live reported 0.44–0.66 for the variance fraction; the values above are that "
              "same quantity recomputed in this run, so a discrepancy would show here.\n")
-    L.append("## Arms at the matched displacement\n")
-    L.append("| model | arm | role | Δcontrast | ≥ 0.0988 | cell-SD retention | ppl ratio |")
-    L.append("|---|---|---|---:|:--:|---:|---:|")
+    L.append("## The primary pair: the test arm against the positive control\n")
+    L.append("Both members of each pair are at the same displacement, and neither is scaled above "
+             "its own s = 1 (E7_PRESPEC 6, as corrected by amendment 2).\n")
+    L.append("| model | displacement | arm | role | Δcontrast | recovery? | ≥ 0.0988 | "
+             "cell-SD retention | ppl ratio |")
+    L.append("|---|---:|---|---|---:|:--:|:--:|---:|---:|")
     for tag, v in per.items():
         for key, label in (("test", "the test"), ("pos", "positive control"),
+                           ("test_vs_comp", "the test, vs complement"),
                            ("comp", "complement")):
             r = v[key]
             if not r:
                 continue
-            L.append(f"| `{tag}` | `{r['arm']}` | {label} | {r['dcontrast']} | "
-                     f"{'YES' if r['above_j4_floor'] == 'True' else 'no'} | "
+            L.append(f"| `{tag}` | {r['matched_displacement_target']} | `{r['arm']}` | {label} | "
+                     f"{r['dcontrast']} | {'yes' if r['is_recovery'] == 'True' else 'NO, opposite'}"
+                     f" | {'YES' if r['above_j4_floor'] == 'True' else 'no'} | "
                      f"{r['cell_sd_retention']} | {r['ppl_ratio']} |")
-        if v["rands"]:
-            worst = max(v["rands"], key=lambda r: abs(float(r["dcontrast"])))
-            L.append(f"| `{tag}` | `random_matched` (worst of {len(v['rands'])} seeds) | null | "
-                     f"{worst['dcontrast']} | "
-                     f"{'YES — VOIDS THIS MODEL' if worst['above_j4_floor'] == 'True' else 'no'} | "
+        for lst, label in ((v["covs"], "covariance-matched null"),
+                           (v["isos"], "isotropic null (unmatchable)")):
+            if not lst:
+                continue
+            worst = max(lst, key=lambda r: abs(float(r["dcontrast"])))
+            flag = ("YES — VOIDS THIS MODEL" if worst["above_j4_floor"] == "True"
+                    and "covariance" in label else
+                    "YES" if worst["above_j4_floor"] == "True" else "no")
+            L.append(f"| `{tag}` | {worst['matched_displacement_target']} | "
+                     f"`{label}` (worst of {len(lst)} seeds) | null | {worst['dcontrast']} | "
+                     f"{'yes' if worst['is_recovery'] == 'True' else 'NO, opposite'} | {flag} | "
                      f"{worst['cell_sd_retention']} | {worst['ppl_ratio']} |")
     L.append("")
+    if any(r["capped"] == "True" for v in per.values() for r in v["isos"]):
+        L.append("The isotropic random null is reported at its own s = 1, flagged unmatchable: a "
+                 "random unit direction in a 4096-dimensional residual stream is nearly orthogonal "
+                 "to the directions the data varies along, so removing it displaces the state far "
+                 "less than the outcome direction does and it cannot bound the test arm. The "
+                 "covariance-matched null is the one the voiding rule attaches to.\n")
     L.append("## Dose grid on the test arm\n")
     L.append("| model | s | Δcontrast | ≥ 0.0988 | ppl ratio | coherent |")
     L.append("|---|---:|---:|:--:|---:|:--:|")
@@ -429,8 +479,10 @@ def main():
     print(f"E7b: {len(rows)} items, {len(set(r['scenario_group'] for r in rows))} groups; "
           f"k={SCENARIO_K}, floor={J4_EFFECT_FLOOR}")
     if a.dry_run or not a.run:
-        print(f"Plan per model: {len(SCALES)} dose arms + 3 matched arms + "
-              f"{len(RANDOM_SEEDS)} matched random nulls = {len(SCALES) + 3 + len(RANDOM_SEEDS)}.")
+        n_pairs = 2 + 2 * len(RANDOM_SEEDS)   # pos control, complement, isotropic + cov per seed
+        print(f"Plan per model: {len(SCALES)} dose arms + {n_pairs} pairs x 2 members "
+              f"= {len(SCALES) + 2 * n_pairs} arms. Pairs: positive control, complement, and "
+              f"{len(RANDOM_SEEDS)} seeds each of isotropic and covariance-matched nulls.")
         return
     # Runs from a pristine checkout of HEAD (see E7A_REPRODUCTION.md), so this passes without an
     # override and the numbers are attributable to a commit.
