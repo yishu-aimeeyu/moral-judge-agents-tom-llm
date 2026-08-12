@@ -28,6 +28,17 @@ from datetime import date
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 OUT_MD = os.path.join(ROOT, "outputs", "MENTOR_PACKET.md")
+
+# The header date is pinned rather than taken from the clock. With date.today() the packet was
+# byte-different from its committed self every day, which makes the E7c regeneration test -- "is
+# the committed file exactly what the generator produces?" -- impossible to satisfy and gives
+# hand-edits a place to hide. Bump this deliberately when reissuing the packet, and the test then
+# tells you whether anything else moved. Override with MENTOR_PACKET_DATE for a one-off.
+PACKET_DATE = "2026-08-11"
+
+
+def packet_date():
+    return os.environ.get("MENTOR_PACKET_DATE", PACKET_DATE)
 FIG_DIR = os.path.join(ROOT, "outputs", "mentor_packet_figures")
 
 # The headline table is the ENGAGED models (rating_std >= the derived floor 0.2191, see
@@ -541,7 +552,7 @@ def main():
             print(f"  !! missing figure, omitted from packet: {rel}")
 
     lines = [
-        f"# Mentor packet — moral ToM in LLMs ({date.today().isoformat()})",
+        f"# Mentor packet — moral ToM in LLMs ({packet_date()})",
         "",
         "One page of results, then figures. Every number is generated from the artifacts on "
         "disk by `code/experiments/49_mentor_packet.py`; regenerate rather than edit.",

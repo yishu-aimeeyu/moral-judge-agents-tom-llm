@@ -1,4 +1,4 @@
-# Mentor packet — moral ToM in LLMs (2026-08-10)
+# Mentor packet — moral ToM in LLMs (2026-08-11)
 
 One page of results, then figures. Every number is generated from the artifacts on disk by `code/experiments/49_mentor_packet.py`; regenerate rather than edit.
 
