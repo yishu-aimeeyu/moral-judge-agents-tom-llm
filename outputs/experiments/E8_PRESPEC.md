@@ -327,3 +327,59 @@ tracks representational geometry for the moral belief × outcome factors, and th
 Young & Saxe 2×2 has not been run along a pretraining trajectory. That is a difference in
 measurement, not a claim of priority over the trajectory method itself, and the write-up cites
 the prior work rather than presenting the axis as new.
+
+---
+
+## Amendment 1, 2026-09-21 — what E8a measured about the covariates, before any checkpoint ran
+
+E8a is a property of the stimuli, not of any model, so running it before the checkpoints is
+not peeking. It produced two things that change what section 3 is allowed to say. Both are
+recorded here before a single revision was downloaded.
+
+**Correction.** Section 3 says the lower triangle has 43,053 pairs. It has **44,253**
+(`C(298,2)`). Arithmetic slip, no consequence for any rule.
+
+**The ratio's stated justification does not apply to this specification, and the reason it
+does not is worth keeping.** Section 2.1 argues the outcome share is robust "because both
+factors are residualised against the same covariates" and so are "both deflated by the
+collinearity". Measured in the pre-registered all-pairs design, there is almost no
+collinearity to deflate anything: variance inflation factors are `intent` 1.087, `outcome`
+1.066, `interaction` 1.155, `scenario` 1.060, `lexical` 1.062. E1's deflation problem is not
+inherited by E8's specification. The outcome share **remains the primary quantity** on the
+other ground given in section 3, which is untouched: the raw ratio is 0/0 at step 0 and
+near-singular through early training. No threshold moves.
+
+**The asymmetry that is real, and where it lives.** Marginally, `lexical` is uncorrelated with
+both factors (`intent` −0.0008, `outcome` +0.0215). Within a scenario group it is not, and it
+is not symmetric between them:
+
+| pair | all 44,253 pairs | within-scenario (821 pairs) |
+|---|---:|---:|
+| `lexical` × `outcome` | +0.0215 | **+0.8165** |
+| `lexical` × `intent` | −0.0008 | +0.1297 |
+| `intent` × `outcome` | −0.0034 | −0.2190 |
+
+Within scenario, `lexical` and `outcome` are close to the same predictor (VIF 4.32 and 4.43),
+while `lexical` and `intent` are not (VIF 1.52). The cause is in the stimulus construction: the
+outcome manipulation rewrites the end of the story, the belief manipulation alters a mental
+state phrase, and the first is the larger lexical edit. So "residualise both factors against
+the same covariate" is *not* the same as "treat both factors identically" — it would deflate
+outcome far more than intent if the within-scenario pairs drove the fit.
+
+They do not drive it: 821 pairs is 1.86% of the design, which is why the all-pairs VIFs are
+flat. But those are the only pairs carrying a factor contrast with everything else held
+constant, so the point cannot simply be dropped either.
+
+**Pre-registered consequence (added now, decided before any checkpoint compute):**
+
+1. Every cell is fit **twice**, once with `lexical` in the design and once without, and both
+   outcome shares go in `checkpoint_betas.csv` under a `spec` column (`primary` /
+   `no_lexical`). If the two disagree about P1's ordering or about P2's sign, **the
+   disagreement is the reported result** and P1/P2 are recorded as not established. This is
+   not a choice between two numbers made after seeing them; it is a joint condition fixed here.
+2. A **within-scenario-only** specification (821 pairs, `scenario` dropped as it is constant)
+   is run and reported as a third `spec` (`within_scenario`). It is expected to be undecidable
+   between `outcome` and `lexical` at VIF ~4.4, which is exactly E1's trap. It is reported for
+   completeness and **nothing gates on it** — including, explicitly, that it may not be used to
+   argue the all-pairs result away, nor to support it.
+3. Observed VIFs are written per cell per spec, as already required by section 3.
