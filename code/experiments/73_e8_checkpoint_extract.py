@@ -33,6 +33,7 @@ import argparse
 import csv
 import importlib.util
 import os
+import re
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -48,9 +49,30 @@ PYTHIA_REVISIONS = [
     "step32000", "step48000", "step64000", "step80000", "step96000", "step112000",
     "step128000", "step143000",
 ]
+
+# E8g. Eight log-spaced stage-1 revisions of the 928 available, chosen by nearest step to a
+# logspace grid over the full pretraining range (150 .. 928,646).
+#
+# NOTE, and it is a real limitation rather than a detail: OLMo-2 publishes no random-init
+# checkpoint, so **the E8c step-0 gate cannot be re-run on this family**. The gate is a test
+# of the RDM construction, and the construction is shared, so Pythia's passing gate covers
+# the pipeline -- but it does not cover anything OLMo-specific, such as its tokenizer's
+# treatment of the manipulated clause. The earliest available revision is step 150, which is
+# already past the point where Pythia's outcome structure begins to move.
+OLMO_REVISIONS = [
+    "stage1-step150-tokens1B",
+    "stage1-step600-tokens3B",
+    "stage1-step2000-tokens9B",
+    "stage1-step6000-tokens26B",
+    "stage1-step22000-tokens93B",
+    "stage1-step77000-tokens323B",
+    "stage1-step267000-tokens1120B",
+    "stage1-step928646-tokens3896B",
+]
 LAYERS_REL = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
 SUITES = {
     "pythia-1.4b": ("EleutherAI/pythia-1.4b", PYTHIA_REVISIONS),
+    "olmo2-7b": ("allenai/OLMo-2-1124-7B", OLMO_REVISIONS),
 }
 
 
@@ -62,9 +84,13 @@ def _load(path, modname):
 
 
 def revision_step(rev):
-    """Training step as an integer, for the x-axis. `step1000` -> 1000."""
-    digits = "".join(c for c in rev if c.isdigit())
-    return int(digits) if digits else -1
+    """Training step as an integer, for the x-axis.
+
+    `step1000` -> 1000, and `stage1-step22000-tokens93B` -> 22000. OLMo's revision names
+    carry three numbers, so a naive digit-scrape would return 12200093 for that one.
+    """
+    m = re.search(r"step(\d+)", rev)
+    return int(m.group(1)) if m else -1
 
 
 def append_log(path, row):
