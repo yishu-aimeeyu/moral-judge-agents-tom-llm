@@ -262,16 +262,21 @@ class MockBackend:
 
 
 class HFBackend:
-    def __init__(self, model_name, scoring, **_):
+    def __init__(self, model_name, scoring, revision=None, **_):
         import torch
         from transformers import AutoTokenizer, AutoModelForCausalLM
         self.model_name = model_name
         self.scoring = scoring
+        # E8f scores the same checkpoints E8b extracted activations from. Defaults to None,
+        # so every existing caller loads exactly the weights it loaded before.
+        self.revision = revision
         self.torch = torch
-        print(f"  Loading {model_name} ...")
-        self.tok = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+        print(f"  Loading {model_name}{'@' + revision if revision else ''} ...")
+        self.tok = AutoTokenizer.from_pretrained(model_name, revision=revision,
+                                                 trust_remote_code=True)
         self.mdl = AutoModelForCausalLM.from_pretrained(
-            model_name, torch_dtype="auto", device_map="auto", trust_remote_code=True
+            model_name, revision=revision, torch_dtype="auto", device_map="auto",
+            trust_remote_code=True
         )
         self.mdl.eval()
         print(f"  Loaded on {next(self.mdl.parameters()).device}")
