@@ -78,6 +78,12 @@ PRIMARY_REL_DEPTH = 0.8
 # The depths E8b was asked for. Used only to name the primary cell by the depth the prespec
 # fixed, since the realised depth of a kept layer is quantised by the model's stack size.
 LAYERS_REL_EXPECTED = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+# Amendment 2.1. At a single-token read position the layer-0 activation is a token-embedding
+# lookup, and every one of the 298 vignettes ends in "." (295) or ")." (3): 2 distinct values
+# across 298 items, at every checkpoint. The RDM has two entries, the null is atomic, and the
+# fit is to "do these items end in the same token". Extracted, then excluded here so the
+# decision is visible in the code rather than hidden in the sampling.
+EXCLUDED_REL_DEPTHS = [0.0]
 GATE_ALPHA = 0.05            # family-wise, Bonferroni over cells; section 4
 N_PERM_GATE = 2000
 N_PERM = 1000
@@ -214,50 +220,73 @@ def fit_cell(acts, up, mats, masks, n_perm, n_boot, groups, T, iu, seed):
                 yp = zrank(y_vec[idx][f["mask"]])      # rank within the subset
             f["null"][k] = ols_betas(f["X"], yp)
 
-    # ---- bootstrap over items, RDM built once per draw and shared across specs
-    rng = np.random.default_rng(seed + 1)
-    iu_b = iu
-    ok = 0
-    for k in range(n_boot):
-        sel = rng.integers(0, n, n)
-        yb_full = build_rdm(acts[sel])[iu_b]
-        cols = {nm: mats[nm][np.ix_(sel, sel)][iu_b] for nm in ALL_PREDICTORS}
-        mb_within = cols["scenario"] == 0
-        if mb_within.sum() < 30:
-            continue
-        good = True
-        staged = {}
-        for spec, f in fitted.items():
-            mb = np.ones(len(yb_full), dtype=bool) if f["all_pairs"] else mb_within
-            Xb = np.column_stack([zrank(cols[nm][mb]) for nm in f["names"]])
-            if min(Xb.std(axis=0)) < 1e-12:
-                good = False
-                break
-            staged[spec] = ols_betas(Xb, zrank(yb_full[mb]))
-        if not good:
-            continue
-        for spec, b in staged.items():
-            fitted[spec]["boots"][ok] = b
-        ok += 1
+    # ---- two bootstraps, per amendment 2.2. The pre-registered one resamples items; the
+    # cluster one resamples the 53 scenario groups, which is the resampling whose
+    # independence assumption is actually true here (94 of the 298 rows are exact reprints
+    # of another row, and the conditions within a scenario are not independent either).
+    # Where the two disagree about whether a beta clears its band, the cluster one governs.
+    clusters = [np.where(groups == g)[0] for g in np.unique(groups)]
+    draws = {}
+    for kind in ("item", "cluster"):
+        rng = np.random.default_rng(seed + (1 if kind == "item" else 2))
+        acc = {spec: np.empty((n_boot, len(f["names"]))) for spec, f in fitted.items()}
+        ok = 0
+        for _ in range(n_boot):
+            if kind == "item":
+                sel = rng.integers(0, n, n)
+            else:
+                pick = rng.integers(0, len(clusters), len(clusters))
+                sel = np.concatenate([clusters[c] for c in pick])
+            yb_full, cols, iu_b = resampled_design(acts, mats, sel)
+            mb_within = cols["scenario"] == 0
+            if mb_within.sum() < 30:
+                continue
+            staged, good = {}, True
+            for spec, f in fitted.items():
+                mb = np.ones(len(yb_full), dtype=bool) if f["all_pairs"] else mb_within
+                Xb = np.column_stack([zrank(cols[nm][mb]) for nm in f["names"]])
+                if min(Xb.std(axis=0)) < 1e-12:
+                    good = False
+                    break
+                staged[spec] = ols_betas(Xb, zrank(yb_full[mb]))
+            if not good:
+                continue
+            for spec, b in staged.items():
+                acc[spec][ok] = b
+            ok += 1
+        draws[kind] = (acc, ok)
 
     out = {}
     for spec, f in fitted.items():
         out[spec] = {}
         for i, nm in enumerate(f["names"]):
             nl = f["null"][:, i]
-            bl = f["boots"][:ok, i] if ok else np.array([np.nan])
-            out[spec][nm] = dict(
+            rec = dict(
                 beta=float(f["beta"][i]), vif=float(f["vif"][i]),
                 null_mean=float(nl.mean()),
                 null_q975_abs=float(np.percentile(np.abs(nl), 97.5)),
                 null_lo=float(np.percentile(nl, 2.5)),
                 null_hi=float(np.percentile(nl, 97.5)),
-                boot_lo=float(np.nanpercentile(bl, 2.5)),
-                boot_hi=float(np.nanpercentile(bl, 97.5)),
-                n_boot_ok=ok,
                 p_perm=float((np.sum(np.abs(nl) >= abs(f["beta"][i])) + 1) / (n_perm + 1)),
             )
+            for kind, prefix in (("item", "boot"), ("cluster", "cluster")):
+                acc, ok = draws[kind]
+                bl = acc[spec][:ok, i] if ok else np.array([np.nan])
+                rec[f"{prefix}_lo"] = float(np.nanpercentile(bl, 2.5))
+                rec[f"{prefix}_hi"] = float(np.nanpercentile(bl, 97.5))
+                rec[f"n_{prefix}_ok"] = ok
+            out[spec][nm] = rec
     return out
+
+
+def resampled_design(acts, mats, sel):
+    """RDM and predictor columns for one bootstrap draw. The RDM does not depend on the
+    design, so it is built once and reused across the three specs."""
+    m = len(sel)
+    iu_b = np.triu_indices(m, 1)
+    yb = build_rdm(acts[sel])[iu_b]
+    cols = {nm: mats[nm][np.ix_(sel, sel)][iu_b] for nm in ALL_PREDICTORS}
+    return yb, cols, iu_b
 
 
 def outcome_share(b_out, b_int):
@@ -306,6 +335,8 @@ def process_checkpoint(args):
             depth_max = (layer_idx[-1] if layer_idx else n_kept - 1) or 1
             rel = round(true_layer / depth_max, 4)
             req = requested[li]
+            if req is not None and any(abs(req - x) < 1e-9 for x in EXCLUDED_REL_DEPTHS):
+                continue
             acts = A_all[:, li, :].astype(np.float64)
             res = fit_cell(acts, up, mats, masks, n_perm, n_boot, groups, T, iu, seed)
             for spec, names in SPECS.items():
@@ -326,6 +357,8 @@ def process_checkpoint(args):
                         "beta": round(r["beta"], 5),
                         "boot_ci_lo": round(r["boot_lo"], 5),
                         "boot_ci_hi": round(r["boot_hi"], 5),
+                        "cluster_ci_lo": round(r["cluster_lo"], 5),
+                        "cluster_ci_hi": round(r["cluster_hi"], 5),
                         "null_mean": round(r["null_mean"], 5),
                         "null_ci_lo": round(r["null_lo"], 5),
                         "null_ci_hi": round(r["null_hi"], 5),
@@ -336,6 +369,7 @@ def process_checkpoint(args):
                         "outcome_share": round(share, 4) if share == share else "",
                         "outcome_intent_ratio": ratio,
                         "n_perm": n_perm, "n_boot_ok": r["n_boot_ok"],
+                        "n_cluster_ok": r["n_cluster_ok"],
                         "is_primary_cell": bool(position == PRIMARY_POSITION
                                                 and req is not None
                                                 and abs(req - PRIMARY_REL_DEPTH) < 1e-9),
@@ -386,7 +420,14 @@ def write_gate(g, outdir):
          f"- cells exceeding the *uncorrected* 95% band: **{g['uncorrected']}** of "
          f"{2 * g['n_cells']} predictor-cells, against **{g['expected_uncorrected']:.1f}** "
          f"expected by chance on a clean pipeline",
-         f"- cells failing the corrected rule: **{len(g['fails'])}**", ""]
+         f"- cells failing the corrected rule: **{len(g['fails'])}**",
+         "",
+         f"Relative depth {EXCLUDED_REL_DEPTHS} is excluded per amendment 2.1: at a "
+         f"single-token read position the layer-0 activation is a token-embedding lookup, "
+         f"and every vignette ends in `.` or `).`, so it takes 2 distinct values across 298 "
+         f"items at every checkpoint. The first run of this gate included it and also "
+         f"passed (0 of 24 predictor-cells outside the uncorrected band); dropping cells "
+         f"tightens a Bonferroni family rather than loosening it.", ""]
     if g["fails"]:
         L += ["## Failing cells", "",
               "| position | layer | rel depth | predictor | β | null q97.5(|β|) | p_perm |",
@@ -444,13 +485,15 @@ def make_figure(rows, outdir):
         pts = sorted([r for r in prim if r["predictor"] == name], key=lambda r: r["step"])
         xs = [x0 if r["step"] == 0 else r["step"] for r in pts]
         ys = [r["beta"] for r in pts]
-        lo = [r["boot_ci_lo"] for r in pts]
-        hi = [r["boot_ci_hi"] for r in pts]
         cov = name in COVARIATES
         ax.plot(xs, ys, "-o", ms=3.5, lw=2.0 if not cov else 1.2,
                 ls="-" if not cov else "--", color=colors[name], alpha=0.95 if not cov else 0.6,
                 label=name + (" (covariate)" if cov else ""))
-        ax.fill_between(xs, lo, hi, color=colors[name], alpha=0.13, lw=0)
+        # the cluster bootstrap is shaded, not the item one: amendment 2.2 gives it
+        # precedence, because 94 of the 298 rows are exact reprints of another row
+        ax.fill_between(xs, [r["cluster_ci_lo"] for r in pts],
+                        [r["cluster_ci_hi"] for r in pts],
+                        color=colors[name], alpha=0.13, lw=0)
         # the step-0 null band, shaded across the whole axis as the prespec requires
         z = next((r for r in pts if r["step"] == 0), None)
         if z is not None and name in ("intent", "outcome"):
@@ -465,8 +508,8 @@ def make_figure(rows, outdir):
     ax.axhline(0, color="k", lw=0.7)
     ax.set_title(f"E8d — β trajectory, primary cell "
                  f"(rel depth {PRIMARY_REL_DEPTH}, `{PRIMARY_POSITION}`)\n"
-                 f"shaded bands = bootstrap 95% CI; pale spans = step-0 permutation null",
-                 fontsize=10)
+                 f"shaded bands = cluster bootstrap 95% CI (53 scenario groups); "
+                 f"pale spans = step-0 permutation null", fontsize=10)
     ax.legend(fontsize=8, loc="best")
     ax.grid(alpha=0.2)
 
@@ -516,8 +559,9 @@ def main():
     if a.plot_only:
         rows = list(csv.DictReader(open(out_csv)))
         for r in rows:
-            for k in ("beta", "boot_ci_lo", "boot_ci_hi", "null_mean", "null_ci_lo",
-                      "null_ci_hi", "null_q975_abs", "p_perm", "rel_depth", "vif"):
+            for k in ("beta", "boot_ci_lo", "boot_ci_hi", "cluster_ci_lo", "cluster_ci_hi",
+                      "null_mean", "null_ci_lo", "null_ci_hi", "null_q975_abs", "p_perm",
+                      "rel_depth", "vif"):
                 r[k] = float(r[k])
             r["step"] = int(r["step"]); r["layer"] = int(r["layer"])
             r["is_primary_cell"] = r["is_primary_cell"] in ("True", "true", "1")
