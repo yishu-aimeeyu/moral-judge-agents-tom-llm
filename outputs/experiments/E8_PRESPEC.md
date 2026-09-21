@@ -383,3 +383,76 @@ constant, so the point cannot simply be dropped either.
    completeness and **nothing gates on it** — including, explicitly, that it may not be used to
    argue the all-pairs result away, nor to support it.
 3. Observed VIFs are written per cell per spec, as already required by section 3.
+
+---
+
+## Amendment 2, 2026-09-21 — two defects found by the step-0 gate run, before E8d
+
+E8c was run and **passed** (`outputs/rsa/E8_STEP0_GATE.md`): all 24 intent/outcome
+predictor-cells sit inside their null, with 0 exceeding even the *uncorrected* 95% band
+against 1.2 expected by chance. Reading that output turned up two things that have to be
+fixed before E8d, and both are recorded here with the gate verdict they would change (none).
+
+### 2.1 Relative depth 0.0 is a token-identity indicator, not a representation
+
+At a single-token read position the layer-0 activation is a token-embedding lookup. Measured:
+**every one of the 298 vignettes ends in `.` (295) or `).` (3)**, so the layer-0 activation
+takes exactly **2 distinct values across 298 items**, at `last` and at `belief_last`, at
+`step0` and at `step143000` alike. The resulting RDM has two distinct entries, the regression
+on it is a fit to "do these two items end in the same token", and its permutation null is
+atomic — which is why every predictor in that cell reported the identical `p_perm = 0.5098`.
+
+This is structural and checkpoint-invariant, so it is not something later checkpoints outgrow.
+
+**Consequence: relative depth 0.0 is dropped from every E8 analysis.** The layer set becomes
+{0.2, 0.4, 0.6, 0.8, 1.0}, and the gate's cell count falls from 12 to 10.
+
+Dropping cells from a Bonferroni family **tightens** the gate rather than loosening it
+(α/2n goes from 0.05/24 = 0.00208 to 0.05/20 = 0.00250). The gate verdict is unchanged: the
+smallest intent-or-outcome `p_perm` at any retained cell is 0.0300, an order of magnitude
+above the tightened threshold. The exclusion is therefore not rescuing a failing gate, and
+the already-written `E8_STEP0_GATE.md` is kept as the record of the 12-cell run.
+
+Activations at depth 0.0 are still extracted; they are excluded at analysis time, so the
+decision is visible in the code rather than hidden in the sampling.
+
+### 2.2 The 298 items are 204 distinct texts, and the bootstrap assumed otherwise
+
+**94 of the 298 rows are exact word-for-word reprints** of another row: all 24 YS2009
+scenarios are reprints of YS2008 scenarios under different `scenario_id`s. This is a known
+and already-repaired defect — `dataset/master/CONTAMINATION_REPAIR.md` §6 found it and
+collapsed the reprints into a shared `scenario_group`, and the rows were deliberately
+retained rather than dropped.
+
+**E8 inherits that repair correctly** and this was verified rather than assumed: all 94
+duplicate pairs fall inside a single `scenario_group` (0 cross-group duplicates), and E8 uses
+`scenario_group` both for the `scenario` predictor and for the within-scenario permutation.
+So the duplicates are same-scenario, same-condition, zero-distance pairs and they are not
+contradicting any predictor.
+
+Two things do follow.
+
+**Amendment 1's asymmetry is not an artifact of the duplicates, and is slightly understated
+by them.** Excluding the 94 duplicate pairs from the 821 within-scenario pairs:
+
+| pair | within-scenario (821) | excluding duplicate texts (727) |
+|---|---:|---:|
+| `lexical` × `outcome` | +0.8165 | +0.7712 |
+| `lexical` × `intent` | +0.1297 | **−0.1445** |
+| `intent` × `outcome` | −0.2190 | −0.4944 |
+
+`lexical` remains near-collinear with `outcome` and is, if anything, *anti*-correlated with
+`intent` once the reprints are removed. Amendment 1's sensitivity requirement stands.
+
+**The bootstrap's independence assumption does not hold.** Section 3 pre-registered a
+bootstrap that resamples items with replacement. With 94 exact reprints the effective number
+of distinct texts is 204, and separately the 4–6 conditions within a scenario are not
+independent of each other either, so an item bootstrap produces CIs that are too narrow.
+
+**Pre-registered consequence, decided now:** both bootstraps are computed and both are
+reported, as `boot_ci_*` (the pre-registered item bootstrap) and `cluster_ci_*` (resampling
+the 53 `scenario_group` clusters with replacement). The item bootstrap remains the
+pre-registered primary so the original commitment is still readable. **Where the two disagree
+about whether a β clears its null band — that is, about P1 — the cluster bootstrap governs,
+because it is the one whose independence assumption is true of this dataset.** That precedence
+is fixed here, before the trajectory exists, rather than chosen once it does.
