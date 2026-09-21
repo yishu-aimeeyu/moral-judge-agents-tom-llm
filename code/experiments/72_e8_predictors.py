@@ -87,17 +87,32 @@ def build(rows):
     return mats, rsa.upper
 
 
-def correlations(mats, upper):
-    """Pairwise Spearman between predictors, on the shared upper triangle."""
+def correlations(mats, upper, rows):
+    """Pairwise Spearman between predictors, over all pairs and within scenario groups.
+
+    The within-scenario column is the one that matters for reading E1. Across all 43,053 pairs
+    the lexical predictor looks almost uncorrelated with intent, because the great majority of
+    pairs are cross-scenario and their word overlap is dominated by which story they come from.
+    E1's confound was never marginal: it lived inside the scenario group, where the four
+    conditions differ by exactly the clause that realises the factor. Reporting only the
+    all-pairs number would make the surface control look innocent when it is not.
+    """
     from scipy.stats import spearmanr
     vecs = {k: upper(v) for k, v in mats.items()}
+    within = upper(mats["scenario"]) == 0        # pairs drawn from the same scenario group
     out = []
-    names = PREDICTORS
-    for i, a in enumerate(names):
-        for b in names[i + 1:]:
+    for i, a in enumerate(PREDICTORS):
+        for b in PREDICTORS[i + 1:]:
             r = float(spearmanr(vecs[a], vecs[b]).statistic)
+            # constant within a group (scenario) has no rank variance, so it has no within-r
+            if within.sum() > 2 and vecs[a][within].std() > 0 and vecs[b][within].std() > 0:
+                rw = round(float(spearmanr(vecs[a][within], vecs[b][within]).statistic), 4)
+            else:
+                rw = ""
             out.append({"predictor_a": a, "predictor_b": b, "spearman_r": round(r, 4),
                         "r_squared": round(r * r, 4),
+                        "spearman_r_within_scenario": rw,
+                        "n_pairs": int(len(vecs[a])), "n_pairs_within": int(within.sum()),
                         "a_is_covariate": a in COVARIATES,
                         "b_is_covariate": b in COVARIATES})
     return out
@@ -189,7 +204,7 @@ def main():
     for name, M in mats.items():
         np.save(os.path.join(a.out, f"{name}.npy"), M.astype(np.float32))
 
-    cors = correlations(mats, upper)
+    cors = correlations(mats, upper, rows)
     with open(os.path.join(a.out, "predictor_correlations.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(cors[0].keys()))
         w.writeheader(); w.writerows(cors)
@@ -201,13 +216,24 @@ def main():
     print(f"\n=== E8a: {len(rows)} items, {len(PREDICTORS)} predictors ===")
     print(f"item order: belief -> outcome -> scenario_id "
           f"({rows[0]['story_id']} ... {rows[-1]['story_id']})")
-    print("\npairwise Spearman on the upper triangle:")
+    nw = cors[0]["n_pairs_within"]
+    print(f"\npairwise Spearman on the upper triangle "
+          f"({cors[0]['n_pairs']} pairs; {nw} of them within scenario):")
     for c in cors:
         flag = "  (covariate pair)" if c["a_is_covariate"] and c["b_is_covariate"] else ""
+        rw = c["spearman_r_within_scenario"]
+        rw_s = f"{rw:+.4f}" if rw != "" else "   n/a"
         print(f"  {c['predictor_a']:12} x {c['predictor_b']:12} "
-              f"r={c['spearman_r']:+.4f}  r2={c['r_squared']:.4f}{flag}")
+              f"r={c['spearman_r']:+.4f}  r2={c['r_squared']:.4f}   "
+              f"within-scenario r={rw_s}{flag}")
     print(f"\nORTHOGONALITY CHECK (prespec 2.1): intent x outcome r = {io['spearman_r']:+.4f}, "
           f"shared variance {io['r_squared'] * 100:.2f}%")
+    lex_i = next(c for c in cors if {c["predictor_a"], c["predictor_b"]} == {"intent", "lexical"})
+    lex_o = next(c for c in cors if {c["predictor_a"], c["predictor_b"]} == {"outcome", "lexical"})
+    print(f"E1 CONFOUND, where it actually lives: lexical x intent is "
+          f"{lex_i['spearman_r']:+.4f} over all pairs but "
+          f"{lex_i['spearman_r_within_scenario']:+.4f} within scenario; lexical x outcome is "
+          f"{lex_o['spearman_r']:+.4f} vs {lex_o['spearman_r_within_scenario']:+.4f}.")
     print(f"-> {a.out}\n-> {os.path.relpath(fig_path, ROOT)}")
 
 
