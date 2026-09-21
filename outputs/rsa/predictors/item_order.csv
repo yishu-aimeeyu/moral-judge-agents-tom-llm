@@ -1,0 +1,299 @@
+order,story_id,intent_label,outcome_label,scenario_id,scenario_group,condition
+0,YS2008-ALARM-intentional,guilty,harm,ALARM,ALARM,intentional
+1,YS2008-ASTHMA-intentional,guilty,harm,ASTHMA,ASTHMA,intentional
+2,YS2011-Allergy-intentional,guilty,harm,Allergy,Allergy,intentional
+3,YS2008-BAR-intentional,guilty,harm,BAR,BAR,intentional
+4,YS2008-BIKE-intentional,guilty,harm,BIKE,BIKE,intentional
+5,YS2008-BOUNCY BALL-intentional,guilty,harm,BOUNCY BALL,BOUNCY BALL,intentional
+6,YS2008-BRIDGE-intentional,guilty,harm,BRIDGE,BRIDGE,intentional
+7,YS2008-CAYO-intentional,guilty,harm,CAYO,CAYO,intentional
+8,YS2008-CHAIRLIFT-intentional,guilty,harm,CHAIRLIFT,CHAIRLIFT,intentional
+9,YS2008-COFFEE-intentional,guilty,harm,COFFEE,COFFEE,intentional
+10,YS2008-CPR-intentional,guilty,harm,CPR,CPR,intentional
+11,YS2011-Dog-intentional,guilty,harm,Dog,Dog,intentional
+12,YS2008-FRAT-intentional,guilty,harm,FRAT,FRAT,intentional
+13,YS2008-FUMIGATION-intentional,guilty,harm,FUMIGATION,FUMIGATION,intentional
+14,YS2008-HAM-intentional,guilty,harm,HAM,HAM,intentional
+15,YS2008-HARNESS-intentional,guilty,harm,HARNESS,HARNESS,intentional
+16,YS2008-HUNT-intentional,guilty,harm,HUNT,HUNT,intentional
+17,YS2008-IGLOO-intentional,guilty,harm,IGLOO,IGLOO,intentional
+18,YS2008-IRON-intentional,guilty,harm,IRON,IRON,intentional
+19,YS2008-JELLYFISH-intentional,guilty,harm,JELLYFISH,JELLYFISH,intentional
+20,YS2008-LAB-intentional,guilty,harm,LAB,LAB,intentional
+21,YS2008-LAPTOP-intentional,guilty,harm,LAPTOP,LAPTOP,intentional
+22,YS2008-LATEX-intentional,guilty,harm,LATEX,LATEX,intentional
+23,YS2008-LOGAN AIRPORT-intentional,guilty,harm,LOGAN AIRPORT,LOGAN AIRPORT,intentional
+24,YS2008-MALARIA POND-intentional,guilty,harm,MALARIA POND,MALARIA POND,intentional
+25,YS2008-MEATLOAF-intentional,guilty,harm,MEATLOAF,MEATLOAF,intentional
+26,YS2008-MOTHER-intentional,guilty,harm,MOTHER,MOTHER,intentional
+27,YS2008-MOTORBOAT-intentional,guilty,harm,MOTORBOAT,MOTORBOAT,intentional
+28,YS2008-MUSHROOMS-intentional,guilty,harm,MUSHROOMS,MUSHROOMS,intentional
+29,YS2008-PARACHUTES-intentional,guilty,harm,PARACHUTES,PARACHUTES,intentional
+30,YS2008-PEANUT ALLERGY-intentional,guilty,harm,PEANUT ALLERGY,PEANUT ALLERGY,intentional
+31,YS2008-POOL-intentional,guilty,harm,POOL,POOL,intentional
+32,YS2008-POPCORN-intentional,guilty,harm,POPCORN,POPCORN,intentional
+33,YS2008-PORRIDGE-intentional,guilty,harm,PORRIDGE,PORRIDGE,intentional
+34,YS2011-Parent-intentional,guilty,harm,Parent,Parent,intentional
+35,YS2011-Poison-intentional,guilty,harm,Poison,Poison,intentional
+36,YS2008-RABIES-intentional,guilty,harm,RABIES,RABIES,intentional
+37,YS2008-RIVER-intentional,guilty,harm,RIVER,RIVER,intentional
+38,YS2008-SAFETY CORD-intentional,guilty,harm,SAFETY CORD,SAFETY CORD,intentional
+39,YS2008-SAFETY TOWN-intentional,guilty,harm,SAFETY TOWN,SAFETY TOWN,intentional
+40,YS2008-SEATBELT-intentional,guilty,harm,SEATBELT,SEATBELT,intentional
+41,YS2008-SESAME-intentional,guilty,harm,SESAME,SESAME,intentional
+42,YS2008-SPINACH-intentional,guilty,harm,SPINACH,SPINACH,intentional
+43,YS2008-SPRING BREAK-intentional,guilty,harm,SPRING BREAK,SPRING BREAK,intentional
+44,YS2008-SUSHI-intentional,guilty,harm,SUSHI,SUSHI,intentional
+45,YS2011-Sibling-intentional,guilty,harm,Sibling,Sibling,intentional
+46,YS2008-TEENAGERS-intentional,guilty,harm,TEENAGERS,TEENAGERS,intentional
+47,YS2008-TRACKS-intentional,guilty,harm,TRACKS,TRACKS,intentional
+48,YS2008-TREE HOUSE-intentional,guilty,harm,TREE HOUSE,TREE HOUSE,intentional
+49,YS2008-VET-intentional,guilty,harm,VET,VET,intentional
+50,YS2008-VITAMIN-intentional,guilty,harm,VITAMIN,VITAMIN,intentional
+51,YS2008-WET FLOOR-intentional,guilty,harm,WET FLOOR,WET FLOOR,intentional
+52,YS2009-YS2009_01-intentional,guilty,harm,YS2009_01,POPCORN,intentional
+53,YS2009-YS2009_02-intentional,guilty,harm,YS2009_02,SUSHI,intentional
+54,YS2009-YS2009_03-intentional,guilty,harm,YS2009_03,SAFETY TOWN,intentional
+55,YS2009-YS2009_04-intentional,guilty,harm,YS2009_04,MALARIA POND,intentional
+56,YS2009-YS2009_05-intentional,guilty,harm,YS2009_05,PORRIDGE,intentional
+57,YS2009-YS2009_06-intentional,guilty,harm,YS2009_06,SPINACH,intentional
+58,YS2009-YS2009_07-intentional,guilty,harm,YS2009_07,PEANUT ALLERGY,intentional
+59,YS2009-YS2009_08-intentional,guilty,harm,YS2009_08,RABIES,intentional
+60,YS2009-YS2009_09-intentional,guilty,harm,YS2009_09,FRAT,intentional
+61,YS2009-YS2009_10-intentional,guilty,harm,YS2009_10,MEATLOAF,intentional
+62,YS2009-YS2009_11-intentional,guilty,harm,YS2009_11,TREE HOUSE,intentional
+63,YS2009-YS2009_12-intentional,guilty,harm,YS2009_12,IRON,intentional
+64,YS2009-YS2009_13-intentional,guilty,harm,YS2009_13,SEATBELT,intentional
+65,YS2009-YS2009_14-intentional,guilty,harm,YS2009_14,IGLOO,intentional
+66,YS2009-YS2009_15-intentional,guilty,harm,YS2009_15,WET FLOOR,intentional
+67,YS2009-YS2009_16-intentional,guilty,harm,YS2009_16,TEENAGERS,intentional
+68,YS2009-YS2009_17-intentional,guilty,harm,YS2009_17,HAM,intentional
+69,YS2009-YS2009_18-intentional,guilty,harm,YS2009_18,LAPTOP,intentional
+70,YS2009-YS2009_19-intentional,guilty,harm,YS2009_19,ALARM,intentional
+71,YS2009-YS2009_20-intentional,guilty,harm,YS2009_20,SAFETY CORD,intentional
+72,YS2009-YS2009_21-intentional,guilty,harm,YS2009_21,SESAME,intentional
+73,YS2009-YS2009_22-intentional,guilty,harm,YS2009_22,CPR,intentional
+74,YS2009-YS2009_23-intentional,guilty,harm,YS2009_23,ZOO,intentional
+75,YS2009-YS2009_24-intentional,guilty,harm,YS2009_24,JELLYFISH,intentional
+76,YS2008-ZOO-intentional,guilty,harm,ZOO,ZOO,intentional
+77,YS2008-ALARM-attempted,guilty,no_harm,ALARM,ALARM,attempted
+78,YS2008-ASTHMA-attempted,guilty,no_harm,ASTHMA,ASTHMA,attempted
+79,YS2008-BAR-attempted,guilty,no_harm,BAR,BAR,attempted
+80,YS2008-BIKE-attempted,guilty,no_harm,BIKE,BIKE,attempted
+81,YS2008-BOUNCY BALL-attempted,guilty,no_harm,BOUNCY BALL,BOUNCY BALL,attempted
+82,YS2008-BRIDGE-attempted,guilty,no_harm,BRIDGE,BRIDGE,attempted
+83,YS2008-CAYO-attempted,guilty,no_harm,CAYO,CAYO,attempted
+84,YS2008-CHAIRLIFT-attempted,guilty,no_harm,CHAIRLIFT,CHAIRLIFT,attempted
+85,YS2008-COFFEE-attempted,guilty,no_harm,COFFEE,COFFEE,attempted
+86,YS2008-CPR-attempted,guilty,no_harm,CPR,CPR,attempted
+87,YS2008-FRAT-attempted,guilty,no_harm,FRAT,FRAT,attempted
+88,YS2008-FUMIGATION-attempted,guilty,no_harm,FUMIGATION,FUMIGATION,attempted
+89,YS2008-HAM-attempted,guilty,no_harm,HAM,HAM,attempted
+90,YS2008-HARNESS-attempted,guilty,no_harm,HARNESS,HARNESS,attempted
+91,YS2008-HUNT-attempted,guilty,no_harm,HUNT,HUNT,attempted
+92,YS2008-IGLOO-attempted,guilty,no_harm,IGLOO,IGLOO,attempted
+93,YS2008-IRON-attempted,guilty,no_harm,IRON,IRON,attempted
+94,YS2008-JELLYFISH-attempted,guilty,no_harm,JELLYFISH,JELLYFISH,attempted
+95,YS2008-LAB-attempted,guilty,no_harm,LAB,LAB,attempted
+96,YS2008-LAPTOP-attempted,guilty,no_harm,LAPTOP,LAPTOP,attempted
+97,YS2008-LATEX-attempted,guilty,no_harm,LATEX,LATEX,attempted
+98,YS2008-LOGAN AIRPORT-attempted,guilty,no_harm,LOGAN AIRPORT,LOGAN AIRPORT,attempted
+99,YS2008-MALARIA POND-attempted,guilty,no_harm,MALARIA POND,MALARIA POND,attempted
+100,YS2008-MEATLOAF-attempted,guilty,no_harm,MEATLOAF,MEATLOAF,attempted
+101,YS2008-MOTHER-attempted,guilty,no_harm,MOTHER,MOTHER,attempted
+102,YS2008-MOTORBOAT-attempted,guilty,no_harm,MOTORBOAT,MOTORBOAT,attempted
+103,YS2008-MUSHROOMS-attempted,guilty,no_harm,MUSHROOMS,MUSHROOMS,attempted
+104,YS2008-PARACHUTES-attempted,guilty,no_harm,PARACHUTES,PARACHUTES,attempted
+105,YS2008-PEANUT ALLERGY-attempted,guilty,no_harm,PEANUT ALLERGY,PEANUT ALLERGY,attempted
+106,YS2008-POOL-attempted,guilty,no_harm,POOL,POOL,attempted
+107,YS2008-POPCORN-attempted,guilty,no_harm,POPCORN,POPCORN,attempted
+108,YS2008-PORRIDGE-attempted,guilty,no_harm,PORRIDGE,PORRIDGE,attempted
+109,YS2008-RABIES-attempted,guilty,no_harm,RABIES,RABIES,attempted
+110,YS2008-RIVER-attempted,guilty,no_harm,RIVER,RIVER,attempted
+111,YS2008-SAFETY CORD-attempted,guilty,no_harm,SAFETY CORD,SAFETY CORD,attempted
+112,YS2008-SAFETY TOWN-attempted,guilty,no_harm,SAFETY TOWN,SAFETY TOWN,attempted
+113,YS2008-SEATBELT-attempted,guilty,no_harm,SEATBELT,SEATBELT,attempted
+114,YS2008-SESAME-attempted,guilty,no_harm,SESAME,SESAME,attempted
+115,YS2008-SPINACH-attempted,guilty,no_harm,SPINACH,SPINACH,attempted
+116,YS2008-SPRING BREAK-attempted,guilty,no_harm,SPRING BREAK,SPRING BREAK,attempted
+117,YS2008-SUSHI-attempted,guilty,no_harm,SUSHI,SUSHI,attempted
+118,YS2008-TEENAGERS-attempted,guilty,no_harm,TEENAGERS,TEENAGERS,attempted
+119,YS2008-TRACKS-attempted,guilty,no_harm,TRACKS,TRACKS,attempted
+120,YS2008-TREE HOUSE-attempted,guilty,no_harm,TREE HOUSE,TREE HOUSE,attempted
+121,YS2008-VET-attempted,guilty,no_harm,VET,VET,attempted
+122,YS2008-VITAMIN-attempted,guilty,no_harm,VITAMIN,VITAMIN,attempted
+123,YS2008-WET FLOOR-attempted,guilty,no_harm,WET FLOOR,WET FLOOR,attempted
+124,YS2009-YS2009_01-attempted,guilty,no_harm,YS2009_01,POPCORN,attempted
+125,YS2009-YS2009_02-attempted,guilty,no_harm,YS2009_02,SUSHI,attempted
+126,YS2009-YS2009_03-attempted,guilty,no_harm,YS2009_03,SAFETY TOWN,attempted
+127,YS2009-YS2009_04-attempted,guilty,no_harm,YS2009_04,MALARIA POND,attempted
+128,YS2009-YS2009_05-attempted,guilty,no_harm,YS2009_05,PORRIDGE,attempted
+129,YS2009-YS2009_06-attempted,guilty,no_harm,YS2009_06,SPINACH,attempted
+130,YS2009-YS2009_07-attempted,guilty,no_harm,YS2009_07,PEANUT ALLERGY,attempted
+131,YS2009-YS2009_08-attempted,guilty,no_harm,YS2009_08,RABIES,attempted
+132,YS2009-YS2009_09-attempted,guilty,no_harm,YS2009_09,FRAT,attempted
+133,YS2009-YS2009_10-attempted,guilty,no_harm,YS2009_10,MEATLOAF,attempted
+134,YS2009-YS2009_11-attempted,guilty,no_harm,YS2009_11,TREE HOUSE,attempted
+135,YS2009-YS2009_12-attempted,guilty,no_harm,YS2009_12,IRON,attempted
+136,YS2009-YS2009_13-attempted,guilty,no_harm,YS2009_13,SEATBELT,attempted
+137,YS2009-YS2009_14-attempted,guilty,no_harm,YS2009_14,IGLOO,attempted
+138,YS2009-YS2009_15-attempted,guilty,no_harm,YS2009_15,WET FLOOR,attempted
+139,YS2009-YS2009_16-attempted,guilty,no_harm,YS2009_16,TEENAGERS,attempted
+140,YS2009-YS2009_17-attempted,guilty,no_harm,YS2009_17,HAM,attempted
+141,YS2009-YS2009_18-attempted,guilty,no_harm,YS2009_18,LAPTOP,attempted
+142,YS2009-YS2009_19-attempted,guilty,no_harm,YS2009_19,ALARM,attempted
+143,YS2009-YS2009_20-attempted,guilty,no_harm,YS2009_20,SAFETY CORD,attempted
+144,YS2009-YS2009_21-attempted,guilty,no_harm,YS2009_21,SESAME,attempted
+145,YS2009-YS2009_22-attempted,guilty,no_harm,YS2009_22,CPR,attempted
+146,YS2009-YS2009_23-attempted,guilty,no_harm,YS2009_23,ZOO,attempted
+147,YS2009-YS2009_24-attempted,guilty,no_harm,YS2009_24,JELLYFISH,attempted
+148,YS2008-ZOO-attempted,guilty,no_harm,ZOO,ZOO,attempted
+149,YS2008-ALARM-accidental,innocent,harm,ALARM,ALARM,accidental
+150,YS2008-ASTHMA-accidental,innocent,harm,ASTHMA,ASTHMA,accidental
+151,YS2011-Allergy-accidental,innocent,harm,Allergy,Allergy,accidental
+152,YS2008-BAR-accidental,innocent,harm,BAR,BAR,accidental
+153,YS2008-BIKE-accidental,innocent,harm,BIKE,BIKE,accidental
+154,YS2008-BOUNCY BALL-accidental,innocent,harm,BOUNCY BALL,BOUNCY BALL,accidental
+155,YS2008-BRIDGE-accidental,innocent,harm,BRIDGE,BRIDGE,accidental
+156,YS2008-CAYO-accidental,innocent,harm,CAYO,CAYO,accidental
+157,YS2008-CHAIRLIFT-accidental,innocent,harm,CHAIRLIFT,CHAIRLIFT,accidental
+158,YS2008-COFFEE-accidental,innocent,harm,COFFEE,COFFEE,accidental
+159,YS2008-CPR-accidental,innocent,harm,CPR,CPR,accidental
+160,YS2011-Dog-accidental,innocent,harm,Dog,Dog,accidental
+161,YS2008-FRAT-accidental,innocent,harm,FRAT,FRAT,accidental
+162,YS2008-FUMIGATION-accidental,innocent,harm,FUMIGATION,FUMIGATION,accidental
+163,YS2008-HAM-accidental,innocent,harm,HAM,HAM,accidental
+164,YS2008-HARNESS-accidental,innocent,harm,HARNESS,HARNESS,accidental
+165,YS2008-HUNT-accidental,innocent,harm,HUNT,HUNT,accidental
+166,YS2008-IGLOO-accidental,innocent,harm,IGLOO,IGLOO,accidental
+167,YS2008-IRON-accidental,innocent,harm,IRON,IRON,accidental
+168,YS2008-JELLYFISH-accidental,innocent,harm,JELLYFISH,JELLYFISH,accidental
+169,YS2008-LAB-accidental,innocent,harm,LAB,LAB,accidental
+170,YS2008-LAPTOP-accidental,innocent,harm,LAPTOP,LAPTOP,accidental
+171,YS2008-LATEX-accidental,innocent,harm,LATEX,LATEX,accidental
+172,YS2008-LOGAN AIRPORT-accidental,innocent,harm,LOGAN AIRPORT,LOGAN AIRPORT,accidental
+173,YS2008-MALARIA POND-accidental,innocent,harm,MALARIA POND,MALARIA POND,accidental
+174,YS2008-MEATLOAF-accidental,innocent,harm,MEATLOAF,MEATLOAF,accidental
+175,YS2008-MOTHER-accidental,innocent,harm,MOTHER,MOTHER,accidental
+176,YS2008-MOTORBOAT-accidental,innocent,harm,MOTORBOAT,MOTORBOAT,accidental
+177,YS2008-MUSHROOMS-accidental,innocent,harm,MUSHROOMS,MUSHROOMS,accidental
+178,YS2008-PARACHUTES-accidental,innocent,harm,PARACHUTES,PARACHUTES,accidental
+179,YS2008-PEANUT ALLERGY-accidental,innocent,harm,PEANUT ALLERGY,PEANUT ALLERGY,accidental
+180,YS2008-POOL-accidental,innocent,harm,POOL,POOL,accidental
+181,YS2008-POPCORN-accidental,innocent,harm,POPCORN,POPCORN,accidental
+182,YS2008-PORRIDGE-accidental,innocent,harm,PORRIDGE,PORRIDGE,accidental
+183,YS2011-Parent-accidental,innocent,harm,Parent,Parent,accidental
+184,YS2011-Poison-accidental,innocent,harm,Poison,Poison,accidental
+185,YS2008-RABIES-accidental,innocent,harm,RABIES,RABIES,accidental
+186,YS2008-RIVER-accidental,innocent,harm,RIVER,RIVER,accidental
+187,YS2008-SAFETY CORD-accidental,innocent,harm,SAFETY CORD,SAFETY CORD,accidental
+188,YS2008-SAFETY TOWN-accidental,innocent,harm,SAFETY TOWN,SAFETY TOWN,accidental
+189,YS2008-SEATBELT-accidental,innocent,harm,SEATBELT,SEATBELT,accidental
+190,YS2008-SESAME-accidental,innocent,harm,SESAME,SESAME,accidental
+191,YS2008-SPINACH-accidental,innocent,harm,SPINACH,SPINACH,accidental
+192,YS2008-SPRING BREAK-accidental,innocent,harm,SPRING BREAK,SPRING BREAK,accidental
+193,YS2008-SUSHI-accidental,innocent,harm,SUSHI,SUSHI,accidental
+194,YS2011-Sibling-accidental,innocent,harm,Sibling,Sibling,accidental
+195,YS2008-TEENAGERS-accidental,innocent,harm,TEENAGERS,TEENAGERS,accidental
+196,YS2008-TRACKS-accidental,innocent,harm,TRACKS,TRACKS,accidental
+197,YS2008-TREE HOUSE-accidental,innocent,harm,TREE HOUSE,TREE HOUSE,accidental
+198,YS2008-VET-accidental,innocent,harm,VET,VET,accidental
+199,YS2008-VITAMIN-accidental,innocent,harm,VITAMIN,VITAMIN,accidental
+200,YS2008-WET FLOOR-accidental,innocent,harm,WET FLOOR,WET FLOOR,accidental
+201,YS2009-YS2009_01-accidental,innocent,harm,YS2009_01,POPCORN,accidental
+202,YS2009-YS2009_02-accidental,innocent,harm,YS2009_02,SUSHI,accidental
+203,YS2009-YS2009_03-accidental,innocent,harm,YS2009_03,SAFETY TOWN,accidental
+204,YS2009-YS2009_04-accidental,innocent,harm,YS2009_04,MALARIA POND,accidental
+205,YS2009-YS2009_05-accidental,innocent,harm,YS2009_05,PORRIDGE,accidental
+206,YS2009-YS2009_06-accidental,innocent,harm,YS2009_06,SPINACH,accidental
+207,YS2009-YS2009_07-accidental,innocent,harm,YS2009_07,PEANUT ALLERGY,accidental
+208,YS2009-YS2009_08-accidental,innocent,harm,YS2009_08,RABIES,accidental
+209,YS2009-YS2009_09-accidental,innocent,harm,YS2009_09,FRAT,accidental
+210,YS2009-YS2009_10-accidental,innocent,harm,YS2009_10,MEATLOAF,accidental
+211,YS2009-YS2009_11-accidental,innocent,harm,YS2009_11,TREE HOUSE,accidental
+212,YS2009-YS2009_12-accidental,innocent,harm,YS2009_12,IRON,accidental
+213,YS2009-YS2009_13-accidental,innocent,harm,YS2009_13,SEATBELT,accidental
+214,YS2009-YS2009_14-accidental,innocent,harm,YS2009_14,IGLOO,accidental
+215,YS2009-YS2009_15-accidental,innocent,harm,YS2009_15,WET FLOOR,accidental
+216,YS2009-YS2009_16-accidental,innocent,harm,YS2009_16,TEENAGERS,accidental
+217,YS2009-YS2009_17-accidental,innocent,harm,YS2009_17,HAM,accidental
+218,YS2009-YS2009_18-accidental,innocent,harm,YS2009_18,LAPTOP,accidental
+219,YS2009-YS2009_19-accidental,innocent,harm,YS2009_19,ALARM,accidental
+220,YS2009-YS2009_20-accidental,innocent,harm,YS2009_20,SAFETY CORD,accidental
+221,YS2009-YS2009_21-accidental,innocent,harm,YS2009_21,SESAME,accidental
+222,YS2009-YS2009_22-accidental,innocent,harm,YS2009_22,CPR,accidental
+223,YS2009-YS2009_23-accidental,innocent,harm,YS2009_23,ZOO,accidental
+224,YS2009-YS2009_24-accidental,innocent,harm,YS2009_24,JELLYFISH,accidental
+225,YS2008-ZOO-accidental,innocent,harm,ZOO,ZOO,accidental
+226,YS2008-ALARM-neutral,innocent,no_harm,ALARM,ALARM,neutral
+227,YS2008-ASTHMA-neutral,innocent,no_harm,ASTHMA,ASTHMA,neutral
+228,YS2008-BAR-neutral,innocent,no_harm,BAR,BAR,neutral
+229,YS2008-BIKE-neutral,innocent,no_harm,BIKE,BIKE,neutral
+230,YS2008-BOUNCY BALL-neutral,innocent,no_harm,BOUNCY BALL,BOUNCY BALL,neutral
+231,YS2008-BRIDGE-neutral,innocent,no_harm,BRIDGE,BRIDGE,neutral
+232,YS2008-CAYO-neutral,innocent,no_harm,CAYO,CAYO,neutral
+233,YS2008-CHAIRLIFT-neutral,innocent,no_harm,CHAIRLIFT,CHAIRLIFT,neutral
+234,YS2008-COFFEE-neutral,innocent,no_harm,COFFEE,COFFEE,neutral
+235,YS2008-CPR-neutral,innocent,no_harm,CPR,CPR,neutral
+236,YS2008-FRAT-neutral,innocent,no_harm,FRAT,FRAT,neutral
+237,YS2008-FUMIGATION-neutral,innocent,no_harm,FUMIGATION,FUMIGATION,neutral
+238,YS2008-HAM-neutral,innocent,no_harm,HAM,HAM,neutral
+239,YS2008-HARNESS-neutral,innocent,no_harm,HARNESS,HARNESS,neutral
+240,YS2008-HUNT-neutral,innocent,no_harm,HUNT,HUNT,neutral
+241,YS2008-IGLOO-neutral,innocent,no_harm,IGLOO,IGLOO,neutral
+242,YS2008-IRON-neutral,innocent,no_harm,IRON,IRON,neutral
+243,YS2008-JELLYFISH-neutral,innocent,no_harm,JELLYFISH,JELLYFISH,neutral
+244,YS2008-LAB-neutral,innocent,no_harm,LAB,LAB,neutral
+245,YS2008-LAPTOP-neutral,innocent,no_harm,LAPTOP,LAPTOP,neutral
+246,YS2008-LATEX-neutral,innocent,no_harm,LATEX,LATEX,neutral
+247,YS2008-LOGAN AIRPORT-neutral,innocent,no_harm,LOGAN AIRPORT,LOGAN AIRPORT,neutral
+248,YS2008-MALARIA POND-neutral,innocent,no_harm,MALARIA POND,MALARIA POND,neutral
+249,YS2008-MEATLOAF-neutral,innocent,no_harm,MEATLOAF,MEATLOAF,neutral
+250,YS2008-MOTHER-neutral,innocent,no_harm,MOTHER,MOTHER,neutral
+251,YS2008-MOTORBOAT-neutral,innocent,no_harm,MOTORBOAT,MOTORBOAT,neutral
+252,YS2008-MUSHROOMS-neutral,innocent,no_harm,MUSHROOMS,MUSHROOMS,neutral
+253,YS2008-PARACHUTES-neutral,innocent,no_harm,PARACHUTES,PARACHUTES,neutral
+254,YS2008-PEANUT ALLERGY-neutral,innocent,no_harm,PEANUT ALLERGY,PEANUT ALLERGY,neutral
+255,YS2008-POOL-neutral,innocent,no_harm,POOL,POOL,neutral
+256,YS2008-POPCORN-neutral,innocent,no_harm,POPCORN,POPCORN,neutral
+257,YS2008-PORRIDGE-neutral,innocent,no_harm,PORRIDGE,PORRIDGE,neutral
+258,YS2008-RABIES-neutral,innocent,no_harm,RABIES,RABIES,neutral
+259,YS2008-RIVER-neutral,innocent,no_harm,RIVER,RIVER,neutral
+260,YS2008-SAFETY CORD-neutral,innocent,no_harm,SAFETY CORD,SAFETY CORD,neutral
+261,YS2008-SAFETY TOWN-neutral,innocent,no_harm,SAFETY TOWN,SAFETY TOWN,neutral
+262,YS2008-SEATBELT-neutral,innocent,no_harm,SEATBELT,SEATBELT,neutral
+263,YS2008-SESAME-neutral,innocent,no_harm,SESAME,SESAME,neutral
+264,YS2008-SPINACH-neutral,innocent,no_harm,SPINACH,SPINACH,neutral
+265,YS2008-SPRING BREAK-neutral,innocent,no_harm,SPRING BREAK,SPRING BREAK,neutral
+266,YS2008-SUSHI-neutral,innocent,no_harm,SUSHI,SUSHI,neutral
+267,YS2008-TEENAGERS-neutral,innocent,no_harm,TEENAGERS,TEENAGERS,neutral
+268,YS2008-TRACKS-neutral,innocent,no_harm,TRACKS,TRACKS,neutral
+269,YS2008-TREE HOUSE-neutral,innocent,no_harm,TREE HOUSE,TREE HOUSE,neutral
+270,YS2008-VET-neutral,innocent,no_harm,VET,VET,neutral
+271,YS2008-VITAMIN-neutral,innocent,no_harm,VITAMIN,VITAMIN,neutral
+272,YS2008-WET FLOOR-neutral,innocent,no_harm,WET FLOOR,WET FLOOR,neutral
+273,YS2009-YS2009_01-neutral,innocent,no_harm,YS2009_01,POPCORN,neutral
+274,YS2009-YS2009_02-neutral,innocent,no_harm,YS2009_02,SUSHI,neutral
+275,YS2009-YS2009_03-neutral,innocent,no_harm,YS2009_03,SAFETY TOWN,neutral
+276,YS2009-YS2009_04-neutral,innocent,no_harm,YS2009_04,MALARIA POND,neutral
+277,YS2009-YS2009_05-neutral,innocent,no_harm,YS2009_05,PORRIDGE,neutral
+278,YS2009-YS2009_06-neutral,innocent,no_harm,YS2009_06,SPINACH,neutral
+279,YS2009-YS2009_07-neutral,innocent,no_harm,YS2009_07,PEANUT ALLERGY,neutral
+280,YS2009-YS2009_08-neutral,innocent,no_harm,YS2009_08,RABIES,neutral
+281,YS2009-YS2009_09-neutral,innocent,no_harm,YS2009_09,FRAT,neutral
+282,YS2009-YS2009_10-neutral,innocent,no_harm,YS2009_10,MEATLOAF,neutral
+283,YS2009-YS2009_11-neutral,innocent,no_harm,YS2009_11,TREE HOUSE,neutral
+284,YS2009-YS2009_12-neutral,innocent,no_harm,YS2009_12,IRON,neutral
+285,YS2009-YS2009_13-neutral,innocent,no_harm,YS2009_13,SEATBELT,neutral
+286,YS2009-YS2009_14-neutral,innocent,no_harm,YS2009_14,IGLOO,neutral
+287,YS2009-YS2009_15-neutral,innocent,no_harm,YS2009_15,WET FLOOR,neutral
+288,YS2009-YS2009_16-neutral,innocent,no_harm,YS2009_16,TEENAGERS,neutral
+289,YS2009-YS2009_17-neutral,innocent,no_harm,YS2009_17,HAM,neutral
+290,YS2009-YS2009_18-neutral,innocent,no_harm,YS2009_18,LAPTOP,neutral
+291,YS2009-YS2009_19-neutral,innocent,no_harm,YS2009_19,ALARM,neutral
+292,YS2009-YS2009_20-neutral,innocent,no_harm,YS2009_20,SAFETY CORD,neutral
+293,YS2009-YS2009_21-neutral,innocent,no_harm,YS2009_21,SESAME,neutral
+294,YS2009-YS2009_22-neutral,innocent,no_harm,YS2009_22,CPR,neutral
+295,YS2009-YS2009_23-neutral,innocent,no_harm,YS2009_23,ZOO,neutral
+296,YS2009-YS2009_24-neutral,innocent,no_harm,YS2009_24,JELLYFISH,neutral
+297,YS2008-ZOO-neutral,innocent,no_harm,ZOO,ZOO,neutral

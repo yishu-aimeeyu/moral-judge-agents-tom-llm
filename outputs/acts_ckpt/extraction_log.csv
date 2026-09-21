@@ -1,0 +1,27 @@
+model,revision,step,seconds,mb,dtype,layers_rel
+EleutherAI/pythia-1.4b,step0,0,91.8,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step143000,143000,66.6,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step1,1,73.9,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step2,2,61.4,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step4,4,64.1,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step8,8,64.4,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step16,16,69.6,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step32,32,64.9,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step64,64,69.3,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step128,128,71.0,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step256,256,62.2,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step512,512,62.5,52.9,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step1000,1000,60.2,52.9,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step2000,2000,65.2,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step3000,3000,59.0,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step4000,4000,56.5,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step8000,8000,58.1,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step16000,16000,59.5,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step24000,24000,54.0,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step32000,32000,59.0,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step48000,48000,56.3,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step64000,64000,57.8,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step80000,80000,53.6,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step96000,96000,56.2,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step112000,112000,53.0,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+EleutherAI/pythia-1.4b,step128000,128000,51.9,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0

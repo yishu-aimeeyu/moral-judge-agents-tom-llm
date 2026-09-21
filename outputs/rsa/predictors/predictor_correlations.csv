@@ -1,0 +1,11 @@
+predictor_a,predictor_b,spearman_r,r_squared,spearman_r_within_scenario,n_pairs,n_pairs_within,a_is_covariate,b_is_covariate
+intent,outcome,-0.0034,0.0,-0.219,44253,821,False,False
+intent,interaction,0.2727,0.0744,0.1465,44253,821,False,False
+intent,scenario,-0.0245,0.0006,,44253,821,False,True
+intent,lexical,-0.0008,0.0,0.1297,44253,821,False,True
+outcome,interaction,0.2379,0.0566,0.1323,44253,821,False,False
+outcome,scenario,-0.023,0.0005,,44253,821,False,True
+outcome,lexical,0.0215,0.0005,0.8165,44253,821,False,True
+interaction,scenario,-0.017,0.0003,,44253,821,False,True
+interaction,lexical,0.0567,0.0032,0.2048,44253,821,False,True
+scenario,lexical,0.2337,0.0546,,44253,821,True,True
