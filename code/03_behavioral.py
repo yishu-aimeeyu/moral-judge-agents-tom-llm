@@ -350,6 +350,41 @@ class HFBackend:
         return _finish(ratings, s_min, s_max)
 
 
+class BillingStop(RuntimeError):
+    """Account has no money left — stop the provider, do not retry into a dead key."""
+
+
+# True prepaid/balance exhaustion only. Google also returns 429 "exceeded your current
+# quota" for *rate* limits (RPM/RPD) and links rate-limits docs — those must NOT abort.
+_BILLING_MARKERS = (
+    "credits are depleted",
+    "prepayment credits",
+    "payment required",
+    "insufficient_quota",
+    "insufficient funds",
+    "billing hard limit",
+)
+_RATE_LIMIT_MARKERS = (
+    "rate-limits",
+    "rate limit",
+    "rate_limit",
+    "resource exhausted",
+    "high demand",
+    "per_day",
+    "requests_per_model",
+    "quota exceeded",
+    "exceeded your current quota",
+)
+
+
+def _fatal_if_billing(exc, provider, model):
+    err = str(exc).lower()
+    if any(m in err for m in _RATE_LIMIT_MARKERS):
+        return  # caller retries with backoff
+    if any(m in err for m in _BILLING_MARKERS):
+        raise BillingStop(f"{provider} {model}: {str(exc)[:200]}") from exc
+
+
 def _finish(ratings, s_min, s_max):
     """Package a backend's parsed ratings, or report nothing when nothing parsed.
 
@@ -400,30 +435,83 @@ class OpenAIBackend:
 
     Do not launch closed-API rescoring until budget approval — this batching exists so
     a 20-sample run bills the prompt once (~6–10× cheaper than sequential calls).
+
+    gpt-5.* / o-series reject `max_tokens` (need `max_completion_tokens`) and often reject
+    temperature and/or `n=`; gpt-5 also burns completion tokens on hidden reasoning, so the
+    output cap is higher than the 16-token rating budget used for gpt-4o.
     """
     def __init__(self, model_name, scoring, **_):
         from openai import OpenAI
         self.model_name = model_name
         self.client = OpenAI()
+        m = model_name.lower()
+        self._gpt5ish = m.startswith("gpt-5") or m.startswith(("o1", "o3", "o4"))
+        self._max_out = 1024 if self._gpt5ish else 16
 
     def rate(self, prompt, s_min, s_max, n_samples=5, temperature=0.0):
         ratings = []
-        for attempt in range(3):
+        msgs = [{"role": "user", "content": prompt}]
+        use_new_tok = self._gpt5ish
+        max_out = self._max_out
+        use_temp = True
+        use_n = True
+
+        def _create(n_req):
+            kwargs = dict(model=self.model_name, messages=msgs)
+            if use_new_tok:
+                kwargs["max_completion_tokens"] = max_out
+            else:
+                kwargs["max_tokens"] = max_out
+            if use_temp:
+                kwargs["temperature"] = temperature
+            if use_n and n_req > 1:
+                kwargs["n"] = n_req
+            return self.client.chat.completions.create(**kwargs)
+
+        for attempt in range(4):
             try:
-                resp = self.client.chat.completions.create(
-                    model=self.model_name,
-                    messages=[{"role": "user", "content": prompt}],
-                    max_tokens=16, temperature=temperature, n=n_samples,
-                )
+                resp = _create(n_samples)
                 for ch in resp.choices:
                     v = _parse_rating((ch.message.content or "").strip(), s_min, s_max)
                     if v is not None:
                         ratings.append(v)
                 break
             except Exception as e:
-                if attempt == 2:
+                _fatal_if_billing(e, "OpenAI", self.model_name)
+                err = str(e).lower()
+                if "max_tokens" in err and "max_completion_tokens" in err:
+                    use_new_tok = True
+                    max_out = max(max_out, 1024)
+                    continue
+                if any(k in err for k in ("temperature", "'n'", '"n"', "n=",
+                                          "parallel", "multiple")):
+                    use_n = False
+                    for _ in range(n_samples):
+                        for att2 in range(3):
+                            try:
+                                try:
+                                    resp = _create(1)
+                                except Exception as e_temp:
+                                    if "temperature" in str(e_temp).lower() and use_temp:
+                                        use_temp = False
+                                        resp = _create(1)
+                                    else:
+                                        raise
+                                v = _parse_rating(
+                                    (resp.choices[0].message.content or "").strip(),
+                                    s_min, s_max)
+                                if v is not None:
+                                    ratings.append(v)
+                                break
+                            except Exception as e2:
+                                _fatal_if_billing(e2, "OpenAI", self.model_name)
+                                if att2 == 2:
+                                    print(f"    OpenAI error: {e2}")
+                                time.sleep(2 ** att2)
+                    break
+                if attempt == 3:
                     print(f"    OpenAI error: {e}")
-                time.sleep(2 ** attempt)
+                time.sleep(min(2 ** attempt, 30))
         return _finish(ratings, s_min, s_max)
 
 
@@ -459,6 +547,7 @@ class AnthropicBackend:
                         ratings.append(v)
                     break
                 except Exception as e:
+                    _fatal_if_billing(e, "Anthropic", self.model_name)
                     if "temperature" in str(e).lower() and use_temp:
                         use_temp = False
                         continue
@@ -503,10 +592,16 @@ class GoogleBackend:
             got = []
             for attempt in range(5):
                 try:
+                    # gemini-2.5-pro: hidden thinking is billed/capped as output. Probe showed
+                    # max_output_tokens=128/512 → empty text; 1024 → parseable digit. Flash can
+                    # use a smaller cap. 60s request timeout avoids the ~600s default on 503s.
+                    out_cap = 1024 if "pro" in self.model_name.lower() else 256
                     cfg = self.gai.types.GenerationConfig(
-                        max_output_tokens=1024, temperature=temperature,
+                        max_output_tokens=out_cap, temperature=temperature,
                         candidate_count=batch)
-                    resp = self.mdl.generate_content(prompt, generation_config=cfg)
+                    resp = self.mdl.generate_content(
+                        prompt, generation_config=cfg,
+                        request_options={"timeout": 60})
                     cands = getattr(resp, "candidates", None) or []
                     if cands:
                         for cand in cands:
@@ -527,20 +622,21 @@ class GoogleBackend:
                             got.append(v)
                     break
                 except Exception as e:
+                    _fatal_if_billing(e, "Google", self.model_name)
                     err_str = str(e)
-                    if "per_day" in err_str or "per_model_per_day" in err_str:
-                        raise RuntimeError(
-                            f"Daily quota exhausted for {self.model_name}. "
-                            "Resubmit after midnight UTC when quota resets."
-                        ) from e
                     # candidate_count unsupported -> sequential fallback
                     if "candidate" in err_str.lower() and batch > 1:
                         batch = 1
                         continue
-                    wait = 2 ** attempt
-                    m_delay = re.search(r'retry[_ ](?:in|after)[^\d]*(\d+)', err_str)
-                    if m_delay:
-                        wait = min(int(m_delay.group(1)) + 5, 400)
+                    err_l = err_str.lower()
+                    # RPM/RPD 429s: long backoff (not a money problem — balance can still be >$0)
+                    if any(m in err_l for m in _RATE_LIMIT_MARKERS) or "429" in err_l:
+                        wait = min(60 * (attempt + 1), 300)
+                    else:
+                        wait = min(2 ** attempt, 30)
+                        m_delay = re.search(r'retry[_ ](?:in|after)[^\d]*(\d+)', err_str)
+                        if m_delay:
+                            wait = min(int(m_delay.group(1)) + 5, 60)
                     print(f"    Google error (attempt {attempt+1}/5, wait {wait}s): {err_str[:120]}")
                     time.sleep(wait)
             if not got and batch > 1:
@@ -762,6 +858,13 @@ def run_model(backend, rows, templates, n_samples, temperature, raw_path=None):
                         row=row, template=tmpl)
                 else:
                     ratings, norm_avg = backend.rate(prompt, s_min, s_max, n_samples, temperature)
+                # Empty ratings mean every sample failed to parse (or the API returned
+                # nothing). Do NOT mark the key done — that would make resume skip the
+                # item forever and drop it from the contrast. Leave it for the next pass.
+                if not ratings or norm_avg is None:
+                    print(f"    !! no parseable rating for {row['story_id']} / {tmpl} "
+                          f"— will retry on resume", flush=True)
+                    continue
                 for i, raw_r in enumerate(ratings):
                     rec = {
                         "model": backend.model_name, "template": tmpl, "sample": i,
@@ -920,6 +1023,9 @@ def main():
             print("\n  Intent-reliance index per template:")
             for r in intent_rel:
                 print(f"    {r['template']:30s}  IRI={r['intent_reliance_index']}")
+        except BillingStop as e:
+            print(f"!! BILLING STOP — abandoning remaining {args.backend} models: {e}")
+            break
         except Exception as e:
             print(f"!! {model_name} FAILED: {e}")
             import traceback; traceback.print_exc()
