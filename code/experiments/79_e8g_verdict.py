@@ -24,6 +24,7 @@ DEPTHS = ["0.2", "0.4", "0.6", "0.8", "1.0"]
 TARGET = {"last": "outcome", "belief_last": "intent"}
 OTHER = {"outcome": "intent", "intent": "outcome"}
 MIN_DEPTHS = 3
+ENGAGEMENT_FLOOR = 0.2191
 
 
 def _load(fname, modname):
@@ -90,7 +91,10 @@ def main():
          f"(outcome clears, intent does not); ≥ {MIN_DEPTHS} of 5 needed per position. "
          f"Pythia-1.4B under the same rule: 5 of 5 and 4 of 5.", "",
          f"![joined trajectory](checkpoint_trajectory_{MODEL}_joined.png)", "",
-         f"Eight stage-1 revisions ({steps[0]:,} … {final:,}); cluster-bootstrap CIs; "
+         "The pre-registered verdict is the one from the first eight revisions, committed "
+         "under amendment 3.1; it gave the same verdict with the same counts. Amendment 3.2 "
+         "added revisions without moving the step the verdict is read at.", "",
+         f"{len(steps)} stage-1 revisions ({steps[0]:,} … {final:,}); cluster-bootstrap CIs; "
          f"1000 permutations per cell. **No step-0 gate**: OLMo-2 publishes no random-init "
          f"checkpoint, so nothing here was checked against an untrained network of this "
          f"family; Pythia's passing gate covers only the RDM construction and predictors the "
@@ -122,15 +126,15 @@ def main():
             brackets.append(f"`{pos}` {tgt}: inside its null at step {prev:,} "
                             f"({tokens[prev]} tokens), clear from step {e:,} "
                             f"({tokens[e]} tokens)")
-    L += ["", "The onset is bracketed, not pinned: " + "; ".join(brackets) + ". Eight "
-          "revisions cannot place it more finely. Steps are not comparable across families "
-          "at face value (OLMo-2 stage 1 is ~4.2M tokens per step, Pythia ~2.1M); in tokens, "
-          "Pythia's outcome structure at `last` clears from step 1,000 (~2.1B tokens) and its "
-          "intent structure at `belief_last` from step 3,000 (~6.3B), both inside or just "
-          "below OLMo's bracket. Same order of magnitude, and nothing finer is claimed.", ""]
+    L += ["", "The onset is bracketed, not pinned: " + "; ".join(brackets) + f". "
+          f"{len(steps)} revisions cannot place it more finely. Steps are not comparable "
+          "across families at face value (OLMo-2 stage 1 is ~4.2M tokens per step, Pythia "
+          "~2.1M); in tokens, Pythia's outcome structure at `last` clears from step 1,000 "
+          "(~2.1B tokens) and its intent structure at `belief_last` from step 3,000 (~6.3B). "
+          "Same order of magnitude as OLMo, and nothing finer is claimed.", ""]
 
     if shapes:
-        L += ["Shape fits at n = 8 (amendment 3: reported, not scored):", "",
+        L += [f"Shape fits at n = {len(steps)} (amendment 3: reported, not scored):", "",
               "| position | depth | predictor | ΔAICc (piecewise − sigmoid) | R² sigmoid | "
               "75's label |", "|---|---|---|---|---|---|"]
         for s in shapes:
@@ -169,13 +173,28 @@ def main():
           "float16 and the stage-1 revisions at float32; and `base` includes stage-2 "
           "annealing, which E8g did not sample, so the last stage-1 point and `base` are "
           "different weights joined by a dotted line.", "",
-          "## Limits", "",
-          "- Eight revisions, by scope decision (amendment 3). The full ~20-revision sweep "
-          "would sharpen the timing, not the verdict, which is read at one revision.",
+          ]
+    beh_path = os.path.join(RSA_DIR, f"checkpoint_behavioral_{MODEL}.csv")
+    if os.path.exists(beh_path):
+        beh = sorted(csv.DictReader(open(beh_path)), key=lambda r: int(r["step"]))
+        top = max(beh, key=lambda r: float(r["rating_std"]))
+        n_g = sum(r["gradeable"] == "True" for r in beh)
+        L += ["## Behavioural overlay on the stage-1 revisions (E8f for OLMo)", "",
+              f"**{n_g} of {len(beh)} stage-1 revisions clear the engagement floor** "
+              f"(rating_std ≥ {ENGAGEMENT_FLOOR}). The highest is "
+              f"{float(top['rating_std']):.4f} at step {int(top['step']):,}; the final "
+              f"stage-1 revision is at {float(beh[-1]['rating_std']):.4f}. "
+              + ("So, as for Pythia, pretraining alone never yields a rater whose 2×2 "
+                 "contrast can be estimated, and the first gradeable point on the joined "
+                 "axis is SFT." if n_g == 0 else
+                 "Coefficients are drawn from the first gradeable revision onward only."),
+              "", "Same scoring as Pythia's E8f and as `checkpoint_dissection.csv`: "
+              "logprob-EV, `human_verbatim`.", ""]
+    L += ["## Limits", "",
+          f"- {len(steps)} revisions (amendments 3 and 3.2). More would sharpen the timing, "
+          "not the verdict, which is read at one revision.",
           "- No step-0 gate for this family.",
-          "- The behavioural panel shows post-training stages only, from "
-          "`checkpoint_dissection.csv`; OLMo stage-1 revisions were not behaviourally "
-          "scored, and OLMo base itself is below the engagement floor.", ""]
+          "- Stage 2 (annealing) is not sampled; `base` follows it directly.", ""]
     p = os.path.join(RSA_DIR, "E8G_OLMO_REPLICATION.md")
     open(p, "w").write("\n".join(L))
     print(f"verdict: {verdict}  belief_last {n_hold['belief_last']}/5, last {n_hold['last']}/5")
