@@ -113,11 +113,21 @@ def main():
         e = emerg[pos]
         L.append(f"- `{pos}`, {tgt}: " + (f"step {e:,}" if e is not None else
                                            "never stays clear"))
-    L += ["", f"The earliest OLMo revision is step {steps[0]:,}. Pythia's outcome structure "
-          "at `last` was already moving off zero by step 512, so an OLMo series that is "
-          "clear from its first point says the structure is present early, not when it "
-          "starts. Step counts are also not comparable across families at face value: "
-          "OLMo-2's stage-1 batch is ~4M tokens per step and Pythia's ~2M.", ""]
+    tokens = {int(r["step"]): r["revision"].split("tokens")[-1] for r in rows}
+    brackets = []
+    for pos, tgt in TARGET.items():
+        e = emerg[pos]
+        if e is not None and e != steps[0]:
+            prev = steps[steps.index(e) - 1]
+            brackets.append(f"`{pos}` {tgt}: inside its null at step {prev:,} "
+                            f"({tokens[prev]} tokens), clear from step {e:,} "
+                            f"({tokens[e]} tokens)")
+    L += ["", "The onset is bracketed, not pinned: " + "; ".join(brackets) + ". Eight "
+          "revisions cannot place it more finely. Steps are not comparable across families "
+          "at face value (OLMo-2 stage 1 is ~4.2M tokens per step, Pythia ~2.1M); in tokens, "
+          "Pythia's outcome structure at `last` clears from step 1,000 (~2.1B tokens) and its "
+          "intent structure at `belief_last` from step 3,000 (~6.3B), both inside or just "
+          "below OLMo's bracket. Same order of magnitude, and nothing finer is claimed.", ""]
 
     if shapes:
         L += ["Shape fits at n = 8 (amendment 3: reported, not scored):", "",
@@ -139,6 +149,22 @@ def main():
             bi, bo = pi[(st, pos, "0.8", "intent")], pi[(st, pos, "0.8", "outcome")]
             L.append(f"| {st} | `{pos}` | 0.8 | {float(bi['beta']):+.3f} | "
                      f"{float(bo['beta']):+.3f} |")
+    fin = {(r["position"], r["predictor"]): float(r["beta"]) for r in rows
+           if r["spec"] == "primary" and int(r["step"]) == final
+           and r["rel_depth_requested"] == "0.8"}
+    g = lambda st, pos, p: float(pi[(st, pos, "0.8", p)]["beta"])
+    L += ["", f"Descriptively, at depth 0.8: intent at `belief_last` goes "
+          f"{fin[('belief_last', 'intent')]:+.3f} (last stage-1) → "
+          f"{g('base', 'belief_last', 'intent'):+.3f} (base) → "
+          f"{g('SFT', 'belief_last', 'intent'):+.3f} (SFT) → "
+          f"{g('Instruct', 'belief_last', 'intent'):+.3f} (Instruct), and outcome at `last` "
+          f"goes {fin[('last', 'outcome')]:+.3f} → {g('base', 'last', 'outcome'):+.3f} → "
+          f"{g('SFT', 'last', 'outcome'):+.3f} → {g('Instruct', 'last', 'outcome'):+.3f}. "
+          "Both dip across the unsampled stage-2 interval and recover at SFT, after which DPO "
+          "and RLVR leave them where they are. The dissociation itself is intact at every "
+          "stage: the off-target factor stays near zero throughout. Whether the dip belongs "
+          "to annealing or to the float16/float32 seam cannot be told apart from these data.",
+          ""]
     L += ["", "Two seams on the joined axis: the stage activations were extracted at "
           "float16 and the stage-1 revisions at float32; and `base` includes stage-2 "
           "annealing, which E8g did not sample, so the last stage-1 point and `base` are "
