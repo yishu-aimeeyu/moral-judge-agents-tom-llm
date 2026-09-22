@@ -86,9 +86,32 @@ def condition_mean(Rr, cond, labels):
     return M
 
 
+def cached_rdms(model, ids):
+    """Raw RDMs in the E8a item order, computed once per model.
+
+    The OLMo Instruct activations are a 377 MB compressed file, so re-sorting the figure
+    must not mean re-reading it.
+    """
+    path = os.path.join(RSA_DIR, f"rdm_snapshots_cache_{model}.npz")
+    keys = [f"{pos}|{rev}" for pos, _ in POSITIONS for rev, _ in SNAPSHOTS[model]]
+    if os.path.exists(path):
+        d = np.load(path, allow_pickle=True)
+        if list(d["ids"]) == ids and all(k in d.files for k in keys):
+            return {k: d[k] for k in keys}
+    out = {}
+    for k in keys:
+        pos, rev = k.split("|")
+        out[k] = load(model, rev, pos, ids).astype(np.float32)
+        print(f"  {pos:12} {rev}", flush=True)
+    np.savez_compressed(path, ids=np.array(ids), **out)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="pythia-1.4b", choices=list(SNAPSHOTS))
+    ap.add_argument("--sort", default="intent", choices=["intent", "outcome"],
+                    help="which factor forms the two big halves of the item order")
     a = ap.parse_args()
 
     import matplotlib
@@ -97,10 +120,21 @@ def main():
 
     order = list(csv.DictReader(open(os.path.join(PRED_DIR, "item_order.csv"))))
     ids = [r["story_id"] for r in order]
-    cond = np.array([r["condition"] for r in order])
+    rdms = cached_rdms(a.model, ids)
+    # E8a order is belief -> outcome -> scenario; the outcome-first order is a stable re-sort,
+    # so scenario order inside each block is unchanged.
+    if a.sort == "outcome":
+        perm = np.array(sorted(range(len(order)), key=lambda i: (
+            order[i]["outcome_label"] != "harm", order[i]["intent_label"] != "guilty")))
+    else:
+        perm = np.arange(len(order))
+    cond = np.array([order[i]["condition"] for i in perm])
     labels = list(dict.fromkeys(cond))
     bounds = [i for i in range(1, len(cond)) if cond[i] != cond[i - 1]]
-    preds = {n: np.load(os.path.join(PRED_DIR, f"{n}.npy")) for n in ("intent", "outcome")}
+    starts = [0] + bounds
+    ends = bounds + [len(cond)]
+    preds = {n: np.load(os.path.join(PRED_DIR, f"{n}.npy"))[np.ix_(perm, perm)]
+             for n in ("intent", "outcome")}
     snaps = SNAPSHOTS[a.model]
 
     ncol = 2 + len(snaps)
@@ -109,13 +143,20 @@ def main():
     short = {"intentional": "int", "attempted": "att", "accidental": "acc",
              "neutral": "neu"}
 
-    def mat(ax, M, title=None, blocks=True):
+    def mat(ax, M, title=None, first_col=False):
         ax.imshow(M, cmap="viridis", vmin=0, vmax=1, interpolation="nearest")
-        if blocks:
-            for b in bounds:
-                ax.axhline(b - 0.5, color="w", lw=0.6)
-                ax.axvline(b - 0.5, color="w", lw=0.6)
-        ax.set_xticks([]); ax.set_yticks([])
+        for b in bounds:
+            ax.axhline(b - 0.5, color="w", lw=0.6)
+            ax.axvline(b - 0.5, color="w", lw=0.6)
+        edges = starts + [len(cond) - 1]
+        ax.set_xticks(edges)
+        ax.set_xticklabels([f"s{e + 1}" for e in edges], fontsize=5, rotation=90)
+        if first_col:
+            ax.set_yticks([(s + e - 1) / 2 for s, e in zip(starts, ends)])
+            ax.set_yticklabels([f"{short[l]}\ns{s + 1}–s{e}" for l, s, e in
+                                zip(labels, starts, ends)], fontsize=6)
+        else:
+            ax.set_yticks([])
         if title:
             ax.set_title(title, fontsize=8.5)
 
@@ -134,23 +175,24 @@ def main():
     for p, (pos, pos_title) in enumerate(POSITIONS):
         rf, rs = 2 * p, 2 * p + 1
         for c, n in enumerate(("intent", "outcome")):
-            mat(axes[rf, c], preds[n], f"HYPOTHESIS\n{n}" if p == 0 else None)
+            mat(axes[rf, c], preds[n], f"HYPOTHESIS\n{n}" if p == 0 else None,
+                first_col=(c == 0))
             small(axes[rs, c], condition_mean(preds[n].astype(float), cond, labels), 0, 1)
         for k, (rev, lab) in enumerate(snaps):
-            Rr = pct_rank(load(a.model, rev, pos, ids))
+            Rr = pct_rank(rdms[f"{pos}|{rev}"].astype(np.float64)[np.ix_(perm, perm)])
             mat(axes[rf, 2 + k], Rr, lab if p == 0 else None)
             small(axes[rs, 2 + k], condition_mean(Rr, cond, labels))
-            print(f"  {pos:12} {rev}", flush=True)
         axes[rf, 0].set_ylabel(f"read at\n{pos_title}", fontsize=9)
         axes[rs, 0].set_ylabel("condition\nmean", fontsize=8)
 
     fig.suptitle(f"{a.model} — model RDMs at relative depth {REL_DEPTH} across training, "
                  f"next to the intent and outcome hypotheses\n"
-                 f"items sorted belief → outcome → scenario (blocks: "
-                 f"{', '.join(labels)}); model RDMs as percentile rank of 1 − r; "
-                 f"bright = dissimilar", fontsize=10)
+                 f"both axes = the 298 stimuli, sorted "
+                 f"{'belief → outcome' if a.sort == 'intent' else 'outcome → belief'} → "
+                 f"scenario (blocks: {', '.join(labels)}); model RDMs as percentile rank "
+                 f"of 1 − r; bright = dissimilar", fontsize=10)
     fig.tight_layout(rect=[0, 0, 1, 0.94])
-    out = os.path.join(RSA_DIR, f"rdm_snapshots_{a.model}.png")
+    out = os.path.join(RSA_DIR, f"rdm_snapshots_{a.model}_{a.sort}first.png")
     fig.savefig(out, dpi=150)
     print(f"-> {os.path.relpath(out, ROOT)}")
 
