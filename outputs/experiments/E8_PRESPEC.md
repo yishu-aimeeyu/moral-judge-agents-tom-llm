@@ -496,3 +496,22 @@ logprob-EV (`16_checkpoint_dissection.score_checkpoint`), where the rating is an
 over the digit-token distribution; there is nothing to parse, so ">= 80% parseable" holds at
 every checkpoint by construction. Only the `rating_std >= 0.2191` engagement floor binds.
 This was disclosed in the E8f script on 2026-09-21 and is recorded here as well.
+
+### Amendment 3.1, 2026-09-22 — the replication rule made operational, before any OLMo β
+
+Committed while the OLMo β job is running and before it has written anything.
+
+The pattern "holds at a position and depth" when, in the primary specification, the target
+factor clears its band (|β| above the null's 97.5% |β| quantile *and* the cluster-bootstrap
+CI clear of it, as in the Pythia verdict) and the other factor does not. Target is outcome at
+`last` and intent at `belief_last`. It is read at the **last stage-1 revision**
+(step 928,646), at each of the five analysed depths. The pattern **replicates at a position**
+if it holds at >= 3 of 5 depths; **replicates** overall if it replicates at both positions;
+**partial** if at exactly one; **does not replicate** if at neither.
+
+For reference, Pythia-1.4B at step 143,000 under this rule: `belief_last` 5 of 5, `last`
+4 of 5 (at depth 0.4 β_intent = +0.032 also clears its band). The bar is one Pythia clears,
+not one set above or below it.
+
+The post-training stages (base, SFT, DPO, Instruct) are reported descriptively on the same
+axis and do not enter the verdict.
