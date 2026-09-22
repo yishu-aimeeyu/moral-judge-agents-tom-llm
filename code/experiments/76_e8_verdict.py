@@ -134,6 +134,58 @@ def make_figure(rows, out):
     return p
 
 
+def behavioral_figure(rows, beh, out):
+    """E8f: engagement per checkpoint against the floor, above a deliberately empty panel.
+
+    The behavioural coefficients are NOT drawn for a checkpoint below the engagement floor,
+    because a near-constant rater has no estimable contrast; plotting its b_intent would
+    present noise as a measured judgment. The representational beta at `last` is drawn
+    alongside for scale, from the same checkpoints.
+    """
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    floor = float(beh[0]["engagement_floor"])
+    xs = [max(int(r["step"]), 0.4) for r in beh]
+    fig, axes = plt.subplots(2, 1, figsize=(10.5, 7), sharex=True,
+                             gridspec_kw={"height_ratios": [1, 1.25]})
+    ax = axes[0]
+    ax.plot(xs, [F(r, "rating_std") for r in beh], "-o", color="#555", ms=4,
+            label="rating_std (logprob-EV)")
+    ax.axhline(floor, color="#2a2", ls="--", lw=1.5, label=f"engagement floor {floor}")
+    ax.set_ylim(0, floor * 1.35)
+    ax.set_ylabel("rating_std")
+    ax.set_title("E8f — Pythia-1.4B behavioural 2×2: no checkpoint clears the engagement "
+                 f"floor ({sum(r['gradeable'] == 'True' for r in beh)} of {len(beh)})",
+                 fontsize=10.5)
+    ax.legend(fontsize=8, loc="upper left")
+    ax.grid(alpha=0.2)
+
+    ax = axes[1]
+    for pred, c in (("intent", "#1f77b4"), ("outcome", "#d62728")):
+        s = sorted(index(rows)[("primary", "last", PRIMARY_REL_DEPTH, pred)],
+                   key=lambda r: int(r["step"]))
+        ax.plot([max(int(r["step"]), 0.4) for r in s], [F(r, "beta") for r in s], "-",
+                color=c, lw=1.4, alpha=0.55, label=f"representational β {pred} (`last`)")
+    ax.axvspan(0.3, xs[-1] * 1.3, color="#f2f2f2", zorder=0)
+    ax.text(0.5, 0.55, "behavioural b_intent / b_outcome: NOT DRAWN\n"
+            "no checkpoint is gradeable, so there is no first gradeable checkpoint\n"
+            "(left blank, not interpolated, not drawn at zero)",
+            transform=ax.transAxes, ha="center", fontsize=9, color="#666")
+    ax.axhline(0, color="k", lw=0.6)
+    ax.set_xscale("log")
+    ax.set_xlabel("training step (log; step 0 at the left tick)")
+    ax.set_ylabel("coefficient")
+    ax.legend(fontsize=8, loc="upper left")
+    ax.grid(alpha=0.2)
+    fig.tight_layout()
+    p = os.path.join(out, "checkpoint_behavioral_overlay.png")
+    fig.savefig(p, dpi=150)
+    plt.close(fig)
+    return p
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=RSA_DIR)
@@ -301,6 +353,37 @@ def main():
             if r:
                 L.append(f"| `{pos}` @ {d} | `{pred}` | {float(r['delta_aicc']):+.2f} | "
                          f"{r['r2_sigmoid']} | {r['verdict']} |")
+    beh_path = os.path.join(a.out, "checkpoint_behavioral.csv")
+    beh_section = []
+    if os.path.exists(beh_path):
+        beh = sorted(csv.DictReader(open(beh_path)), key=lambda r: int(r["step"]))
+        bfig = behavioral_figure(rows, beh, a.out)
+        n_g = sum(r["gradeable"] == "True" for r in beh)
+        top = max(beh, key=lambda r: F(r, "rating_std"))
+        floor = F(beh[0], "engagement_floor")
+        beh_section = [
+            "---", "", "## Behavioural overlay (E8f) — the panel is empty", "",
+            f"![behavioural overlay]({os.path.basename(bfig)})", "",
+            f"**{n_g} of {len(beh)} checkpoints clear the engagement floor.** The highest "
+            f"`rating_std` anywhere on the trajectory is {F(top, 'rating_std'):.4f} "
+            f"(`{top['revision']}`), {F(top, 'rating_std') / floor:.0%} of the "
+            f"{floor} floor; the final checkpoint sits at {F(beh[-1], 'rating_std'):.4f}. "
+            "So there is no first gradeable checkpoint, and b_intent / b_outcome are not "
+            "drawn at any step — not interpolated, and not drawn at zero, because a "
+            "near-constant rater has no estimable contrast and plotting its coefficients "
+            "would present noise as a measured judgment.", "",
+            "The prespec anticipated this (section 7) and it is reportable rather than a "
+            "failed run. It is also the sharpest version of section 4's point that the two "
+            "series are not the same series: by step 143,000 the representational β for "
+            "outcome at `last` is +0.49 and has been clear of its null since step 1,000, "
+            "while the same network never produces ratings that vary enough to score. "
+            "Within this trajectory, outcome structure in the geometry never comes with a "
+            "usable behavioural signal at all.", "",
+            "Scoring was logprob-EV under `human_verbatim`, the same path and template that "
+            "produced `checkpoint_dissection.csv`. Under logprob-EV there is nothing to "
+            "parse, so section 7's parse-rate criterion holds by construction and only the "
+            "engagement floor binds (amendment 3).", ""]
+
     L += ["", "This is the result that the caveat in the prespec was written for. Apparent "
               "sharp emergence in language models is frequently an artifact of a thresholded "
               "measure — discontinuous scoring manufactures phase transitions that "
@@ -317,6 +400,7 @@ def main():
           "+0.49 while **intent stays flat at ~0 for the entire 143,000 steps** — the two "
           "factors are measured in the same regression, on the same RDM, against the same "
           "covariates. Whatever is sharpening, it is not sharpening both factors.", "",
+          *beh_section,
           "---", "",
           "## Limits", "",
           "- One model family, one size, 298 items that are **204 distinct texts** (94 rows "
@@ -325,8 +409,7 @@ def main():
           "53 scenario groups, which is the resampling whose independence assumption holds.",
           "- Descriptive geometry over training time. Nothing here is causal; E7's erasure "
           "results are the causal arm.",
-          "- The behavioural series (E8f) is not in this document. It is a separate panel "
-          "and it cannot falsify P1–P4.",
+          "- The behavioural series (E8f) is a secondary panel and cannot falsify P1–P4.",
           "- Checkpoint trajectories for theory of mind already exist and track behavioural "
           "accuracy on false-belief items. E8's difference is that it tracks representational "
           "geometry for the moral belief × outcome factors, and that the Young & Saxe 2×2 "
