@@ -4,7 +4,9 @@
 
 ![joined trajectory](checkpoint_trajectory_OLMo-2-1124-7B_joined.png)
 
-Eight stage-1 revisions (150 … 928,646); cluster-bootstrap CIs; 1000 permutations per cell. **No step-0 gate**: OLMo-2 publishes no random-init checkpoint, so nothing here was checked against an untrained network of this family; Pythia's passing gate covers only the RDM construction and predictors the two share.
+The pre-registered verdict is the one from the first eight revisions, committed under amendment 3.1; it gave the same verdict with the same counts. Amendment 3.2 added revisions without moving the step the verdict is read at.
+
+20 stage-1 revisions (150 … 928,646); cluster-bootstrap CIs; 1000 permutations per cell. **No step-0 gate**: OLMo-2 publishes no random-init checkpoint, so nothing here was checked against an untrained network of this family; Pythia's passing gate covers only the RDM construction and predictors the two share.
 
 ## The rule, cell by cell (primary spec, last stage-1 revision)
 
@@ -28,16 +30,16 @@ At depth 0.8, the first stage-1 revision from which the target factor clears its
 - `last`, outcome: step 2,000
 - `belief_last`, intent: step 2,000
 
-The onset is bracketed, not pinned: `last` outcome: inside its null at step 600 (3B tokens), clear from step 2,000 (9B tokens); `belief_last` intent: inside its null at step 600 (3B tokens), clear from step 2,000 (9B tokens). Eight revisions cannot place it more finely. Steps are not comparable across families at face value (OLMo-2 stage 1 is ~4.2M tokens per step, Pythia ~2.1M); in tokens, Pythia's outcome structure at `last` clears from step 1,000 (~2.1B tokens) and its intent structure at `belief_last` from step 3,000 (~6.3B), both inside or just below OLMo's bracket. Same order of magnitude, and nothing finer is claimed.
+The onset is bracketed, not pinned: `last` outcome: inside its null at step 1,000 (5B tokens), clear from step 2,000 (9B tokens); `belief_last` intent: inside its null at step 1,000 (5B tokens), clear from step 2,000 (9B tokens). 20 revisions cannot place it more finely. Steps are not comparable across families at face value (OLMo-2 stage 1 is ~4.2M tokens per step, Pythia ~2.1M); in tokens, Pythia's outcome structure at `last` clears from step 1,000 (~2.1B tokens) and its intent structure at `belief_last` from step 3,000 (~6.3B). Same order of magnitude as OLMo, and nothing finer is claimed.
 
-Shape fits at n = 8 (amendment 3: reported, not scored):
+Shape fits at n = 20 (amendment 3: reported, not scored):
 
 | position | depth | predictor | ΔAICc (piecewise − sigmoid) | R² sigmoid | 75's label |
 |---|---|---|---|---|---|
-| `belief_last` | 0.8 | intent | -2.713 | 0.8686 | breakpoint (changepoint UNLOCATED) |
-| `belief_last` | 0.8 | outcome | -1.87 | 0.804 | indistinguishable |
-| `last` | 0.8 | intent | 0.376 | 0.8323 | indistinguishable |
-| `last` | 0.8 | outcome | 13.404 | 0.9868 | smooth |
+| `belief_last` | 0.8 | intent | 5.504 | 0.9077 | smooth |
+| `belief_last` | 0.8 | outcome | -1.392 | 0.7843 | indistinguishable |
+| `last` | 0.8 | intent | 0.639 | 0.8627 | indistinguishable |
+| `last` | 0.8 | outcome | 30.988 | 0.9839 | smooth |
 
 ## Post-training stages (descriptive; same regression, same depths)
 
@@ -57,8 +59,14 @@ Descriptively, at depth 0.8: intent at `belief_last` goes +0.108 (last stage-1) 
 
 Two seams on the joined axis: the stage activations were extracted at float16 and the stage-1 revisions at float32; and `base` includes stage-2 annealing, which E8g did not sample, so the last stage-1 point and `base` are different weights joined by a dotted line.
 
+## Behavioural overlay on the stage-1 revisions (E8f for OLMo)
+
+**0 of 20 stage-1 revisions clear the engagement floor** (rating_std ≥ 0.2191). The highest is 0.0622 at step 3,000; the final stage-1 revision is at 0.0288. So, as for Pythia, pretraining alone never yields a rater whose 2×2 contrast can be estimated, and the first gradeable point on the joined axis is SFT.
+
+Same scoring as Pythia's E8f and as `checkpoint_dissection.csv`: logprob-EV, `human_verbatim`.
+
 ## Limits
 
-- Eight revisions, by scope decision (amendment 3). The full ~20-revision sweep would sharpen the timing, not the verdict, which is read at one revision.
+- 20 revisions (amendments 3 and 3.2). More would sharpen the timing, not the verdict, which is read at one revision.
 - No step-0 gate for this family.
-- The behavioural panel shows post-training stages only, from `checkpoint_dissection.csv`; OLMo stage-1 revisions were not behaviourally scored, and OLMo base itself is below the engagement floor.
+- Stage 2 (annealing) is not sampled; `base` follows it directly.

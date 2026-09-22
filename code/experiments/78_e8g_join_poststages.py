@@ -217,7 +217,12 @@ def make_figure(pre_csv, post_csv, out_png):
         axb.grid(alpha=0.2)
 
     ticks = [np.log10(s) for s in steps] + list(stage_x.values())
-    labels = [f"{s:,}" for s in steps] + [s for s, _ in STAGES]
+    # every revision gets a tick; only the one nearest each power of ten, and the last, a label
+    lg = np.log10(steps)
+    keep = {int(np.argmin(abs(lg - k))) for k in range(int(lg[0]), int(lg[-1]) + 2)
+            if abs(lg - k).min() < 0.35} | {0, len(steps) - 1}
+    labels = ([f"{s:,}" if i in keep else "" for i, s in enumerate(steps)]
+              + [s for s, _ in STAGES])
     for ax in axes[1]:
         ax.set_xticks(ticks)
         ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=8)

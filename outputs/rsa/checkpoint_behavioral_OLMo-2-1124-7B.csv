@@ -1,0 +1,21 @@
+model,revision,step,n_items,n_scenario_groups,contrast,b_intent,b_outcome,b_interaction,rating_std,degenerate,engagement_floor,gradeable,parse_frac,parse_criterion,templates,seconds
+allenai/OLMo-2-1124-7B,stage1-step150-tokens1B,150,298,53,0.0063,-0.00386,-0.01016,0.00114,0.05554,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,272.5
+allenai/OLMo-2-1124-7B,stage1-step600-tokens3B,600,298,53,0.00431,0.00159,-0.00272,0.00054,0.04934,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,229.4
+allenai/OLMo-2-1124-7B,stage1-step850-tokens4B,850,298,53,0.00535,-0.00137,-0.00672,-0.00104,0.05691,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,97.5
+allenai/OLMo-2-1124-7B,stage1-step1000-tokens5B,1000,298,53,-0.00724,2e-05,0.00726,-0.00076,0.05603,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,96.8
+allenai/OLMo-2-1124-7B,stage1-step2000-tokens9B,2000,298,53,0.00507,-0.00153,-0.00659,0.00174,0.0511,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,197.8
+allenai/OLMo-2-1124-7B,stage1-step3000-tokens13B,3000,298,53,0.01428,-0.00117,-0.01545,-0.00028,0.06222,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,98.2
+allenai/OLMo-2-1124-7B,stage1-step4000-tokens17B,4000,298,53,0.01119,-0.00094,-0.01213,0.00341,0.0594,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,102.4
+allenai/OLMo-2-1124-7B,stage1-step6000-tokens26B,6000,298,53,0.00106,0.00074,-0.00033,0.00022,0.03281,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,198.9
+allenai/OLMo-2-1124-7B,stage1-step10000-tokens42B,10000,298,53,0.00574,0.00098,-0.00476,-0.00015,0.03285,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,103.2
+allenai/OLMo-2-1124-7B,stage1-step15000-tokens63B,15000,298,53,0.00195,0.00365,0.0017,-0.0031,0.02737,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,103.5
+allenai/OLMo-2-1124-7B,stage1-step22000-tokens93B,22000,298,53,0.00517,0.00218,-0.00299,-0.00161,0.04876,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,206.0
+allenai/OLMo-2-1124-7B,stage1-step33000-tokens139B,33000,298,53,-0.00735,0.0009,0.00825,-0.00385,0.03131,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,101.4
+allenai/OLMo-2-1124-7B,stage1-step51000-tokens214B,51000,298,53,-0.01074,0.00022,0.01096,0.00076,0.03361,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,103.5
+allenai/OLMo-2-1124-7B,stage1-step77000-tokens323B,77000,298,53,-0.0096,0.00453,0.01413,-0.00374,0.02949,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,195.4
+allenai/OLMo-2-1124-7B,stage1-step116000-tokens487B,116000,298,53,0.00426,0.00472,0.00046,-0.00438,0.03556,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,101.6
+allenai/OLMo-2-1124-7B,stage1-step176000-tokens739B,176000,298,53,-0.0044,0.01246,0.01686,-0.01173,0.05331,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,103.6
+allenai/OLMo-2-1124-7B,stage1-step267000-tokens1120B,267000,298,53,0.00432,0.00261,-0.00172,-0.00347,0.02749,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,204.2
+allenai/OLMo-2-1124-7B,stage1-step404000-tokens1695B,404000,298,53,0.00354,-0.00086,-0.0044,-0.00117,0.04609,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,102.6
+allenai/OLMo-2-1124-7B,stage1-step613000-tokens2572B,613000,298,53,0.00568,0.00043,-0.00525,-0.00317,0.04256,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,103.9
+allenai/OLMo-2-1124-7B,stage1-step928646-tokens3896B,928646,298,53,-0.00091,0.01099,0.0119,-0.0108,0.02881,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,202.5

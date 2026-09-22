@@ -33,3 +33,15 @@ allenai/OLMo-2-1124-7B,stage1-step22000-tokens93B,22000,224.2,109.4,float32,0.0 
 allenai/OLMo-2-1124-7B,stage1-step77000-tokens323B,77000,214.8,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
 allenai/OLMo-2-1124-7B,stage1-step267000-tokens1120B,267000,220.1,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
 allenai/OLMo-2-1124-7B,stage1-step928646-tokens3896B,928646,194.2,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step850-tokens4B,850,241.1,109.4,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step1000-tokens5B,1000,197.9,109.4,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step3000-tokens13B,3000,186.9,109.5,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step4000-tokens17B,4000,186.5,109.5,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step10000-tokens42B,10000,171.7,109.5,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step15000-tokens63B,15000,194.9,109.5,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step33000-tokens139B,33000,183.0,109.4,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step51000-tokens214B,51000,192.4,109.3,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step116000-tokens487B,116000,182.0,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step176000-tokens739B,176000,213.0,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step404000-tokens1695B,404000,199.1,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step613000-tokens2572B,613000,190.9,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
