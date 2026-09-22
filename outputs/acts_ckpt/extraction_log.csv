@@ -25,3 +25,11 @@ EleutherAI/pythia-1.4b,step80000,80000,53.6,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
 EleutherAI/pythia-1.4b,step96000,96000,56.2,53.0,float32,0.0 0.2 0.4 0.6 0.8 1.0
 EleutherAI/pythia-1.4b,step112000,112000,53.0,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
 EleutherAI/pythia-1.4b,step128000,128000,51.9,53.1,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step150-tokens1B,150,258.6,108.9,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step600-tokens3B,600,226.2,109.3,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step2000-tokens9B,2000,228.5,109.5,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step6000-tokens26B,6000,552.1,109.4,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step22000-tokens93B,22000,224.2,109.4,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step77000-tokens323B,77000,214.8,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step267000-tokens1120B,267000,220.1,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
+allenai/OLMo-2-1124-7B,stage1-step928646-tokens3896B,928646,194.2,109.2,float32,0.0 0.2 0.4 0.6 0.8 1.0
