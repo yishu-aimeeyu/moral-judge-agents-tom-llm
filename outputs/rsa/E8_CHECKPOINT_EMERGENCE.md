@@ -87,9 +87,21 @@ The prespec required a check that this is not simply "later checkpoints have mor
 
 ---
 
+## Behavioural overlay (E8f) — the panel is empty
+
+![behavioural overlay](checkpoint_behavioral_overlay.png)
+
+**0 of 26 checkpoints clear the engagement floor.** The highest `rating_std` anywhere on the trajectory is 0.0859 (`step24000`), 39% of the 0.2191 floor; the final checkpoint sits at 0.0366. So there is no first gradeable checkpoint, and b_intent / b_outcome are not drawn at any step — not interpolated, and not drawn at zero, because a near-constant rater has no estimable contrast and plotting its coefficients would present noise as a measured judgment.
+
+The prespec anticipated this (section 7) and it is reportable rather than a failed run. It is also the sharpest version of section 4's point that the two series are not the same series: by step 143,000 the representational β for outcome at `last` is +0.49 and has been clear of its null since step 1,000, while the same network never produces ratings that vary enough to score. Within this trajectory, outcome structure in the geometry never comes with a usable behavioural signal at all.
+
+Scoring was logprob-EV under `human_verbatim`, the same path and template that produced `checkpoint_dissection.csv`. Under logprob-EV there is nothing to parse, so section 7's parse-rate criterion holds by construction and only the engagement floor binds (amendment 3).
+
+---
+
 ## Limits
 
 - One model family, one size, 298 items that are **204 distinct texts** (94 rows are word-for-word YS2009 reprints of YS2008 scenarios; see `CONTAMINATION_REPAIR.md` §6). All CIs shown are the cluster bootstrap over the 53 scenario groups, which is the resampling whose independence assumption holds.
 - Descriptive geometry over training time. Nothing here is causal; E7's erasure results are the causal arm.
-- The behavioural series (E8f) is not in this document. It is a separate panel and it cannot falsify P1–P4.
+- The behavioural series (E8f) is a secondary panel and cannot falsify P1–P4.
 - Checkpoint trajectories for theory of mind already exist and track behavioural accuracy on false-belief items. E8's difference is that it tracks representational geometry for the moral belief × outcome factors, and that the Young & Saxe 2×2 has not previously been run along a pretraining trajectory. That is a difference in measurement, not a priority claim over the trajectory method.

@@ -1,0 +1,27 @@
+model,revision,step,n_items,n_scenario_groups,contrast,b_intent,b_outcome,b_interaction,rating_std,degenerate,engagement_floor,gradeable,parse_frac,parse_criterion,templates,seconds
+EleutherAI/pythia-1.4b,step0,0,298,53,-0.00327,-0.00058,0.00269,-0.00014,0.05062,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,69.4
+EleutherAI/pythia-1.4b,step1,1,298,53,-0.00327,-0.00058,0.00269,-0.00014,0.05062,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,55.3
+EleutherAI/pythia-1.4b,step2,2,298,53,-0.00323,-0.00056,0.00266,-0.00018,0.05058,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,47.0
+EleutherAI/pythia-1.4b,step4,4,298,53,1e-05,-0.00053,-0.00054,-0.00011,0.04595,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,51.2
+EleutherAI/pythia-1.4b,step8,8,298,53,0.01232,-0.00026,-0.01258,-4e-05,0.03124,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,47.9
+EleutherAI/pythia-1.4b,step16,16,298,53,0.02105,-3e-05,-0.02109,2e-05,0.07721,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,48.1
+EleutherAI/pythia-1.4b,step32,32,298,53,0.01474,0.00026,-0.01448,-9e-05,0.05488,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.7
+EleutherAI/pythia-1.4b,step64,64,298,53,0.0051,0.00031,-0.00479,-5e-05,0.02137,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.6
+EleutherAI/pythia-1.4b,step128,128,298,53,0.00582,0.00019,-0.00563,0.00012,0.02048,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,66.3
+EleutherAI/pythia-1.4b,step256,256,298,53,0.01154,0.00031,-0.01123,0.00041,0.05746,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,45.8
+EleutherAI/pythia-1.4b,step512,512,298,53,-0.00439,0.0001,0.00449,-0.00191,0.03502,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.0
+EleutherAI/pythia-1.4b,step1000,1000,298,53,-0.00343,-4e-05,0.00339,-8e-05,0.0429,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.7
+EleutherAI/pythia-1.4b,step2000,2000,298,53,7e-05,-0.00117,-0.00125,0.00266,0.06659,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.3
+EleutherAI/pythia-1.4b,step3000,3000,298,53,0.00073,0.00408,0.00335,-0.00081,0.03994,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,48.8
+EleutherAI/pythia-1.4b,step4000,4000,298,53,-0.00406,0.00113,0.00519,0.00017,0.04654,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.9
+EleutherAI/pythia-1.4b,step8000,8000,298,53,-0.00452,0.00097,0.00549,0.00219,0.03789,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,47.6
+EleutherAI/pythia-1.4b,step16000,16000,298,53,0.00557,-0.00359,-0.00916,0.00439,0.07167,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,52.3
+EleutherAI/pythia-1.4b,step24000,24000,298,53,0.00186,-0.0043,-0.00616,0.00235,0.08594,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,49.7
+EleutherAI/pythia-1.4b,step32000,32000,298,53,0.00188,0.00174,-0.00014,0.00042,0.04723,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,46.5
+EleutherAI/pythia-1.4b,step48000,48000,298,53,0.00205,0.00224,0.00019,0.00145,0.04395,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,43.9
+EleutherAI/pythia-1.4b,step64000,64000,298,53,0.0075,0.00023,-0.00727,0.00123,0.04708,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,44.6
+EleutherAI/pythia-1.4b,step80000,80000,298,53,0.01331,-0.00289,-0.01619,0.00326,0.03914,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,42.4
+EleutherAI/pythia-1.4b,step96000,96000,298,53,0.01762,-0.00471,-0.02233,0.00541,0.04559,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,42.8
+EleutherAI/pythia-1.4b,step112000,112000,298,53,0.00903,-0.00177,-0.0108,0.00117,0.0419,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,43.9
+EleutherAI/pythia-1.4b,step128000,128000,298,53,0.00997,-0.00245,-0.01242,0.00059,0.04182,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,44.4
+EleutherAI/pythia-1.4b,step143000,143000,298,53,0.00785,-0.00038,-0.00824,3e-05,0.0366,False,0.2191,False,1.0,vacuous under logprob-EV,human_verbatim,47.9
