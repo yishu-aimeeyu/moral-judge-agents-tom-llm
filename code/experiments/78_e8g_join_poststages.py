@@ -38,6 +38,7 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 RSA_DIR = os.path.join(ROOT, "outputs", "rsa")
 ACTS = os.path.join(ROOT, "outputs", "acts")
 DISSECTION = os.path.join(ROOT, "outputs", "experiments", "checkpoint_dissection.csv")
+BEH_PRE = os.path.join(RSA_DIR, "checkpoint_behavioral_OLMo-2-1124-7B.csv")
 
 MODEL = "OLMo-2-1124-7B"
 STAGES = [("base", "OLMo-2-1124-7B"), ("SFT", "OLMo-2-1124-7B-SFT"),
@@ -131,6 +132,8 @@ def make_figure(pre_csv, post_csv, out_png):
             if r["spec"] == "primary" and str(float(r["rel_depth_requested"])) == PLOT_DEPTH]
     beh = {r["stage"]: r for r in csv.DictReader(open(DISSECTION))
            if r["family"] == "OLMo-2-7B"}
+    beh_pre = (sorted(csv.DictReader(open(BEH_PRE)), key=lambda r: int(r["step"]))
+               if os.path.exists(BEH_PRE) else [])
 
     steps = sorted({int(r["step"]) for r in pre})
     xmax = np.log10(steps[-1])
@@ -174,28 +177,39 @@ def make_figure(pre_csv, post_csv, out_png):
                 transform=ax.transAxes, fontsize=7, ha="right", color="#555")
 
         axb = axes[1, col]
-        for pred, key in (("intent", "b_intent"), ("outcome", "b_outcome")):
-            xs, ys, open_ = [], [], []
-            for s, _ in STAGES:
-                r = beh.get(s)
-                if not r:
-                    continue
-                engaged = float(r["rating_std"]) >= ENGAGEMENT_FLOOR
-                (xs if engaged else open_).append(
-                    (stage_x[s], float(r[key])))
-            if xs:
-                axb.plot([x for x, _ in xs], [y for _, y in xs], "-s", color=colors[pred],
-                         lw=2, label=f"behavioural {key}")
-        first = next((s for s, _ in STAGES
-                      if s in beh and float(beh[s]["rating_std"]) >= ENGAGEMENT_FLOOR), None)
-        if first:
-            axb.axvline(stage_x[first] - 0.3, color="#2a2", ls="--", lw=1)
-            axb.text(stage_x[first] - 0.28, axb.get_ylim()[1] * 0.9 if axb.get_ylim()[1] > 0
-                     else 0.5, f"first gradeable:\n{first}", fontsize=8, color="#2a2")
-        axb.axvspan(np.log10(steps[0]) - 0.2, (stage_x[first] - 0.3) if first else xmax,
-                    color="#eee", zorder=0)
-        axb.text(np.log10(steps[0]), 0.4, "not gradeable / not measured —\nleft blank, "
-                 "not interpolated", fontsize=8, color="#777", transform=axb.get_xaxis_transform())
+        # one behavioural sequence along the whole axis: stage-1 revisions (if scored), then
+        # the post-training stages from checkpoint_dissection.csv
+        seq = [(np.log10(int(r["step"])), f"step {int(r['step']):,}", r) for r in beh_pre]
+        seq += [(stage_x[s], s, beh[s]) for s, _ in STAGES if s in beh]
+        seq.sort(key=lambda t: t[0])
+        gi = next((i for i, (_, _, r) in enumerate(seq)
+                   if float(r["rating_std"]) >= ENGAGEMENT_FLOOR), None)
+        if gi is not None:
+            # section 7: coefficients only from the first gradeable point onward, and only
+            # at points that are themselves gradeable
+            shown = [(x, r) for x, _, r in seq[gi:]
+                     if float(r["rating_std"]) >= ENGAGEMENT_FLOOR]
+            for pred, key in (("intent", "b_intent"), ("outcome", "b_outcome")):
+                axb.plot([x for x, _ in shown], [float(r[key]) for _, r in shown], "-s",
+                         color=colors[pred], lw=2, ms=4, label=f"behavioural {key}")
+            xg = seq[gi][0]
+            axb.axvline(xg - 0.12, color="#2a2", ls="--", lw=1)
+            axb.text(xg - 0.1, 0.9, f"first gradeable:\n{seq[gi][1]}", fontsize=8,
+                     color="#2a2", transform=axb.get_xaxis_transform(), va="top")
+        xg_edge = (seq[gi][0] - 0.12) if gi is not None else stage_x[STAGES[-1][0]] + 0.3
+        axb.axvspan(np.log10(steps[0]) - 0.2, xg_edge, color="#eee", zorder=0)
+        axb.text(np.log10(steps[0]), 0.35, "below the engagement floor" +
+                 ("" if beh_pre else " / stage 1 not scored") +
+                 " —\nleft blank, not interpolated", fontsize=8, color="#777",
+                 transform=axb.get_xaxis_transform())
+        if seq:
+            tw = axb.twinx()
+            tw.plot([x for x, _, _ in seq], [float(r["rating_std"]) for _, _, r in seq], ":.",
+                    color="#888", lw=1, ms=4)
+            tw.axhline(ENGAGEMENT_FLOOR, color="#888", lw=0.8, ls="--")
+            tw.set_ylim(0, max(0.45, max(float(r["rating_std"]) for _, _, r in seq) * 1.1))
+            tw.set_ylabel("rating_std (grey)\nfloor dashed", fontsize=7, color="#666")
+            tw.tick_params(labelsize=7, colors="#666")
         axb.axhline(0, color="k", lw=0.7)
         axb.axvline(xmax + 0.45, color="#888", lw=1)
         axb.set_ylabel("behavioural coefficient" if col == 0 else "")

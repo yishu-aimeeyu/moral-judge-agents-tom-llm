@@ -35,9 +35,12 @@ SNAPSHOTS = {
     "pythia-1.4b": [("step0", "step 0\n(random init)"), ("step128", "step 128"),
                     ("step1000", "step 1,000"), ("step4000", "step 4,000"),
                     ("step16000", "step 16,000"), ("step143000", "step 143,000\n(final)")],
+    # denser around the 3B-9B-token onset once amendment 3.2's revisions exist
     "OLMo-2-1124-7B": [("stage1-step150-tokens1B", "step 150\n(1B tok)"),
                        ("stage1-step600-tokens3B", "step 600\n(3B tok)"),
+                       ("stage1-step1000-tokens5B", "step 1,000\n(5B tok)"),
                        ("stage1-step2000-tokens9B", "step 2,000\n(9B tok)"),
+                       ("stage1-step4000-tokens17B", "step 4,000\n(17B tok)"),
                        ("stage1-step22000-tokens93B", "step 22,000\n(93B tok)"),
                        ("stage1-step928646-tokens3896B", "step 928,646\n(3.9T tok)"),
                        ("@Instruct", "Instruct\n(post-trained)")],
