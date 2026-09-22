@@ -60,13 +60,26 @@ PYTHIA_REVISIONS = [
 # treatment of the manipulated clause. The earliest available revision is step 150, which is
 # already past the point where Pythia's outcome structure begins to move.
 OLMO_REVISIONS = [
+    # amendment 3 (first eight) + 3.2 (nearest published branch to 22 log-spaced targets)
     "stage1-step150-tokens1B",
     "stage1-step600-tokens3B",
+    "stage1-step850-tokens4B",
+    "stage1-step1000-tokens5B",
     "stage1-step2000-tokens9B",
+    "stage1-step3000-tokens13B",
+    "stage1-step4000-tokens17B",
     "stage1-step6000-tokens26B",
+    "stage1-step10000-tokens42B",
+    "stage1-step15000-tokens63B",
     "stage1-step22000-tokens93B",
+    "stage1-step33000-tokens139B",
+    "stage1-step51000-tokens214B",
     "stage1-step77000-tokens323B",
+    "stage1-step116000-tokens487B",
+    "stage1-step176000-tokens739B",
     "stage1-step267000-tokens1120B",
+    "stage1-step404000-tokens1695B",
+    "stage1-step613000-tokens2572B",
     "stage1-step928646-tokens3896B",
 ]
 LAYERS_REL = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]

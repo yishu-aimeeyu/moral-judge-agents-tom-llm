@@ -515,3 +515,21 @@ not one set above or below it.
 
 The post-training stages (base, SFT, DPO, Instruct) are reported descriptively on the same
 axis and do not enter the verdict.
+
+### Amendment 3.2, 2026-09-22 — the full OLMo sweep and an OLMo behavioural overlay
+
+Committed before any of the added revisions is downloaded.
+
+**Twenty stage-1 revisions.** The eight of amendment 3 are kept and twelve are added, chosen
+as the published branch nearest each of 22 log-spaced targets between step 150 and 928,646
+(duplicates merged): 850, 1,000, 3,000, 4,000, 10,000, 15,000, 33,000, 51,000, 116,000,
+176,000, 404,000, 613,000. The replication verdict of amendment 3.1 is read at step 928,646,
+which is unchanged, so it cannot move; the extension sharpens the onset bracket and the
+trajectory only. The 3.1 verdict already written stands as the pre-registered one; the
+re-run is reported beside it, and any disagreement would be reported, not resolved.
+
+**Behavioural scoring on the same twenty revisions (E8f for OLMo).** Same scoring as
+Pythia's E8f: logprob-EV, `human_verbatim`, gradeable iff `rating_std >= 0.2191`. Expected
+outcome, stated now: few or none gradeable, because the released base model (which has
+also seen stage 2) is at 0.058 in `checkpoint_dissection.csv`. The panel draws coefficients
+only from the first gradeable revision onward, as section 7 requires.
