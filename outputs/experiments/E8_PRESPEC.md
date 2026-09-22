@@ -456,3 +456,43 @@ pre-registered primary so the original commitment is still readable. **Where the
 about whether a β clears its null band — that is, about P1 — the cluster bootstrap governs,
 because it is the one whose independence assumption is true of this dataset.** That precedence
 is fixed here, before the trajectory exists, rather than chosen once it does.
+
+---
+
+## Amendment 3, 2026-09-22 — E8g as actually run, before its analysis
+
+Written after the OLMo-2 activations were extracted and before any OLMo β was computed.
+Three deviations from sections 5, 6 and 9, and one from section 7.
+
+**Eight revisions, not ~20.** By the repository owner's decision on 2026-09-21, E8g starts
+with eight log-spaced stage-1 revisions (step 150 to 928,646) to see whether the Pythia
+pattern replicates before spending the full ~280 GB. This is a scope decision, not a
+threshold change. The revision list is fixed in `73_e8_checkpoint_extract.py`.
+
+**No step-0 gate on OLMo-2.** OLMo-2 publishes no random-initialisation checkpoint, so E8c
+cannot be re-run on this family. Pythia's passing gate covers the shared RDM construction
+and the shared predictors; it does not cover anything OLMo-specific, such as its
+tokenizer's segmentation of the manipulated clause. Every OLMo output row carries
+`step0_gate = unavailable` and the analysis script refuses to run on a family without a
+step-0 checkpoint unless that is declared. The earliest available revision, step 150, is
+also already inside the window where Pythia's outcome structure begins to move, so OLMo
+can show *whether* the pattern is present, not *when* it starts.
+
+**The shape test (P4) at n = 8 is low-powered, and is reported but not scored.** With four
+free parameters, a four-parameter model at n = 8 leaves AICc two residual degrees of
+freedom, and the free-changepoint model has only 2–3 admissible changepoint positions with
+three points required per segment. P1–P4 are pre-registered against the Pythia trajectory;
+for OLMo the fits are reported descriptively and neither "smooth" nor "breakpoint" is
+claimed from them.
+
+**What OLMo is asked, fixed now.** Replication is read at the same cell structure as the
+Pythia headline: at `last`, does β_outcome clear its permutation band while β_intent does
+not; at `belief_last`, the reverse. The cluster bootstrap governs, as in amendment 2.2. A
+family that shows the pattern at `last` but not at `belief_last`, or vice versa, is reported
+as partial replication and not rounded to either verdict.
+
+**Section 7's parse criterion is vacuous under the scoring actually used.** E8f scores with
+logprob-EV (`16_checkpoint_dissection.score_checkpoint`), where the rating is an expectation
+over the digit-token distribution; there is nothing to parse, so ">= 80% parseable" holds at
+every checkpoint by construction. Only the `rating_std >= 0.2191` engagement floor binds.
+This was disclosed in the E8f script on 2026-09-21 and is recorded here as well.

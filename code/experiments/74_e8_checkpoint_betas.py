@@ -52,6 +52,7 @@ import csv
 import glob
 import importlib.util
 import os
+import re
 from multiprocessing import Pool
 
 import numpy as np
@@ -289,6 +290,12 @@ def resampled_design(acts, mats, sel):
     return yb, cols, iu_b
 
 
+def revision_step(rev):
+    """`step1000` -> 1000; `stage1-step22000-tokens93B` -> 22000, not 12200093."""
+    m = re.search(r"step(\d+)", rev)
+    return int(m.group(1)) if m else -1
+
+
 def outcome_share(b_out, b_int):
     d = abs(b_out) + abs(b_int)
     return float(abs(b_out) / d) if d > 1e-12 else float("nan")
@@ -300,7 +307,7 @@ def process_checkpoint(args):
     d = np.load(npz_path, allow_pickle=True)
     tag = os.path.basename(npz_path)[:-4]
     model, _, revision = tag.partition("@")
-    step = int("".join(c for c in revision if c.isdigit()) or -1)
+    step = revision_step(revision)
 
     sids = [str(s) for s in d["story_id"]]
     pos_in_npz = {s: i for i, s in enumerate(sids)}
@@ -463,7 +470,7 @@ def write_gate(g, outdir):
 
 
 # ------------------------------------------------------------------ figure
-def make_figure(rows, outdir):
+def make_figure(rows, outdir, suffix=""):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -500,9 +507,14 @@ def make_figure(rows, outdir):
             ax.axhspan(-z["null_q975_abs"], z["null_q975_abs"],
                        color=colors[name], alpha=0.07, lw=0, zorder=0)
     ax.set_xscale("log")
-    ax.axvline(x0 * 2 / 1.4, color="#bbb", lw=0.8, ls=":")
-    ax.text(x0, ax.get_ylim()[1], " step 0\n (random init)", fontsize=7,
-            va="top", ha="center", color="#555")
+    if 0 in steps:
+        ax.axvline(x0 * 2 / 1.4, color="#bbb", lw=0.8, ls=":")
+        ax.text(x0, ax.get_ylim()[1], " step 0\n (random init)", fontsize=7,
+                va="top", ha="center", color="#555")
+    else:
+        ax.text(0.01, 0.99, "no random-init checkpoint published:\n"
+                "step-0 gate and null band unavailable", transform=ax.transAxes,
+                fontsize=7.5, va="top", color="#a00")
     ax.set_xlabel("training step (log; step 0 drawn at the left tick)")
     ax.set_ylabel("standardised β")
     ax.axhline(0, color="k", lw=0.7)
@@ -533,7 +545,7 @@ def make_figure(rows, outdir):
     ax2.grid(alpha=0.2)
 
     fig.tight_layout()
-    p = os.path.join(outdir, "checkpoint_betas.png")
+    p = os.path.join(outdir, f"checkpoint_betas{suffix}.png")
     fig.savefig(p, dpi=150)
     plt.close(fig)
     return p
@@ -550,12 +562,20 @@ def main():
     ap.add_argument("--jobs", type=int, default=max(1, (os.cpu_count() or 4) - 1))
     ap.add_argument("--gate-only", action="store_true",
                     help="E8c only: fit step0 and write the gate verdict, nothing else")
+    ap.add_argument("--model", default="pythia-1.4b",
+                    help="activation-file prefix before '@'. outputs/acts_ckpt/ holds more "
+                         "than one family, and a trajectory must not mix them")
+    ap.add_argument("--no-step0-gate", action="store_true",
+                    help="the family publishes no random-init checkpoint (OLMo-2), so E8c "
+                         "cannot be re-run on it. Recorded in every output row, never implied")
     ap.add_argument("--plot-only", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--allow-dirty", action="store_true")
     a = ap.parse_args()
 
-    out_csv = os.path.join(a.out, "checkpoint_betas.csv")
+    # Pythia keeps the original filenames so its committed outputs stay where they are.
+    suffix = "" if a.model == "pythia-1.4b" else f"_{a.model}"
+    out_csv = os.path.join(a.out, f"checkpoint_betas{suffix}.csv")
     if a.plot_only:
         rows = list(csv.DictReader(open(out_csv)))
         for r in rows:
@@ -568,18 +588,20 @@ def main():
             r["inside_null"] = r["inside_null"] in ("True", "true", "1")
             if r["outcome_share"] != "":
                 r["outcome_share"] = float(r["outcome_share"])
-        print(f"-> {make_figure(rows, a.out)}")
+        print(f"-> {make_figure(rows, a.out, suffix)}")
         return
 
-    npzs = sorted(glob.glob(os.path.join(a.acts, "*.npz")),
-                  key=lambda p: int("".join(c for c in os.path.basename(p).split("@")[-1]
-                                            if c.isdigit()) or -1))
+    npzs = sorted(glob.glob(os.path.join(a.acts, f"{a.model}@*.npz")),
+                  key=lambda p: revision_step(os.path.basename(p)[:-4].split("@")[-1]))
     if not npzs:
-        raise SystemExit(f"no checkpoint activations in {a.acts} — run E8b first")
+        raise SystemExit(f"no {a.model}@*.npz in {a.acts} — run E8b first")
     step0 = [p for p in npzs if p.endswith("@step0.npz")]
-    if not step0:
-        raise SystemExit(f"no @step0.npz in {a.acts} — the E8c gate cannot be evaluated, "
-                         f"and E8_PRESPEC.md section 4 blocks E8d until it is")
+    if not step0 and not a.no_step0_gate:
+        raise SystemExit(f"no {a.model}@step0.npz — the E8c gate cannot be evaluated, and "
+                         f"E8_PRESPEC.md section 4 blocks E8d until it is. If this family "
+                         f"publishes no random-init checkpoint, say so with --no-step0-gate.")
+    if step0 and a.no_step0_gate:
+        raise SystemExit("--no-step0-gate given but a step0 checkpoint exists; run the gate")
 
     if a.dry_run:
         print("=== E8c/E8d PLAN (dry-run) ===")
@@ -616,6 +638,23 @@ def main():
     else:
         chunks = [process_checkpoint(t) for t in tasks]
     rows = [r for c in chunks for r in c]
+    for r in rows:
+        r["step0_gate"] = ("unavailable: no random-init checkpoint published"
+                           if a.no_step0_gate else "pass")
+
+    if a.no_step0_gate:
+        print(f"\n[E8c] NOT RUN for {a.model}: no random-init checkpoint exists. Pythia's gate "
+              f"covers the shared RDM construction, not anything specific to this family. "
+              f"Recorded in the step0_gate column of every row.", flush=True)
+        fields = [k for k in rows[0] if k != "null_abs"]
+        with open(out_csv, "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+            w.writeheader(); w.writerows(rows)
+        print(f"-> {os.path.relpath(out_csv, ROOT)} ({len(rows)} rows)")
+        fp = make_figure(rows, a.out, suffix)
+        if fp:
+            print(f"-> {os.path.relpath(fp, ROOT)}")
+        return
 
     n_cells = len({(r["position"], r["layer"]) for r in rows})
     g = gate_verdict(rows, a.out, n_cells)
@@ -639,7 +678,7 @@ def main():
         w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
         w.writeheader(); w.writerows(rows)
     print(f"-> {os.path.relpath(out_csv, ROOT)} ({len(rows)} rows)")
-    fp = make_figure(rows, a.out)
+    fp = make_figure(rows, a.out, suffix)
     if fp:
         print(f"-> {os.path.relpath(fp, ROOT)}")
 
