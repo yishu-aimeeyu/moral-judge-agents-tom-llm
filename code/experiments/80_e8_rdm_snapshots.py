@@ -115,7 +115,10 @@ def main():
     ap.add_argument("--model", default="pythia-1.4b", choices=list(SNAPSHOTS))
     ap.add_argument("--sort", default="intent", choices=["intent", "outcome"],
                     help="which factor forms the two big halves of the item order")
+    ap.add_argument("--rsm", action="store_true",
+                    help="draw similarity (r) instead of dissimilarity (1 - r); same data")
     a = ap.parse_args()
+    flip = (lambda M: 1.0 - M) if a.rsm else (lambda M: M)
 
     import matplotlib
     matplotlib.use("Agg")
@@ -178,24 +181,27 @@ def main():
     for p, (pos, pos_title) in enumerate(POSITIONS):
         rf, rs = 2 * p, 2 * p + 1
         for c, n in enumerate(("intent", "outcome")):
-            mat(axes[rf, c], preds[n], f"HYPOTHESIS\n{n}" if p == 0 else None,
-                first_col=(c == 0))
-            small(axes[rs, c], condition_mean(preds[n].astype(float), cond, labels), 0, 1)
+            H = flip(preds[n].astype(float))
+            mat(axes[rf, c], H, f"HYPOTHESIS\n{n}" if p == 0 else None, first_col=(c == 0))
+            small(axes[rs, c], condition_mean(H, cond, labels), 0, 1)
         for k, (rev, lab) in enumerate(snaps):
-            Rr = pct_rank(rdms[f"{pos}|{rev}"].astype(np.float64)[np.ix_(perm, perm)])
+            Rr = flip(pct_rank(rdms[f"{pos}|{rev}"].astype(np.float64)[np.ix_(perm, perm)]))
             mat(axes[rf, 2 + k], Rr, lab if p == 0 else None)
             small(axes[rs, 2 + k], condition_mean(Rr, cond, labels))
         axes[rf, 0].set_ylabel(f"read at\n{pos_title}", fontsize=9)
         axes[rs, 0].set_ylabel("condition\nmean", fontsize=8)
 
-    fig.suptitle(f"{a.model} — model RDMs at relative depth {REL_DEPTH} across training, "
+    kind = "RSM" if a.rsm else "RDM"
+    scale = ("percentile rank of r; bright = similar" if a.rsm else
+             "percentile rank of 1 − r; bright = dissimilar")
+    fig.suptitle(f"{a.model} — model {kind}s at relative depth {REL_DEPTH} across training, "
                  f"next to the intent and outcome hypotheses\n"
                  f"both axes = the 298 stimuli, sorted "
                  f"{'belief → outcome' if a.sort == 'intent' else 'outcome → belief'} → "
-                 f"scenario (blocks: {', '.join(labels)}); model RDMs as percentile rank "
-                 f"of 1 − r; bright = dissimilar", fontsize=10)
+                 f"scenario (blocks: {', '.join(labels)}); model {kind}s as {scale}",
+                 fontsize=10)
     fig.tight_layout(rect=[0, 0, 1, 0.94])
-    out = os.path.join(RSA_DIR, f"rdm_snapshots_{a.model}_{a.sort}first.png")
+    out = os.path.join(RSA_DIR, f"{kind.lower()}_snapshots_{a.model}_{a.sort}first.png")
     fig.savefig(out, dpi=150)
     print(f"-> {os.path.relpath(out, ROOT)}")
 
