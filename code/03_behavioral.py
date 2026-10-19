@@ -262,11 +262,14 @@ class MockBackend:
 
 
 class HFBackend:
-    def __init__(self, model_name, scoring, revision=None, **_):
+    def __init__(self, model_name, scoring, revision=None, chat="auto", **_):
         import torch
         from transformers import AutoTokenizer, AutoModelForCausalLM
         self.model_name = model_name
         self.scoring = scoring
+        # "auto" wraps the prompt whenever the tokenizer ships a chat template, which
+        # includes the Qwen2.5 BASE tokenizers; "off" scores the raw text for every model.
+        self.chat = chat
         # E8f scores the same checkpoints E8b extracted activations from. Defaults to None,
         # so every existing caller loads exactly the weights it loaded before.
         self.revision = revision
@@ -313,7 +316,7 @@ class HFBackend:
         return dig
 
     def _fmt(self, prompt):
-        if self.tok.chat_template:
+        if self.chat != "off" and self.tok.chat_template:
             return self.tok.apply_chat_template(
                 [{"role":"user","content":prompt}], tokenize=False, add_generation_prompt=True
             )
@@ -967,7 +970,12 @@ def main():
                     help="Stimulus CSV. Default dataset/master/moral_2x2_master.csv. Use "
                          "dataset/master/moral_2x2_master.csv (canonical; the old _clean "
                          "bleed that contaminates 144 of the 298 original stories.")
+    ap.add_argument("--chat",        default="auto", choices=["auto", "off"],
+                    help="hf only. off = never apply the chat template (raw-text scoring)")
     args = ap.parse_args()
+    if args.chat == "off" and not args.out_dir:
+        # resume logic would treat the chat-on raw files as already-done work
+        raise SystemExit("--chat off needs its own --out_dir (e.g. outputs/behavior_chatoff)")
 
     global OUT_DIR, MASTER_CSV
     if args.out_dir:
@@ -1007,7 +1015,8 @@ def main():
         print(f"\n{'='*60}\n Model : {model_name}\n Backend: {args.backend} | "
               f"Scoring: {args.scoring} | n_samples: {args.n_samples}\n{'='*60}")
         try:
-            backend = BACKENDS[args.backend](model_name, args.scoring)
+            extra = {"chat": args.chat} if args.backend == "hf" else {}
+            backend = BACKENDS[args.backend](model_name, args.scoring, **extra)
             # raw_path passed so rows are written incrementally as each story finishes.
             raw = run_model(backend, rows, args.templates, args.n_samples, args.temperature,
                             raw_path=raw_path)
