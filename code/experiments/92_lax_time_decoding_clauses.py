@@ -21,7 +21,8 @@ Per saved layer (81 keeps relative depths 0.25/0.5/0.65/0.8/1.0, which include o
       outcome_slope_pre      slope of outcome acc over belief+action bins (flat => ~0)
       outcome_jump           acc(last outcome bin) - acc(last action bin)
   * 4x4 condition RDM per bin: within-scenario pairwise distances (z-scored within scenario),
-    regressed on intent, outcome and interaction model RDMs; scenario bootstrap CIs.
+    regressed on intent, outcome and interaction (intent x outcome conjunction) model RDMs;
+    scenario bootstrap CIs.
 
   .venv/bin/python code/experiments/92_lax_time_decoding_clauses.py --model Qwen2.5-7B --perm 100
 """
@@ -36,7 +37,10 @@ OUT = os.path.join(ROOT, "outputs", "lax_0929", "T6")
 N_JOBS = int(os.environ.get("JOBLIB_N_JOBS", "2"))
 STAGES = ["background", "belief", "action", "outcome"]
 CELLS = ["neutral", "accidental", "attempted", "intentional"]
-CODE = {"neutral": (0, 0, 1), "accidental": (0, 1, -1), "attempted": (1, 0, -1), "intentional": (1, 1, 1)}
+# (intent, outcome, intent x outcome). With +-1 interaction coding every pair of cells differs in exactly
+# two of the three, so the three "differs" RDMs sum to a constant and are not separately identifiable;
+# the 0/1 product (only intentional = 1) gives an independent interaction RDM.
+CODE = {"neutral": (0, 0, 0), "accidental": (0, 1, 0), "attempted": (1, 0, 0), "intentional": (1, 1, 1)}
 
 
 def _load(name, rel):
