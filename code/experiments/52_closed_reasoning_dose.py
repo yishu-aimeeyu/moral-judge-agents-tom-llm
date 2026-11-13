@@ -85,19 +85,35 @@ def fatal_if_billing(exc, provider, model, condition):
 # Roster locked to strings returned by the 2026-07-28 list endpoints.
 ROSTER = [
     # provider, model, conditions
-    ("anthropic", "claude-opus-5",
-     ["direct", "think", "budget_low", "budget_med", "budget_high"]),
     ("anthropic", "claude-sonnet-5",
      ["direct", "think", "budget_low", "budget_med", "budget_high"]),
     ("openai", "gpt-5.5", ["direct"]),
     ("openai", "gpt-5.4-mini", ["direct"]),
-    ("openai", "o3", ["budget_low", "budget_med", "budget_high"]),
     ("openai", "o4-mini", ["budget_low", "budget_med", "budget_high"]),
     ("google", "gemini-3.1-pro-preview",
      ["direct", "think", "budget_low", "budget_med", "budget_high"]),
     ("google", "gemini-3.5-flash",
      ["direct", "think", "budget_low", "budget_med", "budget_high"]),
     ("moonshot", "kimi-k2.6", ["direct"]),
+]
+
+# Dropped 2026-07-29 on cost: claude-opus-5 (5 cells) and o3 (3 cells) were 69% of the bill
+# between them -- o3 because high effort is the most expensive reasoning tier priced here, and
+# opus because budget_high is 16,384 thinking tokens at the top output rate. Both are restored
+# by re-adding the two lines below, and `59_dose_cost_model.py` reprices the roster from it.
+#
+#     ("anthropic", "claude-opus-5",
+#      ["direct", "think", "budget_low", "budget_med", "budget_high"]),
+#     ("openai", "o3", ["budget_low", "budget_med", "budget_high"]),
+#
+# Cost of the omission: the dose-response no longer covers a FLAGSHIP reasoner on either
+# provider. Anthropic's curve comes from claude-sonnet-5 and OpenAI's from o4-mini, both
+# mid-tier. If reasoning effort interacts with model capability -- which is exactly the kind of
+# thing this experiment would be asked about -- the design can no longer see it. State this as
+# a limitation rather than presenting the reduced roster as the intended one.
+DROPPED_ON_COST = [
+    ("anthropic", "claude-opus-5", 5, "~33% of the batch bill"),
+    ("openai", "o3", 3, "~36% of the batch bill"),
 ]
 
 

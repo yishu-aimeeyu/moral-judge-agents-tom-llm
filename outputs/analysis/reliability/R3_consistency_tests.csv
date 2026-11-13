@@ -1,0 +1,7 @@
+measure,factor,kruskal_H,p,mean_YS2008,mean_YS2009,mean_YS2011,mean_accidental,mean_attempted,mean_intentional,mean_neutral
+sd_across_templates,source,33.74,4.72e-08,0.491,0.477,0.775,,,,
+sd_across_templates,condition,17.57,0.000539,,,,0.501,0.471,0.519,0.491
+sd_across_templates,scenario_group,161.01,4.47e-13,,,,,,,
+sd_across_models,source,31.87,1.2e-07,0.677,0.638,0.981,,,,
+sd_across_models,condition,23.64,2.97e-05,,,,0.719,0.702,0.626,0.65
+sd_across_models,scenario_group,128.79,1.87e-08,,,,,,,

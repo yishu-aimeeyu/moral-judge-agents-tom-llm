@@ -1,0 +1,2 @@
+model,n_kept,dropped_mask,dropped_order
+Qwen2.5-7B-Instruct,280,8,10

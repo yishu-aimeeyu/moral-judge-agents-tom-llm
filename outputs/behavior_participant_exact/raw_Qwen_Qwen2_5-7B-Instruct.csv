@@ -1,0 +1,299 @@
+model,template,sample,story_id,source,condition,intent_label,outcome_label,raw_rating,norm_rating
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,2.6791,0.1604
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,1.0006,0.9997
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,1.7773,0.6113
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,1.0006,0.9997
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,2.9988,0.0006
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,1.9823,0.5089
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,2.9526,0.0237
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,1.852,0.574
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,2.9933,0.0033
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,1.0785,0.9607
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,2.165,0.4175
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,1.0141,0.9929
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,2.977,0.0115
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,1.6793,0.6603
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,2.9627,0.0187
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,1.9247,0.5376
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,2.6224,0.1888
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,1.9526,0.5237
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,2.0136,0.4932
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,2.0005,0.4997
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,2.9981,0.001
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,1.4386,0.7807
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,1.9253,0.5373
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,1.6228,0.6886
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,2.9997,0.0002
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,1.9424,0.5288
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,1.9973,0.5013
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,1.7373,0.6313
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,1.9431,0.5284
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,1.0911,0.9545
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,1.6255,0.6873
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,1.0739,0.963
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,2.1161,0.442
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,1.135,0.9325
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,2.0268,0.4866
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,2.0,0.5
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,2.9948,0.0026
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,1.986,0.507
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,2.0351,0.4825
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,1.3779,0.8111
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,2.7762,0.1119
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,1.0084,0.9958
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,1.9399,0.5301
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,1.0315,0.9842
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,2.9399,0.03
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,1.2231,0.8884
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,1.9948,0.5026
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,1.0183,0.9909
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,1.8176,0.5912
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,1.0231,0.9885
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,1.7311,0.6344
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,1.0373,0.9813
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,1.9806,0.5097
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,1.1765,0.9117
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,2.8808,0.0596
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,1.0395,0.9802
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,2.9981,0.001
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,2.0722,0.4639
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,2.9888,0.0056
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,2.1572,0.4214
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,1.0209,0.9896
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,2.0492,0.4754
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,1.9891,0.5054
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,1.9327,0.5336
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,1.7878,0.6061
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,1.3964,0.8018
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,1.9802,0.5099
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,1.8811,0.5595
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,2.9999,0.0001
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,1.982,0.509
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,2.9626,0.0187
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,1.9401,0.53
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,2.9988,0.0006
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,1.0379,0.981
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,2.4973,0.2513
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,1.0041,0.998
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,2.9993,0.0004
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,1.94,0.53
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,2.2682,0.3659
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,1.9529,0.5235
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,2.7908,0.1046
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,1.0019,0.999
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,2.5842,0.2079
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,1.0012,0.9994
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,2.9241,0.0379
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VET-accidental,YS2008,accidental,innocent,harm,1.061,0.9695
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,1.9402,0.5299
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-VET-intentional,YS2008,intentional,guilty,harm,1.0055,0.9972
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,2.9997,0.0002
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,1.9874,0.5063
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,1.9939,0.503
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,1.9408,0.5296
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,1.9526,0.5237
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,1.0052,0.9974
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,1.9242,0.5379
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,1.0004,0.9998
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,2.4378,0.2811
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,1.9245,0.5377
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,2.0198,0.4901
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,1.1825,0.9087
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,2.0469,0.4766
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,1.9709,0.5145
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,2.0004,0.4998
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,1.9632,0.5184
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,3.0,0.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,1.9399,0.5301
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,2.982,0.009
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,1.8809,0.5595
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,2.9526,0.0237
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,1.852,0.574
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,2.0952,0.4524
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,1.9242,0.5379
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,2.9525,0.0237
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,1.852,0.574
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,2.2075,0.3962
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,1.9527,0.5236
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,3.0,0.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,1.9771,0.5114
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,2.377,0.3115
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,1.852,0.574
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,1.7807,0.6097
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,2.7465,0.1267
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,1.7789,0.6106
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,1.1853,0.9073
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,2.9039,0.048
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,1.927,0.5365
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,2.4984,0.2508
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,2.3361,0.3319
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,2.9991,0.0005
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,1.8522,0.5739
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,1.8176,0.5912
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,1.0474,0.9763
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,1.963,0.5185
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,1.2714,0.8643
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,1.3209,0.8396
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,1.0296,0.9852
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,1.9528,0.5236
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,1.5005,0.7498
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,1.269,0.8655
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,1.6232,0.6884
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,2.9978,0.0011
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,1.0025,0.9988
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,2.0645,0.4678
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,1.0141,0.9929
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,2.9997,0.0002
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,1.1481,0.926
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,2.9988,0.0006
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,1.5003,0.7499
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,3.0,0.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,1.0374,0.9813
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,2.982,0.009
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,1.0379,0.981
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,2.9998,0.0001
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,1.0181,0.9909
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,1.9661,0.517
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,1.0008,0.9996
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,2.989,0.0055
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,1.9873,0.5063
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,2.008,0.496
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,1.7803,0.6099
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,2.8174,0.0913
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,1.3216,0.8392
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,2.9948,0.0026
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,1.2829,0.8586
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,1.9545,0.5228
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,1.0181,0.9909
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,1.011,0.9945
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,1.0028,0.9986
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,3.0,0.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,1.0054,0.9973
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,2.9996,0.0002
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,1.0793,0.9604
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,2.9526,0.0237
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,1.9509,0.5245
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,2.0063,0.4969
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,1.9087,0.5456
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,2.0281,0.486
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,1.9416,0.5292
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,1.9974,0.5013
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,1.9884,0.5058
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,2.9998,0.0001
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,1.9876,0.5062
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,2.982,0.009
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,1.9912,0.5044
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,1.9065,0.5467
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,1.3786,0.8107
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,1.8821,0.5589
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,1.9811,0.5094
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,1.9054,0.5473
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,1.4387,0.7806
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,1.9057,0.5472
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,1.9646,0.5177
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,1.7891,0.263
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,2.9679,0.656
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,2.0233,0.3411
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,2.9845,0.6615
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,1.3639,0.1213
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,2.9864,0.6621
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,2.9087,0.6362
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,2.9926,0.6642
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,2.379,0.4597
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,3.4999,0.8333
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,2.9225,0.6408
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,2.6868,0.5623
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,2.148,0.3827
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,2.9952,0.6651
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,2.0197,0.3399
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,2.6226,0.5409
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,1.0019,0.0006
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,2.9714,0.6571
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,1.1245,0.0415
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,2.5622,0.5207
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,1.0079,0.0026
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,2.0576,0.3525
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,1.6332,0.2111
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,2.0673,0.3558
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,2.0,0.3333
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,2.9401,0.6467
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,2.0755,0.3585
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,2.6792,0.5597
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,1.0,0.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,3.2203,0.7401
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,2.6529,0.551
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,3.5617,0.8539
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,1.3852,0.1284
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,2.7778,0.5926
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,1.64,0.2133
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,2.3763,0.4588
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,2.5747,0.5249
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,3.9707,0.9902
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,2.7372,0.5791
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,3.8519,0.9506
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,2.2219,0.4073
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,3.0589,0.6863
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,2.0297,0.3432
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,2.993,0.6643
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,2.9424,0.6475
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,3.8808,0.9603
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,2.9242,0.6414
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,3.0754,0.6918
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,2.1822,0.3941
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,2.9939,0.6646
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,2.2689,0.423
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,2.9636,0.6545
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,1.0104,0.0035
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,3.0594,0.6865
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,1.9772,0.3257
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,2.9634,0.6545
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,1.4475,0.1492
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,2.3771,0.459
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,2.0845,0.3615
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,2.4375,0.4792
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,2.0,0.3333
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,2.3209,0.4403
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,2.2212,0.4071
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,2.1474,0.3825
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,1.0021,0.0007
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,3.1462,0.7154
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,3.3766,0.7922
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,3.0515,0.6838
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,2.0757,0.3586
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,2.7907,0.5969
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,2.3242,0.4414
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,1.7297,0.2432
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,1.5065,0.1688
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,2.8183,0.6061
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,1.992,0.3307
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,2.6226,0.5409
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,1.0014,0.0005
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,2.119,0.373
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,1.7891,0.263
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,2.7773,0.5924
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,1.0188,0.0063
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,3.9525,0.9842
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,2.9155,0.6385
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,3.8175,0.9392
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,1.0001,0.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,3.1946,0.7315
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,1.0789,0.0263
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,3.0,0.6667
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,1.8211,0.2737
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,3.3775,0.7925
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,1.3798,0.1266
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,2.4387,0.4796
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,1.7585,0.2528
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,3.2216,0.7405
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,2.6295,0.5432
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,3.2188,0.7396
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,6.4801,0.9133
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,5.0799,0.68
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,7.0,1.0
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,6.9977,0.9996
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,4.994,0.6657
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,5.5691,0.7615
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,4.6099,0.6016
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,4.7194,0.6199
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,6.9382,0.9897
+Qwen/Qwen2.5-7B-Instruct,participant_exact,0,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,6.9693,0.9949

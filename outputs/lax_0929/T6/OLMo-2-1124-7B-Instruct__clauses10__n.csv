@@ -1,0 +1,2 @@
+model,n_kept,dropped_mask,dropped_order
+OLMo-2-1124-7B-Instruct,280,8,10

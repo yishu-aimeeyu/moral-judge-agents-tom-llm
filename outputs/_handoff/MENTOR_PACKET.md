@@ -1,4 +1,4 @@
-# Mentor packet — moral ToM in LLMs (2026-07-28)
+# Mentor packet — moral ToM in LLMs (2026-07-29)
 
 One page of results, then figures. Every number is generated from the artifacts on disk by `code/experiments/49_mentor_packet.py`; regenerate rather than edit.
 
@@ -97,7 +97,7 @@ Scope note: these counts are open-weight models only. Closed-API models have not
 1. **M1 manipulation check.** Steering the probe-weight intent direction displaces downstream probe margin by −3.18 SD (OLMo) / +7.21 SD (Qwen) while |Δcontrast| stays ≤0.016 — the pre-registered bar (≥1 SD, |Δc|≤0.05) is met, so the null stands. Is that enough for you to treat "causally inert" as a positive claim, or do you still want a per-position / multi-layer intervention before the paper commits?
 2. **M2 layer sweep (narrow form).** Intent is inert at depths where specificity is resolvable (peak and deeper); shallow layers are uninformative because the positive control sits at the random floor. Does the narrow claim survive review, or does "uninformative early" read as underpowered?
 3. **Detectable-effect size (M3).** Outcome moves contrast 0.232–0.259; intent-probe ≤0.015 (~15×). Is stating sensitivity in control units sufficient, or do you want a formal power calculation against a pre-specified minimal interesting effect?
-4. **Prose/rating dissociation.** Models name belief/intent in 46–64% of explanations and still rate by outcome inside that subset (b_outcome/b_intent 3–10×; cell order inverted). Lexicon↔hand κ≈0.73–0.76; lexicon↔Haiku κ≈0.42–0.49. Is this the most legible result in the paper, and should it lead the talk?
+4. **Prose/rating dissociation.** Models name the agent's belief or intent in 69%–82% of their own explanations (primary LLM coder; the question never mentions intent or accident) and still rate by outcome inside that subset — b_outcome/b_intent 5.7×–12.2×, cell order inverted. Lexicon↔hand κ≈0.73–0.76; lexicon↔LLM κ≈0.42–0.49. Is this the most legible result in the paper, and should it lead the talk?
 5. **Ceiling compression.** Where difference-of-means moves contrast it raises all four cells; accidental has least headroom. Keep that as a permanent caveat beside every intent_dom number, or demote intent_dom from the headline tables entirely?
 6. **What replaces the obsolete framings.** The Llama "counterexample" and degenerate-base issues were scoring artifacts (now resolved: Tülu base rating_std 0.018→0.0966; all three families engaged). With those gone, is the clean story "SFT is sufficient, locus recipe-dependent; intent represented and unused" — or do you want a different headline?
 

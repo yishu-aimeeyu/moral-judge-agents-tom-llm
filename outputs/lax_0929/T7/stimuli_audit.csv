@@ -1,0 +1,299 @@
+story_id,source,condition,agent,n_chars_full,n_chars_no_story,n_chars_background_only,n_chars_belief_removed,n_chars_outcome_removed
+YS2008-COFFEE-neutral,YS2008,neutral,Grace,567,6,219,439,525
+YS2008-COFFEE-accidental,YS2008,accidental,Grace,544,6,219,416,505
+YS2008-COFFEE-attempted,YS2008,attempted,Grace,560,6,219,439,518
+YS2008-COFFEE-intentional,YS2008,intentional,Grace,537,6,219,416,498
+YS2008-LAB-neutral,YS2008,neutral,Dan,636,4,244,499,581
+YS2008-LAB-accidental,YS2008,accidental,Dan,614,4,244,477,563
+YS2008-LAB-attempted,YS2008,attempted,Dan,641,4,244,499,586
+YS2008-LAB-intentional,YS2008,intentional,Dan,619,4,244,477,568
+YS2008-JELLYFISH-neutral,YS2008,neutral,Janet,468,6,137,336,414
+YS2008-JELLYFISH-accidental,YS2008,accidental,Janet,459,6,137,327,405
+YS2008-JELLYFISH-attempted,YS2008,attempted,Janet,464,6,137,336,410
+YS2008-JELLYFISH-intentional,YS2008,intentional,Janet,455,6,137,327,401
+YS2008-BRIDGE-neutral,YS2008,neutral,Ray,448,4,99,312,402
+YS2008-BRIDGE-accidental,YS2008,accidental,Ray,464,4,99,328,407
+YS2008-BRIDGE-attempted,YS2008,attempted,Ray,448,4,99,312,402
+YS2008-BRIDGE-intentional,YS2008,intentional,Ray,464,4,99,328,407
+YS2008-POOL-neutral,YS2008,neutral,Leah,394,5,85,262,362
+YS2008-POOL-accidental,YS2008,accidental,Leah,423,5,85,291,383
+YS2008-POOL-attempted,YS2008,attempted,Leah,398,5,85,262,366
+YS2008-POOL-intentional,YS2008,intentional,Leah,427,5,85,291,387
+YS2008-MUSHROOMS-neutral,YS2008,neutral,Lauren,558,7,177,401,504
+YS2008-MUSHROOMS-accidental,YS2008,accidental,Lauren,574,7,177,417,507
+YS2008-MUSHROOMS-attempted,YS2008,attempted,Lauren,557,7,177,401,503
+YS2008-MUSHROOMS-intentional,YS2008,intentional,Lauren,573,7,177,417,506
+YS2008-LATEX-neutral,YS2008,neutral,Anne,459,5,100,282,438
+YS2008-LATEX-accidental,YS2008,accidental,Anne,473,5,100,296,444
+YS2008-LATEX-attempted,YS2008,attempted,Anne,459,5,100,282,438
+YS2008-LATEX-intentional,YS2008,intentional,Anne,473,5,100,296,444
+YS2008-MOTORBOAT-neutral,YS2008,neutral,George,360,7,100,264,339
+YS2008-MOTORBOAT-accidental,YS2008,accidental,George,342,7,100,246,322
+YS2008-MOTORBOAT-attempted,YS2008,attempted,George,410,7,100,264,389
+YS2008-MOTORBOAT-intentional,YS2008,intentional,George,392,7,100,246,372
+YS2008-ASTHMA-neutral,YS2008,neutral,Erica,505,6,172,365,462
+YS2008-ASTHMA-accidental,YS2008,accidental,Erica,504,6,172,364,473
+YS2008-ASTHMA-attempted,YS2008,attempted,Erica,516,6,172,365,473
+YS2008-ASTHMA-intentional,YS2008,intentional,Erica,515,6,172,364,484
+YS2008-VITAMIN-neutral,YS2008,neutral,Gil,527,4,227,397,504
+YS2008-VITAMIN-accidental,YS2008,accidental,Gil,535,4,227,405,503
+YS2008-VITAMIN-attempted,YS2008,attempted,Gil,528,4,227,397,505
+YS2008-VITAMIN-intentional,YS2008,intentional,Gil,536,4,227,405,504
+YS2008-SESAME-neutral,YS2008,neutral,Kate,474,5,154,350,432
+YS2008-SESAME-accidental,YS2008,accidental,Kate,467,5,154,343,430
+YS2008-SESAME-attempted,YS2008,attempted,Kate,490,5,154,350,448
+YS2008-SESAME-intentional,YS2008,intentional,Kate,483,5,154,343,446
+YS2008-BIKE-neutral,YS2008,neutral,Ginny,498,6,152,334,438
+YS2008-BIKE-accidental,YS2008,accidental,Ginny,540,6,152,376,450
+YS2008-BIKE-attempted,YS2008,attempted,Ginny,499,6,152,334,439
+YS2008-BIKE-intentional,YS2008,intentional,Ginny,541,6,152,376,451
+YS2008-IRON-neutral,YS2008,neutral,Josephine,605,10,194,491,493
+YS2008-IRON-accidental,YS2008,accidental,Josephine,605,10,194,491,491
+YS2008-IRON-attempted,YS2008,attempted,Josephine,616,10,194,491,504
+YS2008-IRON-intentional,YS2008,intentional,Josephine,616,10,194,491,502
+YS2008-MEATLOAF-neutral,YS2008,neutral,Rebecca,565,8,152,444,484
+YS2008-MEATLOAF-accidental,YS2008,accidental,Rebecca,563,8,152,442,479
+YS2008-MEATLOAF-attempted,YS2008,attempted,Rebecca,558,8,152,444,477
+YS2008-MEATLOAF-intentional,YS2008,intentional,Rebecca,556,8,152,442,472
+YS2008-RIVER-neutral,YS2008,neutral,Jacob,573,6,166,399,521
+YS2008-RIVER-accidental,YS2008,accidental,Jacob,604,6,166,430,537
+YS2008-RIVER-attempted,YS2008,attempted,Jacob,585,6,166,399,533
+YS2008-RIVER-intentional,YS2008,intentional,Jacob,616,6,166,430,549
+YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,Andrew,563,7,186,412,468
+YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,Andrew,557,7,186,406,463
+YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,Andrew,566,7,186,412,471
+YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,Andrew,560,7,186,406,466
+YS2008-TRACKS-neutral,YS2008,neutral,Tyler,668,6,165,500,560
+YS2008-TRACKS-accidental,YS2008,accidental,Tyler,681,6,165,513,566
+YS2008-TRACKS-attempted,YS2008,attempted,Tyler,660,6,165,500,552
+YS2008-TRACKS-intentional,YS2008,intentional,Tyler,673,6,165,513,558
+YS2008-HARNESS-neutral,YS2008,neutral,Stacey,506,7,159,375,431
+YS2008-HARNESS-accidental,YS2008,accidental,Stacey,521,7,159,390,438
+YS2008-HARNESS-attempted,YS2008,attempted,Stacey,515,7,159,375,440
+YS2008-HARNESS-intentional,YS2008,intentional,Stacey,530,7,159,390,447
+YS2008-IGLOO-neutral,YS2008,neutral,Sarah,537,6,126,395,457
+YS2008-IGLOO-accidental,YS2008,accidental,Sarah,548,6,126,406,463
+YS2008-IGLOO-attempted,YS2008,attempted,Sarah,532,6,126,395,452
+YS2008-IGLOO-intentional,YS2008,intentional,Sarah,543,6,126,406,458
+YS2008-HAM-neutral,YS2008,neutral,Noel,530,5,158,397,458
+YS2008-HAM-accidental,YS2008,accidental,Noel,524,5,158,391,450
+YS2008-HAM-attempted,YS2008,attempted,Noel,534,5,158,397,462
+YS2008-HAM-intentional,YS2008,intentional,Noel,528,5,158,391,454
+YS2008-POPCORN-neutral,YS2008,neutral,Matt,720,5,169,539,602
+YS2008-POPCORN-accidental,YS2008,accidental,Matt,696,5,169,515,581
+YS2008-POPCORN-attempted,YS2008,attempted,Matt,755,5,169,539,637
+YS2008-POPCORN-intentional,YS2008,intentional,Matt,731,5,169,515,616
+YS2008-VET-neutral,YS2008,neutral,Zach,573,5,188,442,517
+YS2008-VET-accidental,YS2008,accidental,Zach,586,5,188,455,514
+YS2008-VET-attempted,YS2008,attempted,Zach,597,5,188,442,541
+YS2008-VET-intentional,YS2008,intentional,Zach,610,5,188,455,538
+YS2008-CHAIRLIFT-neutral,YS2008,neutral,Zoe,662,4,178,487,541
+YS2008-CHAIRLIFT-accidental,YS2008,accidental,Zoe,658,4,178,483,540
+YS2008-CHAIRLIFT-attempted,YS2008,attempted,Zoe,650,4,178,487,529
+YS2008-CHAIRLIFT-intentional,YS2008,intentional,Zoe,646,4,178,483,528
+YS2008-SAFETY TOWN-neutral,YS2008,neutral,Sam,656,4,200,475,577
+YS2008-SAFETY TOWN-accidental,YS2008,accidental,Sam,657,4,200,476,586
+YS2008-SAFETY TOWN-attempted,YS2008,attempted,Sam,675,4,200,475,596
+YS2008-SAFETY TOWN-intentional,YS2008,intentional,Sam,676,4,200,476,605
+YS2008-MALARIA POND-neutral,YS2008,neutral,Peter,563,6,163,430,492
+YS2008-MALARIA POND-accidental,YS2008,accidental,Peter,540,6,163,407,474
+YS2008-MALARIA POND-attempted,YS2008,attempted,Peter,572,6,163,430,501
+YS2008-MALARIA POND-intentional,YS2008,intentional,Peter,549,6,163,407,483
+YS2008-HUNT-neutral,YS2008,neutral,Mike,621,5,164,407,561
+YS2008-HUNT-accidental,YS2008,accidental,Mike,619,5,164,405,556
+YS2008-HUNT-attempted,YS2008,attempted,Mike,621,5,164,407,561
+YS2008-HUNT-intentional,YS2008,intentional,Mike,619,5,164,405,556
+YS2008-SPINACH-neutral,YS2008,neutral,Will,599,5,235,497,512
+YS2008-SPINACH-accidental,YS2008,accidental,Will,629,5,235,527,534
+YS2008-SPINACH-attempted,YS2008,attempted,Will,605,5,235,497,518
+YS2008-SPINACH-intentional,YS2008,intentional,Will,635,5,235,527,540
+YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,Susan,663,6,182,614,575
+YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,Susan,677,6,182,628,583
+YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,Susan,670,6,182,614,582
+YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,Susan,684,6,182,628,590
+YS2008-ALARM-neutral,YS2008,neutral,Bill,620,5,166,513,537
+YS2008-ALARM-accidental,YS2008,accidental,Bill,614,5,166,507,523
+YS2008-ALARM-attempted,YS2008,attempted,Bill,618,5,166,513,535
+YS2008-ALARM-intentional,YS2008,intentional,Bill,612,5,166,507,521
+YS2008-SAFETY CORD-neutral,YS2008,neutral,Kristin,602,8,123,433,493
+YS2008-SAFETY CORD-accidental,YS2008,accidental,Kristin,589,8,123,420,484
+YS2008-SAFETY CORD-attempted,YS2008,attempted,Kristin,612,8,123,433,503
+YS2008-SAFETY CORD-intentional,YS2008,intentional,Kristin,599,8,123,420,494
+YS2008-ZOO-neutral,YS2008,neutral,Ryan,592,5,120,427,492
+YS2008-ZOO-accidental,YS2008,accidental,Ryan,565,5,120,400,476
+YS2008-ZOO-attempted,YS2008,attempted,Ryan,595,5,120,427,495
+YS2008-ZOO-intentional,YS2008,intentional,Ryan,568,5,120,400,479
+YS2008-BAR-neutral,YS2008,neutral,Kevin,588,6,150,454,531
+YS2008-BAR-accidental,YS2008,accidental,Kevin,584,6,150,450,529
+YS2008-BAR-attempted,YS2008,attempted,Kevin,598,6,150,454,541
+YS2008-BAR-intentional,YS2008,intentional,Kevin,594,6,150,450,539
+YS2008-SUSHI-neutral,YS2008,neutral,Mitch,597,6,152,445,524
+YS2008-SUSHI-accidental,YS2008,accidental,Mitch,611,6,152,459,524
+YS2008-SUSHI-attempted,YS2008,attempted,Mitch,601,6,152,445,528
+YS2008-SUSHI-intentional,YS2008,intentional,Mitch,615,6,152,459,528
+YS2008-CAYO-neutral,YS2008,neutral,Haley,661,6,174,577,591
+YS2008-CAYO-accidental,YS2008,accidental,Haley,642,6,174,558,570
+YS2008-CAYO-attempted,YS2008,attempted,Haley,660,6,174,577,590
+YS2008-CAYO-intentional,YS2008,intentional,Haley,641,6,174,558,569
+YS2008-FUMIGATION-neutral,YS2008,neutral,Brian,680,6,148,503,609
+YS2008-FUMIGATION-accidental,YS2008,accidental,Brian,671,6,148,494,608
+YS2008-FUMIGATION-attempted,YS2008,attempted,Brian,680,6,148,503,609
+YS2008-FUMIGATION-intentional,YS2008,intentional,Brian,671,6,148,494,608
+YS2008-PORRIDGE-neutral,YS2008,neutral,Eva,622,4,159,523,532
+YS2008-PORRIDGE-accidental,YS2008,accidental,Eva,610,4,159,511,524
+YS2008-PORRIDGE-attempted,YS2008,attempted,Eva,621,4,159,523,531
+YS2008-PORRIDGE-intentional,YS2008,intentional,Eva,609,4,159,511,523
+YS2008-BOUNCY BALL-neutral,YS2008,neutral,Nicole,563,7,182,412,506
+YS2008-BOUNCY BALL-accidental,YS2008,accidental,Nicole,577,7,182,426,511
+YS2008-BOUNCY BALL-attempted,YS2008,attempted,Nicole,554,7,182,412,497
+YS2008-BOUNCY BALL-intentional,YS2008,intentional,Nicole,568,7,182,426,502
+YS2008-PARACHUTES-neutral,YS2008,neutral,Maggie,558,7,140,405,466
+YS2008-PARACHUTES-accidental,YS2008,accidental,Maggie,571,7,140,418,471
+YS2008-PARACHUTES-attempted,YS2008,attempted,Maggie,561,7,140,405,469
+YS2008-PARACHUTES-intentional,YS2008,intentional,Maggie,574,7,140,418,474
+YS2008-RABIES-neutral,YS2008,neutral,Chloe,499,6,134,394,425
+YS2008-RABIES-accidental,YS2008,accidental,Chloe,504,6,134,399,423
+YS2008-RABIES-attempted,YS2008,attempted,Chloe,492,6,134,394,418
+YS2008-RABIES-intentional,YS2008,intentional,Chloe,497,6,134,399,416
+YS2008-FRAT-neutral,YS2008,neutral,Charles,504,8,156,388,428
+YS2008-FRAT-accidental,YS2008,accidental,Charles,519,8,156,403,428
+YS2008-FRAT-attempted,YS2008,attempted,Charles,508,8,156,388,432
+YS2008-FRAT-intentional,YS2008,intentional,Charles,523,8,156,403,432
+YS2008-TREE HOUSE-neutral,YS2008,neutral,Joshua,472,7,114,338,413
+YS2008-TREE HOUSE-accidental,YS2008,accidental,Joshua,482,7,114,348,409
+YS2008-TREE HOUSE-attempted,YS2008,attempted,Joshua,470,7,114,338,411
+YS2008-TREE HOUSE-intentional,YS2008,intentional,Joshua,480,7,114,348,407
+YS2008-SPRING BREAK-neutral,YS2008,neutral,Janelle,549,8,153,389,503
+YS2008-SPRING BREAK-accidental,YS2008,accidental,Janelle,574,8,153,414,522
+YS2008-SPRING BREAK-attempted,YS2008,attempted,Janelle,556,8,153,389,510
+YS2008-SPRING BREAK-intentional,YS2008,intentional,Janelle,581,8,153,414,529
+YS2008-CPR-neutral,YS2008,neutral,Steven,558,7,194,423,511
+YS2008-CPR-accidental,YS2008,accidental,Steven,552,7,194,417,509
+YS2008-CPR-attempted,YS2008,attempted,Steven,556,7,194,423,509
+YS2008-CPR-intentional,YS2008,intentional,Steven,550,7,194,417,507
+YS2008-MOTHER-neutral,YS2008,neutral,Bob,616,4,172,437,533
+YS2008-MOTHER-accidental,YS2008,accidental,Bob,597,4,172,418,536
+YS2008-MOTHER-attempted,YS2008,attempted,Bob,594,4,172,437,511
+YS2008-MOTHER-intentional,YS2008,intentional,Bob,575,4,172,418,514
+YS2008-SEATBELT-neutral,YS2008,neutral,John,581,5,177,449,527
+YS2008-SEATBELT-accidental,YS2008,accidental,John,582,5,177,450,508
+YS2008-SEATBELT-attempted,YS2008,attempted,John,579,5,177,449,525
+YS2008-SEATBELT-intentional,YS2008,intentional,John,580,5,177,450,506
+YS2008-WET FLOOR-neutral,YS2008,neutral,Mary,549,5,174,400,492
+YS2008-WET FLOOR-accidental,YS2008,accidental,Mary,558,5,174,409,493
+YS2008-WET FLOOR-attempted,YS2008,attempted,Mary,547,5,174,400,490
+YS2008-WET FLOOR-intentional,YS2008,intentional,Mary,556,5,174,409,491
+YS2008-TEENAGERS-neutral,YS2008,neutral,Jessica,537,8,147,374,478
+YS2008-TEENAGERS-accidental,YS2008,accidental,Jessica,542,8,147,379,477
+YS2008-TEENAGERS-attempted,YS2008,attempted,Jessica,530,8,147,374,471
+YS2008-TEENAGERS-intentional,YS2008,intentional,Jessica,535,8,147,379,470
+YS2008-LAPTOP-neutral,YS2008,neutral,Vince,514,6,163,405,433
+YS2008-LAPTOP-accidental,YS2008,accidental,Vince,524,6,163,415,428
+YS2008-LAPTOP-attempted,YS2008,attempted,Vince,528,6,163,405,447
+YS2008-LAPTOP-intentional,YS2008,intentional,Vince,538,6,163,415,442
+YS2009-YS2009_01-neutral,YS2009,neutral,Matt,720,5,169,539,602
+YS2009-YS2009_01-accidental,YS2009,accidental,Matt,696,5,169,515,581
+YS2009-YS2009_01-attempted,YS2009,attempted,Matt,755,5,169,539,637
+YS2009-YS2009_01-intentional,YS2009,intentional,Matt,731,5,169,515,616
+YS2009-YS2009_02-neutral,YS2009,neutral,Mitch,598,6,152,446,525
+YS2009-YS2009_02-accidental,YS2009,accidental,Mitch,611,6,152,459,524
+YS2009-YS2009_02-attempted,YS2009,attempted,Mitch,602,6,152,446,529
+YS2009-YS2009_02-intentional,YS2009,intentional,Mitch,615,6,152,459,528
+YS2009-YS2009_03-neutral,YS2009,neutral,Sam,656,4,200,475,577
+YS2009-YS2009_03-accidental,YS2009,accidental,Sam,657,4,200,476,586
+YS2009-YS2009_03-attempted,YS2009,attempted,Sam,675,4,200,475,596
+YS2009-YS2009_03-intentional,YS2009,intentional,Sam,676,4,200,476,605
+YS2009-YS2009_04-neutral,YS2009,neutral,Peter,563,6,163,430,492
+YS2009-YS2009_04-accidental,YS2009,accidental,Peter,540,6,163,407,474
+YS2009-YS2009_04-attempted,YS2009,attempted,Peter,572,6,163,430,501
+YS2009-YS2009_04-intentional,YS2009,intentional,Peter,549,6,163,407,483
+YS2009-YS2009_05-neutral,YS2009,neutral,Eva,622,4,159,523,532
+YS2009-YS2009_05-accidental,YS2009,accidental,Eva,610,4,159,511,524
+YS2009-YS2009_05-attempted,YS2009,attempted,Eva,621,4,159,523,531
+YS2009-YS2009_05-intentional,YS2009,intentional,Eva,609,4,159,511,523
+YS2009-YS2009_06-neutral,YS2009,neutral,Will,599,5,235,497,512
+YS2009-YS2009_06-accidental,YS2009,accidental,Will,629,5,235,527,534
+YS2009-YS2009_06-attempted,YS2009,attempted,Will,605,5,235,497,518
+YS2009-YS2009_06-intentional,YS2009,intentional,Will,635,5,235,527,540
+YS2009-YS2009_07-neutral,YS2009,neutral,Susan,663,6,182,614,575
+YS2009-YS2009_07-accidental,YS2009,accidental,Susan,677,6,182,628,583
+YS2009-YS2009_07-attempted,YS2009,attempted,Susan,670,6,182,614,582
+YS2009-YS2009_07-intentional,YS2009,intentional,Susan,684,6,182,628,590
+YS2009-YS2009_08-neutral,YS2009,neutral,Chloe,499,6,134,394,425
+YS2009-YS2009_08-accidental,YS2009,accidental,Chloe,504,6,134,399,423
+YS2009-YS2009_08-attempted,YS2009,attempted,Chloe,492,6,134,394,418
+YS2009-YS2009_08-intentional,YS2009,intentional,Chloe,497,6,134,399,416
+YS2009-YS2009_09-neutral,YS2009,neutral,Charles,504,8,156,388,428
+YS2009-YS2009_09-accidental,YS2009,accidental,Charles,519,8,156,403,428
+YS2009-YS2009_09-attempted,YS2009,attempted,Charles,508,8,156,388,432
+YS2009-YS2009_09-intentional,YS2009,intentional,Charles,523,8,156,403,432
+YS2009-YS2009_10-neutral,YS2009,neutral,Rebecca,565,8,152,444,484
+YS2009-YS2009_10-accidental,YS2009,accidental,Rebecca,563,8,152,442,479
+YS2009-YS2009_10-attempted,YS2009,attempted,Rebecca,558,8,152,444,477
+YS2009-YS2009_10-intentional,YS2009,intentional,Rebecca,556,8,152,442,472
+YS2009-YS2009_11-neutral,YS2009,neutral,Joshua,472,7,114,338,413
+YS2009-YS2009_11-accidental,YS2009,accidental,Joshua,482,7,114,348,409
+YS2009-YS2009_11-attempted,YS2009,attempted,Joshua,470,7,114,338,411
+YS2009-YS2009_11-intentional,YS2009,intentional,Joshua,480,7,114,348,407
+YS2009-YS2009_12-neutral,YS2009,neutral,Josephine,605,10,194,491,493
+YS2009-YS2009_12-accidental,YS2009,accidental,Josephine,605,10,194,491,491
+YS2009-YS2009_12-attempted,YS2009,attempted,Josephine,616,10,194,491,504
+YS2009-YS2009_12-intentional,YS2009,intentional,Josephine,616,10,194,491,502
+YS2009-YS2009_13-neutral,YS2009,neutral,John,581,5,177,449,527
+YS2009-YS2009_13-accidental,YS2009,accidental,John,582,5,177,450,508
+YS2009-YS2009_13-attempted,YS2009,attempted,John,579,5,177,449,525
+YS2009-YS2009_13-intentional,YS2009,intentional,John,580,5,177,450,506
+YS2009-YS2009_14-neutral,YS2009,neutral,Sarah,537,6,126,395,457
+YS2009-YS2009_14-accidental,YS2009,accidental,Sarah,548,6,126,406,463
+YS2009-YS2009_14-attempted,YS2009,attempted,Sarah,532,6,126,395,452
+YS2009-YS2009_14-intentional,YS2009,intentional,Sarah,543,6,126,406,458
+YS2009-YS2009_15-neutral,YS2009,neutral,Mary,549,5,174,400,492
+YS2009-YS2009_15-accidental,YS2009,accidental,Mary,558,5,174,409,493
+YS2009-YS2009_15-attempted,YS2009,attempted,Mary,547,5,174,400,490
+YS2009-YS2009_15-intentional,YS2009,intentional,Mary,556,5,174,409,491
+YS2009-YS2009_16-neutral,YS2009,neutral,Jessica,537,8,147,374,478
+YS2009-YS2009_16-accidental,YS2009,accidental,Jessica,542,8,147,379,477
+YS2009-YS2009_16-attempted,YS2009,attempted,Jessica,530,8,147,374,471
+YS2009-YS2009_16-intentional,YS2009,intentional,Jessica,535,8,147,379,470
+YS2009-YS2009_17-neutral,YS2009,neutral,Noel,530,5,158,397,458
+YS2009-YS2009_17-accidental,YS2009,accidental,Noel,524,5,158,391,450
+YS2009-YS2009_17-attempted,YS2009,attempted,Noel,534,5,158,397,462
+YS2009-YS2009_17-intentional,YS2009,intentional,Noel,528,5,158,391,454
+YS2009-YS2009_18-neutral,YS2009,neutral,Vince,514,6,163,405,433
+YS2009-YS2009_18-accidental,YS2009,accidental,Vince,524,6,163,415,428
+YS2009-YS2009_18-attempted,YS2009,attempted,Vince,528,6,163,405,447
+YS2009-YS2009_18-intentional,YS2009,intentional,Vince,538,6,163,415,442
+YS2009-YS2009_19-neutral,YS2009,neutral,Bill,620,5,166,513,537
+YS2009-YS2009_19-accidental,YS2009,accidental,Bill,614,5,166,507,523
+YS2009-YS2009_19-attempted,YS2009,attempted,Bill,618,5,166,513,535
+YS2009-YS2009_19-intentional,YS2009,intentional,Bill,612,5,166,507,521
+YS2009-YS2009_20-neutral,YS2009,neutral,Kristin,602,8,123,433,493
+YS2009-YS2009_20-accidental,YS2009,accidental,Kristin,589,8,123,420,484
+YS2009-YS2009_20-attempted,YS2009,attempted,Kristin,612,8,123,433,503
+YS2009-YS2009_20-intentional,YS2009,intentional,Kristin,599,8,123,420,494
+YS2009-YS2009_21-neutral,YS2009,neutral,Kate,474,5,154,350,432
+YS2009-YS2009_21-accidental,YS2009,accidental,Kate,467,5,154,343,430
+YS2009-YS2009_21-attempted,YS2009,attempted,Kate,490,5,154,350,448
+YS2009-YS2009_21-intentional,YS2009,intentional,Kate,483,5,154,343,446
+YS2009-YS2009_22-neutral,YS2009,neutral,Steven,558,7,194,423,511
+YS2009-YS2009_22-accidental,YS2009,accidental,Steven,552,7,194,417,509
+YS2009-YS2009_22-attempted,YS2009,attempted,Steven,556,7,194,423,509
+YS2009-YS2009_22-intentional,YS2009,intentional,Steven,550,7,194,417,507
+YS2009-YS2009_23-neutral,YS2009,neutral,Ryan,592,5,120,427,492
+YS2009-YS2009_23-accidental,YS2009,accidental,Ryan,565,5,120,400,476
+YS2009-YS2009_23-attempted,YS2009,attempted,Ryan,595,5,120,427,495
+YS2009-YS2009_23-intentional,YS2009,intentional,Ryan,568,5,120,400,479
+YS2009-YS2009_24-neutral,YS2009,neutral,Janet,468,6,137,336,414
+YS2009-YS2009_24-accidental,YS2009,accidental,Janet,459,6,137,327,405
+YS2009-YS2009_24-attempted,YS2009,attempted,Janet,464,6,137,336,410
+YS2009-YS2009_24-intentional,YS2009,intentional,Janet,455,6,137,327,401
+YS2011-Allergy-intentional,YS2011,intentional,Imagine,226,8,39,189,0
+YS2011-Allergy-accidental,YS2011,accidental,Imagine,234,8,39,189,0
+YS2011-Poison-intentional,YS2011,intentional,Imagine,298,8,236,236,0
+YS2011-Poison-accidental,YS2011,accidental,Imagine,297,8,236,236,0
+YS2011-Sibling-intentional,YS2011,intentional,Imagine,301,8,109,109,0
+YS2011-Sibling-accidental,YS2011,accidental,Imagine,303,8,109,109,0
+YS2011-Parent-intentional,YS2011,intentional,Imagine,364,8,179,298,0
+YS2011-Parent-accidental,YS2011,accidental,Imagine,368,8,179,298,0
+YS2011-Dog-intentional,YS2011,intentional,Imagine,308,8,238,238,0
+YS2011-Dog-accidental,YS2011,accidental,Imagine,377,8,238,238,0

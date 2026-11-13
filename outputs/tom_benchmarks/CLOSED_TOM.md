@@ -23,6 +23,9 @@ those contrasts are still v1-contaminated. Report ToM standalone only.
 | gpt-5.5 | openai | 393 | 0.990 | 0.990 | 0.990 | 1.000 | **PARTIAL 393/400** |
 | o3 | openai | 329 | 0.991 | 0.994 | 0.987 | 1.000 | **PARTIAL 329/400** |
 | o4-mini | openai | 373 | 0.984 | 0.995 | 0.972 | 1.000 | **PARTIAL 373/400** |
+| gemini-3.1-pro-preview | google | 0 | — | — | — | 0.000 | **FAILED — 400 attempted, 0 answered** |
+
+**Failed runs.** `gemini-3.1-pro-preview` (400 items attempted, none answered). Every response came back empty — for the Gemini thinking models this is the known failure where the thinking chain consumes the entire output budget before any answer token is emitted (fixed elsewhere by raising `max_output_tokens` to 1536). These rows are listed so an absent model is not mistaken for an unrun one; they contribute no accuracy and are excluded from every aggregate.
 
 **Partial runs.** `claude-opus-5` scored 127/400 items; `claude-sonnet-5` scored 397/400 items; `gemini-2.5-pro` scored 234/400 items; `gpt-5.5` scored 393/400 items; `o3` scored 329/400 items; `o4-mini` scored 373/400 items. These accuracies are computed on the items completed, so they carry wider sampling error than the full runs and the item mix may not be balanced across subsets. Treat them as provisional until the run finishes.
 

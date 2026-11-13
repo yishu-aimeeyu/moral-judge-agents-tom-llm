@@ -70,12 +70,29 @@ def thinking_budget(provider, condition):
     return 0
 
 
-def cost(n_samples, n_templates, batch, util, n_items=N_ITEMS):
+ALL_CONDS = ["direct", "think", "budget_low", "budget_med", "budget_high"]
+EFFORT_CONDS = ["budget_low", "budget_med", "budget_high"]
+
+
+def full_roster():
+    """The roster as it stood when run 1 was submitted, i.e. before the cost drops.
+
+    The historical row has to be priced on this and not on `dose.ROSTER`. Dropping
+    claude-opus-5 and o3 from the live roster silently reduced what "run 1, as submitted" cost,
+    which understated the overrun by a factor of three -- the opposite of the point that row
+    exists to make.
+    """
+    dropped = [(p, m, ALL_CONDS if nc == 5 else EFFORT_CONDS)
+               for p, m, nc, _ in getattr(dose, "DROPPED_ON_COST", [])]
+    return list(dose.ROSTER) + dropped
+
+
+def cost(n_samples, n_templates, batch, util, n_items=N_ITEMS, roster=None):
     """Returns (calls_per_cell, total_in, total_out, total_cost, per_model dict)."""
     calls = n_items * n_templates * n_samples
     tin = tout = total = 0.0
     per = {}
-    for provider, model, conds in dose.ROSTER:
+    for provider, model, conds in (dose.ROSTER if roster is None else roster):
         p_in, p_out = PRICES[model]
         sub = 0.0
         for cond in conds:
@@ -92,12 +109,14 @@ def cost(n_samples, n_templates, batch, util, n_items=N_ITEMS):
     return calls, tin, tout, total, per
 
 
+#                                                    n_samples, n_templates, batch, full roster
 CONFIGS = [
-    ("run 1, as submitted (n=20, 4 tmpl, no batch)", 20, 4, False),
-    ("n=2, 4 tmpl, no batch",                         2, 4, False),
-    ("n=2, 4 tmpl, Batch API",                        2, 4, True),
-    ("n=2, 2 tmpl, Batch API   <-- approved",         2, 2, True),
-    ("n=1, 2 tmpl, Batch API",                        1, 2, True),
+    ("run 1, as submitted (n=20, 4 tmpl, no batch)", 20, 4, False, True),
+    ("n=2, 4 tmpl, no batch",                         2, 4, False, True),
+    ("n=2, 4 tmpl, Batch API",                        2, 4, True,  True),
+    ("n=2, 2 tmpl, Batch API, full roster",           2, 2, True,  True),
+    ("n=2, 2 tmpl, Batch API   <-- approved",         2, 2, True,  False),
+    ("n=1, 2 tmpl, Batch API",                        1, 2, True,  False),
 ]
 
 
@@ -109,22 +128,27 @@ def main():
     a = ap.parse_args()
 
     n_cells = sum(len(c) for _, _, c in dose.ROSTER)
-    print(f"roster: {len(dose.ROSTER)} models, {n_cells} (model, condition) cells")
+    full = full_roster()
+    n_cells_full = sum(len(c) for _, _, c in full)
+    print(f"roster: {len(dose.ROSTER)} models, {n_cells} (model, condition) cells "
+          f"(pre-drop: {len(full)} models, {n_cells_full} cells)")
     print(f"live config in 52_closed_reasoning_dose.py: TEMPLATES={dose.TEMPLATES} "
           f"N_SAMPLES={dose.N_SAMPLES}")
     print(f"assumed: {IN_TOKENS} input + {ANSWER_TOKENS} answer tokens per call, "
           f"thinking utilisation {a.util:.0%}, batch discount {BATCH_DISCOUNT:.0%}")
     print(f"prices are ASSUMED (see module docstring) -- order of magnitude, not a quote\n")
 
-    print(f"{'configuration':44} {'calls/cell':>10} {'requests':>10} "
+    print(f"{'configuration':44} {'cells':>6} {'calls/cell':>10} {'requests':>10} "
           f"{'in':>9} {'out':>10} {'cost':>10}")
-    for label, ns, nt, batch in CONFIGS:
-        calls, tin, tout, total, _ = cost(ns, nt, batch, a.util)
-        print(f"{label:44} {calls:>10,} {calls * n_cells:>10,} "
+    for label, ns, nt, batch, use_full in CONFIGS:
+        roster = full if use_full else None
+        cells = n_cells_full if use_full else n_cells
+        calls, tin, tout, total, _ = cost(ns, nt, batch, a.util, roster=roster)
+        print(f"{label:44} {cells:>6} {calls:>10,} {calls * cells:>10,} "
               f"{tin / 1e6:>8.1f}M {tout / 1e6:>9.1f}M {'$' + format(total, ',.0f'):>10}")
 
     if a.per_model:
-        for label, ns, nt, batch in CONFIGS[3:4]:
+        for label, ns, nt, batch, _ in [CONFIGS[4]]:
             calls, _, _, total, per = cost(ns, nt, batch, a.util)
             print(f"\nper-model, {label.strip()}  ({calls:,} calls/cell)")
             print(f"  {'model':26} {'cells':>5} {'cost':>9} {'share':>7}")
@@ -132,10 +156,24 @@ def main():
                 print(f"  {model:26} {nc:>5} {'$' + format(sub, ',.0f'):>9} "
                       f"{sub / total:>6.0%}")
             print(f"  {'TOTAL':26} {n_cells:>5} {'$' + format(total, ',.0f'):>9}")
-            drop = {"claude-opus-5", "o3"}
-            rest = sum(s for m, (_, s) in per.items() if m not in drop)
-            print(f"\n  dropping {', '.join(sorted(drop))}: "
-                  f"${rest:,.0f} ({rest / total:.0%} of the full roster)")
+            dropped = getattr(dose, "DROPPED_ON_COST", [])
+            if dropped:
+                print("\n  excluded from the roster on cost (dose.DROPPED_ON_COST):")
+                add = 0.0
+                for provider, model, nc, note in dropped:
+                    p_in, p_out = PRICES[model]
+                    conds = (["direct", "think", "budget_low", "budget_med", "budget_high"]
+                             if nc == 5 else ["budget_low", "budget_med", "budget_high"])
+                    would = sum(
+                        (calls * IN_TOKENS / 1e6 * p_in
+                         + calls * (thinking_budget(provider, c) * a.util + ANSWER_TOKENS)
+                         / 1e6 * p_out) * BATCH_DISCOUNT
+                        for c in conds)
+                    add += would
+                    print(f"    {model:24} {nc} cells  +${would:,.0f}  ({note})")
+                print(f"    restoring both -> ${total + add:,.0f} "
+                      f"({len(dropped)} models, "
+                      f"{n_cells + sum(d[2] for d in dropped)} cells)")
 
     print(f"\nsensitivity to the thinking-utilisation assumption, approved config:")
     for u in (0.25, 0.5, 0.75, 1.0):

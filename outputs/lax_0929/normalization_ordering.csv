@@ -1,0 +1,5 @@
+scheme,spearman_vs_endpoint,sign_flips_vs_endpoint,flipped_models,n_models
+endpoint,1.0,0,,34
+global_mm,0.9957219251336898,0,,34
+z_mts,0.9446906035141328,1,allenai/OLMo-2-1124-7B,34
+rank_mts,0.9456073338426279,2,allenai/OLMo-2-1124-7B;gemini-2.5-flash,34

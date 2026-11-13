@@ -59,7 +59,7 @@ Two **independent** pipelines share the same 298-item stimulus set, prompts, and
 | Item | Reason | Ready to run? |
 |---|---|---|
 | **GPT-4-turbo** | Only gpt-4o-mini and gpt-4o were run; gpt-4-turbo still pending | Yes — add to the OpenAI block in `engaging/run_agents.sh` + submit |
-| Per-item matched human ratings on the *exact* stimuli | Need Saxe-lab raw data | Blocked on external request |
+| Per-item matched human ratings on the *exact* stimuli | Need Saxe-lab / author norming; 2026-08-03 audit (`dataset/human_reference/ADULT_ANCHOR_MATCH_AUDIT.md`) found no confirmed item match for the headline `attempted − accidental` contrast — keep 2007 as reference-shape only | Blocked on external request; single most valuable open human-data item |
 | Representation track (Levels 2–3: activation probes, rep↔behavior link) | GPU forward-pass on open-weight only; not yet executed for this write-up | Scaffolded in `01_extract_activations.py`, `02_probe.py`, `04_link_analysis.py` |
 | Full 7-template prompt sweep | Only 3 of 7 templates run so far | Yes — pass all templates to `03_behavioral.py` |
 | Meta-Llama via Together API | Not needed — Llama already covered in the local open-weight study | N/A |

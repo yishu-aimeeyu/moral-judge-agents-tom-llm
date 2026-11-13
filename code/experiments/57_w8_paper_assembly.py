@@ -387,7 +387,44 @@ def write_provenance(head):
          "pre-repair number that appears in an old note can be traced. Closed-model rows "
          "that have not yet been rescored are marked `PENDING RESCORE — contaminated-era` "
          "in their CSVs and their figures are quarantined in "
-         "`outputs/figures_final/_pending_rescore/` under a `STALE_` prefix.", ""]
+         "`outputs/figures_final/_pending_rescore/` under a `STALE_` prefix.", "",
+         "## 7. Methodological finding — imputed midpoints are indistinguishable from nulls",
+         "",
+         "**Named finding: failed measurements must propagate as missing, never as imputed "
+         "plausible values.** Three separate bugs in this project shared one shape — a "
+         "measurement failure recorded as a value that looks like a real answer — and each "
+         "time the imputed value was exactly, or nearly, the centre of the rating scale. An "
+         "imputed midpoint is indistinguishable from a genuine null result (a model that "
+         "truly assigns equal blame across cells, or that truly lands on the scale centre), "
+         "so the failure mode cannot be spotted by looking at the summary table. It is only "
+         "visible when the raw response text, or an explicit status flag, is retained.", "",
+         "| # | instance | what failed | what was written | what it looked like |",
+         "|---|---|---|---|---|",
+         "| 1 | **Mistral digit-token collapse** (`HFBackend` mapped rating digits to dummy "
+         "tokens) | logprob-EV scoring returned no usable mass on the rating digits | "
+         "exactly the scale midpoint after normalisation | a model with flat moral "
+         "judgments / zero contrast |",
+         "| 2 | **W3 coherence detector** (early version) | a correct single-digit rating "
+         "was classified as a degenerate / empty generation | the trial was dropped or the "
+         "coefficient band shrunk as if the model had broken | under-powered or "
+         "\"incoherent\" steering where the model was fine |",
+         "| 3 | **Closed-API rating parser** (`03_behavioral` / dose run) | API call failed "
+         "or returned unparseable text | `[(s_min + s_max) / 2]` written as a rating, with "
+         "no status flag | `kimi-k2.6` at contrast exactly 0.000 with all four cells at "
+         "0.500 — 56/56 rows imputed, zero parseable responses |",
+         "",
+         "The general lesson, applied as a hard rule in this codebase after the third "
+         "instance: **a failed measurement is missing data.** Downstream estimators must "
+         "exclude it and report a parse / answer rate beside every contrast; they must not "
+         "substitute the scale centre, a clamped endpoint, or any other \"reasonable\" "
+         "default. The same rule covers the out-of-range clamp that silently converted a "
+         "1–7 habit answer of \"6\" into maximum condemnation on a 1–3 native scale — "
+         "another case of a measurement failure written as an extreme but plausible value.",
+         "",
+         "Artefacts: digit-token quarantine and rescore in `RUN_STATUS.md` (job 19023272); "
+         "W3 coherence amendment in `W3_PRESPEC.md`; closed-run quarantine in "
+         "`outputs/closed_reasoning/_prebilling_imputed/README.md`; fixed "
+         "`_parse_rating` / `_finish` in `code/03_behavioral.py`.", ""]
     p = os.path.join(PAPER, "APPENDIX_PROVENANCE.md")
     open(p, "w").write("\n".join(L) + "\n")
     flag = "" if (ok and match) else "  [WARN] pre-repair archive missing or checksum mismatch"

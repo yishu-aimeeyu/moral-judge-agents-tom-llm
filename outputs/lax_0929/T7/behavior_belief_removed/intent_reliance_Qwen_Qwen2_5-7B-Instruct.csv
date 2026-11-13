@@ -1,0 +1,8 @@
+template,b_intent,b_outcome,intent_reliance_index
+blame_w1,0.0,0.2753,0.0
+blame_w2,0.0,0.5534,0.0
+human_verbatim,0.0,0.5629,0.0
+punish_w1,0.0,0.0416,0.0
+punish_w2,0.0,0.3417,0.0
+wrong_w1,0.0,0.5658,0.0
+wrong_w2,0.0,0.6813,0.0

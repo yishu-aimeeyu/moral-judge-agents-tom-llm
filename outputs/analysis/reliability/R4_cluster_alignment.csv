@@ -1,0 +1,17 @@
+what,residualized_condition,k,factor,ARI
+stories,False,4,condition,0.385
+stories,False,4,source,0.051
+stories,False,4,intent_label,0.017
+stories,False,4,outcome_label,0.621
+stories,False,4,scenario_group,0.006
+stories,True,4,condition,-0.006
+stories,True,4,source,0.054
+stories,True,4,intent_label,-0.004
+stories,True,4,outcome_label,-0.002
+stories,True,4,scenario_group,0.068
+models,False,2,class,0.173
+models,False,2,family,0.031
+models,False,3,class,0.26
+models,False,3,family,-0.001
+models,False,4,class,0.445
+models,False,4,family,-0.02

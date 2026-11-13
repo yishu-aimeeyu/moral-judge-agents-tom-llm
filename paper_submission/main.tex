@@ -1,0 +1,568 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\definecolor{caution}{RGB}{125,68,0}
+\newcommand{\contrast}{C_{\mathrm{att-acc}}}
+\newcommand{\intentbeta}{\beta_{\mathrm{intent}}}
+\newcommand{\outcomebeta}{\beta_{\mathrm{outcome}}}
+\newcommand{\missinginfo}{\textit{not specified in experiment data or text}}
+\newcommand{\insufficient}{\textit{insufficient information}}
+
+\title{\textbf{Beyond False-Belief Accuracy:}\\
+Behavioral, Representational, and Causal Tests of Mental-State Use in Large Language Models}
+\author{Anonymous Authors\\
+\small Author names and affiliations: \missinginfo}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Success on explicit false-belief questions does not by itself establish that a language model applies mental-state information in downstream judgment.
+We evaluate this distinction using a belief/intent $\times$ outcome moral-judgment design, 20 open-weight models, nine complete closed-API behavioral reruns, standard false-belief items, linear probes, representational-similarity analyses, post-training checkpoints, pretraining trajectories, prompting, and residual-stream interventions.
+Among the 20 open-weight models, none reproduced the adult-reference ordering in which attempted harm is condemned more than accidental harm; 14 reversed that ordering and six were tied.
+The same six engaged open instruct models scored 0.815--0.985 on hard BigToM false-belief items while producing attempted-minus-accidental moral contrasts of $-0.370$ to $-0.646$.
+Clean closed-API reruns were heterogeneous: four of nine models had positive intervals, four had negative intervals, and one interval included zero.
+In eight open checkpoints, intent was linearly decodable, but neither item-level probe margins (slope $+0.062$, 95\% CI $[-0.146,+0.270]$) nor pairwise representational similarity ($r=+0.098$, 95\% CI $[-0.31,+0.46]$) tracked moral behavior.
+In two base/instruct pairs, intent decoding transferred to held-out rating constructs; outcome information decodable before the outcome sentence was carried by a foreshadowing sentence, and deleting that sentence reduced outcome decoding to chance.
+Probe-weight intent steering changed the contrast by at most approximately 0.015, whereas an outcome-direction control changed it by 0.232--0.259.
+Conversely, outcome erasure yielded the pre-registered recovery signature in two of three models; control analyses bound this result and do not support an outcome-unique mechanism across models.
+Checkpoint analyses in Pythia-1.4B and OLMo-2-7B found smooth, position-dependent representational development, but no gradeable pretraining-stage moral ratings; the first gradeable OLMo point was supervised fine-tuning.
+Together, the results support a dissociation between representing mental-state information and reliably using it in graded moral judgment.
+They do not establish the absence of all theory-of-mind-like computation, nor do they establish human-like cognition from behavioral resemblance.
+\end{abstract}
+
+\noindent\textbf{Keywords:} theory of mind; large language models; moral judgment; intent; false belief; representation; causal intervention; robustness
+
+\section{Introduction}
+
+Theory of mind (ToM) is commonly operationalized as the capacity to represent another agent's beliefs, desires, or intentions.
+Recent work reports substantial language-model performance on false-belief and broader social-reasoning benchmarks \citep{gandhi2023bigtom,kosinski2024evaluating,strachan2024testing,chen2024tombench}.
+At the same time, small perturbations, adversarial variants, and task changes can sharply reduce apparent competence \citep{ullman2023alterations,shapira2024clever}.
+This combination creates a construct-validity problem: a correct answer to an explicit mental-state question may show that a model can produce the target answer in that context, but it does not show that the model will apply the same information when the task requires a downstream social judgment.
+
+The distinction is consequential for both cognitive interpretation and evaluation practice.
+A model may \emph{look} human-like on a benchmark without sharing the information-use profile that generated the human response.
+Conversely, a model may encode a variable internally without using that encoding for a particular output.
+Behavior alone cannot determine whether success reflects reusable social inference, task-specific pattern association, or another computation.
+The appropriate empirical question is therefore not simply ``does the model pass?'', but whether evidence converges across explicit inference, generalization, graded behavior, internal representation, learning trajectories, and intervention.
+Recent benchmarks have begun to distinguish explicit inference from applied ToM \citep{gu2026simpletom}; the present study applies that distinction to controlled moral judgment and adds internal and training-time measurements.
+
+Moral judgment supplies a well-characterized test case.
+In a $2\times2$ design, an agent can hold a benign or harmful belief and produce a benign or harmful outcome.
+The four cells are neutral action, accidental harm, attempted harm, and intentional harm.
+Adult reference data place attempted harm above accidental harm in condemnation, indicating strong use of belief or intent information \citep{young2007neural}.
+Developmental work shows that the relative influence of intent and outcome changes across childhood \citep{cushman2013development}, while cross-cultural work shows substantial human variation \citep{barrett2016societies,curtin2020kinship}.
+Accordingly, outcome weighting cannot be equated with being categorically non-human; the design instead supplies a quantitative profile whose components and limitations can be inspected.
+
+We ask five linked research questions:
+\begin{enumerate}[leftmargin=*,label=\textbf{RQ\arabic*:}]
+    \item Does success on explicit false-belief questions generalize to intent-sensitive graded moral judgment?
+    \item How stable is the intent--outcome profile across model families, model sizes, prompt forms, scoring protocols, and post-training stages?
+    \item Are intent and outcome represented internally, and do representational differences predict model behavior?
+    \item Do interventions on those representations alter judgment in the predicted direction?
+    \item When during pretraining and post-training do the representations and behavioral profile appear?
+\end{enumerate}
+
+The study's contribution is an integrated measurement framework rather than a claim that any one assay is definitive.
+It links cognitive-science factorial stimuli to model benchmarking, distinguishes explicit inference from applied judgment, separates representation from behavioral use, and retains failed or underpowered tests as constraints.
+The resulting claim is deliberately narrow: in the open models examined, linearly readable intent information is not reliably expressed in the graded moral readout, while outcome information is behaviorally dominant.
+The closed-model behavioral reruns show that this pattern is not universal across current APIs.
+
+\section{Related Work}
+
+\subsection{ToM benchmarks and robustness}
+
+BigToM uses procedurally generated social-reasoning evaluations and provides a hard false-belief condition \citep{gandhi2023bigtom}.
+ToMBench broadens evaluation across social-cognitive tasks \citep{chen2024tombench}, while human--model comparisons have found both strong and weak performance depending on the ToM construct and response criterion \citep{strachan2024testing}.
+Kosinski's false-belief evaluation provides evidence that newer models can solve bespoke task variants \citep{kosinski2024evaluating}.
+These findings motivate serious capability evaluation, but they do not settle mechanism or robustness.
+Ullman showed that theoretically irrelevant alterations can reverse apparent success \citep{ullman2023alterations}; Shapira and colleagues similarly found failures under stress tests \citep{shapira2024clever}.
+SimpleToM directly separates explicit mental-state inference from behavior prediction and judgment \citep{gu2026simpletom}.
+Our RQ1 follows the same conceptual distinction using a moral factorial whose component weights can be estimated rather than only scored as correct or incorrect.
+
+\subsection{Moral and causal judgment}
+
+The belief $\times$ outcome paradigm was developed to isolate how mental state and consequence jointly shape moral condemnation \citep{young2007neural,young2008belief,young2009innocent}.
+Young and Saxe further demonstrated domain-dependent intent effects \citep{young2011ignorance}.
+Developmental results indicate a changing balance between intent- and outcome-based judgment \citep{cushman2013development}.
+Cross-cultural studies caution that strong intent weighting is not a human universal and that the distribution varies across societies \citep{barrett2016societies,curtin2020kinship}.
+For language models, MoCa shows why aggregate agreement can conceal different factor weights \citep{nie2023moca}.
+The present design likewise treats the weights and cell ordering as primary, not aggregate accuracy against one label.
+
+\subsection{Representations, interventions, and learning trajectories}
+
+Linear probing has shown that language-model activations can encode beliefs from different agents' perspectives \citep{zhu2024beliefs}.
+Decodability alone, however, does not establish use.
+We therefore combine probes with item-level and representational-similarity links, additive steering, and concept erasure.
+For erasure we use LEACE, a closed-form linear concept-removal method \citep{belrose2023leace}.
+The interpretation is bounded: a successful linear intervention supports dependence on the manipulated direction under that intervention, whereas a null does not exclude nonlinear, distributed, position-specific, or multi-layer use.
+
+Claims about sudden emergence can also depend on a thresholded metric.
+\citet{schaeffer2023emergent} show that continuous measures can reveal smooth trajectories where discontinuous scores suggest phase changes.
+We therefore track continuous representational regression coefficients across checkpoints and compare sigmoid and free-breakpoint fits rather than inferring emergence solely from a pass/fail threshold.
+
+\section{Methods}
+
+\subsection{Analysis logic}
+
+The design separates three questions that are often conflated:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Capability:} can the model answer an explicit false-belief question?
+    \item \textbf{Behavioral profile:} how does the model weight belief/intent and outcome when assigning graded condemnation?
+    \item \textbf{Representation and use:} is the manipulated information decodable, behaviorally predictive, and causally connected to the rating?
+\end{enumerate}
+No one level is treated as a proxy for the other two.
+Behavioral resemblance is not interpreted as evidence of consciousness, phenomenology, or a human cognitive mechanism.
+
+\subsection{Stimulus corpus and integrity audit}
+
+The post-repair master contains 298 rows assembled from published Saxe-lab stimulus appendices: 192 rows from 48 four-cell Young--Saxe 2008 scenarios, 96 rows from 24 Young--Saxe 2009 scenario identifiers, and ten Young--Saxe 2011 intentional/accidental items \citep{young2008belief,young2009innocent,young2011ignorance}.
+All 24 2009 scenario identifiers are reprints of 2008 scenarios.
+They are retained as administered rows but merged into a shared \texttt{scenario\_group} for cross-validation and resampling, leaving 53 effective groups rather than 298 independent items.
+
+The four factorial cells are:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{neutral}: benign belief/intent, benign outcome;
+    \item \textbf{accidental}: benign belief/intent, harmful outcome;
+    \item \textbf{attempted}: harmful belief/intent, benign outcome;
+    \item \textbf{intentional}: harmful belief/intent, harmful outcome.
+\end{itemize}
+
+A provenance audit identified trailing text that was nearly aligned with the outcome label.
+A binary contamination flag predicted outcome at 0.966 before repair and 0.517 after repair, the latter equal to the majority rate.
+The repaired corpus still permits surface prediction of outcome at 0.755 with word $1$--$2$-gram TF--IDF, so repair does not imply lexical matching.
+All pre-repair behavioral and representational outputs were regenerated; contaminated-era outputs remain quarantined.
+A separate rule requires failed measurements to remain missing rather than being imputed to the midpoint of a response scale.
+
+\subsection{Models and behavioral scoring}
+
+\paragraph{Open-weight protocol.}
+The behavioral roster contains 20 open-weight models, including base and instruct variants from Qwen2.5, OLMo-2, Mistral/Zephyr, Gemma-2, and Llama-3.1/Tulu.
+The largest open model is 14B parameters and ten of the 20 models are Qwen2.5 variants.
+Open models were scored deterministically by the expected value of the probability distribution over valid rating digits.
+Scores from source-specific and paraphrased scales were normalized to $[0,1]$, with higher values denoting greater condemnation.
+The broad post-repair summaries pool the available prompt set; the designed core contains the source-verbatim prompt plus six factorial prompts.
+Some stored open files also retain additive legacy prompts and two alias labels for continuity, so the exact template count is analysis-specific and is documented in the supplement and source CSVs.
+
+\paragraph{Closed-API protocol.}
+The clean v3 rerun used 298 rows.
+Its templates were \texttt{human\_verbatim}, \texttt{para\_wrong7}, and \texttt{punish7}.
+It sampled five responses per story--template pair at temperature 1.
+Nine models completed: four OpenAI, three Anthropic, and two Google models.
+Gemini-2.5-Pro was partial and excluded rather than completed by imputation.
+Closed models are behavior-only because hidden states and weights were unavailable.
+The clean closed v3 files were present locally but not tied to a repository commit at manuscript generation; closed results should be treated as provisional until archival provenance is completed.
+
+\subsection{Human reference profiles}
+
+The adult reference uses the normalized cell means reported by \citet{young2007neural}: neutral 0.033, accidental 0.267, attempted 0.933, and intentional 0.967, yielding an attempted-minus-accidental contrast of $+0.666$.
+These values come from Experiment 1 ($n=10$, 12 scenarios $\times$ four conditions) and are a reference shape from a different item set, not item-matched ground truth for the 298 rows.
+The child references are digitized attempted/accidental contrasts from \citet{cushman2013development}: $+0.240$ (ages 4--5), $+0.500$ (ages 6--7), and $+0.630$ (8+).
+They cover only two cells, use a different response measure, and carry digitization error.
+We therefore use all human values descriptively and do not infer a developmental age for any model.
+
+\subsection{Behavioral estimands and inference}
+
+The headline contrast is
+\begin{equation}
+    \contrast = \bar{y}_{\mathrm{attempted}}-\bar{y}_{\mathrm{accidental}}.
+\end{equation}
+Positive values place failed harmful attempts above accidental harm; negative values reverse that ordering.
+Because the two cells differ on both factors, $\contrast$ is a diagonal contrast, not a pure main effect.
+We pair it with all four cell means and the saturated model
+\begin{equation}
+    y \sim \mathrm{intent}\times\mathrm{outcome}
+      +(1\mid\mathrm{scenario\_group})+(1\mid\mathrm{story\_id}),
+\end{equation}
+where \texttt{story\_id} is nested within \texttt{scenario\_group}.
+Treatment-coded $\intentbeta$ is the simple effect of harmful intent when outcome is benign; $\outcomebeta$ is the simple effect of harm when intent is benign.
+Intervals for contrasts and cell summaries use scenario-group bootstrap resampling.
+The effective inferential resolution is 53 groups.
+An engagement floor of rating SD 0.2191 is used where a variable rating profile is required; intervention work uses a pre-specified meaningful-effect floor of 0.0988.
+
+Two audits test measurement assumptions: contrasts were recomputed under four normalizations of the native 1--3, 1--4, and 1--7 scales (endpoint, per-model min--max, and z-scores or ranks within model $\times$ template $\times$ source), and item-level reliability was estimated as Spearman--Brown-corrected split-half correlations over 1{,}000 random rater splits (templates within a model, or models within the base or instruct class), after removing condition means so that it indexes item differences beyond the $2\times2$ design.
+
+\subsection{Explicit false belief}
+
+Open models were evaluated on BigToM \citep{gandhi2023bigtom}.
+The joint analysis uses the hard false-belief condition \texttt{init\_belief=0}.
+ToMi was excluded from the primary comparison because an audit found that 82\% of the scored slice was non-ToM.
+Raw all-model correlations are not interpreted because model type and size confound both axes; the primary evidence is the joint placement of the same engaged instruct models.
+
+\subsection{Linear probes and representation--behavior links}
+
+The core probe set contains eight OLMo-2 and Qwen2.5 base/instruct checkpoints.
+Logistic probes predict intent and outcome from residual-stream activations using leave-\texttt{scenario\_group}-out folds.
+Read positions include the final story token and the end of the annotated belief clause.
+The latter occurs before the outcome sentence but is not outcome-free: in the 2008 and 2009 items, a foreshadowing sentence before the belief clause is the only preceding text that differs between outcome partners.
+Span-matched TF--IDF baselines (word 1--2-grams and character 3--5-grams on the same text span and folds) are therefore reported.
+
+Three follow-up analyses used the same probe protocol with within-scenario permutation nulls: outcome decoding at the belief endpoint in 14 checkpoints and, in three base/instruct pairs, with the foreshadowing sentence deleted; intent decoding at the final prompt token of seven rating templates in Qwen2.5-7B and Llama-3.1-8B base and instruct models, training and testing on the same template, on disjoint single templates, or with every template of one construct (blame, wrongness, or punishment) held out; and token-wise decoding at 40 story positions (ten bins per background, belief, action, and outcome stage; 280 stories) in Qwen2.5-7B, OLMo-2-7B, and Llama-3.1-8B base/instruct pairs, with a 100-shuffle null band, a same-prefix TF--IDF curve, and a regression of the four-condition RDM on intent, outcome, and conjunction predictors.
+
+We test behavioral use in two ways.
+First, a mixed model links item-level intent margins to item-level contrast.
+Second, representational similarity analysis (RSA) compares pairwise model geometry with pairwise behavioral distance.
+An RDM variance-partition analysis was also pre-registered, but its lexical-control gate excluded every designated cell because lexical distance re-encoded both scenario identity and the lexically realized factors.
+That analysis is reported as undecidable rather than as a null.
+
+\subsection{Prompting and causal interventions}
+
+Additive steering was run in OLMo-2-7B-Instruct and Qwen2.5-7B-Instruct using probe-weight and difference-of-means intent/outcome directions, matched random controls, dose sweeps, coherence checks, downstream probe manipulation checks, and layer sweeps.
+A six-model prompt curriculum compared a baseline, belief cue, worked example, labeled few-shot examples, an explicit intent principle, and non-cumulative component ablations.
+
+Outcome erasure was run in OLMo-2-7B-Instruct, Qwen2.5-7B-Instruct, and Llama-3.1-Tulu-3-8B using rank-one LEACE \citep{belrose2023leace}.
+The pre-registered interpretation distinguishes \emph{recovery}, where $\contrast$ moves while the four-cell spread is retained, from \emph{collapse}, where the contrast moves mechanically because outcome discrimination and the broader rating spread disappear.
+Subsequent controls tested intent and random erasure, nuisance perturbations, orthogonalized nuisance erasures, and scenario-orthogonal residual outcome components.
+We retain the original failed control and the later differently specified control rather than allowing one to overwrite the other.
+
+\subsection{Training-stage and pretraining trajectories}
+
+Post-training dissection covers 11 checkpoints in three public pipelines:
+OLMo-2 from base through SFT, DPO, and Instruct;
+Llama-3.1/Tulu from base through SFT, DPO, and RLVR;
+and Mistral/Zephyr from base through SFT and DPO.
+All stages were rescored on the same seven-template behavioral basis.
+
+Pretraining emergence was measured in 26 Pythia-1.4B checkpoints from random initialization through step 143{,}000 and 20 OLMo-2-7B stage-1 revisions.
+At five relative depths and two read positions, representational dissimilarity matrices were regressed on intent and outcome predictors with cluster-bootstrap intervals and permutation nulls.
+Continuous trajectories were fit with sigmoids in log step and free-breakpoint alternatives.
+Behavior was overlaid only when rating variance exceeded the engagement floor; missing behavioral coefficients were not set to zero.
+
+\section{Results}
+
+\subsection{Behavior is heterogeneous across access protocols}
+\label{sec:behavior}
+
+\Cref{fig:behavior-overview} separates the open and closed protocols.
+In the 20-model open roster, 0 of 20 models reproduced the adult-reference cell ordering attempted $>$ accidental; 14 were inverted and six were tied.
+Eighteen of 20 were outcome-saturating in the mixed-effects decomposition, whereas the adult reference was intent-saturating.
+A negative interaction coefficient was therefore not sufficient for human-reference resemblance: several models approached the adult interaction magnitude while reversing the underlying attempted/accidental cells.
+Against the descriptive child references, all 18 non-degenerate open profiles were at or below the youngest wrongness contrast ($+0.240$); the secondary punishment comparison gave the same 18/18 count against its youngest contrast ($+0.090$).
+Because these anchors use different items, response measures, and scale types, this is not a developmental-age assignment.
+On a different cross-cultural axis (intentional minus accidental at constant harm), all six engaged open models fell below the nine of ten societies with a detectable positive intent effect, but only four of six fell below the literal minimum because Yasawa was at zero \citep{barrett2016societies,curtin2020kinship}; the data therefore do not support ``outside the human range'' (\cref{sec:supp-crosscultural}).
+
+The clean closed-API rerun does not support extending this result to all current models.
+Four of nine complete models had significantly positive contrasts: GPT-5.5 $+0.5278$ [0.4444, 0.6101], Claude Opus 4.6 $+0.3356$ [0.2364, 0.4319], Claude Sonnet 4.6 $+0.2108$ [0.1044, 0.3238], and Gemini 3.5 Flash $+0.1684$ [0.0810, 0.2575].
+Four models had significantly negative contrasts, and Gemini 2.5 Flash had an interval spanning zero.
+These closed estimates use sampling and three prompts, whereas open estimates use deterministic expected values and a broader prompt set; they are displayed together but not pooled.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/behavioral_overview.pdf}
+    \caption{\textbf{Behavioral attempted-minus-accidental contrast under separate protocols.}
+    Positive values place attempted harm above accidental harm.
+    The red dashed line is the non-item-matched adult reference ($+0.666$).
+    Open-weight estimates use deterministic log-probability expected values over the available post-repair prompt set; closed-API estimates use three templates, five samples, and temperature 1.
+    The panels should not be treated as one exchangeable meta-analytic sample.}
+    \label{fig:behavior-overview}
+\end{figure*}
+
+Prompt analyses further constrain simple model rankings.
+Across the six common 1--7 factorial prompts, five of 20 open models changed contrast sign across prompts.
+Construct choice explained approximately 0\% of the reported prompt-factorial variance, and a scoring-parity check for 7B instruct models found expected-value and sampling scores correlated above 0.95.
+Within the five Qwen base/instruct size pairs, instruction tuning shifted the contrast by approximately $-0.216$ on average ($p\approx0.020$ in the paired test; Wilcoxon $p\approx0.063$).
+The separate normalization audit, which covers all nine open base/instruct pairs from five families, found the same direction: the mean instruct-minus-base contrast was $-0.319$ [$-0.345$, $-0.291$] under endpoint scaling, and every pair was negative with an interval excluding zero under endpoint and per-model min--max scaling.
+Under within-cell z-scores and ranks the class difference stayed negative but Qwen2.5-14B reversed, so pair estimates are not normalization-invariant, and nine pairs do not establish a universal instruction effect; the model ordering was stable across schemes (Spearman $\rho\geq0.94$ over 34 rater entries).
+Item differences beyond the $2\times2$ design were reproducible across instruct models (within-condition split-half 0.83--0.93 across the three sources) but less so across base models (0.36--0.64), and items clustered by outcome (adjusted Rand index 0.88) rather than by intent or source (\cref{sec:supp-normalization}).
+
+\subsection{Explicit false-belief success does not guarantee applied intent weighting}
+
+The six engaged open instruct models scored 0.815--0.985 on hard BigToM false-belief items while producing moral contrasts from $-0.370$ to $-0.646$ (\cref{fig:tom-vs-contrast}).
+Thus, every model in this high-false-belief subset occupied the high-explicit/negative-applied quadrant.
+This is a within-model coexistence result, not a correlation claim.
+The covariate-adjusted all-model regression was bounded but non-significant ($\beta_{\mathrm{ToM}}=-0.379$, $p=0.211$); instruct-only and within-family intervals were too wide for a directional conclusion.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.72\linewidth]{figures/tom_vs_contrast.png}
+    \caption{\textbf{Explicit false belief versus applied moral judgment in open models.}
+    Blue circles denote instruct models and ochre squares base models.
+    The six engaged instruct models pass the hard false-belief measure while retaining negative moral contrasts.
+    No raw regression line is interpreted because both axes covary with model type and size.}
+    \label{fig:tom-vs-contrast}
+\end{figure}
+
+\subsection{Post-training induces outcome-dominant ratings}
+
+All three public pipelines began near zero and moved negative after supervised fine-tuning (\cref{tab:stages}).
+SFT alone shifted OLMo by $-0.5879$, Tulu by $-0.2651$, and Zephyr by $-0.1487$.
+It accounted for 85.4\%, 65.4\%, and 27.0\% of each pipeline's total base-to-final shift, respectively; Zephyr's DPO stage accounted for the remaining 73.0\%.
+Therefore SFT was sufficient in all three cases, but the dominant stage was recipe-dependent.
+Across all non-base stages, $\outcomebeta/\intentbeta$ ranged from 3.0 to 7.7.
+
+
+\subsection{Intent is decodable, but measured representational differences do not predict use}
+
+At the final story token, peak intent decoding ranged from approximately 0.67 to 0.88 across the eight core checkpoints, while outcome decoding was approximately 0.98--1.00.
+At the belief-clause endpoint, intent decoding was 0.90--0.98 against a span-matched TF--IDF baseline of 0.591.
+The average intent-minus-outcome gap over their respective span-matched baselines was $+0.087$ (8/8 models, sign-test $p=0.0078$).
+Outcome was also decodable at this endpoint (0.79--0.92 in the same checkpoints; 0.70--0.87 at a fixed relative depth of 0.65 across 14 checkpoints, against a word TF--IDF baseline of 0.631 on the 290-story clause-masked set; all $p=0.001$).
+That signal is a readout of the foreshadowing sentence, not inference about an unstated outcome: when the sentence was deleted, the prefix became byte-identical across outcome partners and decoding fell to chance (0.496--0.504 at every saved layer in all six models tested; \cref{sec:supp-foreshadow}).
+Probes still exceeded TF--IDF on the original prefix by 0.07--0.24, so the foreshadowed content is encoded beyond bag-of-words features.
+This analysis concerns outcome only; intent decoding at the same token and depth was 0.85--0.96.
+The belief-endpoint results therefore support semantically generalized encoding of stated information, not anticipation of outcomes or a clean early-intent/late-outcome sequence.
+
+Intent decoding also generalized across rating prompts.
+At the final prompt token, probes trained with every template of one construct held out reached peak held-out accuracies of 0.64--0.83 in the Qwen2.5-7B and Llama-3.1-8B base and instruct models (all $p=0.001$), exceeding a full-prompt TF--IDF baseline of 0.600 by $+0.04$ (Llama base) to $+0.23$; at the fixed depth, Llama base did not exceed it (0.601).
+Transfer between single templates was weaker, especially in base models (0.56--0.57 at the fixed depth, below the 0.596 TF--IDF baseline for that split), whereas instruct models reached 0.58--0.71 (\cref{sec:supp-templates}).
+With two pairs, this supports construct-general intent information in these models, not a general base/instruct difference.
+
+Token-wise decoding refines the timing (\cref{fig:time-decoding}).
+Intent rose from chance in the background stage to 0.95--0.98 at the end of the belief clause, above the shuffle band and a same-prefix TF--IDF curve (at most 0.64), declined by 0.16--0.21 over the later action and outcome bins, and partially recovered at the final token (0.81--0.86).
+Outcome was already decodable at 0.87--0.90 at the end of the background stage, where the foreshadowing sentence falls, drifted down through the belief and action stages, and reached 0.99--1.00 in the outcome clause.
+In the RDM regression, the intent coefficient rose from 0.08--0.16 in the background to 1.57--1.69 in the belief stage; the outcome coefficient was 1.46--1.57 in the background and 1.86--1.92 in the outcome stage; and the conjunction coefficient stayed between $-0.12$ and $+0.08$, consistent with additive intent and outcome geometry.
+Base and instruct curves were nearly indistinguishable within each family, although their behavioral contrasts differed by $-0.18$ to $-0.69$ under endpoint scaling.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.86\textwidth,trim=0 0 0 28,clip]{figures/fig_T6_time_decoding.pdf}
+    \caption{\textbf{Token-wise decoding along the story.}
+    Rows show intent decoding, outcome decoding, and four-condition RDM regression coefficients at 40 positions (ten bins per stage) for three base/instruct pairs at a fixed layer per family (Qwen 18, OLMo 16, Llama 16; the Llama layer was assumed rather than selected).
+    Shading is the 95\% within-scenario shuffle band (100 shuffles); dotted lines are TF--IDF on the same prefix; dashed lines are base models.
+    Early outcome decoding reflects the foreshadowing sentence (\cref{sec:supp-foreshadow}).
+    Trajectories were extracted without chat formatting.}
+    \label{fig:time-decoding}
+\end{figure*}
+
+Decodability did not imply behavioral coupling.
+The pooled item-level intent-margin slope was $+0.0619$ [${-0.1463},+0.2701$], excluding the pre-stated meaningful slope of $+0.30$; the matched definition was $+0.0291$ [${-0.1649},+0.2231$].
+Across 28 model pairs, RSA geometry--behavior correspondence was $r=+0.098$ [${-0.31},+0.46$].
+The model-level probe--behavior association was too imprecise to interpret and is not a headline result.
+
+Two secondary analyses were inconclusive: the pre-registered RDM variance partition was undecidable because lexical-control gating excluded 36/36 target cells, and checkpoint-stage RSA ($\rho=+0.870$, $n=6$, 95\% interval $[+0.200,+1.000]$) was withdrawn as underpowered.
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \includegraphics[width=\linewidth]{figures/layerwise_curves.png}
+        \caption{Layerwise linear decoding.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \includegraphics[width=\linewidth]{figures/item_level_dissociation.png}
+        \caption{Item-level representation--behavior link.}
+    \end{subfigure}
+    \caption{\textbf{Representation without a corresponding behavioral link.}
+    Intent and outcome are linearly decodable, but item-level intent margins do not predict intent-sensitive ratings at the pre-specified effect size.
+    All folds respect scenario groups.}
+    \label{fig:probes-link}
+\end{figure*}
+
+\subsection{Interventions separate readable intent from outcome-dominant readout}
+
+\paragraph{Additive steering.}
+At coherent coefficients, the probe-weight intent direction changed $\contrast$ by at most 0.0128 in OLMo and 0.0155 in Qwen.
+The outcome-direction positive control changed the same contrast by 0.2319 and 0.2592.
+The manipulation check showed that intent steering moved downstream probe margins by 3.2--7.2 SD in magnitude and drove held-out intent decoding from approximately 0.89 to 0.50, while the rating contrast remained nearly fixed.
+Layer sweeps supported the narrow claim at the peak-intent layer and deeper, where direction specificity was resolvable; shallow layers were uninformative.
+This bounds the tested linear, all-token, single-layer intervention and does not exclude other intent encodings.
+
+\paragraph{Model explanations.}
+Unprompted explanations named belief or intent in 81.5\% (OLMo) and 69.1\% (Qwen) of stories, yet within those subsets $\outcomebeta/\intentbeta$ was 5.7 and 12.2 and both contrasts stayed negative; because explanations followed the rating, this is output-level dissociation, not a causal account (\cref{tab:prose}).
+
+\paragraph{Prompt curriculum.}
+At the pre-registered top level, only three of six models exceeded the $+0.15$ improvement criterion, below the required four.
+Five of six top-level improvements were primarily reductions in accidental blame rather than increased condemnation of attempts.
+Intent-led movement occurred in two of six models and only under the principle-alone ablation.
+The result does not support ``unreachable by steering but reachable by prompting''; it supports partial, inconsistent prompt sensitivity.
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \includegraphics[width=\linewidth]{figures/w3_steering_OLMo.png}
+        \caption{OLMo additive steering.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \includegraphics[width=\linewidth]{figures/w3_steering_Qwen.png}
+        \caption{Qwen additive steering.}
+    \end{subfigure}
+    \caption{\textbf{Probe-weight intent steering is behaviorally small relative to the outcome control.}
+    Difference-of-means directions can move all four cells toward a scale ceiling and are not interpreted as selective intent reweighting.}
+    \label{fig:steering}
+\end{figure*}
+
+\paragraph{Outcome erasure.}
+Rank-one outcome erasure produced a recovery signature in OLMo.
+Here, $\Delta\contrast=+0.3182$ and cell-spread retention was 0.5124.
+Qwen also recovered ($+0.2312$; retention 0.6697).
+Tulu moved most ($+0.3480$) but retained only 0.3753 of its cell spread.
+It fell below the pre-registered 0.50 boundary and was classified as collapse.
+The headline is therefore recovery in two of three models.
+
+Specificity is bounded.
+The original E5a control failed in Qwen: a matched-norm scenario perturbation moved the contrast $+0.1345$, a 1.72$\times$ separation below the required 2$\times$, so outcome is the most effective direction found, not the only effective perturbation.
+A differently specified E6 control---orthogonalized nuisance erasure with no over-projection---was inert in all three models (maximum $|\Delta\contrast|=0.0160$) and produced 9.9$\times$, 22.3$\times$, and 24.6$\times$ separation.
+E7b then split by model: OLMo was A-shaped, with recovery surviving removal of the scenario-aligned component, and Qwen was void because its matched positive control failed.
+Tulu followed the pre-registered falsifier branch, although its test arm reached 95\% of the effect floor and the complement cleared it by only 0.0020.
+The decision table is retained, but the near-threshold result and cross-model split do not license a pooled outcome-specific mechanism.
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{figures/w8a_OLMo.png}
+        \caption{OLMo: recovery.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{figures/w8a_Qwen.png}
+        \caption{Qwen: recovery.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{figures/w8a_Tulu.png}
+        \caption{Tulu: collapse at full erasure.}
+    \end{subfigure}
+    \caption{\textbf{Outcome erasure changes the behavioral contrast, but its interpretation depends on retained cell structure.}
+    Only OLMo and Qwen meet the pre-registered recovery signature at the gate-passing dose.}
+    \label{fig:erasure}
+\end{figure*}
+
+\subsection{Representations emerge during pretraining; gradeable moral ratings do not}
+
+In Pythia-1.4B, the end-of-story geometry became strongly organized by outcome ($\beta$ reached $+0.4899$ at step 143{,}000), while intent stayed near zero at that read position.
+At the belief-clause endpoint, intent reached $+0.1042$ and outcome stayed near zero.
+Across informative cells, sigmoid fits in log step were preferred to free-breakpoint fits, supporting gradual rather than abrupt representational development.
+No Pythia checkpoint crossed the behavioral engagement floor (0/26).
+
+OLMo-2-7B replicated the position-dependent pattern at the final stage-1 revision: intent cleared its null and outcome did not at five of five depths at the belief endpoint; outcome cleared and intent did not at four of five depths at story end.
+At depth 0.8, both target factors were inside their null at step 1{,}000 (approximately 5B tokens) and clear from step 2{,}000 (approximately 9B tokens), providing an onset bracket rather than a point estimate.
+No stage-1 checkpoint was behaviorally gradeable (0/20); the first gradeable point on the joined OLMo axis was SFT.
+As in the probe analyses, the belief endpoint follows the foreshadowing sentence and is therefore not outcome-free.
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \includegraphics[width=\linewidth]{figures/e8_pythia.png}
+        \caption{Pythia-1.4B, 26 checkpoints.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \includegraphics[width=\linewidth]{figures/e8_olmo.png}
+        \caption{OLMo-2-7B, 20 stage-1 revisions plus post-training stages.}
+    \end{subfigure}
+    \caption{\textbf{Smooth, read-position-dependent representational development.}
+    Coefficients are standardized RDM regressions, not activations or weights.
+    The panels are descriptive trajectories; the OLMo family has no published random-initialization checkpoint, and its stage-2 annealing interval is unsampled.}
+    \label{fig:e8}
+\end{figure*}
+
+\FloatBarrier
+\section{Discussion}
+
+\subsection{Capability, resemblance, and mechanism are different claims}
+
+The central empirical result is a dissociation.
+The same engaged open instruct models can answer hard false-belief questions while reversing the adult-reference ordering in graded moral judgment.
+Intent is linearly readable, yet measured intent margins and representational geometry do not predict behavioral reliance at the pre-specified scales.
+Additive manipulation of the readable intent direction has little behavioral effect where an outcome control is effective.
+Outcome erasure produced a more intent-sensitive profile in two models, showing that changing one linearly defined outcome component can alter the readout.
+The third model's collapse and the specificity-control split do not establish suppression, a model-general mechanism, or an outcome-unique causal direction.
+
+These observations do not show that the models lack all ToM-like computation.
+They show that explicit benchmark success is insufficient evidence for stable, human-reference use of mental-state information in this downstream task.
+Nor does a positive closed-model contrast establish a human mechanism: GPT-5.5 and three other closed models more closely match the reference direction behaviorally, but internal evidence is unavailable and the human anchor is not item-matched.
+Capability, behavioral resemblance, and mechanism must therefore be reported separately.
+
+\subsection{What the results do and do not say about pattern association}
+
+The results are inconsistent with treating one explicit benchmark score as a sufficient explanation of reusable social reasoning.
+They do not, however, identify ``pattern association'' and ``reasoning'' as mutually exclusive mechanisms, and they do not prove that one generated any individual response.
+The controlled factorial, prompt tests, held-out scenario groups, cross-task comparison, and intervention results constrain simple benchmark memorization accounts.
+They still permit distributed, nonlinear, task-conditioned, or instruction-specific computations.
+Two follow-up results sharpen this boundary: intent decoding transferred to held-out rating constructs, arguing against a purely template-specific intent code in the two tested pairs, whereas early outcome decodability was traceable to a single foreshadowing sentence and reflects encoding of stated text rather than prediction.
+The appropriate conclusion is methodological: evidence for ToM-like capability should require generalization and information use, not only production of a familiar answer.
+
+\subsection{Learning and post-training}
+
+The pretraining trajectories show that structured intent and outcome geometry can arise smoothly before the model provides a usable graded rating.
+In OLMo, the first gradeable point is SFT, and the three-family dissection shows SFT is sufficient to induce the negative contrast in each public pipeline.
+However, Zephyr's dominant shift occurs at DPO, so the locus is recipe-dependent.
+This combination argues against a single universal ``alignment stage'' account.
+It instead suggests that pretraining supplies structured variables and post-training determines whether and how a rating head or prompted continuation expresses them.
+Consistent with this, token-wise decoding curves were nearly identical for base and instruct models in three families, while a 20-model variance decomposition assigned the largest unique share of rating variance (8.6\%) to the condition $\times$ base/instruct interaction.
+In two pairs, base-model ratings barely changed when the story was replaced by the agent's name alone (mean absolute change 0.06 versus 0.29 for instruct models; difference $+0.24$ [0.22, 0.25]; \cref{sec:supp-ablation}).
+That interpretation remains descriptive because the checkpoint sets differ by family and recipe and the ablations cover only two pairs.
+
+\subsection{Implications for evaluation and industry standards}
+
+A robust ToM evaluation should report at least four layers:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Explicit inference:} performance on held-out, perturbation-tested mental-state questions.
+    \item \textbf{Applied behavior:} factor weights and full cell profiles in downstream prediction or judgment.
+    \item \textbf{Robustness:} prompt, scale, sampling, family, and checkpoint sensitivity, with failed measurements kept missing.
+    \item \textbf{Mechanistic evidence where access permits:} group-controlled probes, representation--behavior links, positive-control interventions, and specificity controls.
+\end{enumerate}
+For closed models, the fourth layer may be unavailable; the correct response is to label the evidence behavior-only rather than infer hidden mechanisms from output.
+This tiered procedure is more informative than a single pass rate and makes version-to-version changes auditable.
+
+\subsection{Methodological innovations and research difficulties}
+
+The principal methodological innovations are integrating explicit ToM accuracy with a graded cognitive-science factorial; separating decodability, predictive linkage, and causal intervention; connecting pretraining trajectories to public post-training stages with continuous representational metrics; preserving pre-registered falsifiers, failed controls, and missing measurements in the claim boundary; and auditing stimulus parsing, duplicate groups, scale normalization, and stimulus text such as foreshadowing as part of the scientific result.
+These are innovations of integration and test procedure; priority over every component method is not claimed.
+
+The principal research difficulties are construct validity, non-item-matched human references, lexical realization of the manipulated factors, correlated nuisance structure, effective sample size, heterogeneous model-access protocols, and the limited number of models for expensive interventions.
+The project also illustrates a practical difficulty in model science: model and API generations can change faster than a complete mechanistic study.
+The positive closed-model results narrow the universal behavioral claim while strengthening the need to separate current behavior from mechanisms established in older open models.
+
+\section{Limitations}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Open-model scope.} The largest open model is 14B and half of the 20-model roster is Qwen2.5. No claim is made about all frontier-scale open models or family generality.
+    \item \textbf{Human references.} Adult means come from a different 12-scenario set and child bands are digitized, use a different measure, and cover only attempted and accidental cells. The ladder is descriptive, not item-matched ground truth.
+    \item \textbf{Cross-cultural axis.} The ten-society comparison uses intentional-minus-accidental at constant harm, not the headline attempted-minus-accidental contrast.
+    \item \textbf{Effective sample size.} Reprints reduce the independent scenario groups from 77 identifiers to 53. Item-count-based power claims are unavailable.
+    \item \textbf{Lexical confounding.} Intent and outcome are expressed in words. The RDM variance-partition control is structurally undecidable. In the original 2008/2009 items the belief-clause endpoint follows a foreshadowing sentence that carries outcome information; a foreshadow-deleted variant is outcome-free by construction but was used only for outcome decoding in three pairs.
+    \item \textbf{Follow-up scope.} Construct-held-out decoding and story ablations cover two base/instruct pairs (Qwen2.5-7B, Llama-3.1-8B) and token-wise decoding three; the Llama read layer was assumed rather than selected, and item clustering used MDS only.
+    \item \textbf{Scanner human data.} The MOR4 scanner replication of the 2008 design cannot serve as an item-matched anchor: 39.6\% of trials lack a response, story numbers are unmapped to scenarios, its belief/outcome codes and button direction were inferred from the data, and its three response keys fit a 1--3 rather than the assumed 1--4 scale. It is reported only descriptively in the supplement, and the human-versus-model item-variance comparison was not run.
+    \item \textbf{Protocol heterogeneity.} Open and closed models differ in scoring, prompt count, stochasticity, and access. Their estimates are not pooled. Closed v3 artifacts also require archival commit provenance.
+    \item \textbf{Representation scope.} Internal claims apply only to open models. Linear probes and linear interventions cannot exclude nonlinear or distributed representations.
+    \item \textbf{Intervention scope.} Steering covers two models; outcome erasure covers three. E5a failed in one model, E6 asked a different question, and E7b split across models. The result is not a universal outcome-specific mechanism.
+    \item \textbf{Trajectory scope.} Full pretraining trajectories cover Pythia-1.4B and OLMo-2-7B. OLMo has no random-initialization checkpoint and does not sample stage-2 annealing.
+    \item \textbf{Incomplete analyses.} Gemini-2.5-Pro behavioral data and the closed-model reasoning-dose experiment are incomplete and excluded. \insufficient{} is available to determine whether thinking-budget changes the clean v3 contrast.
+    \item \textbf{Reproducibility metadata.} A public archival release identifier for the clean closed rerun, author list, affiliations, funding, and competing-interest declarations are \missinginfo.
+\end{enumerate}
+
+\section{Conclusion}
+
+Across controlled behavior, internal representations, training checkpoints, and interventions, explicit false-belief success did not guarantee that open instruct models used belief or intent in a human-reference manner when assigning graded moral condemnation.
+Intent was often decodable, including across held-out rating constructs in two model pairs, but measured intent representations did not reliably predict or steer the rating; outcome-related structure dominated the readout, and its erasure exposed a more intent-sensitive profile in two of three models.
+Recent closed models showed a more heterogeneous behavioral picture, including four positive contrasts, so a universal failure claim is not supported.
+The broader conclusion is procedural: credible ToM benchmarking should distinguish what a model can state, how it behaves across controlled downstream tasks, what it represents, and what information its output actually depends on.
+
+\section*{Data and Code Availability}
+
+The analysis code and project-relative evidence paths are recorded in the accompanying claim--evidence map.
+The project README identifies a GitHub repository, but the archival release or DOI corresponding to the clean closed rerun is \missinginfo.
+Code for the follow-up normalization, reliability, foreshadow, held-out-template, token-wise, and ablation analyses is committed only to the local project repository and has not been pushed to the remote, and their output tables and figures are not under version control; these materials are not yet publicly available.
+Stimulus redistribution is restricted in the project materials; regeneration instructions are provided in the source repository.
+
+\section*{Author Contributions, Funding, and Competing Interests}
+
+Author contributions: \missinginfo.
+Funding: \missinginfo.
+Competing interests: \missinginfo.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\clearpage
+\appendix
+\input{supplement}
+
+\end{document}

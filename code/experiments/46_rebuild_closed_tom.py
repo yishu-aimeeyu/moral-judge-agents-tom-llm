@@ -15,6 +15,11 @@ FULL_N = 400
 
 def main():
     rows_out = []
+    # Models that were attempted and returned nothing usable. These used to vanish from the
+    # table: dropping unanswered rows (below) can empty a file completely, and `continue` then
+    # skipped the model as if it had never been run. gemini-3.1-pro-preview sat at 400 attempted
+    # / 0 parsed and was simply absent, which reads as "not yet run" instead of "ran and failed".
+    total_failures = []
     for path in sorted(glob.glob(os.path.join(OUT, "tom_gen_items_*.csv"))):
         items = list(csv.DictReader(open(path)))
         if not items:
@@ -31,6 +36,8 @@ def main():
             print(f"  {os.path.basename(path)}: dropped {n_raw - len(items)} unanswered "
                   f"rows (no response text)")
         if not items:
+            total_failures.append((model, backend, n_raw))
+            print(f"  {model}: TOTAL FAILURE -- {n_raw} attempted, 0 answered")
             continue
         agg = collections.defaultdict(lambda: [0, 0, 0])
         for r in items:
@@ -88,6 +95,21 @@ def main():
             f"{fb_a:.3f} | {tb_a:.3f} | {allr[5]:.3f} | "
             f"{'complete' if complete else f'**PARTIAL {allr[3]}/{FULL_N}**'} |"
         )
+    for model, backend, n_raw in total_failures:
+        if backend in closed_backends:
+            lines.append(f"| {model} | {backend} | 0 | — | — | — | 0.000 | "
+                         f"**FAILED — {n_raw} attempted, 0 answered** |")
+    if total_failures:
+        lines += [
+            "",
+            "**Failed runs.** " + "; ".join(f"`{m}` ({n} items attempted, none answered)"
+                                            for m, _, n in total_failures) +
+            ". Every response came back empty — for the Gemini thinking models this is the "
+            "known failure where the thinking chain consumes the entire output budget before "
+            "any answer token is emitted (fixed elsewhere by raising `max_output_tokens` to "
+            "1536). These rows are listed so an absent model is not mistaken for an unrun "
+            "one; they contribute no accuracy and are excluded from every aggregate.",
+        ]
     if partials:
         lines += [
             "",

@@ -20,6 +20,7 @@ import numpy as np  # noqa: E402
 EXP = os.path.join(tc.ROOT, "outputs", "experiments")
 CSV_IN = os.path.join(EXP, "w4_prompt_curriculum.csv")
 MD_OUT = os.path.join(EXP, "W4_CURRICULUM.md")
+SUMMARY_OUT = os.path.join(EXP, "W4_SUMMARY.md")
 FIG = os.path.join(tc.ROOT, "outputs", "figures_final", "w4_curriculum.png")
 
 SHIFT_BAR = 0.15          # P3, in normalised contrast units
@@ -112,9 +113,10 @@ def plot(by):
                                 if int(r["level"]) in CUM}.items())],
                        fontsize=8)
     ax.set_ylabel("contrast  (attempted − accidental, normalised)")
-    ax.set_title("W4 prompt curriculum: does in-context intervention recover "
-                 "intent-weighting?\nnegative = outcome-dominant (inverted vs adults); "
-                 "bands are scenario-group bootstrap 95% CIs", fontsize=10)
+    ax.set_title("W4 prompt curriculum: in-context escalation vs baseline\n"
+                 "negative = outcome-dominant (inverted vs adults); "
+                 "3/6 clear the L5 bar; stack gains are mostly accidental-blame "
+                 "suppression\nbands are scenario-group bootstrap 95% CIs", fontsize=9)
     ax.legend(fontsize=7, ncol=2, loc="best")
     fig.tight_layout()
     os.makedirs(os.path.dirname(FIG), exist_ok=True)
@@ -165,149 +167,68 @@ def main():
 
     ref = by[list(by)[0]][min(by[list(by)[0]])]
     has_abl = any(k in ABL for lv in by.values() for k in lv)
-    L = ["# W4 — prompt curriculum: is the intent representation reachable from the "
-         "input?", "",
-         f"_{len(by)} engaged open models, {len(CUM)} cumulative levels"
-         + (f" plus a {len(ABL)}-cell non-cumulative ablation" if has_abl else "")
-         + f", {ref['n_templates']}-template basis, {ref['n_groups']} scenario groups "
-         f"({ref.get('n_cells', '?')} template × group cells). "
-         "Readings pre-registered in `W4_PRESPEC.md`; prompts verbatim in "
-         "`W4_PROMPT_LEVELS.md`._", "",
-         "> **Two corrections applied after run 1** (preserved under "
-         "`_w4_prefix_fewshot_bug/`). The few-shot block rendered each example under the "
-         "question built from the *target* item, and `human_verbatim` interpolates the "
-         "agent name — so an example about Nadia was followed by \"How permissible was "
-         "Grace's action?\", invalid on 1 of 7 templates and only at the levels containing "
-         "the few-shot block. L4/L5 were rescored. Separately, the bootstrap resampled "
-         "template × group cells rather than scenario groups, treating one vignette under "
-         "seven templates as seven independent observations; all intervals are now over "
-         "the scenario group and are correspondingly wider.", "",
-         "> **The L4 labels are not inverted.** Checked before interpreting L4, since "
-         "Young 2007 is 1–4 permissibility while most templates are 1–7 blame, and this "
-         "project has had both a CPR polarity inversion and a permissibility-direction "
-         "reversal. The YS2008 anchor is phrased 1 = completely permissible → 3 = "
-         "completely impermissible, ascending in condemnation like every other template, "
-         "so no reversal is required. The few-shot labels encode attempted > accidental on "
-         "every template × scale, implied contrast +0.500 to +0.667 against an adult "
-         f"reference of {ADULT_CONTRAST:+.3f}. The table is in `W4_PROMPT_LEVELS.md` and "
-         "the check is now a gate that aborts the run.", "",
-         "## Verdict", ""]
-
-    if works:
-        L += [f"**Prompting works ({n_met}/{len(V)} models meet the pre-registered "
-              f"+{SHIFT_BAR:.2f} bar).** By the pre-specified reading P1, the blockage is "
-              "downstream of the representation and upstream of the output: the intent "
-              "code exists (probe ~0.89), residual-stream intervention on it does not "
-              f"reach the judgment (W3, |Δcontrast| ≤ {W3_INTENT_MAX:.3f}), but the "
-              "judgment can be re-pointed at it from the input. The failure is in how the "
-              "rating computation selects its inputs, not in the absence of a usable "
-              "intent signal.",
-              "",
-              f"{n_rec}/{len(V)} models achieve **full recovery** (P4: contrast crosses "
-              "zero, adult ordering restored); the rest show a shift that leaves the "
-              "ordering inverted, which is a movement toward adults and not adult-like "
-              "judgment."]
-    elif level_specific:
-        L += [f"**Level-specific, and the pre-registered bar is not met where it was "
-              f"placed.** P3 reads the verdict at the top level: there "
-              f"{n_met}/{len(V)} models qualify, short of the {MIN_MODELS} required, so by "
-              "the pre-registration this is not \"prompting works\". But "
-              f"{n_any}/{len(V)} models DO clear +{SHIFT_BAR:.2f} with a CI excluding zero "
-              "at some earlier level, which is not nothing and is not what P2 describes "
-              "either.", "",
-              "The honest statement is the third one the pre-registration did not "
-              "anticipate: **in-context intervention can move the contrast substantially, "
-              "and the fully escalated prompt is not where it moves most.** Escalation is "
-              "not monotone, so \"can prompting fix it\" and \"does more scaffolding fix "
-              "it more\" have different answers. The dose-response section below is the "
-              "part to read, in particular the L4 column: adding labelled adult ratings "
-              "can undo the gain from unlabelled worked reasoning. The labels themselves "
-              "are verified non-inverted, so that reversal is not arithmetic; what it is "
-              "instead — imitation of the example anchors, the added prompt length, or the "
-              "question moving away from the story — this design does not separate, and the "
-              "ablation below is the closest available handle. "
-              "Reporting the maximum over levels as the headline would be selecting the "
-              "level after seeing the data; it is reported as descriptive only."]
-    else:
-        L += [f"**Prompting also fails ({n_met}/{len(V)} models meet the pre-registered "
-              f"+{SHIFT_BAR:.2f} bar; {MIN_MODELS} required).** By the pre-specified "
-              "reading P2, the outcome bias is deeper than either intervention reaches. "
-              "Two interventions at opposite ends of the pipeline — one on the "
-              "representation (W3), one on the input (W4) — both leave the contrast "
-              "inverted. Instruction, worked reasoning, adult-consistent few-shot labels "
-              "and an explicit statement of the principle are all available to the model "
-              "in context, and the rating still tracks the outcome. That makes the bias a "
-              "property of the tuned input-output mapping rather than a prompt-level or "
-              "read-out-level defect."]
-    # The attribution is not a footnote: if no model adds blame to attempted harm, the
-    # shift is not the recovery the intervention was designed to produce.
     tops = {m: {k: v for k, v in by[m].items() if k in CUM}[V[m]["top_level"]] for m in V}
     gainers = [m for m in V if fl(tops[m]["d_contrast"]) > 0.02]
     acc_only = [m for m in gainers if fl(tops[m]["d_accidental"]) < -0.02
                 and fl(tops[m]["d_attempted"]) <= 0.02]
     att_up = [m for m in gainers if fl(tops[m]["d_attempted"]) > 0.02]
-    uniform = [m for m in gainers
-               if all(fl(tops[m][f"d_{c}"]) < 0 for c in tc.CELLS)
-               or all(fl(tops[m][f"d_{c}"]) > 0 for c in tc.CELLS)]
-    if gainers:
-        L += ["",
-              f"**The mechanism is not the one the intervention was aimed at.** Of the "
-              f"{len(gainers)} models whose contrast improves at the top level, "
-              f"{len(acc_only)} improve entirely because blame for *accidental* harm falls, "
-              f"and {len(att_up)} {'adds' if len(att_up) == 1 else 'add'} blame to "
-              "*attempted* harm"
-              + (f" ({tc.pretty(att_up[0])}, {fl(tops[att_up[0]]['d_attempted']):+.3f}, "
-                 "against a fall in accidental of "
-                 f"{fl(tops[att_up[0]]['d_accidental']):+.3f})" if len(att_up) == 1 else "")
-              + ". "
-              + (f"In {len(uniform)} of them all four cell means move in the same "
-                 "direction, which is compression of the rating range rather than a "
-                 "re-weighting of either factor. "
-                 if uniform else "")
-              + "So at the top of the curriculum in-context instruction moves the judgment "
-                "by making the model less condemnatory about bad outcomes rather than more "
-                "condemnatory about bad intentions — the adult pattern is approached from "
-                "the wrong side. This is the same caveat that governs the W3 "
-                "difference-of-means direction."]
-    # The ablation contradicts that reading for one component, which is worth stating in the
-    # verdict rather than leaving in a secondary section.
-    # "attempted rises" is only the interesting reading when the rise is also the dominant
-    # term. A +0.027 rise beside a -0.224 fall in accidental is outcome suppression with a
-    # rounding error attached, and counting it as re-weighting would overstate the result.
-    abl_led, abl_any = [], []
+    abl_led, abl_beats = [], 0
     for m, all_lv in by.items():
         r8 = all_lv.get(8)
-        if not r8 or fl(r8["d_contrast"]) <= 0.02:
-            continue
-        da, dc = fl(r8["d_attempted"]), fl(r8["d_accidental"])
-        if da > 0.02:
-            abl_any.append((m, da, dc))
-            if da >= abs(dc):
+        if r8 and fl(r8["d_contrast"]) > 0.02:
+            da, dc = fl(r8["d_attempted"]), fl(r8["d_accidental"])
+            if da > 0.02 and da >= abs(dc):
                 abl_led.append((m, da, dc))
-    if abl_led:
-        L += ["",
-              "**But that is a property of the stack, not of instruction as such.** With the "
-              "intent principle stated *alone* (L8: no belief cue, no worked example, no "
-              f"labelled examples), {len(abl_led)} of {len(by)} models produce a gain in "
-              "which the *rise* in blame for attempted harm is the dominant term — "
-              + "; ".join(f"{tc.pretty(m)} Δattempted {a:+.3f} against Δaccidental {c:+.3f}"
-                          for m, a, c in sorted(abl_led, key=lambda t: -t[1]))
-              + (f" ({len(abl_any) - len(abl_led)} further model(s) raise attempted harm by a "
-                 "smaller amount than they lower accidental harm, which is still outcome "
-                 "suppression.)" if len(abl_any) > len(abl_led) else "")
-              + " That is the re-weighting the intervention was designed to produce, and it "
-                "appears where the prompt is *least* elaborate. The scaffolding is what "
-                "appears to convert intent re-weighting into blanket outcome-blame "
-                "suppression, which fits the additivity column: every model is sub-additive, "
-                "and in three the single best component beats the full stack. This is the "
-                "secondary, post-hoc arm — the pre-registered verdict remains the cumulative "
-                "L5 column, and two models are not a result on their own. It is the sharpest "
-                "thing to test next."]
-    L += ["",
-          "Reference points: adults sit at "
-          f"{ADULT_CONTRAST:+.3f} on this measure (Young 2007 digitized); the W3 outcome "
-          f"positive control moves the contrast {W3_OUTCOME_MIN:.3f}+ at the same models, "
-          f"so a shift of {SHIFT_BAR:+.2f} is well inside what this design resolves.", "",
+        if 5 in all_lv and 8 in all_lv:
+            if fl(all_lv[8]["d_contrast"]) > fl(all_lv[5]["d_contrast"]) + 0.05:
+                abl_beats += 1
+
+    L = ["# W4 — prompt curriculum: how far does in-context instruction move the bias?",
+         "",
+         f"_{len(by)} engaged open models, {len(CUM)} cumulative levels"
+         + (f" plus a {len(ABL)}-cell non-cumulative ablation" if has_abl else "")
+         + f", {ref['n_templates']}-template basis, {ref['n_groups']} scenario groups "
+         f"({ref.get('n_cells', '?')} template × group cells). "
+         "Readings pre-registered in `W4_PRESPEC.md`; prompts verbatim in "
+         "`W4_PROMPT_LEVELS.md`. Short conclusion also in `W4_SUMMARY.md`._", "",
+         "> **Corrections after run 1** (preserved under `_w4_prefix_fewshot_bug/`): "
+         "few-shot agent-name bug on `human_verbatim` (L4/L5 rescored); bootstrap unit "
+         "corrected from template × group cell to scenario group. L4 label polarity "
+         "verified non-inverted and gated.", "",
+         "## Verdict", "",
+         "**The completed 6 × 8 run does not support \"unreachable by steering, reachable "
+         "by prompting.\"** That reading overclaims both ends. The accurate summary:", "",
+         f"1. **Only {n_met}/{len(V)} models clear the pre-registered +{SHIFT_BAR:.2f} bar "
+         f"at L5** (need {MIN_MODELS}). By P3 this is not \"prompting works\".",
+         f"2. **Gains at the top of the stack are predominantly accidental-blame "
+         f"suppression**, not intent re-weighting: of {len(gainers)} models whose L5 "
+         f"contrast improves, {len(acc_only)} improve only because blame for *accidental* "
+         f"harm falls; {len(att_up)} add blame to attempted harm, and that addition is "
+         "small beside the accidental drop.",
+         f"3. **Genuine intent-led movement appears in {len(abl_led)}/{len(by)} models and "
+         "only under principle-alone (L8)** — the bare statement of the intent principle, "
+         "with no cue, worked example, or labelled few-shot. "
+         + ("; ".join(f"{tc.pretty(m)} Δattempted {a:+.3f} vs Δaccidental {c:+.3f}"
+                      for m, a, c in sorted(abl_led, key=lambda t: -t[1]))
+            if abl_led else "None meet the intent-led criterion."),
+         f"4. **Added scaffolding often degrades performance relative to the bare "
+         f"principle**: in {abl_beats}/{len(by)} models principle-alone beats the full L5 "
+         "stack by more than 0.05, and every model is sub-additive across the ablation "
+         "parts.",
+         "",
+         "**Frame:** the outcome bias is *entrenched* — resistant to residual-stream "
+         f"intervention at resolvable depths (W3, |Δcontrast| ≤ {W3_INTENT_MAX:.3f}) and "
+         "only partially and inconsistently responsive to instruction (W4). Prompting is "
+         "not a reliable rescue; when it moves the number it usually does so by softening "
+         "blame for accidents rather than by condemning failed attempts.", "",
+         "Reporting the best level over the curriculum as the headline would be selecting "
+         "after seeing the data; `best level Δ` below is descriptive only. The "
+         "pre-registered verdict remains the L5 column.", "",
+         "Reference points: adults sit at "
+         f"{ADULT_CONTRAST:+.3f} (Young 2007 digitized); the W3 outcome positive control "
+         f"moves the contrast {W3_OUTCOME_MIN:.3f}–{W3_OUTCOME_MAX:.3f} at the same models.",
+         "",
+         "## Contrast by level", "",
           "## Contrast by level", "",
           "| model | " + " | ".join(f"L{k}" for k in CUM)
           + " | Δ(top−L1) [95% CI] | bar at top level | best level Δ [95% CI] "
@@ -446,24 +367,18 @@ def main():
                      f"| {fl(lv[8]['d_attempted']):+.3f} "
                      f"| {fl(lv[8]['d_accidental']):+.3f} | {head8} |")
 
-    # The W3 comparison, deliberately without a ratio.
     best_any = max((V[m]["max_d"] for m in V), default=float("nan"))
     L += ["", "## Relation to W3 (steering)", "",
-          "Steering and prompting are different interventions on different quantities and "
-          "share no common effect-size scale, so the two are not divided into each other "
-          "here. The defensible statement is qualitative: **the intent representation is "
-          "inert to residual-stream intervention at the depths where intent is resolvable "
-          f"(W3, |Δcontrast| ≤ {W3_INTENT_MAX:.3f}), while the same contrast moves "
-          "substantially under in-context instruction. That places the blockage downstream "
-          "of the representation and upstream of the output** — the rating computation can "
-          "be re-pointed by the input but not by editing the vector the probe reads.", "",
-          f"Descriptively, the largest in-context shift observed ({best_any:+.3f}) sits "
-          f"close to the range the W3 *outcome* direction produced "
-          f"({W3_OUTCOME_MIN:.3f}–{W3_OUTCOME_MAX:.3f}) as a positive control. That is a "
-          "coincidence of magnitude worth flagging and nothing is built on it: the two "
-          "numbers come from different manipulations, and the outcome-direction figure "
-          "carries its own compression caveat. Its only use is as a reminder that shifts "
-          "of this size are well inside what the design resolves.", "",
+          'Do **not** read W3+W4 as "unreachable by steering, reachable by prompting." '
+          "Steering and prompting are different interventions with no common effect-size "
+          "scale, and W4's own bar is not met. The joint statement is narrower: the bias is "
+          f"**entrenched** — inert to residual-stream intervention at resolvable depths "
+          f"(W3, |Δcontrast| ≤ {W3_INTENT_MAX:.3f}) and only partially / inconsistently "
+          "moved by in-context instruction (W4: 3/6 at L5; stack gains mostly accidental "
+          "suppression; intent-led movement in 2/6 and only under principle-alone).", "",
+          f"Descriptively, the largest in-context shift ({best_any:+.3f}) can land near the "
+          f"W3 outcome-direction control ({W3_OUTCOME_MIN:.3f}–{W3_OUTCOME_MAX:.3f}); flag "
+          "that coincidence of magnitude, do not build on it.", "",
           "## What this does and does not license", "",
           "- The levels differ only in added text. Weights, decoding (logprob-EV over "
           "rating digits, deterministic), items, templates, scale normalisation and the "
@@ -487,10 +402,31 @@ def main():
 
     with open(MD_OUT, "w") as f:
         f.write("\n".join(L) + "\n")
+    # Short standalone conclusion for mentor / paper cross-refs (same content as Verdict).
+    summary = ["# W4 — summary", "",
+               "Source: `W4_CURRICULUM.md` (generated by `55_w4_summary.py`). "
+               "Do not edit by hand.", "",
+               "## Conclusion", "",
+               'The completed 6-model × 8-level run **does not** support '
+               '"unreachable by steering, reachable by prompting."', "",
+               f"- Only **{n_met}/{len(V)}** clear the pre-registered +{SHIFT_BAR:.2f} bar "
+               f"at L5 (need {MIN_MODELS}).",
+               f"- Stack-top gains are predominantly **accidental-blame suppression** "
+               f"({len(acc_only)}/{len(gainers)} improvers at L5).",
+               f"- Genuine **intent-led** movement: **{len(abl_led)}/{len(by)}**, and only "
+               "under principle-alone (L8).",
+               f"- Scaffolding often hurts: principle-alone beats the full stack in "
+               f"**{abl_beats}/{len(by)}** models; every model is sub-additive.",
+               "",
+               "**Frame:** the bias is entrenched — resistant to representation-level "
+               "intervention and only partially and inconsistently responsive to "
+               "instruction.", ""]
+    with open(SUMMARY_OUT, "w") as f:
+        f.write("\n".join(summary) + "\n")
     print(f"  wrote {os.path.relpath(MD_OUT, tc.ROOT)} "
-          f"({len(by)} models, verdict: "
-          + ('works' if works else 'level-specific' if level_specific else 'also fails')
-          + ')')
+          f"({len(by)} models; L5 bar {n_met}/{len(V)}; "
+          f"intent-led @ L8 {len(abl_led)}/{len(by)})")
+    print(f"  wrote {os.path.relpath(SUMMARY_OUT, tc.ROOT)}")
     plot(by)
 
 

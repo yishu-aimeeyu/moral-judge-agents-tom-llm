@@ -16,6 +16,6 @@ Per-ladder outcome (open-weight only):
   - Punish presented-first (secondary; construct-matched to punish_* prompts) (youngest band +0.09): holds for 18/18 non-degenerate models
 
 Same ladders WITH contaminated-era closed-API models included (marked, not for headline use):
-  - text-reported (human_reference.csv) (youngest band -0.14): does not hold for 13/25 non-degenerate models
-  - digitized Naughty presented-first (youngest band +0.24): holds for 25/25 non-degenerate models
-  - Punish presented-first (secondary; construct-matched to punish_* prompts) (youngest band +0.09): does not hold for 24/25 non-degenerate models
+  - text-reported (human_reference.csv) (youngest band -0.14): does not hold for 14/27 non-degenerate models
+  - digitized Naughty presented-first (youngest band +0.24): does not hold for 25/27 non-degenerate models
+  - Punish presented-first (secondary; construct-matched to punish_* prompts) (youngest band +0.09): does not hold for 23/27 non-degenerate models

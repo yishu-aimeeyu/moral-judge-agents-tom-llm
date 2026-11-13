@@ -100,28 +100,32 @@ Two inputs are assumptions rather than measurements, and they drive the total:
   on the consoles before relying on any total.
 - **Thinking utilisation.** Cost depends on how much of each thinking budget a model actually
   spends, which is unobservable before running. Default 50%. At 25% the approved config is
-  ~$297, at 100% ~$1,152 — so the figure is a band, not a point.
+  ~$93, at 100% ~$358 — so the figure is a band, not a point.
 
-| configuration | calls/cell | input | output | est. cost |
-|---|---:|---:|---:|---:|
-| as configured (n=20, 4 tmpl, no batch) | 23,840 | 138M | 1,324M | **~$23,300** |
-| n=2, 4 tmpl, no batch | 2,384 | 14M | 132M | ~$2,330 |
-| n=2, 4 tmpl, Batch API | 2,384 | 14M | 132M | ~$1,160 |
-| n=2, 2 tmpl, Batch API — **approved** | 1,192 | 7M | 66M | **~$580** |
-| n=2, 2 tmpl, Batch API, minus `claude-opus-5` + `o3` | 1,192 | 7M | 66M | **~$180** |
+| configuration | cells | calls/cell | requests | input | output | est. cost |
+|---|---:|---:|---:|---:|---:|---:|
+| as configured (n=20, 4 tmpl, no batch) | 29 | 23,840 | 691,360 | 138M | 1,324M | **~$23,300** |
+| n=2, 4 tmpl, no batch | 29 | 2,384 | 69,136 | 14M | 132M | ~$2,330 |
+| n=2, 4 tmpl, Batch API | 29 | 2,384 | 69,136 | 14M | 132M | ~$1,160 |
+| n=2, 2 tmpl, Batch API, full 9-model roster | 29 | 1,192 | 34,568 | 7M | 66M | ~$582 |
+| n=2, 2 tmpl, Batch API, minus `claude-opus-5` + `o3` — **approved** | 21 | 1,192 | 25,032 | 5M | 41M | **~$181** |
+
+Every row is recomputed by `59_dose_cost_model.py`; the historical row is priced on the roster as
+it stood when run 1 was submitted (29 cells), not the reduced one, since understating the overrun
+would defeat the purpose of recording it.
 
 Where the request count comes from: 298 items × 2 templates × 2 samples = **1,192 calls per
-(model, condition) cell**, × **29 cells** over the 9-model roster = **34,568 requests**. The
-cells are 5 conditions each for `claude-opus-5`, `claude-sonnet-5`, `gemini-3.1-pro-preview`
-and `gemini-3.5-flash`; 3 each for `o3` and `o4-mini`; `direct` only for `gpt-5.5`,
-`gpt-5.4-mini` and `kimi-k2.6`.
+(model, condition) cell**. On the full roster that was 29 cells over 9 models = 34,568 requests;
+on the **reduced roster it is 21 cells over 7 models = 25,032 requests**. The reduced cells are 5
+conditions each for `claude-sonnet-5`, `gemini-3.1-pro-preview` and `gemini-3.5-flash`; 3 for
+`o4-mini`; `direct` only for `gpt-5.5`, `gpt-5.4-mini` and `kimi-k2.6`.
 
-Per-model at the approved configuration:
+Per-model on the **full** roster, which is what makes the case for dropping the top two:
 
 | model | cells | est. cost | share |
 |---|---:|---:|---:|
-| `o3` | 3 | $207 | 36% |
-| `claude-opus-5` | 5 | $194 | 33% |
+| ~~`o3`~~ **dropped** | 3 | $207 | 36% |
+| ~~`claude-opus-5`~~ **dropped** | 5 | $194 | 33% |
 | `claude-sonnet-5` | 5 | $116 | 20% |
 | `gemini-3.1-pro-preview` | 5 | $39 | 7% |
 | `o4-mini` | 3 | $23 | 4% |
@@ -132,6 +136,34 @@ The two flagship reasoners are ~69% of the bill: `claude-opus-5` because budget_
 thinking tokens at an assumed $25/MTok output, `o3` because high effort is assumed to spend
 ~12,000 at $40/MTok. **`o3`'s rate is the least reliable input in the whole model and it is
 the largest line item** — worth confirming before committing.
+
+## Decision (2026-07-29): both flagship reasoners dropped, spending on hold
+
+`claude-opus-5` and `o3` are removed from `ROSTER` in `52_closed_reasoning_dose.py` (see
+`DROPPED_ON_COST` in that file, which `59_dose_cost_model.py` reads to reprice). The roster is
+now **7 models / 21 cells / 25,032 requests / ~$181** (band ~$93 at 25% thinking utilisation to
+~$358 at 100%). Restoring both takes it back to ~$582 / 29 cells; the two lines are commented in
+place so it is a one-line revert, not a reconstruction.
+
+**What dropping them costs the design.** The dose–response no longer covers a flagship reasoner
+on *either* provider: Anthropic's curve comes from `claude-sonnet-5` and OpenAI's from
+`o4-mini`, both mid-tier. If reasoning effort interacts with model capability — the first thing
+a reader will ask — this roster cannot see it. That is a limitation of the reduced run, not a
+property of the phenomenon, and it belongs in the writeup as such rather than being presented
+as the intended design.
+
+**Nothing is submitted.** No batch job has been sent and no further spend is authorised. The
+runner is built, dry-run validated, and idle at `58_closed_dose_batch.py plan`; the next command
+is `submit`, which is deliberately not being run. Before it is:
+
+- Confirm the current balance on each of the three consoles. The prices in this document are
+  *assumed* list rates, not quotes, and the last estimate was wrong by three orders of
+  magnitude in the direction that empties an account.
+- Fund only what is needed for the reduced roster. ~$200 covers the approved configuration at
+  the central utilisation assumption with a little headroom; ~$400 covers the pessimistic end.
+- Prefer topping up one provider and running its cells alone first. The per-provider cells are
+  independent, Anthropic is 64% of the reduced bill, and a single-provider run would validate
+  the whole batch path against a real invoice before the rest is committed.
 
 ## Why `N_SAMPLES = 20` buys almost nothing here
 

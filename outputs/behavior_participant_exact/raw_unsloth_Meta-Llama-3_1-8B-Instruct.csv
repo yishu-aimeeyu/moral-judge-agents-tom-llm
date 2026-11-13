@@ -1,0 +1,299 @@
+model,template,sample,story_id,source,condition,intent_label,outcome_label,raw_rating,norm_rating
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,1.8641,0.5679
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,1.7187,0.6407
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,1.8641,0.5679
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,1.7653,0.6173
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,1.75,0.625
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,1.7907,0.6047
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,1.762,0.619
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,1.8232,0.5884
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,1.9178,0.5411
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,1.8135,0.5933
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,1.9275,0.5363
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,1.8178,0.5911
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,1.8352,0.5824
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,1.8287,0.5857
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,1.8639,0.5681
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,1.8058,0.5971
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,1.8931,0.5534
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,1.7855,0.6072
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,1.8766,0.5617
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,1.7666,0.6167
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,1.9056,0.5472
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,1.7829,0.6086
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,1.84,0.58
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,1.763,0.6185
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,2.0101,0.495
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,1.9554,0.5223
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,1.8887,0.5556
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,1.8389,0.5806
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,1.8947,0.5526
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,1.851,0.5745
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,1.9072,0.5464
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,1.8178,0.5911
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,1.9042,0.5479
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,1.8265,0.5867
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,1.9465,0.5268
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,1.8641,0.5679
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,1.8897,0.5552
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,1.8406,0.5797
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,1.8696,0.5652
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,1.8412,0.5794
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,1.9351,0.5324
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,1.7269,0.6365
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,1.9225,0.5387
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,1.7442,0.6279
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,1.9725,0.5138
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,1.822,0.589
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,1.8859,0.5571
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,1.7598,0.6201
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,2.1403,0.4299
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,1.7705,0.6148
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,2.1188,0.4406
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,1.6284,0.6858
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,1.9464,0.5268
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,1.6638,0.6681
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,1.8959,0.5521
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,1.7907,0.6047
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,1.9304,0.5348
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,2.0218,0.4891
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,1.919,0.5405
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,1.9897,0.5051
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,1.9102,0.5449
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,1.9465,0.5268
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,2.0251,0.4874
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,1.9261,0.537
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,1.7726,0.6137
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,1.6426,0.6787
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,1.644,0.678
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,1.6426,0.6787
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,2.0,0.5
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,1.8871,0.5565
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,1.9248,0.5376
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,1.8745,0.5627
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,2.1013,0.4493
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,1.9225,0.5387
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,2.0378,0.4811
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,1.9065,0.5467
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,1.9695,0.5152
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,1.8999,0.5501
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,1.9579,0.5211
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,1.9018,0.5491
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,2.0981,0.4509
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,2.0646,0.4677
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,1.9842,0.5079
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,2.0437,0.4782
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,2.0241,0.488
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VET-accidental,YS2008,accidental,innocent,harm,1.6954,0.6523
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,1.8719,0.5641
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-VET-intentional,YS2008,intentional,guilty,harm,1.6174,0.6913
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,1.9933,0.5033
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,1.8046,0.5977
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,1.8696,0.5652
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,1.7823,0.6089
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,1.9819,0.5091
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,1.7459,0.627
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,2.0,0.5
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,1.8827,0.5586
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,2.0429,0.4786
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,1.9039,0.5481
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,2.0093,0.4953
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,1.8697,0.5652
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,2.1362,0.4319
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,1.8887,0.5556
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,2.0735,0.4632
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,1.8845,0.5577
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,1.9872,0.5064
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,1.8985,0.5507
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,1.9338,0.5331
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,1.9113,0.5444
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,1.9381,0.531
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,1.842,0.579
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,1.9122,0.5439
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,1.8438,0.5781
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,1.9725,0.5138
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,1.9745,0.5128
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,1.9796,0.5102
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,1.9617,0.5192
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,1.942,0.529
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,1.8853,0.5574
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,1.9611,0.5194
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,1.9029,0.5485
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,1.7187,0.6407
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,1.6975,0.6512
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,1.7907,0.6047
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,1.6744,0.6628
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,1.9404,0.5298
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,1.9645,0.5178
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,1.9351,0.5324
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,1.9682,0.5159
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,1.9317,0.5342
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,1.9317,0.5342
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,1.9381,0.531
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,1.9275,0.5363
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,2.342,0.329
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,2.3338,0.3331
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,2.3028,0.3486
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,2.2759,0.362
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,1.9715,0.5142
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,1.8135,0.5933
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,1.9916,0.5042
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,1.853,0.5735
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,1.9885,0.5058
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,1.6045,0.6977
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,1.9479,0.5261
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,1.7223,0.6389
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,2.0469,0.4766
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,1.8498,0.5751
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,2.0318,0.4841
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,1.8987,0.5506
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,1.9224,0.5388
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,1.7326,0.6337
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,1.9155,0.5423
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,1.7575,0.6212
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,1.9418,0.5291
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,1.8728,0.5636
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,1.9018,0.5491
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,1.7587,0.6207
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,1.9135,0.5433
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,1.9405,0.5298
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,1.9278,0.5361
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,1.9464,0.5268
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,2.1421,0.4289
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,1.8203,0.5898
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,2.1461,0.4269
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,1.8265,0.5867
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,1.9952,0.5024
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,1.972,0.514
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,2.0,0.5
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,1.9423,0.5289
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,2.0285,0.4857
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,1.6269,0.6865
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,1.9199,0.5401
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,1.6269,0.6865
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,1.9338,0.5331
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,1.9375,0.5312
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,1.9225,0.5387
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,1.9091,0.5454
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,1.9933,0.5033
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,1.9759,0.5121
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,2.0,0.5
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,2.0,0.5
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,1.9516,0.5242
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,2.0103,0.4949
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,2.0084,0.4958
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,2.0158,0.4921
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,2.0251,0.4874
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,2.0,0.5
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,1.9947,0.5027
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,1.9729,0.5135
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,1.9782,0.5109
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,1.8571,0.5715
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,1.9327,0.5336
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,1.9111,0.5444
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,2.36,0.4533
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,3.2483,0.7494
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,2.3996,0.4665
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,3.0244,0.6748
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,1.8549,0.285
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,2.7929,0.5976
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,2.8241,0.608
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,2.7936,0.5979
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,2.7562,0.5854
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,3.1361,0.712
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,2.6146,0.5382
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,2.801,0.6003
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,1.8665,0.2888
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,2.839,0.613
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,2.3549,0.4516
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,2.7265,0.5755
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,2.729,0.5763
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,3.0092,0.6697
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,2.6263,0.5421
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,2.8262,0.6087
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,2.1987,0.3996
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,2.7431,0.581
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,2.269,0.423
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,2.6767,0.5589
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,2.5751,0.525
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,2.9409,0.647
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,2.563,0.521
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,2.9001,0.6334
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,1.9453,0.3151
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,3.1945,0.7315
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,3.4506,0.8169
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,3.3046,0.7682
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,2.0349,0.345
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,2.9033,0.6344
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,2.5202,0.5067
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,2.8611,0.6204
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,2.4064,0.4688
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,3.2287,0.7429
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,2.1227,0.3742
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,3.0243,0.6748
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,2.5227,0.5076
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,2.9482,0.6494
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,2.6535,0.5512
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,2.8852,0.6284
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,2.5564,0.5188
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,3.0438,0.6813
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,2.5564,0.5188
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,3.0842,0.6947
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,2.514,0.5047
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,2.8831,0.6277
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,2.4716,0.4905
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,2.8486,0.6162
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,2.4503,0.4834
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,2.9563,0.6521
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,2.4789,0.493
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,2.6597,0.5532
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,1.9715,0.3238
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,2.4642,0.4881
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,2.1767,0.3922
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,2.3999,0.4666
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,1.8677,0.2892
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,2.2934,0.4311
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,2.3547,0.4516
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,2.3602,0.4534
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,2.182,0.394
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,2.8614,0.6205
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,2.4176,0.4725
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,2.8584,0.6195
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,2.2657,0.4219
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,3.1697,0.7232
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,2.5233,0.5078
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,2.8429,0.6143
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,2.1073,0.3691
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,2.8508,0.6169
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,2.2117,0.4039
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,2.6931,0.5644
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,1.7603,0.2534
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,2.9797,0.6599
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,2.5998,0.5333
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,3.0313,0.6771
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,2.269,0.423
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,3.3756,0.7919
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,2.8023,0.6008
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,3.2327,0.7442
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,1.5202,0.1734
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,2.9928,0.6643
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,2.7621,0.5874
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,2.9625,0.6542
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,2.0647,0.3549
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,3.2105,0.7368
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,2.3272,0.4424
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,2.9628,0.6543
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,2.1901,0.3967
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,2.9929,0.6643
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,2.2864,0.4288
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,2.8531,0.6177
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,6.2336,0.8723
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,6.1492,0.8582
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,6.1598,0.86
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,4.537,0.5895
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,4.0628,0.5105
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,4.9351,0.6559
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,3.7614,0.4602
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,3.8537,0.4756
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,6.1044,0.8507
+unsloth/Meta-Llama-3.1-8B-Instruct,participant_exact,0,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,5.8121,0.802

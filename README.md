@@ -1,5 +1,7 @@
 # ToM Project — Intent × Outcome in LLMs
 
+> **New results (Sept–Nov 2026): see [`RESULTS_SINCE_SEPTEMBER.md`](RESULTS_SINCE_SEPTEMBER.md)** — E8 pretraining trajectories, the October robustness pass, follow-ups T1–T7, closed-model v3, and the manuscript in `paper_submission/`.
+
 Do large language models judge moral scenarios by an agent's **intent** or by the
 **outcome** — and does a model's internal *representation* of intent predict its
 *behavioral* reliance on intent? Built on the Saxelab moral intent×outcome (belief×outcome)
@@ -8,7 +10,7 @@ factorial vignettes.
 **No model training.** Everything is forward-pass inference + lightweight linear probes.
 
 ## Repo sync (node ↔ GitHub ↔ local)
-GitHub is the single source of truth: `https://github.com/MisssAimeee/moral-judge-agents-tom-llm` (branch `main`).
+GitHub is the single source of truth: `https://github.com/yishu-aimeeyu/moral-judge-agents-tom-llm` (branch `main`).
 There are **two working copies** that must stay in sync through GitHub:
 - **Cluster node** (`node3402:/home/aimeeyu/tom_project`) — where GPU/API runs execute (Slurm).
 - **Local Mac** (`/Users/Aimee/Desktop/Summer/ToM Project`) — where scripts are authored/edited.

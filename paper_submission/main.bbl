@@ -1,0 +1,191 @@
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barrett et~al.(2016)Barrett, Bolyanatz, Crittenden, Fessler,
+  Fitzpatrick, Gurven, Henrich, Kanovsky, Kushnick, Pisor, Scelza, Stich, von
+  Rueden, Zhao, and Laurence]{barrett2016societies}
+H.~Clark Barrett, Alexander Bolyanatz, Alyssa~N. Crittenden, Daniel M.~T.
+  Fessler, Simon Fitzpatrick, Michael Gurven, Joseph Henrich, Martin Kanovsky,
+  Geoff Kushnick, Anne Pisor, Brooke~A. Scelza, Stephen Stich, Chris von
+  Rueden, Wanying Zhao, and Stephen Laurence.
+\newblock Small-scale societies exhibit fundamental variation in the role of
+  intentions in moral judgment.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 113\penalty0
+  (17):\penalty0 4688--4693, 2016.
+\newblock \doi{10.1073/pnas.1522070113}.
+
+\bibitem[Belrose et~al.(2023)Belrose, Schneider-Joseph, Ravfogel, Cotterell,
+  Raff, and Biderman]{belrose2023leace}
+Nora Belrose, David Schneider-Joseph, Shauli Ravfogel, Ryan Cotterell, Edward
+  Raff, and Stella Biderman.
+\newblock {LEACE}: Perfect linear concept erasure in closed form.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2023.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/d066d21c619d0a78c5b557fa3291a8f4-Abstract-Conference.html}.
+
+\bibitem[Bruneau et~al.(2012)Bruneau, Pluta, and Saxe]{bruneau2012shared}
+Emile~G. Bruneau, Agnieszka Pluta, and Rebecca Saxe.
+\newblock Distinct roles of the ``shared pain'' and ``theory of mind'' networks
+  in processing others' emotional suffering.
+\newblock \emph{Neuropsychologia}, 50\penalty0 (2):\penalty0 219--231, 2012.
+\newblock \doi{10.1016/j.neuropsychologia.2011.11.008}.
+
+\bibitem[Chen et~al.(2024)Chen, Wu, Zhou, Wen, Bi, Jiang, Cao, Hu, Lai, Xiong,
+  and Huang]{chen2024tombench}
+Zhuang Chen, Jincenzi Wu, Jinfeng Zhou, Bosi Wen, Guanqun Bi, Gongyao Jiang,
+  Yaru Cao, Mengting Hu, Yunghwei Lai, Zexuan Xiong, and Minlie Huang.
+\newblock {ToMBench}: Benchmarking theory of mind in large language models.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 15959--15983,
+  2024.
+\newblock \doi{10.18653/v1/2024.acl-long.847}.
+
+\bibitem[Curtin et~al.(2020)Curtin, Barrett, Bolyanatz, Crittenden, Fessler,
+  Fitzpatrick, Gurven, Kanovsky, Kushnick, Laurence, Pisor, Scelza, Stich, von
+  Rueden, and Henrich]{curtin2020kinship}
+Cameron~M. Curtin, H.~Clark Barrett, Alexander Bolyanatz, Alyssa~N. Crittenden,
+  Daniel M.~T. Fessler, Simon Fitzpatrick, Michael Gurven, Martin Kanovsky,
+  Geoff Kushnick, Stephen Laurence, Anne Pisor, Brooke~A. Scelza, Stephen
+  Stich, Chris von Rueden, and Joseph Henrich.
+\newblock Kinship intensity and the use of mental states in moral judgment
+  across societies.
+\newblock \emph{Evolution and Human Behavior}, 41\penalty0 (5):\penalty0
+  415--429, 2020.
+\newblock \doi{10.1016/j.evolhumbehav.2020.07.002}.
+
+\bibitem[Cushman et~al.(2013)Cushman, Sheketoff, Wharton, and
+  Carey]{cushman2013development}
+Fiery Cushman, Rachel Sheketoff, Sophie Wharton, and Susan Carey.
+\newblock The development of intent-based moral judgment.
+\newblock \emph{Cognition}, 127\penalty0 (1):\penalty0 6--21, 2013.
+\newblock \doi{10.1016/j.cognition.2012.11.008}.
+
+\bibitem[Gandhi et~al.(2023)Gandhi, Fr{\"a}nken, Gerstenberg, and
+  Goodman]{gandhi2023bigtom}
+Kanishk Gandhi, Jan-Philipp Fr{\"a}nken, Tobias Gerstenberg, and Noah~D.
+  Goodman.
+\newblock Understanding social reasoning in language models with language
+  models.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, pages 13518--13529, 2023.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/2b9efb085d3829a2aadffab63ba206de-Abstract-Datasets_and_Benchmarks.html}.
+
+\bibitem[Gu et~al.(2026)Gu, Tafjord, Kim, Moore, Le~Bras, Clark, and
+  Choi]{gu2026simpletom}
+Yuling Gu, Oyvind Tafjord, Hyunwoo Kim, Jared Moore, Ronan Le~Bras, Peter
+  Clark, and Yejin Choi.
+\newblock {SimpleToM}: Exposing the gap between explicit {ToM} inference and
+  implicit {ToM} application in {LLM}s.
+\newblock In \emph{International Conference on Learning Representations}, 2026.
+\newblock URL
+  \url{https://proceedings.iclr.cc/paper_files/paper/2026/hash/524ff06d5375d76e93d8490e654a81bf-Abstract-Conference.html}.
+
+\bibitem[Kosinski(2024)]{kosinski2024evaluating}
+Michal Kosinski.
+\newblock Evaluating large language models in theory of mind tasks.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 121\penalty0
+  (45):\penalty0 e2405460121, 2024.
+\newblock \doi{10.1073/pnas.2405460121}.
+
+\bibitem[Nie et~al.(2023)Nie, Zhang, Amdekar, Piech, Hashimoto, and
+  Gerstenberg]{nie2023moca}
+Allen Nie, Yuhui Zhang, Atharva~Shailesh Amdekar, Chris Piech, Tatsunori
+  Hashimoto, and Tobias Gerstenberg.
+\newblock {MoCa}: Measuring human--language model alignment on causal and moral
+  judgment tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2023.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/f751c6f8bfb52c60f43942896fe65904-Abstract-Conference.html}.
+
+\bibitem[Schaeffer et~al.(2023)Schaeffer, Miranda, and
+  Koyejo]{schaeffer2023emergent}
+Rylan Schaeffer, Brando Miranda, and Sanmi Koyejo.
+\newblock Are emergent abilities of large language models a mirage?
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2023.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/adc98a266f45005c403b8311ca7e8bd7-Abstract-Conference.html}.
+
+\bibitem[Shapira et~al.(2024)Shapira, Levy, Alavi, Zhou, Choi, Goldberg, Sap,
+  and Shwartz]{shapira2024clever}
+Natalie Shapira, Mosh Levy, Seyed~Hossein Alavi, Xuhui Zhou, Yejin Choi, Yoav
+  Goldberg, Maarten Sap, and Vered Shwartz.
+\newblock Clever hans or neural theory of mind? stress testing social reasoning
+  in large language models.
+\newblock In \emph{Proceedings of the 18th Conference of the European Chapter
+  of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages 2257--2273, 2024.
+\newblock \doi{10.18653/v1/2024.eacl-long.138}.
+
+\bibitem[Sotomayor-Enriquez et~al.(2024)Sotomayor-Enriquez, Gweon, Saxe, and
+  Richardson]{sotomayor2024dataset}
+Koraima Sotomayor-Enriquez, Hyowon Gweon, Rebecca Saxe, and Hilary Richardson.
+\newblock Open dataset of theory of mind reasoning in early to middle
+  childhood.
+\newblock \emph{Data in Brief}, 52:\penalty0 109905, 2024.
+\newblock \doi{10.1016/j.dib.2023.109905}.
+\newblock URL \url{https://osf.io/g5zpv/}.
+
+\bibitem[Strachan et~al.(2024)Strachan, Albergo, Borghini, Pansardi, Scaliti,
+  Gupta, Saxena, Rufo, Panzeri, Manzi, Graziano, and
+  Becchio]{strachan2024testing}
+James W.~A. Strachan, Dalila Albergo, Giulia Borghini, Oriana Pansardi, Eugenio
+  Scaliti, Saurabh Gupta, Krati Saxena, Alessandro Rufo, Stefano Panzeri, Guido
+  Manzi, Michael S.~A. Graziano, and Cristina Becchio.
+\newblock Testing theory of mind in large language models and humans.
+\newblock \emph{Nature Human Behaviour}, 8\penalty0 (7):\penalty0 1285--1295,
+  2024.
+\newblock \doi{10.1038/s41562-024-01882-z}.
+
+\bibitem[Ullman(2023)]{ullman2023alterations}
+Tomer~D. Ullman.
+\newblock Large language models fail on trivial alterations to theory-of-mind
+  tasks.
+\newblock \emph{arXiv preprint arXiv:2302.08399}, 2023.
+\newblock \doi{10.48550/arXiv.2302.08399}.
+
+\bibitem[Young and Saxe(2008)]{young2008belief}
+Liane Young and Rebecca Saxe.
+\newblock The neural basis of belief encoding and integration in moral
+  judgment.
+\newblock \emph{NeuroImage}, 40\penalty0 (4):\penalty0 1912--1920, 2008.
+\newblock \doi{10.1016/j.neuroimage.2008.01.057}.
+
+\bibitem[Young and Saxe(2009)]{young2009innocent}
+Liane Young and Rebecca Saxe.
+\newblock Innocent intentions: A correlation between forgiveness for accidental
+  harm and neural activity.
+\newblock \emph{Neuropsychologia}, 47\penalty0 (10):\penalty0 2065--2072, 2009.
+\newblock \doi{10.1016/j.neuropsychologia.2009.03.020}.
+
+\bibitem[Young and Saxe(2011)]{young2011ignorance}
+Liane Young and Rebecca Saxe.
+\newblock When ignorance is no excuse: Different roles for intent across moral
+  domains.
+\newblock \emph{Cognition}, 120\penalty0 (2):\penalty0 202--214, 2011.
+\newblock \doi{10.1016/j.cognition.2011.04.005}.
+
+\bibitem[Young et~al.(2007)Young, Cushman, Hauser, and Saxe]{young2007neural}
+Liane Young, Fiery Cushman, Marc Hauser, and Rebecca Saxe.
+\newblock The neural basis of the interaction between theory of mind and moral
+  judgment.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 104\penalty0
+  (20):\penalty0 8235--8240, 2007.
+\newblock \doi{10.1073/pnas.0701408104}.
+
+\bibitem[Zhu et~al.(2024)Zhu, Zhang, and Wang]{zhu2024beliefs}
+Wentao Zhu, Zhining Zhang, and Yizhou Wang.
+\newblock Language models represent beliefs of self and others.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{Proceedings of Machine Learning Research},
+  pages 62638--62681. PMLR, 2024.
+\newblock URL \url{https://proceedings.mlr.press/v235/zhu24o.html}.
+
+\end{thebibliography}

@@ -83,7 +83,8 @@ ENTRIES = [
      "outputs/tom_benchmarks/tom_vs_contrast.csv",
      "code/experiments/42_tom_vs_contrast.py", "init_belief=0"),
     ("w4_curriculum.png",
-     "W4 prompt curriculum: contrast at each of 5 cumulative in-context levels",
+     "W4 prompt curriculum: in-context escalation vs baseline (3/6 clear L5 bar; "
+     "stack gains mostly accidental-blame suppression — not \"reachable by prompting\")",
      "outputs/experiments/w4_prompt_curriculum.csv",
      "code/experiments/55_w4_summary.py", "job 19130876"),
     ("w7_bruneau_selectivity.png",

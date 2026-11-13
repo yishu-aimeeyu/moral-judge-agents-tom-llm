@@ -1,0 +1,7 @@
+model,n_kept,dropped_mask,dropped_order
+Meta-Llama-3.1-8B-Instruct,280,8,10
+Meta-Llama-3.1-8B,280,8,10
+OLMo-2-1124-7B-Instruct,280,8,10
+OLMo-2-1124-7B,280,8,10
+Qwen2.5-7B-Instruct,280,8,10
+Qwen2.5-7B,280,8,10

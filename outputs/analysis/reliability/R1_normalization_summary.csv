@@ -1,0 +1,5 @@
+scheme,spearman_vs_endpoint,model_sign_flips,model_x_template_sign_flips,n_models,n_model_templates
+observed,0.982,1,0,29,149
+z_global,0.937,1,0,29,149
+z_source,0.935,1,0,29,149
+rank,0.935,2,3,29,149

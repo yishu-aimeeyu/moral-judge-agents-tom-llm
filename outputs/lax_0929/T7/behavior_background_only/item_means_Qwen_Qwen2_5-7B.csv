@@ -1,0 +1,2087 @@
+template,story_id,source,condition,intent_label,outcome_label,mean_norm_blame,n
+blame_w1,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.563,1
+blame_w1,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.563,1
+blame_w1,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.563,1
+blame_w1,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.563,1
+blame_w1,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.5513,1
+blame_w1,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.5513,1
+blame_w1,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.5513,1
+blame_w1,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.5513,1
+blame_w1,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.5307,1
+blame_w1,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.5307,1
+blame_w1,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.5307,1
+blame_w1,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.5307,1
+blame_w1,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.5778,1
+blame_w1,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.5778,1
+blame_w1,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.5778,1
+blame_w1,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.5778,1
+blame_w1,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.58,1
+blame_w1,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.58,1
+blame_w1,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.58,1
+blame_w1,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.58,1
+blame_w1,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.5747,1
+blame_w1,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5747,1
+blame_w1,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.5747,1
+blame_w1,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5747,1
+blame_w1,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.3287,1
+blame_w1,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.3287,1
+blame_w1,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.3287,1
+blame_w1,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.3287,1
+blame_w1,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.6113,1
+blame_w1,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.6113,1
+blame_w1,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.6113,1
+blame_w1,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.6113,1
+blame_w1,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.5618,1
+blame_w1,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.5618,1
+blame_w1,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.5618,1
+blame_w1,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.5618,1
+blame_w1,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.4375,1
+blame_w1,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.4375,1
+blame_w1,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.4375,1
+blame_w1,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.4375,1
+blame_w1,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.5438,1
+blame_w1,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.5438,1
+blame_w1,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.5438,1
+blame_w1,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.5438,1
+blame_w1,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.4698,1
+blame_w1,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.4698,1
+blame_w1,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.4698,1
+blame_w1,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.4698,1
+blame_w1,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.5372,1
+blame_w1,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.5372,1
+blame_w1,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.5372,1
+blame_w1,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.5372,1
+blame_w1,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.5691,1
+blame_w1,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.5691,1
+blame_w1,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.5691,1
+blame_w1,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.5691,1
+blame_w1,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.6485,1
+blame_w1,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.6485,1
+blame_w1,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.6485,1
+blame_w1,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.6485,1
+blame_w1,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.4836,1
+blame_w1,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.4836,1
+blame_w1,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.4836,1
+blame_w1,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.4836,1
+blame_w1,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.5741,1
+blame_w1,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.5741,1
+blame_w1,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.5741,1
+blame_w1,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.5741,1
+blame_w1,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.5378,1
+blame_w1,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.5378,1
+blame_w1,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.5378,1
+blame_w1,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.5378,1
+blame_w1,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.6316,1
+blame_w1,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.6316,1
+blame_w1,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.6316,1
+blame_w1,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.6316,1
+blame_w1,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.523,1
+blame_w1,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.523,1
+blame_w1,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.523,1
+blame_w1,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.523,1
+blame_w1,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.548,1
+blame_w1,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.548,1
+blame_w1,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.548,1
+blame_w1,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.548,1
+blame_w1,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.5252,1
+blame_w1,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.5252,1
+blame_w1,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.5252,1
+blame_w1,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.5252,1
+blame_w1,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.5165,1
+blame_w1,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.5165,1
+blame_w1,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.5165,1
+blame_w1,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.5165,1
+blame_w1,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.475,1
+blame_w1,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.475,1
+blame_w1,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.475,1
+blame_w1,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.475,1
+blame_w1,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.5581,1
+blame_w1,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.5581,1
+blame_w1,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.5581,1
+blame_w1,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.5581,1
+blame_w1,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.5392,1
+blame_w1,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.5392,1
+blame_w1,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.5392,1
+blame_w1,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.5392,1
+blame_w1,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.4718,1
+blame_w1,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.4718,1
+blame_w1,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.4718,1
+blame_w1,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.4718,1
+blame_w1,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.4637,1
+blame_w1,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.4637,1
+blame_w1,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.4637,1
+blame_w1,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.4637,1
+blame_w1,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.5564,1
+blame_w1,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.5564,1
+blame_w1,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.5564,1
+blame_w1,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.5564,1
+blame_w1,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.6364,1
+blame_w1,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.6364,1
+blame_w1,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.6364,1
+blame_w1,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.6364,1
+blame_w1,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.625,1
+blame_w1,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.625,1
+blame_w1,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.625,1
+blame_w1,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.625,1
+blame_w1,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.5076,1
+blame_w1,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5076,1
+blame_w1,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.5076,1
+blame_w1,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5076,1
+blame_w1,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.5388,1
+blame_w1,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.5388,1
+blame_w1,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.5388,1
+blame_w1,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.5388,1
+blame_w1,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.4749,1
+blame_w1,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.4749,1
+blame_w1,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.4749,1
+blame_w1,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.4749,1
+blame_w1,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.4805,1
+blame_w1,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.4805,1
+blame_w1,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.4805,1
+blame_w1,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.4805,1
+blame_w1,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.5349,1
+blame_w1,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.5349,1
+blame_w1,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.5349,1
+blame_w1,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.5349,1
+blame_w1,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.5059,1
+blame_w1,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.5059,1
+blame_w1,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.5059,1
+blame_w1,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.5059,1
+blame_w1,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.5682,1
+blame_w1,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.5682,1
+blame_w1,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.5682,1
+blame_w1,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.5682,1
+blame_w1,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.534,1
+blame_w1,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.534,1
+blame_w1,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.534,1
+blame_w1,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.534,1
+blame_w1,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.5917,1
+blame_w1,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.5917,1
+blame_w1,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.5917,1
+blame_w1,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.5917,1
+blame_w1,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.5125,1
+blame_w1,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.5125,1
+blame_w1,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.5125,1
+blame_w1,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.5125,1
+blame_w1,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.6141,1
+blame_w1,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.6141,1
+blame_w1,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.6141,1
+blame_w1,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.6141,1
+blame_w1,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.5419,1
+blame_w1,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.5419,1
+blame_w1,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.5419,1
+blame_w1,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.5419,1
+blame_w1,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.6277,1
+blame_w1,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.6277,1
+blame_w1,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.6277,1
+blame_w1,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.6277,1
+blame_w1,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.5368,1
+blame_w1,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.5368,1
+blame_w1,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.5368,1
+blame_w1,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.5368,1
+blame_w1,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.5394,1
+blame_w1,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.5394,1
+blame_w1,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.5394,1
+blame_w1,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.5394,1
+blame_w1,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.5855,1
+blame_w1,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.5855,1
+blame_w1,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.5855,1
+blame_w1,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.5855,1
+blame_w1,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.4535,1
+blame_w1,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.4535,1
+blame_w1,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.4535,1
+blame_w1,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.4535,1
+blame_w1,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.625,1
+blame_w1,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.625,1
+blame_w1,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.625,1
+blame_w1,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.625,1
+blame_w1,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.5125,1
+blame_w1,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.5125,1
+blame_w1,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.5125,1
+blame_w1,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.5125,1
+blame_w1,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.5349,1
+blame_w1,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.5349,1
+blame_w1,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.5349,1
+blame_w1,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.5349,1
+blame_w1,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.5165,1
+blame_w1,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.5165,1
+blame_w1,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.5165,1
+blame_w1,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.5165,1
+blame_w1,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.5076,1
+blame_w1,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.5076,1
+blame_w1,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.5076,1
+blame_w1,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.5076,1
+blame_w1,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.534,1
+blame_w1,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.534,1
+blame_w1,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.534,1
+blame_w1,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.534,1
+blame_w1,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.5564,1
+blame_w1,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.5564,1
+blame_w1,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.5564,1
+blame_w1,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.5564,1
+blame_w1,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.5388,1
+blame_w1,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.5388,1
+blame_w1,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.5388,1
+blame_w1,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.5388,1
+blame_w1,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.5438,1
+blame_w1,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.5438,1
+blame_w1,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.5438,1
+blame_w1,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.5438,1
+blame_w1,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.475,1
+blame_w1,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.475,1
+blame_w1,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.475,1
+blame_w1,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.475,1
+blame_w1,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.6277,1
+blame_w1,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.6277,1
+blame_w1,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.6277,1
+blame_w1,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.6277,1
+blame_w1,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.5741,1
+blame_w1,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.5741,1
+blame_w1,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.5741,1
+blame_w1,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.5741,1
+blame_w1,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.5059,1
+blame_w1,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.5059,1
+blame_w1,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.5059,1
+blame_w1,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.5059,1
+blame_w1,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.4836,1
+blame_w1,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.4836,1
+blame_w1,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.4836,1
+blame_w1,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.4836,1
+blame_w1,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.5855,1
+blame_w1,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.5855,1
+blame_w1,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.5855,1
+blame_w1,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.5855,1
+blame_w1,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.6141,1
+blame_w1,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.6141,1
+blame_w1,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.6141,1
+blame_w1,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.6141,1
+blame_w1,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.5372,1
+blame_w1,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.5372,1
+blame_w1,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.5372,1
+blame_w1,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.5372,1
+blame_w1,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.523,1
+blame_w1,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.523,1
+blame_w1,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.523,1
+blame_w1,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.523,1
+blame_w1,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.563,1
+blame_w1,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.563,1
+blame_w1,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.563,1
+blame_w1,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.563,1
+blame_w1,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.4805,1
+blame_w1,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.4805,1
+blame_w1,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.4805,1
+blame_w1,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.4805,1
+blame_w1,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.5682,1
+blame_w1,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.5682,1
+blame_w1,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.5682,1
+blame_w1,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.5682,1
+blame_w1,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.4375,1
+blame_w1,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.4375,1
+blame_w1,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.4375,1
+blame_w1,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.4375,1
+blame_w1,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.4535,1
+blame_w1,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.4535,1
+blame_w1,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.4535,1
+blame_w1,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.4535,1
+blame_w1,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.5378,1
+blame_w1,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.5378,1
+blame_w1,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.5378,1
+blame_w1,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.5378,1
+blame_w1,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.5076,1
+blame_w1,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.5076,1
+blame_w1,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.6904,1
+blame_w1,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.6904,1
+blame_w1,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.5291,1
+blame_w1,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.5291,1
+blame_w1,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.4912,1
+blame_w1,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.4912,1
+blame_w1,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.6192,1
+blame_w1,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.6192,1
+blame_w2,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.4312,1
+blame_w2,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.4312,1
+blame_w2,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.4312,1
+blame_w2,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.4312,1
+blame_w2,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.4146,1
+blame_w2,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.4146,1
+blame_w2,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.4146,1
+blame_w2,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.4146,1
+blame_w2,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.3589,1
+blame_w2,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.3589,1
+blame_w2,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.3589,1
+blame_w2,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.3589,1
+blame_w2,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.4649,1
+blame_w2,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.4649,1
+blame_w2,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.4649,1
+blame_w2,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.4649,1
+blame_w2,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.4635,1
+blame_w2,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.4635,1
+blame_w2,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.4635,1
+blame_w2,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.4635,1
+blame_w2,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.3913,1
+blame_w2,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.3913,1
+blame_w2,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.3913,1
+blame_w2,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.3913,1
+blame_w2,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.1885,1
+blame_w2,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.1885,1
+blame_w2,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.1885,1
+blame_w2,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.1885,1
+blame_w2,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.4585,1
+blame_w2,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.4585,1
+blame_w2,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.4585,1
+blame_w2,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.4585,1
+blame_w2,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.3866,1
+blame_w2,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.3866,1
+blame_w2,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.3866,1
+blame_w2,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.3866,1
+blame_w2,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.3787,1
+blame_w2,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.3787,1
+blame_w2,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.3787,1
+blame_w2,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.3787,1
+blame_w2,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.4034,1
+blame_w2,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.4034,1
+blame_w2,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.4034,1
+blame_w2,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.4034,1
+blame_w2,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.3958,1
+blame_w2,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.3958,1
+blame_w2,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.3958,1
+blame_w2,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.3958,1
+blame_w2,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.3582,1
+blame_w2,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.3582,1
+blame_w2,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.3582,1
+blame_w2,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.3582,1
+blame_w2,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.4073,1
+blame_w2,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.4073,1
+blame_w2,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.4073,1
+blame_w2,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.4073,1
+blame_w2,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.4274,1
+blame_w2,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.4274,1
+blame_w2,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.4274,1
+blame_w2,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.4274,1
+blame_w2,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.2893,1
+blame_w2,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.2893,1
+blame_w2,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.2893,1
+blame_w2,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.2893,1
+blame_w2,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.4626,1
+blame_w2,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.4626,1
+blame_w2,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.4626,1
+blame_w2,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.4626,1
+blame_w2,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.3651,1
+blame_w2,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.3651,1
+blame_w2,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.3651,1
+blame_w2,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.3651,1
+blame_w2,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.5287,1
+blame_w2,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.5287,1
+blame_w2,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.5287,1
+blame_w2,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.5287,1
+blame_w2,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.3939,1
+blame_w2,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.3939,1
+blame_w2,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.3939,1
+blame_w2,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.3939,1
+blame_w2,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.3738,1
+blame_w2,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.3738,1
+blame_w2,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.3738,1
+blame_w2,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.3738,1
+blame_w2,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.4139,1
+blame_w2,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.4139,1
+blame_w2,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.4139,1
+blame_w2,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.4139,1
+blame_w2,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.3821,1
+blame_w2,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.3821,1
+blame_w2,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.3821,1
+blame_w2,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.3821,1
+blame_w2,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.3549,1
+blame_w2,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.3549,1
+blame_w2,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.3549,1
+blame_w2,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.3549,1
+blame_w2,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.4411,1
+blame_w2,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.4411,1
+blame_w2,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.4411,1
+blame_w2,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.4411,1
+blame_w2,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.4211,1
+blame_w2,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.4211,1
+blame_w2,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.4211,1
+blame_w2,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.4211,1
+blame_w2,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.2891,1
+blame_w2,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.2891,1
+blame_w2,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.2891,1
+blame_w2,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.2891,1
+blame_w2,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.3329,1
+blame_w2,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.3329,1
+blame_w2,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.3329,1
+blame_w2,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.3329,1
+blame_w2,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.3779,1
+blame_w2,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.3779,1
+blame_w2,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.3779,1
+blame_w2,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.3779,1
+blame_w2,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.3922,1
+blame_w2,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.3922,1
+blame_w2,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.3922,1
+blame_w2,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.3922,1
+blame_w2,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.4351,1
+blame_w2,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.4351,1
+blame_w2,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.4351,1
+blame_w2,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.4351,1
+blame_w2,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.4171,1
+blame_w2,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.4171,1
+blame_w2,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.4171,1
+blame_w2,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.4171,1
+blame_w2,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.4025,1
+blame_w2,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.4025,1
+blame_w2,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.4025,1
+blame_w2,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.4025,1
+blame_w2,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.3841,1
+blame_w2,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.3841,1
+blame_w2,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.3841,1
+blame_w2,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.3841,1
+blame_w2,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.3404,1
+blame_w2,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.3404,1
+blame_w2,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.3404,1
+blame_w2,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.3404,1
+blame_w2,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.3769,1
+blame_w2,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.3769,1
+blame_w2,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.3769,1
+blame_w2,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.3769,1
+blame_w2,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.4662,1
+blame_w2,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.4662,1
+blame_w2,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.4662,1
+blame_w2,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.4662,1
+blame_w2,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.4034,1
+blame_w2,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.4034,1
+blame_w2,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.4034,1
+blame_w2,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.4034,1
+blame_w2,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.3964,1
+blame_w2,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.3964,1
+blame_w2,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.3964,1
+blame_w2,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.3964,1
+blame_w2,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.4254,1
+blame_w2,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.4254,1
+blame_w2,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.4254,1
+blame_w2,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.4254,1
+blame_w2,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.4574,1
+blame_w2,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.4574,1
+blame_w2,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.4574,1
+blame_w2,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.4574,1
+blame_w2,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.386,1
+blame_w2,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.386,1
+blame_w2,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.386,1
+blame_w2,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.386,1
+blame_w2,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.3847,1
+blame_w2,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.3847,1
+blame_w2,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.3847,1
+blame_w2,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.3847,1
+blame_w2,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.4449,1
+blame_w2,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.4449,1
+blame_w2,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.4449,1
+blame_w2,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.4449,1
+blame_w2,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.3834,1
+blame_w2,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.3834,1
+blame_w2,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.3834,1
+blame_w2,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.3834,1
+blame_w2,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.4737,1
+blame_w2,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.4737,1
+blame_w2,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.4737,1
+blame_w2,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.4737,1
+blame_w2,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.4065,1
+blame_w2,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.4065,1
+blame_w2,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.4065,1
+blame_w2,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.4065,1
+blame_w2,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.2978,1
+blame_w2,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.2978,1
+blame_w2,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.2978,1
+blame_w2,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.2978,1
+blame_w2,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.4351,1
+blame_w2,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.4351,1
+blame_w2,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.4351,1
+blame_w2,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.4351,1
+blame_w2,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.4574,1
+blame_w2,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.4574,1
+blame_w2,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.4574,1
+blame_w2,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.4574,1
+blame_w2,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.3769,1
+blame_w2,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.3769,1
+blame_w2,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.3769,1
+blame_w2,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.3769,1
+blame_w2,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.3821,1
+blame_w2,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.3821,1
+blame_w2,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.3821,1
+blame_w2,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.3821,1
+blame_w2,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.4171,1
+blame_w2,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.4171,1
+blame_w2,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.4171,1
+blame_w2,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.4171,1
+blame_w2,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.3964,1
+blame_w2,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.3964,1
+blame_w2,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.3964,1
+blame_w2,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.3964,1
+blame_w2,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.3779,1
+blame_w2,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.3779,1
+blame_w2,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.3779,1
+blame_w2,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.3779,1
+blame_w2,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.4025,1
+blame_w2,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.4025,1
+blame_w2,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.4025,1
+blame_w2,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.4025,1
+blame_w2,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.4034,1
+blame_w2,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.4034,1
+blame_w2,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.4034,1
+blame_w2,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.4034,1
+blame_w2,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.3549,1
+blame_w2,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.3549,1
+blame_w2,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.3549,1
+blame_w2,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.3549,1
+blame_w2,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.4449,1
+blame_w2,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.4449,1
+blame_w2,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.4449,1
+blame_w2,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.4449,1
+blame_w2,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.4626,1
+blame_w2,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.4626,1
+blame_w2,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.4626,1
+blame_w2,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.4626,1
+blame_w2,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.4662,1
+blame_w2,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.4662,1
+blame_w2,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.4662,1
+blame_w2,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.4662,1
+blame_w2,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.2893,1
+blame_w2,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.2893,1
+blame_w2,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.2893,1
+blame_w2,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.2893,1
+blame_w2,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.4065,1
+blame_w2,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.4065,1
+blame_w2,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.4065,1
+blame_w2,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.4065,1
+blame_w2,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.386,1
+blame_w2,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.386,1
+blame_w2,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.386,1
+blame_w2,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.386,1
+blame_w2,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.3582,1
+blame_w2,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.3582,1
+blame_w2,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.3582,1
+blame_w2,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.3582,1
+blame_w2,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.3939,1
+blame_w2,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.3939,1
+blame_w2,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.3939,1
+blame_w2,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.3939,1
+blame_w2,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.4312,1
+blame_w2,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.4312,1
+blame_w2,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.4312,1
+blame_w2,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.4312,1
+blame_w2,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.3404,1
+blame_w2,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.3404,1
+blame_w2,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.3404,1
+blame_w2,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.3404,1
+blame_w2,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.4034,1
+blame_w2,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.4034,1
+blame_w2,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.4034,1
+blame_w2,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.4034,1
+blame_w2,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.3787,1
+blame_w2,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.3787,1
+blame_w2,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.3787,1
+blame_w2,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.3787,1
+blame_w2,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.2978,1
+blame_w2,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.2978,1
+blame_w2,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.2978,1
+blame_w2,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.2978,1
+blame_w2,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.3651,1
+blame_w2,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.3651,1
+blame_w2,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.3651,1
+blame_w2,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.3651,1
+blame_w2,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.2738,1
+blame_w2,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.2738,1
+blame_w2,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.5144,1
+blame_w2,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.5144,1
+blame_w2,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.2954,1
+blame_w2,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.2954,1
+blame_w2,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.3547,1
+blame_w2,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.3547,1
+blame_w2,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.4342,1
+blame_w2,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.4342,1
+human_verbatim,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.5,1
+human_verbatim,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.5,1
+human_verbatim,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.5,1
+human_verbatim,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.5,1
+human_verbatim,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.4412,1
+human_verbatim,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.4412,1
+human_verbatim,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.4412,1
+human_verbatim,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.4412,1
+human_verbatim,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.3132,1
+human_verbatim,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.3132,1
+human_verbatim,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.3132,1
+human_verbatim,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.3132,1
+human_verbatim,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.5588,1
+human_verbatim,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.5588,1
+human_verbatim,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.5588,1
+human_verbatim,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.5588,1
+human_verbatim,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.4043,1
+human_verbatim,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.4043,1
+human_verbatim,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.4043,1
+human_verbatim,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.4043,1
+human_verbatim,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.2456,1
+human_verbatim,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.2456,1
+human_verbatim,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.2456,1
+human_verbatim,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.2456,1
+human_verbatim,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.163,1
+human_verbatim,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.163,1
+human_verbatim,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.163,1
+human_verbatim,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.163,1
+human_verbatim,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.3833,1
+human_verbatim,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.3833,1
+human_verbatim,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.3833,1
+human_verbatim,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.3833,1
+human_verbatim,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.3358,1
+human_verbatim,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.3358,1
+human_verbatim,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.3358,1
+human_verbatim,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.3358,1
+human_verbatim,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.4017,1
+human_verbatim,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.4017,1
+human_verbatim,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.4017,1
+human_verbatim,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.4017,1
+human_verbatim,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.3794,1
+human_verbatim,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.3794,1
+human_verbatim,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.3794,1
+human_verbatim,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.3794,1
+human_verbatim,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.3152,1
+human_verbatim,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.3152,1
+human_verbatim,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.3152,1
+human_verbatim,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.3152,1
+human_verbatim,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.3492,1
+human_verbatim,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.3492,1
+human_verbatim,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.3492,1
+human_verbatim,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.3492,1
+human_verbatim,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.2921,1
+human_verbatim,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.2921,1
+human_verbatim,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.2921,1
+human_verbatim,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.2921,1
+human_verbatim,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.4338,1
+human_verbatim,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.4338,1
+human_verbatim,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.4338,1
+human_verbatim,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.4338,1
+human_verbatim,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.2322,1
+human_verbatim,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.2322,1
+human_verbatim,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.2322,1
+human_verbatim,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.2322,1
+human_verbatim,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.4129,1
+human_verbatim,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.4129,1
+human_verbatim,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.4129,1
+human_verbatim,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.4129,1
+human_verbatim,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.4446,1
+human_verbatim,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.4446,1
+human_verbatim,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.4446,1
+human_verbatim,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.4446,1
+human_verbatim,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.4532,1
+human_verbatim,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.4532,1
+human_verbatim,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.4532,1
+human_verbatim,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.4532,1
+human_verbatim,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.4395,1
+human_verbatim,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.4395,1
+human_verbatim,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.4395,1
+human_verbatim,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.4395,1
+human_verbatim,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.3355,1
+human_verbatim,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.3355,1
+human_verbatim,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.3355,1
+human_verbatim,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.3355,1
+human_verbatim,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.3432,1
+human_verbatim,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.3432,1
+human_verbatim,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.3432,1
+human_verbatim,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.3432,1
+human_verbatim,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.4134,1
+human_verbatim,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.4134,1
+human_verbatim,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.4134,1
+human_verbatim,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.4134,1
+human_verbatim,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.339,1
+human_verbatim,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.339,1
+human_verbatim,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.339,1
+human_verbatim,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.339,1
+human_verbatim,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.3509,1
+human_verbatim,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.3509,1
+human_verbatim,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.3509,1
+human_verbatim,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.3509,1
+human_verbatim,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.3559,1
+human_verbatim,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.3559,1
+human_verbatim,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.3559,1
+human_verbatim,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.3559,1
+human_verbatim,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.2813,1
+human_verbatim,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.2813,1
+human_verbatim,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.2813,1
+human_verbatim,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.2813,1
+human_verbatim,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.344,1
+human_verbatim,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.344,1
+human_verbatim,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.344,1
+human_verbatim,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.344,1
+human_verbatim,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.4332,1
+human_verbatim,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.4332,1
+human_verbatim,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.4332,1
+human_verbatim,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.4332,1
+human_verbatim,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.267,1
+human_verbatim,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.267,1
+human_verbatim,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.267,1
+human_verbatim,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.267,1
+human_verbatim,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.4032,1
+human_verbatim,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.4032,1
+human_verbatim,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.4032,1
+human_verbatim,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.4032,1
+human_verbatim,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.3829,1
+human_verbatim,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.3829,1
+human_verbatim,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.3829,1
+human_verbatim,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.3829,1
+human_verbatim,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.3492,1
+human_verbatim,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.3492,1
+human_verbatim,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.3492,1
+human_verbatim,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.3492,1
+human_verbatim,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.4103,1
+human_verbatim,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.4103,1
+human_verbatim,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.4103,1
+human_verbatim,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.4103,1
+human_verbatim,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.3888,1
+human_verbatim,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.3888,1
+human_verbatim,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.3888,1
+human_verbatim,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.3888,1
+human_verbatim,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.3568,1
+human_verbatim,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.3568,1
+human_verbatim,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.3568,1
+human_verbatim,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.3568,1
+human_verbatim,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.4474,1
+human_verbatim,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.4474,1
+human_verbatim,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.4474,1
+human_verbatim,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.4474,1
+human_verbatim,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.3388,1
+human_verbatim,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.3388,1
+human_verbatim,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.3388,1
+human_verbatim,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.3388,1
+human_verbatim,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.401,1
+human_verbatim,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.401,1
+human_verbatim,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.401,1
+human_verbatim,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.401,1
+human_verbatim,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.4899,1
+human_verbatim,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.4899,1
+human_verbatim,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.4899,1
+human_verbatim,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.4899,1
+human_verbatim,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.3019,1
+human_verbatim,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.3019,1
+human_verbatim,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.3019,1
+human_verbatim,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.3019,1
+human_verbatim,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.3795,1
+human_verbatim,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.3795,1
+human_verbatim,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.3795,1
+human_verbatim,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.3795,1
+human_verbatim,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.3772,1
+human_verbatim,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.3772,1
+human_verbatim,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.3772,1
+human_verbatim,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.3772,1
+human_verbatim,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.3358,1
+human_verbatim,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.3358,1
+human_verbatim,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.3358,1
+human_verbatim,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.3358,1
+human_verbatim,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.3987,1
+human_verbatim,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.3987,1
+human_verbatim,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.3987,1
+human_verbatim,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.3987,1
+human_verbatim,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.4127,1
+human_verbatim,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.4127,1
+human_verbatim,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.4127,1
+human_verbatim,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.4127,1
+human_verbatim,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.4246,1
+human_verbatim,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.4246,1
+human_verbatim,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.4246,1
+human_verbatim,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.4246,1
+human_verbatim,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.3411,1
+human_verbatim,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.3411,1
+human_verbatim,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.3411,1
+human_verbatim,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.3411,1
+human_verbatim,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.4166,1
+human_verbatim,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.4166,1
+human_verbatim,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.4166,1
+human_verbatim,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.4166,1
+human_verbatim,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.4466,1
+human_verbatim,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.4466,1
+human_verbatim,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.4466,1
+human_verbatim,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.4466,1
+human_verbatim,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.4152,1
+human_verbatim,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.4152,1
+human_verbatim,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.4152,1
+human_verbatim,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.4152,1
+human_verbatim,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.4054,1
+human_verbatim,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.4054,1
+human_verbatim,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.4054,1
+human_verbatim,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.4054,1
+human_verbatim,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.4581,1
+human_verbatim,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.4581,1
+human_verbatim,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.4581,1
+human_verbatim,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.4581,1
+human_verbatim,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.4481,1
+human_verbatim,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.4481,1
+human_verbatim,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.4481,1
+human_verbatim,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.4481,1
+human_verbatim,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.5484,1
+human_verbatim,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.5484,1
+human_verbatim,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.5484,1
+human_verbatim,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.5484,1
+human_verbatim,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.4296,1
+human_verbatim,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.4296,1
+human_verbatim,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.4296,1
+human_verbatim,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.4296,1
+human_verbatim,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.4571,1
+human_verbatim,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.4571,1
+human_verbatim,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.4571,1
+human_verbatim,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.4571,1
+human_verbatim,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.4215,1
+human_verbatim,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.4215,1
+human_verbatim,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.4215,1
+human_verbatim,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.4215,1
+human_verbatim,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.5067,1
+human_verbatim,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.5067,1
+human_verbatim,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.5067,1
+human_verbatim,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.5067,1
+human_verbatim,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.4783,1
+human_verbatim,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.4783,1
+human_verbatim,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.4783,1
+human_verbatim,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.4783,1
+human_verbatim,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.5085,1
+human_verbatim,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.5085,1
+human_verbatim,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.5085,1
+human_verbatim,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.5085,1
+human_verbatim,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.5146,1
+human_verbatim,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.5146,1
+human_verbatim,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.5146,1
+human_verbatim,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.5146,1
+human_verbatim,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.394,1
+human_verbatim,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.394,1
+human_verbatim,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.394,1
+human_verbatim,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.394,1
+human_verbatim,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.4225,1
+human_verbatim,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.4225,1
+human_verbatim,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.4225,1
+human_verbatim,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.4225,1
+human_verbatim,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.4568,1
+human_verbatim,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.4568,1
+human_verbatim,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.4568,1
+human_verbatim,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.4568,1
+human_verbatim,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.401,1
+human_verbatim,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.401,1
+human_verbatim,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.401,1
+human_verbatim,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.401,1
+human_verbatim,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.5225,1
+human_verbatim,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.5225,1
+human_verbatim,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.5225,1
+human_verbatim,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.5225,1
+human_verbatim,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.45,1
+human_verbatim,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.45,1
+human_verbatim,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.45,1
+human_verbatim,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.45,1
+human_verbatim,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.3823,1
+human_verbatim,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.3823,1
+human_verbatim,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.3823,1
+human_verbatim,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.3823,1
+human_verbatim,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.3764,1
+human_verbatim,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.3764,1
+human_verbatim,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.3764,1
+human_verbatim,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.3764,1
+human_verbatim,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.385,1
+human_verbatim,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.385,1
+human_verbatim,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.385,1
+human_verbatim,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.385,1
+human_verbatim,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.4498,1
+human_verbatim,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.4498,1
+human_verbatim,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.4498,1
+human_verbatim,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.4498,1
+human_verbatim,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.3261,1
+human_verbatim,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.3261,1
+human_verbatim,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.6494,1
+human_verbatim,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.6494,1
+human_verbatim,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.5201,1
+human_verbatim,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.5201,1
+human_verbatim,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.4884,1
+human_verbatim,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.4884,1
+human_verbatim,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.5718,1
+human_verbatim,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.5718,1
+punish_w1,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.4583,1
+punish_w1,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.4583,1
+punish_w1,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.4583,1
+punish_w1,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.4583,1
+punish_w1,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.503,1
+punish_w1,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.503,1
+punish_w1,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.503,1
+punish_w1,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.503,1
+punish_w1,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.4977,1
+punish_w1,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.4977,1
+punish_w1,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.4977,1
+punish_w1,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.4977,1
+punish_w1,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.4857,1
+punish_w1,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.4857,1
+punish_w1,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.4857,1
+punish_w1,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.4857,1
+punish_w1,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.5036,1
+punish_w1,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.5036,1
+punish_w1,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.5036,1
+punish_w1,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.5036,1
+punish_w1,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.4939,1
+punish_w1,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.4939,1
+punish_w1,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.4939,1
+punish_w1,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.4939,1
+punish_w1,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.4124,1
+punish_w1,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.4124,1
+punish_w1,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.4124,1
+punish_w1,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.4124,1
+punish_w1,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.6215,1
+punish_w1,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.6215,1
+punish_w1,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.6215,1
+punish_w1,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.6215,1
+punish_w1,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.4484,1
+punish_w1,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.4484,1
+punish_w1,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.4484,1
+punish_w1,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.4484,1
+punish_w1,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.4223,1
+punish_w1,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.4223,1
+punish_w1,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.4223,1
+punish_w1,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.4223,1
+punish_w1,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.4833,1
+punish_w1,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.4833,1
+punish_w1,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.4833,1
+punish_w1,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.4833,1
+punish_w1,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.4757,1
+punish_w1,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.4757,1
+punish_w1,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.4757,1
+punish_w1,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.4757,1
+punish_w1,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.5312,1
+punish_w1,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.5312,1
+punish_w1,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.5312,1
+punish_w1,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.5312,1
+punish_w1,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.4613,1
+punish_w1,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.4613,1
+punish_w1,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.4613,1
+punish_w1,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.4613,1
+punish_w1,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.5139,1
+punish_w1,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.5139,1
+punish_w1,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.5139,1
+punish_w1,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.5139,1
+punish_w1,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.447,1
+punish_w1,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.447,1
+punish_w1,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.447,1
+punish_w1,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.447,1
+punish_w1,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.4734,1
+punish_w1,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.4734,1
+punish_w1,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.4734,1
+punish_w1,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.4734,1
+punish_w1,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.5417,1
+punish_w1,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.5417,1
+punish_w1,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.5417,1
+punish_w1,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.5417,1
+punish_w1,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.5371,1
+punish_w1,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.5371,1
+punish_w1,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.5371,1
+punish_w1,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.5371,1
+punish_w1,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.5009,1
+punish_w1,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.5009,1
+punish_w1,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.5009,1
+punish_w1,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.5009,1
+punish_w1,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.5382,1
+punish_w1,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.5382,1
+punish_w1,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.5382,1
+punish_w1,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.5382,1
+punish_w1,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.4496,1
+punish_w1,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.4496,1
+punish_w1,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.4496,1
+punish_w1,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.4496,1
+punish_w1,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.4954,1
+punish_w1,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.4954,1
+punish_w1,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.4954,1
+punish_w1,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.4954,1
+punish_w1,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.4644,1
+punish_w1,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.4644,1
+punish_w1,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.4644,1
+punish_w1,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.4644,1
+punish_w1,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.4952,1
+punish_w1,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.4952,1
+punish_w1,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.4952,1
+punish_w1,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.4952,1
+punish_w1,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.4432,1
+punish_w1,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.4432,1
+punish_w1,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.4432,1
+punish_w1,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.4432,1
+punish_w1,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.4278,1
+punish_w1,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.4278,1
+punish_w1,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.4278,1
+punish_w1,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.4278,1
+punish_w1,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.4546,1
+punish_w1,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.4546,1
+punish_w1,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.4546,1
+punish_w1,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.4546,1
+punish_w1,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.5186,1
+punish_w1,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.5186,1
+punish_w1,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.5186,1
+punish_w1,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.5186,1
+punish_w1,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.489,1
+punish_w1,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.489,1
+punish_w1,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.489,1
+punish_w1,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.489,1
+punish_w1,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.5506,1
+punish_w1,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.5506,1
+punish_w1,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.5506,1
+punish_w1,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.5506,1
+punish_w1,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.5505,1
+punish_w1,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5505,1
+punish_w1,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.5505,1
+punish_w1,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5505,1
+punish_w1,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.5379,1
+punish_w1,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.5379,1
+punish_w1,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.5379,1
+punish_w1,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.5379,1
+punish_w1,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.4266,1
+punish_w1,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.4266,1
+punish_w1,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.4266,1
+punish_w1,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.4266,1
+punish_w1,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.4882,1
+punish_w1,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.4882,1
+punish_w1,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.4882,1
+punish_w1,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.4882,1
+punish_w1,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.4149,1
+punish_w1,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.4149,1
+punish_w1,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.4149,1
+punish_w1,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.4149,1
+punish_w1,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.4553,1
+punish_w1,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.4553,1
+punish_w1,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.4553,1
+punish_w1,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.4553,1
+punish_w1,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.5278,1
+punish_w1,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.5278,1
+punish_w1,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.5278,1
+punish_w1,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.5278,1
+punish_w1,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.5221,1
+punish_w1,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.5221,1
+punish_w1,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.5221,1
+punish_w1,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.5221,1
+punish_w1,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.4987,1
+punish_w1,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.4987,1
+punish_w1,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.4987,1
+punish_w1,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.4987,1
+punish_w1,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.5287,1
+punish_w1,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.5287,1
+punish_w1,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.5287,1
+punish_w1,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.5287,1
+punish_w1,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.5323,1
+punish_w1,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.5323,1
+punish_w1,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.5323,1
+punish_w1,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.5323,1
+punish_w1,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.5272,1
+punish_w1,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.5272,1
+punish_w1,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.5272,1
+punish_w1,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.5272,1
+punish_w1,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.5212,1
+punish_w1,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.5212,1
+punish_w1,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.5212,1
+punish_w1,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.5212,1
+punish_w1,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.529,1
+punish_w1,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.529,1
+punish_w1,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.529,1
+punish_w1,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.529,1
+punish_w1,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.4741,1
+punish_w1,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.4741,1
+punish_w1,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.4741,1
+punish_w1,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.4741,1
+punish_w1,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.4888,1
+punish_w1,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.4888,1
+punish_w1,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.4888,1
+punish_w1,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.4888,1
+punish_w1,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.4088,1
+punish_w1,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.4088,1
+punish_w1,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.4088,1
+punish_w1,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.4088,1
+punish_w1,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.5506,1
+punish_w1,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.5506,1
+punish_w1,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.5506,1
+punish_w1,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.5506,1
+punish_w1,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.5287,1
+punish_w1,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.5287,1
+punish_w1,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.5287,1
+punish_w1,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.5287,1
+punish_w1,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.4149,1
+punish_w1,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.4149,1
+punish_w1,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.4149,1
+punish_w1,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.4149,1
+punish_w1,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.4954,1
+punish_w1,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.4954,1
+punish_w1,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.4954,1
+punish_w1,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.4954,1
+punish_w1,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.5505,1
+punish_w1,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.5505,1
+punish_w1,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.5505,1
+punish_w1,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.5505,1
+punish_w1,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.5221,1
+punish_w1,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.5221,1
+punish_w1,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.5221,1
+punish_w1,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.5221,1
+punish_w1,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.5186,1
+punish_w1,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.5186,1
+punish_w1,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.5186,1
+punish_w1,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.5186,1
+punish_w1,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.5379,1
+punish_w1,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.5379,1
+punish_w1,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.5379,1
+punish_w1,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.5379,1
+punish_w1,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.4833,1
+punish_w1,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.4833,1
+punish_w1,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.4833,1
+punish_w1,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.4833,1
+punish_w1,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.4644,1
+punish_w1,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.4644,1
+punish_w1,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.4644,1
+punish_w1,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.4644,1
+punish_w1,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.5212,1
+punish_w1,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.5212,1
+punish_w1,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.5212,1
+punish_w1,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.5212,1
+punish_w1,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.4734,1
+punish_w1,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.4734,1
+punish_w1,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.4734,1
+punish_w1,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.4734,1
+punish_w1,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.4553,1
+punish_w1,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.4553,1
+punish_w1,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.4553,1
+punish_w1,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.4553,1
+punish_w1,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.447,1
+punish_w1,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.447,1
+punish_w1,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.447,1
+punish_w1,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.447,1
+punish_w1,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.4888,1
+punish_w1,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.4888,1
+punish_w1,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.4888,1
+punish_w1,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.4888,1
+punish_w1,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.5323,1
+punish_w1,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.5323,1
+punish_w1,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.5323,1
+punish_w1,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.5323,1
+punish_w1,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.5312,1
+punish_w1,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.5312,1
+punish_w1,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.5312,1
+punish_w1,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.5312,1
+punish_w1,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.5009,1
+punish_w1,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.5009,1
+punish_w1,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.5009,1
+punish_w1,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.5009,1
+punish_w1,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.4583,1
+punish_w1,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.4583,1
+punish_w1,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.4583,1
+punish_w1,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.4583,1
+punish_w1,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.4882,1
+punish_w1,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.4882,1
+punish_w1,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.4882,1
+punish_w1,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.4882,1
+punish_w1,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.5278,1
+punish_w1,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.5278,1
+punish_w1,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.5278,1
+punish_w1,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.5278,1
+punish_w1,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.4223,1
+punish_w1,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.4223,1
+punish_w1,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.4223,1
+punish_w1,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.4223,1
+punish_w1,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.4088,1
+punish_w1,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.4088,1
+punish_w1,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.4088,1
+punish_w1,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.4088,1
+punish_w1,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.5417,1
+punish_w1,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.5417,1
+punish_w1,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.5417,1
+punish_w1,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.5417,1
+punish_w1,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.4385,1
+punish_w1,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.4385,1
+punish_w1,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.5944,1
+punish_w1,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.5944,1
+punish_w1,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.4668,1
+punish_w1,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.4668,1
+punish_w1,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.5214,1
+punish_w1,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.5214,1
+punish_w1,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.5013,1
+punish_w1,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.5013,1
+punish_w2,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.5352,1
+punish_w2,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.5352,1
+punish_w2,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.5352,1
+punish_w2,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.5352,1
+punish_w2,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.5614,1
+punish_w2,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.5614,1
+punish_w2,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.5614,1
+punish_w2,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.5614,1
+punish_w2,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.5411,1
+punish_w2,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.5411,1
+punish_w2,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.5411,1
+punish_w2,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.5411,1
+punish_w2,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.5738,1
+punish_w2,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.5738,1
+punish_w2,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.5738,1
+punish_w2,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.5738,1
+punish_w2,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.553,1
+punish_w2,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.553,1
+punish_w2,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.553,1
+punish_w2,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.553,1
+punish_w2,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.5297,1
+punish_w2,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5297,1
+punish_w2,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.5297,1
+punish_w2,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5297,1
+punish_w2,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.3239,1
+punish_w2,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.3239,1
+punish_w2,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.3239,1
+punish_w2,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.3239,1
+punish_w2,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.5611,1
+punish_w2,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.5611,1
+punish_w2,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.5611,1
+punish_w2,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.5611,1
+punish_w2,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.4468,1
+punish_w2,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.4468,1
+punish_w2,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.4468,1
+punish_w2,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.4468,1
+punish_w2,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.4935,1
+punish_w2,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.4935,1
+punish_w2,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.4935,1
+punish_w2,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.4935,1
+punish_w2,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.5483,1
+punish_w2,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.5483,1
+punish_w2,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.5483,1
+punish_w2,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.5483,1
+punish_w2,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.4572,1
+punish_w2,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.4572,1
+punish_w2,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.4572,1
+punish_w2,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.4572,1
+punish_w2,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.4702,1
+punish_w2,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.4702,1
+punish_w2,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.4702,1
+punish_w2,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.4702,1
+punish_w2,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.5548,1
+punish_w2,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.5548,1
+punish_w2,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.5548,1
+punish_w2,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.5548,1
+punish_w2,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.5835,1
+punish_w2,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.5835,1
+punish_w2,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.5835,1
+punish_w2,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.5835,1
+punish_w2,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.4904,1
+punish_w2,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.4904,1
+punish_w2,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.4904,1
+punish_w2,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.4904,1
+punish_w2,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.4805,1
+punish_w2,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.4805,1
+punish_w2,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.4805,1
+punish_w2,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.4805,1
+punish_w2,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.559,1
+punish_w2,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.559,1
+punish_w2,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.559,1
+punish_w2,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.559,1
+punish_w2,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.5495,1
+punish_w2,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.5495,1
+punish_w2,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.5495,1
+punish_w2,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.5495,1
+punish_w2,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.5111,1
+punish_w2,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.5111,1
+punish_w2,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.5111,1
+punish_w2,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.5111,1
+punish_w2,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.5203,1
+punish_w2,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.5203,1
+punish_w2,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.5203,1
+punish_w2,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.5203,1
+punish_w2,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.5034,1
+punish_w2,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.5034,1
+punish_w2,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.5034,1
+punish_w2,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.5034,1
+punish_w2,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.5028,1
+punish_w2,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.5028,1
+punish_w2,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.5028,1
+punish_w2,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.5028,1
+punish_w2,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.5045,1
+punish_w2,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.5045,1
+punish_w2,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.5045,1
+punish_w2,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.5045,1
+punish_w2,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.5171,1
+punish_w2,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.5171,1
+punish_w2,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.5171,1
+punish_w2,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.5171,1
+punish_w2,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.5013,1
+punish_w2,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.5013,1
+punish_w2,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.5013,1
+punish_w2,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.5013,1
+punish_w2,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.3849,1
+punish_w2,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.3849,1
+punish_w2,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.3849,1
+punish_w2,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.3849,1
+punish_w2,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.4172,1
+punish_w2,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.4172,1
+punish_w2,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.4172,1
+punish_w2,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.4172,1
+punish_w2,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.4614,1
+punish_w2,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.4614,1
+punish_w2,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.4614,1
+punish_w2,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.4614,1
+punish_w2,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.5605,1
+punish_w2,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.5605,1
+punish_w2,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.5605,1
+punish_w2,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.5605,1
+punish_w2,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.5941,1
+punish_w2,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.5941,1
+punish_w2,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.5941,1
+punish_w2,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.5941,1
+punish_w2,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.5304,1
+punish_w2,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5304,1
+punish_w2,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.5304,1
+punish_w2,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5304,1
+punish_w2,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.5295,1
+punish_w2,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.5295,1
+punish_w2,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.5295,1
+punish_w2,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.5295,1
+punish_w2,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.415,1
+punish_w2,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.415,1
+punish_w2,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.415,1
+punish_w2,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.415,1
+punish_w2,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.4717,1
+punish_w2,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.4717,1
+punish_w2,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.4717,1
+punish_w2,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.4717,1
+punish_w2,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.46,1
+punish_w2,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.46,1
+punish_w2,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.46,1
+punish_w2,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.46,1
+punish_w2,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.4972,1
+punish_w2,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.4972,1
+punish_w2,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.4972,1
+punish_w2,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.4972,1
+punish_w2,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.535,1
+punish_w2,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.535,1
+punish_w2,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.535,1
+punish_w2,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.535,1
+punish_w2,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.4942,1
+punish_w2,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.4942,1
+punish_w2,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.4942,1
+punish_w2,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.4942,1
+punish_w2,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.5359,1
+punish_w2,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.5359,1
+punish_w2,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.5359,1
+punish_w2,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.5359,1
+punish_w2,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.5353,1
+punish_w2,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.5353,1
+punish_w2,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.5353,1
+punish_w2,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.5353,1
+punish_w2,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.5711,1
+punish_w2,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.5711,1
+punish_w2,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.5711,1
+punish_w2,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.5711,1
+punish_w2,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.5513,1
+punish_w2,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.5513,1
+punish_w2,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.5513,1
+punish_w2,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.5513,1
+punish_w2,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.6269,1
+punish_w2,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.6269,1
+punish_w2,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.6269,1
+punish_w2,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.6269,1
+punish_w2,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.4682,1
+punish_w2,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.4682,1
+punish_w2,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.4682,1
+punish_w2,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.4682,1
+punish_w2,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.4924,1
+punish_w2,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.4924,1
+punish_w2,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.4924,1
+punish_w2,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.4924,1
+punish_w2,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.516,1
+punish_w2,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.516,1
+punish_w2,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.516,1
+punish_w2,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.516,1
+punish_w2,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.4601,1
+punish_w2,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.4601,1
+punish_w2,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.4601,1
+punish_w2,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.4601,1
+punish_w2,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.5941,1
+punish_w2,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.5941,1
+punish_w2,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.5941,1
+punish_w2,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.5941,1
+punish_w2,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.5353,1
+punish_w2,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.5353,1
+punish_w2,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.5353,1
+punish_w2,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.5353,1
+punish_w2,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.46,1
+punish_w2,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.46,1
+punish_w2,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.46,1
+punish_w2,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.46,1
+punish_w2,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.5028,1
+punish_w2,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.5028,1
+punish_w2,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.5028,1
+punish_w2,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.5028,1
+punish_w2,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.5304,1
+punish_w2,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.5304,1
+punish_w2,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.5304,1
+punish_w2,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.5304,1
+punish_w2,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.4942,1
+punish_w2,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.4942,1
+punish_w2,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.4942,1
+punish_w2,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.4942,1
+punish_w2,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.4614,1
+punish_w2,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.4614,1
+punish_w2,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.4614,1
+punish_w2,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.4614,1
+punish_w2,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.5295,1
+punish_w2,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.5295,1
+punish_w2,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.5295,1
+punish_w2,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.5295,1
+punish_w2,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.5483,1
+punish_w2,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.5483,1
+punish_w2,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.5483,1
+punish_w2,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.5483,1
+punish_w2,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.5045,1
+punish_w2,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.5045,1
+punish_w2,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.5045,1
+punish_w2,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.5045,1
+punish_w2,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.6269,1
+punish_w2,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.6269,1
+punish_w2,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.6269,1
+punish_w2,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.6269,1
+punish_w2,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.4805,1
+punish_w2,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.4805,1
+punish_w2,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.4805,1
+punish_w2,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.4805,1
+punish_w2,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.4972,1
+punish_w2,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.4972,1
+punish_w2,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.4972,1
+punish_w2,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.4972,1
+punish_w2,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.4904,1
+punish_w2,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.4904,1
+punish_w2,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.4904,1
+punish_w2,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.4904,1
+punish_w2,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.516,1
+punish_w2,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.516,1
+punish_w2,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.516,1
+punish_w2,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.516,1
+punish_w2,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.5711,1
+punish_w2,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.5711,1
+punish_w2,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.5711,1
+punish_w2,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.5711,1
+punish_w2,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.4702,1
+punish_w2,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.4702,1
+punish_w2,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.4702,1
+punish_w2,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.4702,1
+punish_w2,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.5111,1
+punish_w2,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.5111,1
+punish_w2,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.5111,1
+punish_w2,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.5111,1
+punish_w2,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.5352,1
+punish_w2,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.5352,1
+punish_w2,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.5352,1
+punish_w2,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.5352,1
+punish_w2,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.4717,1
+punish_w2,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.4717,1
+punish_w2,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.4717,1
+punish_w2,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.4717,1
+punish_w2,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.535,1
+punish_w2,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.535,1
+punish_w2,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.535,1
+punish_w2,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.535,1
+punish_w2,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.4935,1
+punish_w2,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.4935,1
+punish_w2,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.4935,1
+punish_w2,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.4935,1
+punish_w2,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.4601,1
+punish_w2,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.4601,1
+punish_w2,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.4601,1
+punish_w2,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.4601,1
+punish_w2,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.559,1
+punish_w2,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.559,1
+punish_w2,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.559,1
+punish_w2,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.559,1
+punish_w2,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.4239,1
+punish_w2,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.4239,1
+punish_w2,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.6303,1
+punish_w2,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.6303,1
+punish_w2,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.3709,1
+punish_w2,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.3709,1
+punish_w2,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.4852,1
+punish_w2,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.4852,1
+punish_w2,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.6277,1
+punish_w2,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.6277,1
+wrong_w1,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.47,1
+wrong_w1,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.47,1
+wrong_w1,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.47,1
+wrong_w1,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.47,1
+wrong_w1,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.502,1
+wrong_w1,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.502,1
+wrong_w1,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.502,1
+wrong_w1,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.502,1
+wrong_w1,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.4408,1
+wrong_w1,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.4408,1
+wrong_w1,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.4408,1
+wrong_w1,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.4408,1
+wrong_w1,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.4804,1
+wrong_w1,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.4804,1
+wrong_w1,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.4804,1
+wrong_w1,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.4804,1
+wrong_w1,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.4934,1
+wrong_w1,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.4934,1
+wrong_w1,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.4934,1
+wrong_w1,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.4934,1
+wrong_w1,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.508,1
+wrong_w1,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.508,1
+wrong_w1,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.508,1
+wrong_w1,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.508,1
+wrong_w1,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.2071,1
+wrong_w1,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.2071,1
+wrong_w1,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.2071,1
+wrong_w1,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.2071,1
+wrong_w1,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.5015,1
+wrong_w1,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.5015,1
+wrong_w1,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.5015,1
+wrong_w1,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.5015,1
+wrong_w1,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.4183,1
+wrong_w1,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.4183,1
+wrong_w1,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.4183,1
+wrong_w1,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.4183,1
+wrong_w1,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.4191,1
+wrong_w1,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.4191,1
+wrong_w1,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.4191,1
+wrong_w1,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.4191,1
+wrong_w1,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.4263,1
+wrong_w1,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.4263,1
+wrong_w1,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.4263,1
+wrong_w1,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.4263,1
+wrong_w1,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.4464,1
+wrong_w1,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.4464,1
+wrong_w1,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.4464,1
+wrong_w1,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.4464,1
+wrong_w1,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.4209,1
+wrong_w1,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.4209,1
+wrong_w1,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.4209,1
+wrong_w1,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.4209,1
+wrong_w1,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.4662,1
+wrong_w1,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.4662,1
+wrong_w1,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.4662,1
+wrong_w1,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.4662,1
+wrong_w1,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.5592,1
+wrong_w1,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.5592,1
+wrong_w1,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.5592,1
+wrong_w1,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.5592,1
+wrong_w1,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.4035,1
+wrong_w1,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.4035,1
+wrong_w1,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.4035,1
+wrong_w1,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.4035,1
+wrong_w1,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.482,1
+wrong_w1,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.482,1
+wrong_w1,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.482,1
+wrong_w1,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.482,1
+wrong_w1,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.4511,1
+wrong_w1,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.4511,1
+wrong_w1,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.4511,1
+wrong_w1,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.4511,1
+wrong_w1,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.5451,1
+wrong_w1,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.5451,1
+wrong_w1,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.5451,1
+wrong_w1,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.5451,1
+wrong_w1,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.4368,1
+wrong_w1,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.4368,1
+wrong_w1,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.4368,1
+wrong_w1,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.4368,1
+wrong_w1,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.4236,1
+wrong_w1,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.4236,1
+wrong_w1,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.4236,1
+wrong_w1,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.4236,1
+wrong_w1,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.4414,1
+wrong_w1,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.4414,1
+wrong_w1,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.4414,1
+wrong_w1,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.4414,1
+wrong_w1,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.4229,1
+wrong_w1,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.4229,1
+wrong_w1,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.4229,1
+wrong_w1,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.4229,1
+wrong_w1,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.4245,1
+wrong_w1,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.4245,1
+wrong_w1,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.4245,1
+wrong_w1,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.4245,1
+wrong_w1,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.4639,1
+wrong_w1,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.4639,1
+wrong_w1,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.4639,1
+wrong_w1,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.4639,1
+wrong_w1,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.4653,1
+wrong_w1,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.4653,1
+wrong_w1,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.4653,1
+wrong_w1,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.4653,1
+wrong_w1,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.3789,1
+wrong_w1,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.3789,1
+wrong_w1,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.3789,1
+wrong_w1,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.3789,1
+wrong_w1,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.4187,1
+wrong_w1,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.4187,1
+wrong_w1,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.4187,1
+wrong_w1,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.4187,1
+wrong_w1,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.4575,1
+wrong_w1,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.4575,1
+wrong_w1,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.4575,1
+wrong_w1,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.4575,1
+wrong_w1,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.5272,1
+wrong_w1,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.5272,1
+wrong_w1,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.5272,1
+wrong_w1,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.5272,1
+wrong_w1,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.5074,1
+wrong_w1,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.5074,1
+wrong_w1,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.5074,1
+wrong_w1,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.5074,1
+wrong_w1,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.4337,1
+wrong_w1,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.4337,1
+wrong_w1,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.4337,1
+wrong_w1,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.4337,1
+wrong_w1,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.5206,1
+wrong_w1,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.5206,1
+wrong_w1,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.5206,1
+wrong_w1,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.5206,1
+wrong_w1,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.3926,1
+wrong_w1,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.3926,1
+wrong_w1,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.3926,1
+wrong_w1,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.3926,1
+wrong_w1,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.451,1
+wrong_w1,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.451,1
+wrong_w1,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.451,1
+wrong_w1,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.451,1
+wrong_w1,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.4447,1
+wrong_w1,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.4447,1
+wrong_w1,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.4447,1
+wrong_w1,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.4447,1
+wrong_w1,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.4964,1
+wrong_w1,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.4964,1
+wrong_w1,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.4964,1
+wrong_w1,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.4964,1
+wrong_w1,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.4462,1
+wrong_w1,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.4462,1
+wrong_w1,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.4462,1
+wrong_w1,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.4462,1
+wrong_w1,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.4564,1
+wrong_w1,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.4564,1
+wrong_w1,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.4564,1
+wrong_w1,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.4564,1
+wrong_w1,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.5397,1
+wrong_w1,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.5397,1
+wrong_w1,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.5397,1
+wrong_w1,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.5397,1
+wrong_w1,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.441,1
+wrong_w1,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.441,1
+wrong_w1,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.441,1
+wrong_w1,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.441,1
+wrong_w1,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.5422,1
+wrong_w1,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.5422,1
+wrong_w1,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.5422,1
+wrong_w1,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.5422,1
+wrong_w1,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.4836,1
+wrong_w1,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.4836,1
+wrong_w1,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.4836,1
+wrong_w1,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.4836,1
+wrong_w1,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.5506,1
+wrong_w1,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.5506,1
+wrong_w1,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.5506,1
+wrong_w1,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.5506,1
+wrong_w1,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.4609,1
+wrong_w1,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.4609,1
+wrong_w1,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.4609,1
+wrong_w1,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.4609,1
+wrong_w1,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.4733,1
+wrong_w1,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.4733,1
+wrong_w1,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.4733,1
+wrong_w1,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.4733,1
+wrong_w1,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.4573,1
+wrong_w1,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.4573,1
+wrong_w1,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.4573,1
+wrong_w1,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.4573,1
+wrong_w1,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.3532,1
+wrong_w1,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.3532,1
+wrong_w1,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.3532,1
+wrong_w1,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.3532,1
+wrong_w1,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.5074,1
+wrong_w1,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.5074,1
+wrong_w1,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.5074,1
+wrong_w1,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.5074,1
+wrong_w1,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.441,1
+wrong_w1,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.441,1
+wrong_w1,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.441,1
+wrong_w1,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.441,1
+wrong_w1,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.4447,1
+wrong_w1,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.4447,1
+wrong_w1,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.4447,1
+wrong_w1,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.4447,1
+wrong_w1,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.4229,1
+wrong_w1,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.4229,1
+wrong_w1,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.4229,1
+wrong_w1,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.4229,1
+wrong_w1,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.4337,1
+wrong_w1,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.4337,1
+wrong_w1,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.4337,1
+wrong_w1,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.4337,1
+wrong_w1,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.4564,1
+wrong_w1,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.4564,1
+wrong_w1,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.4564,1
+wrong_w1,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.4564,1
+wrong_w1,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.4575,1
+wrong_w1,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.4575,1
+wrong_w1,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.4575,1
+wrong_w1,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.4575,1
+wrong_w1,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.5206,1
+wrong_w1,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.5206,1
+wrong_w1,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.5206,1
+wrong_w1,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.5206,1
+wrong_w1,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.4263,1
+wrong_w1,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.4263,1
+wrong_w1,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.4263,1
+wrong_w1,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.4263,1
+wrong_w1,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.4245,1
+wrong_w1,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.4245,1
+wrong_w1,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.4245,1
+wrong_w1,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.4245,1
+wrong_w1,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.5506,1
+wrong_w1,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.5506,1
+wrong_w1,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.5506,1
+wrong_w1,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.5506,1
+wrong_w1,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.482,1
+wrong_w1,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.482,1
+wrong_w1,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.482,1
+wrong_w1,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.482,1
+wrong_w1,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.4964,1
+wrong_w1,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.4964,1
+wrong_w1,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.4964,1
+wrong_w1,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.4964,1
+wrong_w1,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.4035,1
+wrong_w1,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.4035,1
+wrong_w1,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.4035,1
+wrong_w1,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.4035,1
+wrong_w1,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.4573,1
+wrong_w1,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.4573,1
+wrong_w1,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.4573,1
+wrong_w1,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.4573,1
+wrong_w1,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.5422,1
+wrong_w1,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.5422,1
+wrong_w1,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.5422,1
+wrong_w1,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.5422,1
+wrong_w1,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.4209,1
+wrong_w1,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.4209,1
+wrong_w1,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.4209,1
+wrong_w1,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.4209,1
+wrong_w1,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.4368,1
+wrong_w1,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.4368,1
+wrong_w1,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.4368,1
+wrong_w1,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.4368,1
+wrong_w1,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.47,1
+wrong_w1,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.47,1
+wrong_w1,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.47,1
+wrong_w1,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.47,1
+wrong_w1,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.451,1
+wrong_w1,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.451,1
+wrong_w1,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.451,1
+wrong_w1,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.451,1
+wrong_w1,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.4462,1
+wrong_w1,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.4462,1
+wrong_w1,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.4462,1
+wrong_w1,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.4462,1
+wrong_w1,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.4191,1
+wrong_w1,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.4191,1
+wrong_w1,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.4191,1
+wrong_w1,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.4191,1
+wrong_w1,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.3532,1
+wrong_w1,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.3532,1
+wrong_w1,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.3532,1
+wrong_w1,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.3532,1
+wrong_w1,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.4511,1
+wrong_w1,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.4511,1
+wrong_w1,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.4511,1
+wrong_w1,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.4511,1
+wrong_w1,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.4158,1
+wrong_w1,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.4158,1
+wrong_w1,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.6946,1
+wrong_w1,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.6946,1
+wrong_w1,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.4463,1
+wrong_w1,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.4463,1
+wrong_w1,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.5209,1
+wrong_w1,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.5209,1
+wrong_w1,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.4871,1
+wrong_w1,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.4871,1
+wrong_w2,YS2008-ALARM-accidental,YS2008,accidental,innocent,harm,0.5003,1
+wrong_w2,YS2008-ALARM-attempted,YS2008,attempted,guilty,no_harm,0.5003,1
+wrong_w2,YS2008-ALARM-intentional,YS2008,intentional,guilty,harm,0.5003,1
+wrong_w2,YS2008-ALARM-neutral,YS2008,neutral,innocent,no_harm,0.5003,1
+wrong_w2,YS2008-ASTHMA-accidental,YS2008,accidental,innocent,harm,0.5324,1
+wrong_w2,YS2008-ASTHMA-attempted,YS2008,attempted,guilty,no_harm,0.5324,1
+wrong_w2,YS2008-ASTHMA-intentional,YS2008,intentional,guilty,harm,0.5324,1
+wrong_w2,YS2008-ASTHMA-neutral,YS2008,neutral,innocent,no_harm,0.5324,1
+wrong_w2,YS2008-BAR-accidental,YS2008,accidental,innocent,harm,0.5073,1
+wrong_w2,YS2008-BAR-attempted,YS2008,attempted,guilty,no_harm,0.5073,1
+wrong_w2,YS2008-BAR-intentional,YS2008,intentional,guilty,harm,0.5073,1
+wrong_w2,YS2008-BAR-neutral,YS2008,neutral,innocent,no_harm,0.5073,1
+wrong_w2,YS2008-BIKE-accidental,YS2008,accidental,innocent,harm,0.5008,1
+wrong_w2,YS2008-BIKE-attempted,YS2008,attempted,guilty,no_harm,0.5008,1
+wrong_w2,YS2008-BIKE-intentional,YS2008,intentional,guilty,harm,0.5008,1
+wrong_w2,YS2008-BIKE-neutral,YS2008,neutral,innocent,no_harm,0.5008,1
+wrong_w2,YS2008-BOUNCY BALL-accidental,YS2008,accidental,innocent,harm,0.5375,1
+wrong_w2,YS2008-BOUNCY BALL-attempted,YS2008,attempted,guilty,no_harm,0.5375,1
+wrong_w2,YS2008-BOUNCY BALL-intentional,YS2008,intentional,guilty,harm,0.5375,1
+wrong_w2,YS2008-BOUNCY BALL-neutral,YS2008,neutral,innocent,no_harm,0.5375,1
+wrong_w2,YS2008-BRIDGE-accidental,YS2008,accidental,innocent,harm,0.5116,1
+wrong_w2,YS2008-BRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5116,1
+wrong_w2,YS2008-BRIDGE-intentional,YS2008,intentional,guilty,harm,0.5116,1
+wrong_w2,YS2008-BRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5116,1
+wrong_w2,YS2008-CAYO-accidental,YS2008,accidental,innocent,harm,0.2548,1
+wrong_w2,YS2008-CAYO-attempted,YS2008,attempted,guilty,no_harm,0.2548,1
+wrong_w2,YS2008-CAYO-intentional,YS2008,intentional,guilty,harm,0.2548,1
+wrong_w2,YS2008-CAYO-neutral,YS2008,neutral,innocent,no_harm,0.2548,1
+wrong_w2,YS2008-CHAIRLIFT-accidental,YS2008,accidental,innocent,harm,0.5363,1
+wrong_w2,YS2008-CHAIRLIFT-attempted,YS2008,attempted,guilty,no_harm,0.5363,1
+wrong_w2,YS2008-CHAIRLIFT-intentional,YS2008,intentional,guilty,harm,0.5363,1
+wrong_w2,YS2008-CHAIRLIFT-neutral,YS2008,neutral,innocent,no_harm,0.5363,1
+wrong_w2,YS2008-COFFEE-accidental,YS2008,accidental,innocent,harm,0.4041,1
+wrong_w2,YS2008-COFFEE-attempted,YS2008,attempted,guilty,no_harm,0.4041,1
+wrong_w2,YS2008-COFFEE-intentional,YS2008,intentional,guilty,harm,0.4041,1
+wrong_w2,YS2008-COFFEE-neutral,YS2008,neutral,innocent,no_harm,0.4041,1
+wrong_w2,YS2008-CPR-accidental,YS2008,accidental,innocent,harm,0.4434,1
+wrong_w2,YS2008-CPR-attempted,YS2008,attempted,guilty,no_harm,0.4434,1
+wrong_w2,YS2008-CPR-intentional,YS2008,intentional,guilty,harm,0.4434,1
+wrong_w2,YS2008-CPR-neutral,YS2008,neutral,innocent,no_harm,0.4434,1
+wrong_w2,YS2008-FRAT-accidental,YS2008,accidental,innocent,harm,0.4838,1
+wrong_w2,YS2008-FRAT-attempted,YS2008,attempted,guilty,no_harm,0.4838,1
+wrong_w2,YS2008-FRAT-intentional,YS2008,intentional,guilty,harm,0.4838,1
+wrong_w2,YS2008-FRAT-neutral,YS2008,neutral,innocent,no_harm,0.4838,1
+wrong_w2,YS2008-FUMIGATION-accidental,YS2008,accidental,innocent,harm,0.5319,1
+wrong_w2,YS2008-FUMIGATION-attempted,YS2008,attempted,guilty,no_harm,0.5319,1
+wrong_w2,YS2008-FUMIGATION-intentional,YS2008,intentional,guilty,harm,0.5319,1
+wrong_w2,YS2008-FUMIGATION-neutral,YS2008,neutral,innocent,no_harm,0.5319,1
+wrong_w2,YS2008-HAM-accidental,YS2008,accidental,innocent,harm,0.4109,1
+wrong_w2,YS2008-HAM-attempted,YS2008,attempted,guilty,no_harm,0.4109,1
+wrong_w2,YS2008-HAM-intentional,YS2008,intentional,guilty,harm,0.4109,1
+wrong_w2,YS2008-HAM-neutral,YS2008,neutral,innocent,no_harm,0.4109,1
+wrong_w2,YS2008-HARNESS-accidental,YS2008,accidental,innocent,harm,0.4557,1
+wrong_w2,YS2008-HARNESS-attempted,YS2008,attempted,guilty,no_harm,0.4557,1
+wrong_w2,YS2008-HARNESS-intentional,YS2008,intentional,guilty,harm,0.4557,1
+wrong_w2,YS2008-HARNESS-neutral,YS2008,neutral,innocent,no_harm,0.4557,1
+wrong_w2,YS2008-HUNT-accidental,YS2008,accidental,innocent,harm,0.5488,1
+wrong_w2,YS2008-HUNT-attempted,YS2008,attempted,guilty,no_harm,0.5488,1
+wrong_w2,YS2008-HUNT-intentional,YS2008,intentional,guilty,harm,0.5488,1
+wrong_w2,YS2008-HUNT-neutral,YS2008,neutral,innocent,no_harm,0.5488,1
+wrong_w2,YS2008-IGLOO-accidental,YS2008,accidental,innocent,harm,0.4242,1
+wrong_w2,YS2008-IGLOO-attempted,YS2008,attempted,guilty,no_harm,0.4242,1
+wrong_w2,YS2008-IGLOO-intentional,YS2008,intentional,guilty,harm,0.4242,1
+wrong_w2,YS2008-IGLOO-neutral,YS2008,neutral,innocent,no_harm,0.4242,1
+wrong_w2,YS2008-IRON-accidental,YS2008,accidental,innocent,harm,0.4477,1
+wrong_w2,YS2008-IRON-attempted,YS2008,attempted,guilty,no_harm,0.4477,1
+wrong_w2,YS2008-IRON-intentional,YS2008,intentional,guilty,harm,0.4477,1
+wrong_w2,YS2008-IRON-neutral,YS2008,neutral,innocent,no_harm,0.4477,1
+wrong_w2,YS2008-JELLYFISH-accidental,YS2008,accidental,innocent,harm,0.4454,1
+wrong_w2,YS2008-JELLYFISH-attempted,YS2008,attempted,guilty,no_harm,0.4454,1
+wrong_w2,YS2008-JELLYFISH-intentional,YS2008,intentional,guilty,harm,0.4454,1
+wrong_w2,YS2008-JELLYFISH-neutral,YS2008,neutral,innocent,no_harm,0.4454,1
+wrong_w2,YS2008-LAB-accidental,YS2008,accidental,innocent,harm,0.5694,1
+wrong_w2,YS2008-LAB-attempted,YS2008,attempted,guilty,no_harm,0.5694,1
+wrong_w2,YS2008-LAB-intentional,YS2008,intentional,guilty,harm,0.5694,1
+wrong_w2,YS2008-LAB-neutral,YS2008,neutral,innocent,no_harm,0.5694,1
+wrong_w2,YS2008-LAPTOP-accidental,YS2008,accidental,innocent,harm,0.4933,1
+wrong_w2,YS2008-LAPTOP-attempted,YS2008,attempted,guilty,no_harm,0.4933,1
+wrong_w2,YS2008-LAPTOP-intentional,YS2008,intentional,guilty,harm,0.4933,1
+wrong_w2,YS2008-LAPTOP-neutral,YS2008,neutral,innocent,no_harm,0.4933,1
+wrong_w2,YS2008-LATEX-accidental,YS2008,accidental,innocent,harm,0.4656,1
+wrong_w2,YS2008-LATEX-attempted,YS2008,attempted,guilty,no_harm,0.4656,1
+wrong_w2,YS2008-LATEX-intentional,YS2008,intentional,guilty,harm,0.4656,1
+wrong_w2,YS2008-LATEX-neutral,YS2008,neutral,innocent,no_harm,0.4656,1
+wrong_w2,YS2008-LOGAN AIRPORT-accidental,YS2008,accidental,innocent,harm,0.4763,1
+wrong_w2,YS2008-LOGAN AIRPORT-attempted,YS2008,attempted,guilty,no_harm,0.4763,1
+wrong_w2,YS2008-LOGAN AIRPORT-intentional,YS2008,intentional,guilty,harm,0.4763,1
+wrong_w2,YS2008-LOGAN AIRPORT-neutral,YS2008,neutral,innocent,no_harm,0.4763,1
+wrong_w2,YS2008-MALARIA POND-accidental,YS2008,accidental,innocent,harm,0.4627,1
+wrong_w2,YS2008-MALARIA POND-attempted,YS2008,attempted,guilty,no_harm,0.4627,1
+wrong_w2,YS2008-MALARIA POND-intentional,YS2008,intentional,guilty,harm,0.4627,1
+wrong_w2,YS2008-MALARIA POND-neutral,YS2008,neutral,innocent,no_harm,0.4627,1
+wrong_w2,YS2008-MEATLOAF-accidental,YS2008,accidental,innocent,harm,0.4306,1
+wrong_w2,YS2008-MEATLOAF-attempted,YS2008,attempted,guilty,no_harm,0.4306,1
+wrong_w2,YS2008-MEATLOAF-intentional,YS2008,intentional,guilty,harm,0.4306,1
+wrong_w2,YS2008-MEATLOAF-neutral,YS2008,neutral,innocent,no_harm,0.4306,1
+wrong_w2,YS2008-MOTHER-accidental,YS2008,accidental,innocent,harm,0.4893,1
+wrong_w2,YS2008-MOTHER-attempted,YS2008,attempted,guilty,no_harm,0.4893,1
+wrong_w2,YS2008-MOTHER-intentional,YS2008,intentional,guilty,harm,0.4893,1
+wrong_w2,YS2008-MOTHER-neutral,YS2008,neutral,innocent,no_harm,0.4893,1
+wrong_w2,YS2008-MOTORBOAT-accidental,YS2008,accidental,innocent,harm,0.4676,1
+wrong_w2,YS2008-MOTORBOAT-attempted,YS2008,attempted,guilty,no_harm,0.4676,1
+wrong_w2,YS2008-MOTORBOAT-intentional,YS2008,intentional,guilty,harm,0.4676,1
+wrong_w2,YS2008-MOTORBOAT-neutral,YS2008,neutral,innocent,no_harm,0.4676,1
+wrong_w2,YS2008-MUSHROOMS-accidental,YS2008,accidental,innocent,harm,0.316,1
+wrong_w2,YS2008-MUSHROOMS-attempted,YS2008,attempted,guilty,no_harm,0.316,1
+wrong_w2,YS2008-MUSHROOMS-intentional,YS2008,intentional,guilty,harm,0.316,1
+wrong_w2,YS2008-MUSHROOMS-neutral,YS2008,neutral,innocent,no_harm,0.316,1
+wrong_w2,YS2008-PARACHUTES-accidental,YS2008,accidental,innocent,harm,0.3724,1
+wrong_w2,YS2008-PARACHUTES-attempted,YS2008,attempted,guilty,no_harm,0.3724,1
+wrong_w2,YS2008-PARACHUTES-intentional,YS2008,intentional,guilty,harm,0.3724,1
+wrong_w2,YS2008-PARACHUTES-neutral,YS2008,neutral,innocent,no_harm,0.3724,1
+wrong_w2,YS2008-PEANUT ALLERGY-accidental,YS2008,accidental,innocent,harm,0.4162,1
+wrong_w2,YS2008-PEANUT ALLERGY-attempted,YS2008,attempted,guilty,no_harm,0.4162,1
+wrong_w2,YS2008-PEANUT ALLERGY-intentional,YS2008,intentional,guilty,harm,0.4162,1
+wrong_w2,YS2008-PEANUT ALLERGY-neutral,YS2008,neutral,innocent,no_harm,0.4162,1
+wrong_w2,YS2008-POOL-accidental,YS2008,accidental,innocent,harm,0.5311,1
+wrong_w2,YS2008-POOL-attempted,YS2008,attempted,guilty,no_harm,0.5311,1
+wrong_w2,YS2008-POOL-intentional,YS2008,intentional,guilty,harm,0.5311,1
+wrong_w2,YS2008-POOL-neutral,YS2008,neutral,innocent,no_harm,0.5311,1
+wrong_w2,YS2008-POPCORN-accidental,YS2008,accidental,innocent,harm,0.5527,1
+wrong_w2,YS2008-POPCORN-attempted,YS2008,attempted,guilty,no_harm,0.5527,1
+wrong_w2,YS2008-POPCORN-intentional,YS2008,intentional,guilty,harm,0.5527,1
+wrong_w2,YS2008-POPCORN-neutral,YS2008,neutral,innocent,no_harm,0.5527,1
+wrong_w2,YS2008-PORRIDGE-accidental,YS2008,accidental,innocent,harm,0.5018,1
+wrong_w2,YS2008-PORRIDGE-attempted,YS2008,attempted,guilty,no_harm,0.5018,1
+wrong_w2,YS2008-PORRIDGE-intentional,YS2008,intentional,guilty,harm,0.5018,1
+wrong_w2,YS2008-PORRIDGE-neutral,YS2008,neutral,innocent,no_harm,0.5018,1
+wrong_w2,YS2008-RABIES-accidental,YS2008,accidental,innocent,harm,0.5327,1
+wrong_w2,YS2008-RABIES-attempted,YS2008,attempted,guilty,no_harm,0.5327,1
+wrong_w2,YS2008-RABIES-intentional,YS2008,intentional,guilty,harm,0.5327,1
+wrong_w2,YS2008-RABIES-neutral,YS2008,neutral,innocent,no_harm,0.5327,1
+wrong_w2,YS2008-RIVER-accidental,YS2008,accidental,innocent,harm,0.4574,1
+wrong_w2,YS2008-RIVER-attempted,YS2008,attempted,guilty,no_harm,0.4574,1
+wrong_w2,YS2008-RIVER-intentional,YS2008,intentional,guilty,harm,0.4574,1
+wrong_w2,YS2008-RIVER-neutral,YS2008,neutral,innocent,no_harm,0.4574,1
+wrong_w2,YS2008-SAFETY CORD-accidental,YS2008,accidental,innocent,harm,0.4928,1
+wrong_w2,YS2008-SAFETY CORD-attempted,YS2008,attempted,guilty,no_harm,0.4928,1
+wrong_w2,YS2008-SAFETY CORD-intentional,YS2008,intentional,guilty,harm,0.4928,1
+wrong_w2,YS2008-SAFETY CORD-neutral,YS2008,neutral,innocent,no_harm,0.4928,1
+wrong_w2,YS2008-SAFETY TOWN-accidental,YS2008,accidental,innocent,harm,0.442,1
+wrong_w2,YS2008-SAFETY TOWN-attempted,YS2008,attempted,guilty,no_harm,0.442,1
+wrong_w2,YS2008-SAFETY TOWN-intentional,YS2008,intentional,guilty,harm,0.442,1
+wrong_w2,YS2008-SAFETY TOWN-neutral,YS2008,neutral,innocent,no_harm,0.442,1
+wrong_w2,YS2008-SEATBELT-accidental,YS2008,accidental,innocent,harm,0.5942,1
+wrong_w2,YS2008-SEATBELT-attempted,YS2008,attempted,guilty,no_harm,0.5942,1
+wrong_w2,YS2008-SEATBELT-intentional,YS2008,intentional,guilty,harm,0.5942,1
+wrong_w2,YS2008-SEATBELT-neutral,YS2008,neutral,innocent,no_harm,0.5942,1
+wrong_w2,YS2008-SESAME-accidental,YS2008,accidental,innocent,harm,0.485,1
+wrong_w2,YS2008-SESAME-attempted,YS2008,attempted,guilty,no_harm,0.485,1
+wrong_w2,YS2008-SESAME-intentional,YS2008,intentional,guilty,harm,0.485,1
+wrong_w2,YS2008-SESAME-neutral,YS2008,neutral,innocent,no_harm,0.485,1
+wrong_w2,YS2008-SPINACH-accidental,YS2008,accidental,innocent,harm,0.4229,1
+wrong_w2,YS2008-SPINACH-attempted,YS2008,attempted,guilty,no_harm,0.4229,1
+wrong_w2,YS2008-SPINACH-intentional,YS2008,intentional,guilty,harm,0.4229,1
+wrong_w2,YS2008-SPINACH-neutral,YS2008,neutral,innocent,no_harm,0.4229,1
+wrong_w2,YS2008-SPRING BREAK-accidental,YS2008,accidental,innocent,harm,0.4626,1
+wrong_w2,YS2008-SPRING BREAK-attempted,YS2008,attempted,guilty,no_harm,0.4626,1
+wrong_w2,YS2008-SPRING BREAK-intentional,YS2008,intentional,guilty,harm,0.4626,1
+wrong_w2,YS2008-SPRING BREAK-neutral,YS2008,neutral,innocent,no_harm,0.4626,1
+wrong_w2,YS2008-SUSHI-accidental,YS2008,accidental,innocent,harm,0.4108,1
+wrong_w2,YS2008-SUSHI-attempted,YS2008,attempted,guilty,no_harm,0.4108,1
+wrong_w2,YS2008-SUSHI-intentional,YS2008,intentional,guilty,harm,0.4108,1
+wrong_w2,YS2008-SUSHI-neutral,YS2008,neutral,innocent,no_harm,0.4108,1
+wrong_w2,YS2008-TEENAGERS-accidental,YS2008,accidental,innocent,harm,0.5392,1
+wrong_w2,YS2008-TEENAGERS-attempted,YS2008,attempted,guilty,no_harm,0.5392,1
+wrong_w2,YS2008-TEENAGERS-intentional,YS2008,intentional,guilty,harm,0.5392,1
+wrong_w2,YS2008-TEENAGERS-neutral,YS2008,neutral,innocent,no_harm,0.5392,1
+wrong_w2,YS2008-TRACKS-accidental,YS2008,accidental,innocent,harm,0.4906,1
+wrong_w2,YS2008-TRACKS-attempted,YS2008,attempted,guilty,no_harm,0.4906,1
+wrong_w2,YS2008-TRACKS-intentional,YS2008,intentional,guilty,harm,0.4906,1
+wrong_w2,YS2008-TRACKS-neutral,YS2008,neutral,innocent,no_harm,0.4906,1
+wrong_w2,YS2008-TREE HOUSE-accidental,YS2008,accidental,innocent,harm,0.5962,1
+wrong_w2,YS2008-TREE HOUSE-attempted,YS2008,attempted,guilty,no_harm,0.5962,1
+wrong_w2,YS2008-TREE HOUSE-intentional,YS2008,intentional,guilty,harm,0.5962,1
+wrong_w2,YS2008-TREE HOUSE-neutral,YS2008,neutral,innocent,no_harm,0.5962,1
+wrong_w2,YS2008-VET-accidental,YS2008,accidental,innocent,harm,0.4488,1
+wrong_w2,YS2008-VET-attempted,YS2008,attempted,guilty,no_harm,0.4488,1
+wrong_w2,YS2008-VET-intentional,YS2008,intentional,guilty,harm,0.4488,1
+wrong_w2,YS2008-VET-neutral,YS2008,neutral,innocent,no_harm,0.4488,1
+wrong_w2,YS2008-VITAMIN-accidental,YS2008,accidental,innocent,harm,0.5216,1
+wrong_w2,YS2008-VITAMIN-attempted,YS2008,attempted,guilty,no_harm,0.5216,1
+wrong_w2,YS2008-VITAMIN-intentional,YS2008,intentional,guilty,harm,0.5216,1
+wrong_w2,YS2008-VITAMIN-neutral,YS2008,neutral,innocent,no_harm,0.5216,1
+wrong_w2,YS2008-WET FLOOR-accidental,YS2008,accidental,innocent,harm,0.4852,1
+wrong_w2,YS2008-WET FLOOR-attempted,YS2008,attempted,guilty,no_harm,0.4852,1
+wrong_w2,YS2008-WET FLOOR-intentional,YS2008,intentional,guilty,harm,0.4852,1
+wrong_w2,YS2008-WET FLOOR-neutral,YS2008,neutral,innocent,no_harm,0.4852,1
+wrong_w2,YS2008-ZOO-accidental,YS2008,accidental,innocent,harm,0.4352,1
+wrong_w2,YS2008-ZOO-attempted,YS2008,attempted,guilty,no_harm,0.4352,1
+wrong_w2,YS2008-ZOO-intentional,YS2008,intentional,guilty,harm,0.4352,1
+wrong_w2,YS2008-ZOO-neutral,YS2008,neutral,innocent,no_harm,0.4352,1
+wrong_w2,YS2009-YS2009_01-accidental,YS2009,accidental,innocent,harm,0.5527,1
+wrong_w2,YS2009-YS2009_01-attempted,YS2009,attempted,guilty,no_harm,0.5527,1
+wrong_w2,YS2009-YS2009_01-intentional,YS2009,intentional,guilty,harm,0.5527,1
+wrong_w2,YS2009-YS2009_01-neutral,YS2009,neutral,innocent,no_harm,0.5527,1
+wrong_w2,YS2009-YS2009_02-accidental,YS2009,accidental,innocent,harm,0.4108,1
+wrong_w2,YS2009-YS2009_02-attempted,YS2009,attempted,guilty,no_harm,0.4108,1
+wrong_w2,YS2009-YS2009_02-intentional,YS2009,intentional,guilty,harm,0.4108,1
+wrong_w2,YS2009-YS2009_02-neutral,YS2009,neutral,innocent,no_harm,0.4108,1
+wrong_w2,YS2009-YS2009_03-accidental,YS2009,accidental,innocent,harm,0.442,1
+wrong_w2,YS2009-YS2009_03-attempted,YS2009,attempted,guilty,no_harm,0.442,1
+wrong_w2,YS2009-YS2009_03-intentional,YS2009,intentional,guilty,harm,0.442,1
+wrong_w2,YS2009-YS2009_03-neutral,YS2009,neutral,innocent,no_harm,0.442,1
+wrong_w2,YS2009-YS2009_04-accidental,YS2009,accidental,innocent,harm,0.4627,1
+wrong_w2,YS2009-YS2009_04-attempted,YS2009,attempted,guilty,no_harm,0.4627,1
+wrong_w2,YS2009-YS2009_04-intentional,YS2009,intentional,guilty,harm,0.4627,1
+wrong_w2,YS2009-YS2009_04-neutral,YS2009,neutral,innocent,no_harm,0.4627,1
+wrong_w2,YS2009-YS2009_05-accidental,YS2009,accidental,innocent,harm,0.5018,1
+wrong_w2,YS2009-YS2009_05-attempted,YS2009,attempted,guilty,no_harm,0.5018,1
+wrong_w2,YS2009-YS2009_05-intentional,YS2009,intentional,guilty,harm,0.5018,1
+wrong_w2,YS2009-YS2009_05-neutral,YS2009,neutral,innocent,no_harm,0.5018,1
+wrong_w2,YS2009-YS2009_06-accidental,YS2009,accidental,innocent,harm,0.4229,1
+wrong_w2,YS2009-YS2009_06-attempted,YS2009,attempted,guilty,no_harm,0.4229,1
+wrong_w2,YS2009-YS2009_06-intentional,YS2009,intentional,guilty,harm,0.4229,1
+wrong_w2,YS2009-YS2009_06-neutral,YS2009,neutral,innocent,no_harm,0.4229,1
+wrong_w2,YS2009-YS2009_07-accidental,YS2009,accidental,innocent,harm,0.4162,1
+wrong_w2,YS2009-YS2009_07-attempted,YS2009,attempted,guilty,no_harm,0.4162,1
+wrong_w2,YS2009-YS2009_07-intentional,YS2009,intentional,guilty,harm,0.4162,1
+wrong_w2,YS2009-YS2009_07-neutral,YS2009,neutral,innocent,no_harm,0.4162,1
+wrong_w2,YS2009-YS2009_08-accidental,YS2009,accidental,innocent,harm,0.5327,1
+wrong_w2,YS2009-YS2009_08-attempted,YS2009,attempted,guilty,no_harm,0.5327,1
+wrong_w2,YS2009-YS2009_08-intentional,YS2009,intentional,guilty,harm,0.5327,1
+wrong_w2,YS2009-YS2009_08-neutral,YS2009,neutral,innocent,no_harm,0.5327,1
+wrong_w2,YS2009-YS2009_09-accidental,YS2009,accidental,innocent,harm,0.4838,1
+wrong_w2,YS2009-YS2009_09-attempted,YS2009,attempted,guilty,no_harm,0.4838,1
+wrong_w2,YS2009-YS2009_09-intentional,YS2009,intentional,guilty,harm,0.4838,1
+wrong_w2,YS2009-YS2009_09-neutral,YS2009,neutral,innocent,no_harm,0.4838,1
+wrong_w2,YS2009-YS2009_10-accidental,YS2009,accidental,innocent,harm,0.4306,1
+wrong_w2,YS2009-YS2009_10-attempted,YS2009,attempted,guilty,no_harm,0.4306,1
+wrong_w2,YS2009-YS2009_10-intentional,YS2009,intentional,guilty,harm,0.4306,1
+wrong_w2,YS2009-YS2009_10-neutral,YS2009,neutral,innocent,no_harm,0.4306,1
+wrong_w2,YS2009-YS2009_11-accidental,YS2009,accidental,innocent,harm,0.5962,1
+wrong_w2,YS2009-YS2009_11-attempted,YS2009,attempted,guilty,no_harm,0.5962,1
+wrong_w2,YS2009-YS2009_11-intentional,YS2009,intentional,guilty,harm,0.5962,1
+wrong_w2,YS2009-YS2009_11-neutral,YS2009,neutral,innocent,no_harm,0.5962,1
+wrong_w2,YS2009-YS2009_12-accidental,YS2009,accidental,innocent,harm,0.4477,1
+wrong_w2,YS2009-YS2009_12-attempted,YS2009,attempted,guilty,no_harm,0.4477,1
+wrong_w2,YS2009-YS2009_12-intentional,YS2009,intentional,guilty,harm,0.4477,1
+wrong_w2,YS2009-YS2009_12-neutral,YS2009,neutral,innocent,no_harm,0.4477,1
+wrong_w2,YS2009-YS2009_13-accidental,YS2009,accidental,innocent,harm,0.5942,1
+wrong_w2,YS2009-YS2009_13-attempted,YS2009,attempted,guilty,no_harm,0.5942,1
+wrong_w2,YS2009-YS2009_13-intentional,YS2009,intentional,guilty,harm,0.5942,1
+wrong_w2,YS2009-YS2009_13-neutral,YS2009,neutral,innocent,no_harm,0.5942,1
+wrong_w2,YS2009-YS2009_14-accidental,YS2009,accidental,innocent,harm,0.4242,1
+wrong_w2,YS2009-YS2009_14-attempted,YS2009,attempted,guilty,no_harm,0.4242,1
+wrong_w2,YS2009-YS2009_14-intentional,YS2009,intentional,guilty,harm,0.4242,1
+wrong_w2,YS2009-YS2009_14-neutral,YS2009,neutral,innocent,no_harm,0.4242,1
+wrong_w2,YS2009-YS2009_15-accidental,YS2009,accidental,innocent,harm,0.4852,1
+wrong_w2,YS2009-YS2009_15-attempted,YS2009,attempted,guilty,no_harm,0.4852,1
+wrong_w2,YS2009-YS2009_15-intentional,YS2009,intentional,guilty,harm,0.4852,1
+wrong_w2,YS2009-YS2009_15-neutral,YS2009,neutral,innocent,no_harm,0.4852,1
+wrong_w2,YS2009-YS2009_16-accidental,YS2009,accidental,innocent,harm,0.5392,1
+wrong_w2,YS2009-YS2009_16-attempted,YS2009,attempted,guilty,no_harm,0.5392,1
+wrong_w2,YS2009-YS2009_16-intentional,YS2009,intentional,guilty,harm,0.5392,1
+wrong_w2,YS2009-YS2009_16-neutral,YS2009,neutral,innocent,no_harm,0.5392,1
+wrong_w2,YS2009-YS2009_17-accidental,YS2009,accidental,innocent,harm,0.4109,1
+wrong_w2,YS2009-YS2009_17-attempted,YS2009,attempted,guilty,no_harm,0.4109,1
+wrong_w2,YS2009-YS2009_17-intentional,YS2009,intentional,guilty,harm,0.4109,1
+wrong_w2,YS2009-YS2009_17-neutral,YS2009,neutral,innocent,no_harm,0.4109,1
+wrong_w2,YS2009-YS2009_18-accidental,YS2009,accidental,innocent,harm,0.4933,1
+wrong_w2,YS2009-YS2009_18-attempted,YS2009,attempted,guilty,no_harm,0.4933,1
+wrong_w2,YS2009-YS2009_18-intentional,YS2009,intentional,guilty,harm,0.4933,1
+wrong_w2,YS2009-YS2009_18-neutral,YS2009,neutral,innocent,no_harm,0.4933,1
+wrong_w2,YS2009-YS2009_19-accidental,YS2009,accidental,innocent,harm,0.5003,1
+wrong_w2,YS2009-YS2009_19-attempted,YS2009,attempted,guilty,no_harm,0.5003,1
+wrong_w2,YS2009-YS2009_19-intentional,YS2009,intentional,guilty,harm,0.5003,1
+wrong_w2,YS2009-YS2009_19-neutral,YS2009,neutral,innocent,no_harm,0.5003,1
+wrong_w2,YS2009-YS2009_20-accidental,YS2009,accidental,innocent,harm,0.4928,1
+wrong_w2,YS2009-YS2009_20-attempted,YS2009,attempted,guilty,no_harm,0.4928,1
+wrong_w2,YS2009-YS2009_20-intentional,YS2009,intentional,guilty,harm,0.4928,1
+wrong_w2,YS2009-YS2009_20-neutral,YS2009,neutral,innocent,no_harm,0.4928,1
+wrong_w2,YS2009-YS2009_21-accidental,YS2009,accidental,innocent,harm,0.485,1
+wrong_w2,YS2009-YS2009_21-attempted,YS2009,attempted,guilty,no_harm,0.485,1
+wrong_w2,YS2009-YS2009_21-intentional,YS2009,intentional,guilty,harm,0.485,1
+wrong_w2,YS2009-YS2009_21-neutral,YS2009,neutral,innocent,no_harm,0.485,1
+wrong_w2,YS2009-YS2009_22-accidental,YS2009,accidental,innocent,harm,0.4434,1
+wrong_w2,YS2009-YS2009_22-attempted,YS2009,attempted,guilty,no_harm,0.4434,1
+wrong_w2,YS2009-YS2009_22-intentional,YS2009,intentional,guilty,harm,0.4434,1
+wrong_w2,YS2009-YS2009_22-neutral,YS2009,neutral,innocent,no_harm,0.4434,1
+wrong_w2,YS2009-YS2009_23-accidental,YS2009,accidental,innocent,harm,0.4352,1
+wrong_w2,YS2009-YS2009_23-attempted,YS2009,attempted,guilty,no_harm,0.4352,1
+wrong_w2,YS2009-YS2009_23-intentional,YS2009,intentional,guilty,harm,0.4352,1
+wrong_w2,YS2009-YS2009_23-neutral,YS2009,neutral,innocent,no_harm,0.4352,1
+wrong_w2,YS2009-YS2009_24-accidental,YS2009,accidental,innocent,harm,0.4454,1
+wrong_w2,YS2009-YS2009_24-attempted,YS2009,attempted,guilty,no_harm,0.4454,1
+wrong_w2,YS2009-YS2009_24-intentional,YS2009,intentional,guilty,harm,0.4454,1
+wrong_w2,YS2009-YS2009_24-neutral,YS2009,neutral,innocent,no_harm,0.4454,1
+wrong_w2,YS2011-Allergy-accidental,YS2011,accidental,innocent,harm,0.4397,1
+wrong_w2,YS2011-Allergy-intentional,YS2011,intentional,guilty,harm,0.4397,1
+wrong_w2,YS2011-Dog-accidental,YS2011,accidental,innocent,harm,0.6351,1
+wrong_w2,YS2011-Dog-intentional,YS2011,intentional,guilty,harm,0.6351,1
+wrong_w2,YS2011-Parent-accidental,YS2011,accidental,innocent,harm,0.4226,1
+wrong_w2,YS2011-Parent-intentional,YS2011,intentional,guilty,harm,0.4226,1
+wrong_w2,YS2011-Poison-accidental,YS2011,accidental,innocent,harm,0.5319,1
+wrong_w2,YS2011-Poison-intentional,YS2011,intentional,guilty,harm,0.5319,1
+wrong_w2,YS2011-Sibling-accidental,YS2011,accidental,innocent,harm,0.5206,1
+wrong_w2,YS2011-Sibling-intentional,YS2011,intentional,guilty,harm,0.5206,1

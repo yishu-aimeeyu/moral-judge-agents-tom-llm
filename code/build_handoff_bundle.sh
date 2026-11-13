@@ -59,6 +59,9 @@ take outputs/experiments/checkpoint_stage_shares.csv
 # deleted it on every rebuild; its source of truth is now outside the bundle.
 take outputs/RUN_STATUS.md
 
+# Narrative status report -- the document to hand to a collaborator who has been away.
+take outputs/STATUS_REPORT.md
+
 # W3 causal steering (+ M1/M2/M3 + prose)
 take outputs/experiments/W3_PRESPEC.md
 take outputs/experiments/W3_STEERING_SUMMARY.md

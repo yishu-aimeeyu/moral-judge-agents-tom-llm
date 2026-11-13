@@ -543,24 +543,19 @@ def closing(V):
               "of intent anywhere in the network is used.", "",
             "### The companion result (W4)", "",
             "W4 runs the other end of the pipeline: escalating in-context instruction, no "
-            "weight or activation edits. The two are **not** compared as a ratio — a "
-            "residual-stream coefficient and a block of added prompt text have no common "
-            "effect-size scale, and dividing one Δcontrast by the other would invent a "
-            "quantity. The joint statement is qualitative: *the intent representation is "
-            "inert to residual-stream intervention at the depths where intent is "
-            "resolvable, while the same contrast moves substantially under in-context "
-            "instruction.* That places the blockage downstream of the representation and "
-            "upstream of the output — the judgment can be re-pointed by the input but not "
-            "by editing the vector the probe reads.", "",
-            "Two things to carry across with it. W4's largest in-context shift lands close "
-            "to the range this experiment's *outcome* direction produced as a positive "
-            "control; that is a coincidence of magnitude, flagged in "
-            "`W4_CURRICULUM.md` and built on nowhere. And the ceiling-compression caveat in "
-            "section 3 applies to W4 at least as strongly: every model's W4 contrast gain "
-            "comes from blame for accidental harm falling rather than blame for attempted "
-            "harm rising, so in-context instruction moves the judgment toward the adult "
-            "pattern from the wrong side. Neither intervention has yet made a model "
-            "condemn attempted harm more.", ""]
+            "weight or activation edits. **Do not read the pair as \"unreachable by "
+            "steering, reachable by prompting.\"** That overclaims. The completed W4 run "
+            "(6 models × 8 levels) clears the pre-registered bar in only 3/6 at L5; gains "
+            "at the top of the stack are predominantly accidental-blame suppression; "
+            "genuine intent-led movement appears in 2/6 and only under principle-alone; "
+            "added scaffolding often degrades performance relative to the bare principle. "
+            "See `W4_SUMMARY.md`.", "",
+            "The joint statement is that the bias is **entrenched** — resistant to "
+            "representation-level intervention at resolvable depths and only partially and "
+            "inconsistently responsive to instruction. Steering and prompting share no "
+            "common effect-size scale; do not ratio them. Descriptively, W4's largest "
+            "shift can land near this experiment's outcome-direction control "
+            "(0.232–0.259); flag that coincidence, do not build on it.", ""]
 
 
 def appendix(V):
